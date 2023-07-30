@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BakerySystem.Common\BakerySystem.Common.csproj" />
+  </ItemGroup>
+
 </Project>
