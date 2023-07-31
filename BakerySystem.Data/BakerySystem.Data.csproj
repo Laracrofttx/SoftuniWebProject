@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BakerySystem.Data.Models\BakerySystem.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>

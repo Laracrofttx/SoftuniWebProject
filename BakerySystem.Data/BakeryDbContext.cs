@@ -1,11 +1,12 @@
 ﻿
 namespace BakerySystem.Web.Data
 {
+    using BakerySystem.Data.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
-    public class ApplicationDbContext : IdentityDbContext
+    public class BakeryDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public BakeryDbContext(DbContextOptions<BakeryDbContext> options)
             : base(options)
         {
         }
