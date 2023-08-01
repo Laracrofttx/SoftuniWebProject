@@ -9,19 +9,25 @@
 
 	using static BakerySystem.Common.EntityValidationConstants.Products;
 
-	public class Products
+	public class Product
 	{
+		[Key]
 		public int Id { get; set; }
 
 		[Required]
-		[MinLength(NameMinLength)]
-		[MinLength(NameMinLength)]
-		public string Name = null!;
+		[MaxLength(NameMaxLength)]
+		public string Name { get; set; } = null!;
 
+		[Required]
 		public decimal Price { get; set; }
 
-		public Category Category { get; set; } = null!;
+		[Required]
+		[MaxLength(ImageUrlMaxLength)]
+		public string ImageUrl { get; set; } = null!;
 
+		public int CategoryId { get; set; }
+
+		public Category Category { get; set; } = null!;
 	    
 
 	}
