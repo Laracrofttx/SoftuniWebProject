@@ -31,7 +31,7 @@
 
         public DbSet<Review> Reviews { get; set; }
 
-        
+
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 

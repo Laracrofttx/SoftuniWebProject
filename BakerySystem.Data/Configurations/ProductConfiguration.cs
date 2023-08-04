@@ -8,6 +8,13 @@ namespace BakerySystem.Data.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Product> builder)
 		{
+			builder
+			   .HasOne(p => p.Category)
+			   .WithMany(p => p.Products)
+			   .HasForeignKey(p => p.CategoryId)
+			   .OnDelete(DeleteBehavior.Restrict);
+
+
 			builder.HasData(this.GenerateProducts());
 		}
 

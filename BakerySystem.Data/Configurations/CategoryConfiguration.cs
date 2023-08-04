@@ -9,9 +9,8 @@
 		public void Configure(EntityTypeBuilder<Category> builder)
 		{
 			builder.HasData(this.GenerateCategories());
+
 		}
-
-
 		private Category[] GenerateCategories()
 		{
 			ICollection<Category> categories = new HashSet<Category>();
@@ -23,7 +22,7 @@
 				Id = 1,
 				Name = "Bread",
 				Description = "The most common type of bread in many countries."
-				
+
 			};
 			categories.Add(category);
 
@@ -48,6 +47,9 @@
 			categories.Add(category);
 
 			return categories.ToArray();
+
+
+
 
 		}
 	}

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BakerySystem.Common\BakerySystem.Common.csproj" />
+    <ProjectReference Include="..\BakerySystem.Data.Models\BakerySystem.Data.Models.csproj" />
+    <ProjectReference Include="..\BakerySystem.Data\BakerySystem.Data.csproj" />
+    <ProjectReference Include="..\BakerySystem.Web.ViewModels\BakerySystem.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

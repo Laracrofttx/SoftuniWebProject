@@ -1,18 +1,24 @@
 ﻿namespace BakerySystem.Web.Controllers
-{ 
+{
+    using BakerySystem.Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
     using ViewModels.Home;
     public class HomeController : Controller
     {
-        public HomeController()
+        private readonly IProductService productService;
+        public HomeController(IProductService productService)
         {
-
+            this.productService = productService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            IEnumerable<IndexViewModel> viewModel = 
+                await this.productService.AllProductsAsync();
+
+
+            return View(viewModel);
         }
 
 
