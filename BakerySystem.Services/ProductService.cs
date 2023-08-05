@@ -3,6 +3,7 @@
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Home;
+	using Microsoft.EntityFrameworkCore;
 
 	public class ProductService : IProductService
 	{
@@ -13,22 +14,24 @@
 			this.dbContext = dbContext;
 		}
 
-		public async Task<IEnumerable<IndexViewModel>> AllProductsAsync()
+		public async Task<IEnumerable<HomeProductsViewModel>> AllProductsAsync()
 		{
-			return dbContext
-				.Categories
+			IEnumerable<HomeProductsViewModel> allProducts = await this.dbContext
+				.Products
 				.OrderByDescending(c => c.Id)
-				.Select(c => new IndexViewModel()
+				.Select(c => new HomeProductsViewModel()
 				{
 
-					id = c.Id,
+					Id = c.Id,
 					Title = c.Name,
 					ImageUrl = c.ImageUrl
 
-
 				})
-				.Take(3);
-			
+				.ToArrayAsync();
+				
+			return allProducts;
 		}
-	}
+
+        
+    }
 }

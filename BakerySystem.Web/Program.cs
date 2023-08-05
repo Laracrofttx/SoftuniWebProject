@@ -1,6 +1,8 @@
 namespace BakerySystem.Web
 {
 	using BakerySystem.Data.Models;
+	using BakerySystem.Services;
+	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using Microsoft.AspNetCore.Identity;
 	using Microsoft.EntityFrameworkCore;
@@ -30,7 +32,10 @@ namespace BakerySystem.Web
 			})
 				.AddEntityFrameworkStores<BakeryDbContext>();
 
+			builder.Services.AddScoped<IProductService, ProductService>();
+
 			builder.Services.AddControllersWithViews();
+
 
 			WebApplication app = builder.Build();
 

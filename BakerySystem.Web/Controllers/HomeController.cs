@@ -14,8 +14,7 @@
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<IndexViewModel> viewModel = 
-                await this.productService.AllProductsAsync();
+            IEnumerable<HomeProductsViewModel> viewModel = await this.productService.AllProductsAsync();
 
 
             return View(viewModel);

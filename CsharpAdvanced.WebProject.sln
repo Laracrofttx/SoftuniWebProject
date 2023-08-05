@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{87
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakerySystem.Services", "BakerySystem.Services\BakerySystem.Services.csproj", "{0F2B317C-5ABC-4B75-BC0D-1D6F085FEDBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakerySystem.Web.Infrastructure", "BakerySystem.Web.Infrastructure\BakerySystem.Web.Infrastructure.csproj", "{EF32AA24-6B89-435C-B36D-89D1DD39B4B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{0F2B317C-5ABC-4B75-BC0D-1D6F085FEDBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F2B317C-5ABC-4B75-BC0D-1D6F085FEDBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F2B317C-5ABC-4B75-BC0D-1D6F085FEDBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF32AA24-6B89-435C-B36D-89D1DD39B4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF32AA24-6B89-435C-B36D-89D1DD39B4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF32AA24-6B89-435C-B36D-89D1DD39B4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF32AA24-6B89-435C-B36D-89D1DD39B4B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{BD5D8EAF-8110-457A-99F2-0712C08999FB} = {7C8F2A39-7954-43E8-B0EC-37F466C6B3B3}
 		{0373706C-2DA4-414E-9B2D-59D4AB715E36} = {7FCA85EB-D1D0-4624-859B-1CE6EEE25654}
 		{0F2B317C-5ABC-4B75-BC0D-1D6F085FEDBE} = {877EB2FB-CDD6-4E1B-9329-DE46C72252FB}
+		{EF32AA24-6B89-435C-B36D-89D1DD39B4B0} = {7FCA85EB-D1D0-4624-859B-1CE6EEE25654}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {89F1C467-59EE-4A45-A5F8-236C8D774E00}
