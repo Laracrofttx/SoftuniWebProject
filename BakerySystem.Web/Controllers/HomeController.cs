@@ -3,21 +3,23 @@
     using BakerySystem.Services.Interfaces;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
+    using System.Threading.Tasks;
     using ViewModels.Home;
     public class HomeController : Controller
     {
         private readonly IProductService productService;
         public HomeController(IProductService productService)
         {
-            this.productService = productService;
+            this.productService= productService;    
         }
 
-        public async Task<IActionResult> Index()
-        {
-            IEnumerable<HomeProductsViewModel> viewModel = await this.productService.AllProductsAsync();
+        public async Task<IActionResult> IndexAsync()
+        { 
+            IEnumerable<HomeProductsViewModel> productViewModel = 
+                await this.productService.AllProductsAsync();
 
-
-            return View(viewModel);
+            return View(productViewModel);
+            
         }
 
 

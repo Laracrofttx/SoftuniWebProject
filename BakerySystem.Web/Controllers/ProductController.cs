@@ -3,9 +3,9 @@
 	using Microsoft.AspNetCore.Mvc;
 	public class ProductController : Controller
 	{
-		public async Task<IActionResult> All()
+		public async Task<IActionResult>  All()
 		{
-			return View();
+			return  View();
 		}
 	}
 }

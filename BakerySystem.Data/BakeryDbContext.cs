@@ -35,12 +35,16 @@
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 
+            SaveChangesAsync();
+
             Assembly configAssembly = Assembly.GetAssembly(typeof(BakeryDbContext)) ??
                                       Assembly.GetExecutingAssembly();
 
             builder.ApplyConfigurationsFromAssembly(configAssembly);
 
+           
             base.OnModelCreating(builder);
+            
 		}
 	}
 }

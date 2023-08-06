@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BakerySystem.Data.Models\BakerySystem.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>

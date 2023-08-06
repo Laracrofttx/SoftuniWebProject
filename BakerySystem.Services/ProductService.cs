@@ -1,6 +1,7 @@
 ﻿namespace BakerySystem.Services
 {
-	using BakerySystem.Services.Interfaces;
+    using BakerySystem.Data.Models;
+    using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Home;
 	using Microsoft.EntityFrameworkCore;
@@ -12,13 +13,14 @@
 		public ProductService(BakeryDbContext dbContext)
 		{
 			this.dbContext = dbContext;
+			
 		}
 
 		public async Task<IEnumerable<HomeProductsViewModel>> AllProductsAsync()
 		{
 			IEnumerable<HomeProductsViewModel> allProducts = await this.dbContext
 				.Products
-				.OrderByDescending(c => c.Id)
+				.OrderBy(c => c.Id)
 				.Select(c => new HomeProductsViewModel()
 				{
 
@@ -28,10 +30,13 @@
 
 				})
 				.ToArrayAsync();
-				
+
 			return allProducts;
 		}
 
-        
+        public IEnumerable<Product> Products()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

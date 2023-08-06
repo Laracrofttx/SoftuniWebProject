@@ -16,7 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BakerySystem.Common\BakerySystem.Common.csproj" />
     <ProjectReference Include="..\BakerySystem.Data.Models\BakerySystem.Data.Models.csproj" />
+    <ProjectReference Include="..\BakerySystem.Web.ViewModels\BakerySystem.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

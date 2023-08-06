@@ -109,26 +109,6 @@ namespace BakerySystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "The most common type of bread in many countries.",
-                            Name = "Bread"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "An individually portioned baked product.",
-                            Name = "Muffins"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "The distinction between these two broad categories of cake is in the fat content. Foam cakes have little to no fat, and usually have a larger proportion of egg.",
-                            Name = "Cakes"
-                        });
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.ContactUs", b =>
@@ -278,26 +258,26 @@ namespace BakerySystem.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CategoryId = 0,
-                            ImageUrl = "https://media.istockphoto.com/id/995038782/photo/heap-of-bread.jpg?s=612x612&w=0&k=20&c=UoAcNzbbDx2ybqoEZWBaxBdy73W2NN3km8MKSci0cHk=",
-                            Name = "White Bread",
-                            Price = 0m
+                            CategoryId = 1,
+                            ImageUrl = "Bread.jpg",
+                            Name = "Bread",
+                            Price = 1m
                         },
                         new
                         {
                             Id = 2,
-                            CategoryId = 0,
-                            ImageUrl = "https://hellofrozenbananas.com/wp-content/uploads/2022/08/Gluten-Free-Muffins.jpg",
-                            Name = "Banana Muffin",
-                            Price = 0m
+                            CategoryId = 2,
+                            ImageUrl = "EasterBread.jpg",
+                            Name = "Easter Bread",
+                            Price = 2m
                         },
                         new
                         {
                             Id = 3,
-                            CategoryId = 0,
-                            ImageUrl = "https://sugarfreelondoner.com/wp-content/uploads/2020/12/sugar-free-birthday-cake-chocolate-1200.jpg",
-                            Name = "Chocolate Cake",
-                            Price = 0m
+                            CategoryId = 3,
+                            ImageUrl = "sandwich.jpg",
+                            Name = "Easter Bread",
+                            Price = 3m
                         });
                 });
 
@@ -508,7 +488,7 @@ namespace BakerySystem.Data.Migrations
                     b.HasOne("BakerySystem.Data.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
