@@ -6,6 +6,6 @@
 	public interface IProductService
 	{
 	  	Task<IEnumerable<HomeProductsViewModel>> AllProductsAsync();
-        IEnumerable<Product> Products();
+       
     }
 }

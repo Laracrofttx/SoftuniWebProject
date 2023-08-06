@@ -34,9 +34,6 @@
 			return allProducts;
 		}
 
-        public IEnumerable<Product> Products()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
