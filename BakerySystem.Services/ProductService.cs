@@ -5,7 +5,7 @@
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Home;
 	using Microsoft.EntityFrameworkCore;
-
+	
 	public class ProductService : IProductService
 	{
 		private readonly BakeryDbContext dbContext;
@@ -16,12 +16,12 @@
 			
 		}
 
-		public async Task<IEnumerable<HomeProductsViewModel>> AllProductsAsync()
+		public async Task<IEnumerable<HomeViewModel>> AllProductsAsync()
 		{
-			IEnumerable<HomeProductsViewModel> allProducts = await this.dbContext
+			IEnumerable<HomeViewModel> allProducts = await this.dbContext
 				.Products
 				.OrderBy(c => c.Id)
-				.Select(c => new HomeProductsViewModel()
+				.Select(c => new HomeViewModel()
 				{
 
 					Id = c.Id,
@@ -33,7 +33,8 @@
 
 			return allProducts;
 		}
+		
 
-       
+      
     }
 }

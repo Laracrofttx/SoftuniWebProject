@@ -1,11 +1,22 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
-	using Microsoft.AspNetCore.Mvc;
-	public class ProductController : Controller
-	{
-		public async Task<IActionResult>  All()
+    using BakerySystem.Data.Models;
+    using BakerySystem.Services.Interfaces;
+    using Microsoft.AspNetCore.Mvc;
+    public class ProductController : Controller
+    {
+		private readonly IProductService productService;
+
+		public ProductController(IProductService productService)
 		{
-			return  View();
+			this.productService = productService;
 		}
-	}
+
+		public async Task<IActionResult> All()
+		{
+			 return View();
+		}
+
+       
+    }
 }

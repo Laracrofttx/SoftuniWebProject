@@ -2,7 +2,7 @@
 
 namespace BakerySystem.Web.ViewModels.Home
 {
-	public class HomeProductsViewModel
+	public class HomeViewModel
 	{
 		public int Id { get; set; }
 		public string Title { get; set; } = null!;
