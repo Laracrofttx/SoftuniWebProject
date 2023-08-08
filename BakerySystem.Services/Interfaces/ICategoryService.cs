@@ -1,5 +1,5 @@
 ﻿using BakerySystem.Data.Models;
-using BakerySystem.Web.ViewModels.Home;
+using BakerySystem.Web.ViewModels.Category;
 
 namespace BakerySystem.Services.Interfaces
 {

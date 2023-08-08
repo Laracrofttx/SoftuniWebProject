@@ -1,11 +1,11 @@
 ﻿using BakerySystem.Data.Models;
 using BakerySystem.Services.Interfaces;
-using BakerySystem.Web.ViewModels.Home;
+using BakerySystem.Web.ViewModels.Category;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakerySystem.Web.Controllers
 {
-	public class CategoryController : Controller
+    public class CategoryController : Controller
 	{
 		private readonly ICategoryService categoryService;
 

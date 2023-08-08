@@ -1,4 +1,4 @@
-﻿namespace BakerySystem.Web.ViewModels.Home
+﻿namespace BakerySystem.Web.ViewModels.Category
 {
     public class CategoryViewModel
     {

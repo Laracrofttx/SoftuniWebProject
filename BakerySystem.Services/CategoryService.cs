@@ -3,7 +3,7 @@
     using BakerySystem.Data.Models;
     using BakerySystem.Services.Interfaces;
     using BakerySystem.Web.Data;
-    using BakerySystem.Web.ViewModels.Home;
+    using BakerySystem.Web.ViewModels.Category;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     public class CategoryService : ICategoryService
