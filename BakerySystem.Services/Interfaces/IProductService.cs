@@ -1,6 +1,5 @@
 ﻿namespace BakerySystem.Services.Interfaces
 {
-	using BakerySystem.Data.Configurations;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Web.ViewModels.Home;
 

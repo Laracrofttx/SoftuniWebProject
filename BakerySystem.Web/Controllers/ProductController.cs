@@ -1,9 +1,9 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
-	using BakerySystem.Services.Interfaces;
-	using BakerySystem.Web.ViewModels.Category;
-	using Microsoft.AspNetCore.Mvc;
-	public class ProductController : Controller
+    using BakerySystem.Data.Models;
+    using BakerySystem.Services.Interfaces;
+    using Microsoft.AspNetCore.Mvc;
+    public class ProductController : Controller
     {
 		private readonly IProductService productService;
 
@@ -17,11 +17,6 @@
 			 return View();
 		}
 
-		public async Task<IActionResult> Add()
-		{
-
-			return View();
-		}
        
     }
 }

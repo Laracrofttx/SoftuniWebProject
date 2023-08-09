@@ -14,30 +14,12 @@ namespace BakerySystem.Web.Controllers
 			this.categoryService = categoryService;
 		}
 
-
-		[HttpGet]
-		public async Task<IActionResult> All()
-		{
-			CategoryViewModel categoryModel = new CategoryViewModel()
-			{
-
-
-
-			};
-
-
-			return View();
-
-		}
-
-
-
 		public async Task<IActionResult> Index()
 		{
-			IEnumerable<CategoryViewModel> homeViewModels =
-				await this.categoryService.AllCategoryAsync();
+            IEnumerable<CategoryViewModel> homeViewModels =
+                await this.categoryService.AllCategoryAsync();
 
-			return View(categoryService);
+            return View(categoryService);
 		}
 	}
 }

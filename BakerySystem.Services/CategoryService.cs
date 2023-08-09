@@ -19,20 +19,17 @@
 
         public async Task<IEnumerable<CategoryViewModel>> AllCategoryAsync()
         {
-            IEnumerable<CategoryViewModel> allCategories = await this.dbContext
+            IEnumerable<CategoryViewModel> allCategories = await dbContext
                 .Categories
-                .AsNoTracking()
+                .OrderBy(c => c.Name)
                 .Select(c => new CategoryViewModel
                 {
                 
                     Id= c.Id,
-                    Name = c.Name,
-                    Description = c.Description,
-                    ImageUrl = c.ImageUrl
+                    Name = c.Name
                 
                 })
                 .ToArrayAsync();
-            dbContext.SaveChanges();
 
             return allCategories;
 

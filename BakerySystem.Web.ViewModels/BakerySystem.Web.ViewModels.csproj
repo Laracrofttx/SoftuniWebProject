@@ -10,4 +10,8 @@
     <ProjectReference Include="..\BakerySystem.Data.Models\BakerySystem.Data.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Product\" />
+  </ItemGroup>
+
 </Project>

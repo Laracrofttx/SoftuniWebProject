@@ -4,6 +4,7 @@ using BakerySystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    partial class BakeryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230801210025_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,32 +255,6 @@ namespace BakerySystem.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            ImageUrl = "Bread.jpg",
-                            Name = "Bread",
-                            Price = 1m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 2,
-                            ImageUrl = "EasterBread.jpg",
-                            Name = "Easter Bread",
-                            Price = 2m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 3,
-                            ImageUrl = "sandwich.jpg",
-                            Name = "Easter Bread",
-                            Price = 3m
-                        });
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Review", b =>

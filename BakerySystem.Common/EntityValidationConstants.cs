@@ -13,8 +13,6 @@
 			public const int NameMinLength = 2;
 			public const int NameMaxLength = 50;
 
-			public const int ImageUrlMaxLength = 2048;
-
 			public const int DescriptionMinLength = 20;
 			public const int DescriptionMaxLength = 150;
 		}

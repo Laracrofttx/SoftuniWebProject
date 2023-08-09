@@ -2,7 +2,6 @@
 {
 	using System.ComponentModel.DataAnnotations;
 
-
 	using static Common.EntityValidationConstants.Category;
 	public class Category
 	{
@@ -19,12 +18,7 @@
 		public string Name { get; set; } = null!;
 
 		[Required]
-		[MaxLength(ImageUrlMaxLength)]
-		public string ImageUrl { get; set; } = null!;
-
-		[Required]
 		[MaxLength(DescriptionMaxLength)]
-
 		public string Description { get; set; } = null!;
 
 		public virtual ICollection<Product> Products { get; set; } = null!;

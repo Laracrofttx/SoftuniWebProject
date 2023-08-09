@@ -1,5 +1,4 @@
 ﻿using BakerySystem.Data.Models;
-using BakerySystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,17 +9,17 @@ namespace BakerySystem.Data.Configurations
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.HasData(this.GenerateProducts());
-
-
+            
         }
 
-        public Product[] GenerateProducts()
+
+        private Product[] GenerateProducts()
         { 
-          
+        
             ICollection<Product> products = new HashSet<Product>();
 
             Product product;
-            
+
             product = new Product()
             {
 
@@ -31,7 +30,6 @@ namespace BakerySystem.Data.Configurations
                 CategoryId= 1
 
             };
-          
             products.Add(product);
 
             product = new Product()
@@ -55,12 +53,11 @@ namespace BakerySystem.Data.Configurations
                 ImageUrl = "sandwich.jpg",
                 CategoryId = 3
             };
-            
             products.Add(product);
 
          
             return products.ToArray();
-            
+
         }
 
     }

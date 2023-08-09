@@ -1,6 +1,5 @@
 ﻿namespace BakerySystem.Web.Data
 {
-    using BakerySystem.Data.Configurations;
     using BakerySystem.Data.Models;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -10,45 +9,41 @@
 
     public class BakeryDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
-        private readonly bool seedDb;
-
-        public BakeryDbContext(DbContextOptions<BakeryDbContext> options, bool seedDb = true)
+        public BakeryDbContext(DbContextOptions<BakeryDbContext> options)
             : base(options)
         {
-            this.seedDb = seedDb;
+
         }
 
-        public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } 
 
-        public DbSet<ContactUs> ContactUs { get; set; } = null!; 
+        public DbSet<ContactUs> ContactUs { get; set; }
 
-        public DbSet<DailyOffert> DailyOfferts { get; set; } = null!;
+        public DbSet<DailyOffert> DailyOfferts { get; set; }
 
-        public DbSet<OrderDetail> OrderDetails { get; set; } = null!;
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
-        public DbSet<Order> Orders { get; set; } = null!;
+        public DbSet<Order> Orders { get; set; }
 
-        public DbSet<Product> Products { get; set; } = null!;        
+        public DbSet<Product> Products { get; set; }   
 
-        public DbSet<WeAreHiring> WeAreHirings { get; set; } = null!;
+        public DbSet<WeAreHiring> WeAreHirings { get; set; }
 
-        public DbSet<Review> Reviews { get; set; } = null!;
+        public DbSet<Review> Reviews { get; set; }
 
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 
-            
-            //builder.ApplyConfiguration(new ProductConfiguration());
+            SaveChangesAsync();
+
             Assembly configAssembly = Assembly.GetAssembly(typeof(BakeryDbContext)) ??
                                       Assembly.GetExecutingAssembly();
 
             builder.ApplyConfigurationsFromAssembly(configAssembly);
 
-            
+           
             base.OnModelCreating(builder);
-
-           SaveChangesAsync();
             
 		}
 	}

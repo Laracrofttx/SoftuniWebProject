@@ -20,16 +20,16 @@
 		{
 			IEnumerable<HomeViewModel> allProducts = await this.dbContext
 				.Products
+				.OrderBy(c => c.Id)
 				.Select(c => new HomeViewModel()
 				{
 
 					Id = c.Id,
 					Title = c.Name,
 					ImageUrl = c.ImageUrl
-					
+
 				})
 				.ToArrayAsync();
-			dbContext.SaveChanges();
 
 			return allProducts;
 		}
