@@ -23,7 +23,6 @@
 
 		[Required]
 		[MaxLength(ImageUrlMaxLength)]
-
 		public string ImageUrl { get; set; } = null!;
 
 		public int CategoryId { get; set; }

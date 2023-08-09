@@ -9,5 +9,6 @@ namespace BakerySystem.Web.ViewModels.Home
 
 		public string ImageUrl { get; set; } = null!;
 
+		
     }
 }
