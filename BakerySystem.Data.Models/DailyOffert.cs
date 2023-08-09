@@ -1,5 +1,4 @@
-﻿
-namespace BakerySystem.Data.Models
+﻿namespace BakerySystem.Data.Models
 {
 	using System;
 	using System.Collections.Generic;
