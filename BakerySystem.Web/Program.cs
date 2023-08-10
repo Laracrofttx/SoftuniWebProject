@@ -6,6 +6,7 @@ namespace BakerySystem.Web
 	using BakerySystem.Web.Data;
 	using Microsoft.AspNetCore.Identity;
 	using Microsoft.EntityFrameworkCore;
+	using System.Security.Cryptography.X509Certificates;
 	using ViewModels.Home;
 	public class Program
 	{
@@ -13,6 +14,7 @@ namespace BakerySystem.Web
 		{
 			WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+			
 
 			string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 			builder.Services.AddDbContext<BakeryDbContext>(options =>
@@ -33,6 +35,7 @@ namespace BakerySystem.Web
 				.AddEntityFrameworkStores<BakeryDbContext>();
 
 			builder.Services.AddScoped<IProductService, ProductService>();
+			builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 			builder.Services.AddControllersWithViews();
 

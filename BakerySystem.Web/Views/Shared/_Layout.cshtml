@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>@ViewData["Title"] - Petiny Bakery</title>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -20,25 +20,46 @@
 				</button>
 				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
 					<ul class="navbar-nav flex-grow-1">
-						<li class="nav-item">
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Bakery" asp-action="Category">Categories</a>
-						</li>
-							<a class="nav-link text-dark" asp-area="" asp-controller="Bakery" asp-action="Products">Products</a>
-						</li>
 
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Bakery" asp-action="Review">Reviews</a>
+						<li class="nav-item dropdown">
+							<div class="dropdown">
+								<button class="btn dropdown-toggle" type="button"
+										data-bs-toggle="dropdown">
+									Categories
+								</button>
+								<ul class=" dropdown-menu">
+									<li>
+										<a class="dropdown-item" asp-controller="Category" asp-action="Breads">Breads</a>
+									</li>
+									<li>
+										<a class="dropdown-item" asp-controller="Category" asp-action="Easter Breads">Easter Breads</a>
+									</li>
+									<li>
+										<a class="dropdown-item" asp-controller="Category" asp-action="Sandwiches">Sandwiches</a>
+									</li>
+									<li>
+										<a class="dropdown-item" asp-controller="Category" asp-action="Cakes">Cakes</a>
+									</li>
+
+								</ul>
+							</div>
+
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Bakery" asp-action="WeAreHiring">We're Hiring</a>
+							<a class="nav-link text-dark" asp-area="" asp-controller="ProductController" asp-action="Products">Products</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Bakery" asp-action="Contact">Contact Us</a>
+							<a class="nav-link text-dark" asp-area="" asp-controller="ReviewController" asp-action="Review">Reviews</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="HiringController" asp-action="WeAreHiring">We're Hiring</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="ContactController" asp-action="Contact">Contact Us</a>
 						</li>
 						@if (this.User.Identity?.IsAuthenticated ?? false)
 						{
-							
+
 						}
 
 					</ul>

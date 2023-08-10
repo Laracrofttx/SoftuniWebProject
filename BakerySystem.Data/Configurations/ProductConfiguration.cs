@@ -14,8 +14,8 @@ namespace BakerySystem.Data.Configurations
 
 
         private Product[] GenerateProducts()
-        { 
-        
+        {
+
             ICollection<Product> products = new HashSet<Product>();
 
             Product product;
@@ -32,6 +32,7 @@ namespace BakerySystem.Data.Configurations
             };
             products.Add(product);
 
+            
             product = new Product()
             {
 
@@ -44,6 +45,7 @@ namespace BakerySystem.Data.Configurations
             };
             products.Add(product);
 
+            
             product = new Product()
             {
 

@@ -32,12 +32,10 @@
 
         public DbSet<Review> Reviews { get; set; }
 
-
+       
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
-
-            SaveChangesAsync();
-
+            
             Assembly configAssembly = Assembly.GetAssembly(typeof(BakeryDbContext)) ??
                                       Assembly.GetExecutingAssembly();
 

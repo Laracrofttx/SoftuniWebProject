@@ -1,6 +1,7 @@
 ﻿using BakerySystem.Data.Models;
 using BakerySystem.Services.Interfaces;
 using BakerySystem.Web.ViewModels.Category;
+using BakerySystem.Web.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakerySystem.Web.Controllers
@@ -16,10 +17,22 @@ namespace BakerySystem.Web.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-            IEnumerable<CategoryViewModel> homeViewModels =
+            IEnumerable<CategoryViewModel> categoryViewModels =
                 await this.categoryService.AllCategoryAsync();
 
-            return View(categoryService);
+            return View(categoryViewModels);
+		}
+
+		public async Task<IActionResult> All()
+		{
+			//IEnumerable<CategoryViewModel> categoryViewModels =
+			//	await this.categoryService.AllCategoryAsync();
+
+			var categories = await categoryService
+				.AllCategoryAsync();
+
+
+			return View(categories);
 		}
 	}
 }
