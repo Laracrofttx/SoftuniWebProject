@@ -21,8 +21,7 @@
         {
             IEnumerable<CategoryViewModel> allCategories = await dbContext
                 .Categories
-                .OrderBy(c => c.Name)
-                .Select(c => new CategoryViewModel
+                 .Select(c => new CategoryViewModel
                 {
                 
                     Id= c.Id,
