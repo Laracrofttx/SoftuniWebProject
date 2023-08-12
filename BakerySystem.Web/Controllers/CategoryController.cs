@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BakerySystem.Web.Controllers
 {
-	public class CategoryController : Controller
+    public class CategoryController : Controller
 	{
 		private readonly ICategoryService categoryService;
 
@@ -42,11 +42,11 @@ namespace BakerySystem.Web.Controllers
 
 			IEnumerable<BreadViewModel> breadViewModel =
 				  await this.categoryService.AllBreads();
-			
-			
+
+
 			return View(breadViewModel);
 
-			
+
 		}
 	}
 }

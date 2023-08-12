@@ -27,6 +27,7 @@ namespace BakerySystem.Data.Configurations
                 Name = "Bread",
                 Price = 1,
                 ImageUrl = "Bread.jpg",
+                Description= "Description",
                 CategoryId= 1
 
             };
@@ -40,6 +41,7 @@ namespace BakerySystem.Data.Configurations
                 Name = "Easter Bread",
                 Price = 2,
                 ImageUrl = "EasterBread.jpg",
+                Description= "Description",
                 CategoryId = 2
 
             };
@@ -53,6 +55,7 @@ namespace BakerySystem.Data.Configurations
                 Name = "Easter Bread",
                 Price = 3,
                 ImageUrl = "sandwich.jpg",
+                Description= "Description",
                 CategoryId = 3
             };
             products.Add(product);

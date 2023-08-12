@@ -34,25 +34,28 @@
 
         }
 
-        public async Task<IEnumerable<BreadViewModel>> AllBreads()
-        {
+		public async Task<IEnumerable<BreadViewModel>> AllBreads()
+		{
 
-            IEnumerable<BreadViewModel> allBreads = await dbContext
-                .Products
-                .Select(c => new BreadViewModel
-                {
+			IEnumerable<BreadViewModel> allBreads = await dbContext
+				.Products
+				.Select(c => new BreadViewModel
+				{
 
-                    Id = c.Id,
-                    Name = c.Name
+					Id = c.Id,
+					Name = c.Name,
+					Price = c.Price,
+					Description = c.Description
 
 
-                })
-                .ToArrayAsync();
-        
-            return allBreads;
-        
-        }
-    }
+				})
+				.ToArrayAsync();
+
+			return allBreads;
+
+		}
+
+	}
 
 }
 

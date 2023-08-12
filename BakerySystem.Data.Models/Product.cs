@@ -22,6 +22,10 @@
 		public decimal Price { get; set; }
 
 		[Required]
+		[MaxLength(DescriptionMaxLength)]
+		public string Description { get; set; } = null!;
+
+		[Required]
 		[MaxLength(ImageUrlMaxLength)]
 
 		public string ImageUrl { get; set; } = null!;

@@ -2,12 +2,11 @@
 {
     using BakerySystem.Data.Models;
     using BakerySystem.Services.Interfaces;
-	using BakerySystem.Web.Data;
-	using BakerySystem.Web.ViewModels.Category;
-	using BakerySystem.Web.ViewModels.Home;
-	using Microsoft.EntityFrameworkCore;
-	
-	public class ProductService : IProductService
+    using BakerySystem.Web.Data;
+    using BakerySystem.Web.ViewModels.Home;
+    using Microsoft.EntityFrameworkCore;
+
+    public class ProductService : IProductService
 	{
 		private readonly BakeryDbContext dbContext;
 
@@ -21,7 +20,6 @@
 		{
 			IEnumerable<HomeViewModel> allProducts = await this.dbContext
 				.Products
-				.OrderBy(c => c.Id)
 				.Select(c => new HomeViewModel()
 				{
 
@@ -35,24 +33,6 @@
 			return allProducts;
 		}
 
-		public async Task<IEnumerable<BreadViewModel>> AllBreads()
-		{
-
-			IEnumerable<BreadViewModel> allBreads = await dbContext
-				.Products
-				.Select(c => new BreadViewModel
-				{
-
-					Id = c.Id,
-					Name = c.Name
-
-
-				})
-				.ToArrayAsync();
-
-			return allBreads;
-
-		}
 
 
 
