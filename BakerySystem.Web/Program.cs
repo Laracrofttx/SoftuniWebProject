@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using BakerySystem.Web.Data;
 namespace BakerySystem.Web
 {
 	using BakerySystem.Data.Models;

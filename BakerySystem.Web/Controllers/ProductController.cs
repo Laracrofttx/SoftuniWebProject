@@ -2,7 +2,8 @@
 {
     using BakerySystem.Data.Models;
     using BakerySystem.Services.Interfaces;
-    using Microsoft.AspNetCore.Mvc;
+	using BakerySystem.Web.ViewModels.Category;
+	using Microsoft.AspNetCore.Mvc;
     public class ProductController : Controller
     {
 		private readonly IProductService productService;
@@ -17,6 +18,6 @@
 			 return View();
 		}
 
-       
+		
     }
 }

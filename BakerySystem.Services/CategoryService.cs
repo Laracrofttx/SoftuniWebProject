@@ -33,6 +33,25 @@
             return allCategories;
 
         }
+
+        public async Task<IEnumerable<BreadViewModel>> AllBreads()
+        {
+
+            IEnumerable<BreadViewModel> allBreads = await dbContext
+                .Products
+                .Select(c => new BreadViewModel
+                {
+
+                    Id = c.Id,
+                    Name = c.Name
+
+
+                })
+                .ToArrayAsync();
+        
+            return allBreads;
+        
+        }
     }
 
 }

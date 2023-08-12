@@ -3,6 +3,7 @@
     using BakerySystem.Data.Models;
     using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Home;
 	using Microsoft.EntityFrameworkCore;
 	
@@ -33,8 +34,27 @@
 
 			return allProducts;
 		}
-		
 
-      
-    }
+		public async Task<IEnumerable<BreadViewModel>> AllBreads()
+		{
+
+			IEnumerable<BreadViewModel> allBreads = await dbContext
+				.Products
+				.Select(c => new BreadViewModel
+				{
+
+					Id = c.Id,
+					Name = c.Name
+
+
+				})
+				.ToArrayAsync();
+
+			return allBreads;
+
+		}
+
+
+
+	}
 }
