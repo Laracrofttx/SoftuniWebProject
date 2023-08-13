@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    [Migration("20230812211428_dbEntity")]
-    partial class dbEntity
+    [Migration("20230813174956_SeedingCategories")]
+    partial class SeedingCategories
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,6 +111,32 @@ namespace BakerySystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "",
+                            Name = "Breads"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "",
+                            Name = "Easter Breads"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "",
+                            Name = "Sandwiches"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "",
+                            Name = "Cakes"
+                        });
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.ContactUs", b =>

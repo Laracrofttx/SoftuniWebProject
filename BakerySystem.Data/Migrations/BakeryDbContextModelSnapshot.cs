@@ -109,6 +109,32 @@ namespace BakerySystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "",
+                            Name = "Breads"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "",
+                            Name = "Easter Breads"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "",
+                            Name = "Sandwiches"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "",
+                            Name = "Cakes"
+                        });
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.ContactUs", b =>
@@ -237,8 +263,8 @@ namespace BakerySystem.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -264,28 +290,55 @@ namespace BakerySystem.Data.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            Description = "Description",
-                            ImageUrl = "Bread.jpg",
-                            Name = "Bread",
-                            Price = 1m
+                            Description = "A usually baked and leavened food made of a mixture whose basic constituent is flour or meal.",
+                            ImageUrl = "classic white bread.jpg",
+                            Name = "Classic White Bread",
+                            Price = 2.00m
                         },
                         new
                         {
                             Id = 2,
-                            CategoryId = 2,
-                            Description = "Description",
-                            ImageUrl = "EasterBread.jpg",
-                            Name = "Easter Bread",
-                            Price = 2m
+                            CategoryId = 1,
+                            Description = "The unique texture of soda bread is a result of the reaction between the acidic sour milk and baking soda",
+                            ImageUrl = "soda bread.jpg",
+                            Name = "Soda Bread",
+                            Price = 3.00m
                         },
                         new
                         {
                             Id = 3,
-                            CategoryId = 3,
-                            Description = "Description",
-                            ImageUrl = "sandwich.jpg",
-                            Name = "Easter Bread",
-                            Price = 3m
+                            CategoryId = 1,
+                            Description = "A long, narrow French loaf.",
+                            ImageUrl = "Baguette.jpg",
+                            Name = "Baguettes",
+                            Price = 3.00m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 1,
+                            Description = "Doughnut-shaped yeast-leavened roll that is characterized by a crisp, shiny crust and a dense interior.",
+                            ImageUrl = "Bagel.jpg",
+                            Name = "Bagels",
+                            Price = 4.00m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 1,
+                            Description = "Small, often round loaf of bread served as a meal accompaniment ",
+                            ImageUrl = "bread rolls.jpg",
+                            Name = "Bread Rolls",
+                            Price = 4.00m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 1,
+                            Description = "A special bread of Ashkenazi Jewish origin",
+                            ImageUrl = "challah.jpg",
+                            Name = "Challah",
+                            Price = 4.00m
                         });
                 });
 

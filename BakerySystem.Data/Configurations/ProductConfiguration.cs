@@ -9,7 +9,7 @@ namespace BakerySystem.Data.Configurations
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.HasData(this.GenerateProducts());
-            
+
         }
 
 
@@ -20,53 +20,92 @@ namespace BakerySystem.Data.Configurations
 
             Product product;
 
+
             product = new Product()
             {
 
-                Id = 1,
-                Name = "Bread",
-                Price = 1,
-                ImageUrl = "Bread.jpg",
-                Description= "Description",
-                CategoryId= 1
+				Id = 1,
+				Name = "Classic White Bread",
+				Price = 2.00m,
+				Description = "A usually baked and leavened food made of a mixture whose basic constituent is flour or meal.",
+				ImageUrl = "classic white bread.jpg",
+				CategoryId = 1,
 
-            };
+			};
             products.Add(product);
 
-            
+
             product = new Product()
             {
 
-                Id = 2,
-                Name = "Easter Bread",
-                Price = 2,
-                ImageUrl = "EasterBread.jpg",
-                Description= "Description",
-                CategoryId = 2
+				Id = 2,
+				Name = "Soda Bread",
+				Price = 3.00m,
+				Description = "The unique texture of soda bread is a result of the reaction between the acidic sour milk and baking soda",
+				ImageUrl = "soda bread.jpg",
+				CategoryId = 1,
 
-            };
+			};
             products.Add(product);
 
-            
+
             product = new Product()
             {
 
-                Id = 3,
-                Name = "Easter Bread",
-                Price = 3,
-                ImageUrl = "sandwich.jpg",
-                Description= "Description",
-                CategoryId = 3
-            };
+				Id = 3,
+				Name = "Baguettes",
+				Price = 3.00m,
+				Description = "A long, narrow French loaf.",
+				ImageUrl = "Baguette.jpg",
+				CategoryId = 1,
+			};
             products.Add(product);
 
-         
+            product = new Product()
+            {
+				Id = 4,
+				Name = "Bagels",
+				Price = 4.00m,
+				Description = "Doughnut-shaped yeast-leavened roll that is characterized by a crisp, shiny crust and a dense interior.",
+				ImageUrl = "Bagel.jpg",
+				CategoryId = 1,
+
+
+			};
+            products.Add(product);
+
+			product = new Product()
+			{
+
+				Id = 5,
+				Name = "Bread Rolls",
+				Price = 4.00m,
+				Description = "Small, often round loaf of bread served as a meal accompaniment ",
+				ImageUrl = "bread rolls.jpg",
+				CategoryId = 1,
+
+			};
+			products.Add(product);
+
+			product = new Product()
+			{
+				Id = 6,
+				Name = "Challah",
+				Price = 4.00m,
+				Description = "A special bread of Ashkenazi Jewish origin",
+				ImageUrl = "challah.jpg",
+				CategoryId = 1,
+
+
+			};
+			products.Add(product);
+
             return products.ToArray();
 
         }
 
     }
 
-    
+
 
 }

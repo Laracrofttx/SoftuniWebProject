@@ -41,7 +41,7 @@
 			public const int NameMaxLength = 20;
 
 			public const int DescriptionMinLength = 20;
-			public const int DescriptionMaxLength = 100;
+			public const int DescriptionMaxLength = 250;
 
 			public const int ImageUrlMaxLength = 2048;
 		}

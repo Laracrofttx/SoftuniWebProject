@@ -2,9 +2,9 @@
 
 namespace BakerySystem.Web.Controllers
 {
-	public class ContactController : Controller
+	public class DailyOffertsController : Controller
 	{
-		public IActionResult Contact()
+		public IActionResult Index()
 		{
 			return View();
 		}
