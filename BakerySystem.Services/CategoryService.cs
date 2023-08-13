@@ -4,7 +4,8 @@
     using BakerySystem.Services.Interfaces;
     using BakerySystem.Web.Data;
     using BakerySystem.Web.ViewModels.Category;
-    using Microsoft.EntityFrameworkCore;
+	using BakerySystem.Web.ViewModels.Product;
+	using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     public class CategoryService : ICategoryService
     {
@@ -34,26 +35,48 @@
 
         }
 
-		public async Task<IEnumerable<BreadViewModel>> AllBreads()
-		{
+		//public async Task<IEnumerable<BreadViewModel>> AllBreads()
+		//{
 
-			IEnumerable<BreadViewModel> allBreads = await dbContext
-				.Products
-				.Select(c => new BreadViewModel
-				{
+		//	IEnumerable<BreadViewModel> allBreads = await dbContext
+		//		.Products
+		//		.Select(c => new BreadViewModel
+		//		{
 
-					Id = c.Id,
-					Name = c.Name,
-					Price = c.Price,
-					Description = c.Description
+		//			Id = c.Id,
+		//			Name = c.Name,
+		//			Price = c.Price,
+		//			Description = c.Description
 
 
-				})
-				.ToArrayAsync();
+		//		})
+		//		.ToArrayAsync();
 
-			return allBreads;
+		//	return allBreads;
 
-		}
+		//}
+
+
+		//public async Task<IEnumerable<EasterBreadsViewModel>> AllEasterBreads()
+		//{
+
+		//	IEnumerable<EasterBreadsViewModel> allEasterBreads = await dbContext
+		//		.Products
+		//		.Select(c => new EasterBreadsViewModel
+		//		{
+
+		//			Id = c.Id,
+		//			Name = c.Name,
+		//			Price = c.Price,
+		//			Description = c.Description
+
+
+		//		})
+		//		.ToArrayAsync();
+
+		//	return allEasterBreads;
+
+		//}
 
 	}
 

@@ -1,4 +1,5 @@
 ﻿using BakerySystem.Web.ViewModels.Category;
+using BakerySystem.Web.ViewModels.Product;
 
 namespace BakerySystem.Services.Interfaces
 {
@@ -6,7 +7,9 @@ namespace BakerySystem.Services.Interfaces
     {
         Task<IEnumerable<CategoryViewModel>> AllCategoryAsync();
 
-		Task<IEnumerable<BreadViewModel>> AllBreads();
+		//Task<IEnumerable<BreadViewModel>> AllBreads();
+
+        //Task<IEnumerable<EasterBreadsViewModel>> AllEasterBreads();
 
 	}
 }

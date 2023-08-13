@@ -4,6 +4,7 @@
     using BakerySystem.Services.Interfaces;
     using BakerySystem.Web.Data;
     using BakerySystem.Web.ViewModels.Home;
+    using BakerySystem.Web.ViewModels.Product;
     using Microsoft.EntityFrameworkCore;
 
     public class ProductService : IProductService
@@ -13,7 +14,7 @@
 		public ProductService(BakeryDbContext dbContext)
 		{
 			this.dbContext = dbContext;
-			
+
 		}
 
 		public async Task<IEnumerable<HomeViewModel>> AllProductsAsync()
@@ -33,8 +34,47 @@
 			return allProducts;
 		}
 
+		public async Task<IEnumerable<BreadViewModel>> AllBreads()
+		{
+
+			IEnumerable<BreadViewModel> allBreads = await dbContext
+				.Products
+				.Select(c => new BreadViewModel
+				{
+
+					Id = c.Id,
+					Name = c.Name,
+					Price = c.Price,
+					Description = c.Description
 
 
+				})
+				.ToArrayAsync();
 
+			return allBreads;
+
+		}
+
+		public async Task<IEnumerable<EasterBreadsViewModel>> AllEasterBreads()
+		{
+
+			IEnumerable<EasterBreadsViewModel> allEasterBreads = await dbContext
+				.Products
+				.Select(c => new EasterBreadsViewModel()
+				{
+
+					Id = c.Id,
+					Name = c.Name,
+					Price = c.Price,
+					Description = c.Description
+
+
+				})
+				.ToArrayAsync();
+
+			return allEasterBreads;
+
+
+		}
 	}
 }
