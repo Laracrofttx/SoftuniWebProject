@@ -13,7 +13,7 @@
 	{
 		public Product()
 		{
-			this.ShoppingCart = new HashSet<ShoppingCart>();
+			this.ShoppingCartItems = new HashSet<ShoppingCartItem>();
 
 		}
 
@@ -40,6 +40,6 @@
 
 		public Category Category { get; set; } = null!;
 	    
-		public ICollection<ShoppingCart> ShoppingCart { get; set; } = null!;
+		public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; } = null!;
 	}
 }

@@ -4,25 +4,25 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BakerySystem.Data.Configurations
 {
-    public class ProductConfiguration : IEntityTypeConfiguration<Product>
-    {
-        public void Configure(EntityTypeBuilder<Product> builder)
-        {
-            builder.HasData(this.GenerateProducts());
-
-        }
-
-
-        private Product[] GenerateProducts()
-        {
-
-            ICollection<Product> products = new HashSet<Product>();
-
-            Product product;
+	public class ProductConfiguration : IEntityTypeConfiguration<Product>
+	{
+		public void Configure(EntityTypeBuilder<Product> builder)
+		{
+			builder.HasData(this.GenerateProducts());
+			
+		}
 
 
-            product = new Product()
-            {
+		private Product[] GenerateProducts()
+		{
+
+			ICollection<Product> products = new HashSet<Product>();
+
+			Product product;
+
+
+			product = new Product()
+			{
 
 				Id = 1,
 				Name = "Classic White Bread",
@@ -32,11 +32,11 @@ namespace BakerySystem.Data.Configurations
 				CategoryId = 1,
 
 			};
-            products.Add(product);
+			products.Add(product);
 
 
-            product = new Product()
-            {
+			product = new Product()
+			{
 
 				Id = 2,
 				Name = "Soda Bread",
@@ -46,11 +46,11 @@ namespace BakerySystem.Data.Configurations
 				CategoryId = 1,
 
 			};
-            products.Add(product);
+			products.Add(product);
 
 
-            product = new Product()
-            {
+			product = new Product()
+			{
 
 				Id = 3,
 				Name = "Baguettes",
@@ -59,10 +59,10 @@ namespace BakerySystem.Data.Configurations
 				ImageUrl = "Baguette.jpg",
 				CategoryId = 1,
 			};
-            products.Add(product);
+			products.Add(product);
 
-            product = new Product()
-            {
+			product = new Product()
+			{
 				Id = 4,
 				Name = "Bagels",
 				Price = 4.00m,
@@ -72,7 +72,7 @@ namespace BakerySystem.Data.Configurations
 
 
 			};
-            products.Add(product);
+			products.Add(product);
 
 			product = new Product()
 			{
@@ -100,11 +100,14 @@ namespace BakerySystem.Data.Configurations
 			};
 			products.Add(product);
 
-            return products.ToArray();
+	
 
-        }
+			return products.ToArray();
 
-    }
+		}
+
+
+	}
 
 
 

@@ -3,11 +3,12 @@
 	public class ShoppingCart
 	{
 		
-		public string Id { get; set; } = null!;
+		public ApplicationUser User { get; set; }
+		public string ShoppingCartId { get; set; }
 
-		public int Amount { get; set; }
+		public DateTime DueDate { get; set; }
 
-		public Product Products { get; set; } = null!;
+		public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }	
 
 
 

@@ -1,6 +1,6 @@
 ﻿namespace BakerySystem.Web.Data
 {
-
+	using BakerySystem.Data.Configurations;
 	using BakerySystem.Data.Models;
 	using Microsoft.AspNetCore.Identity;
 	using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -28,62 +28,17 @@
 
 		public DbSet<Product> Products { get; set; }
 
-
 		public DbSet<WeAreHiring> WeAreHirings { get; set; }
 
 		public DbSet<Review> Reviews { get; set; }
 
-		
-		public void SeedCategory(ModelBuilder builder)
-		{
+		public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
-			builder.Entity<Category>().HasData(
-					new Category
-					{
-						Id = 1,
-						Name = "Breads",
-						Description = ""
-
-					},
-					new Category
-					{
-
-
-						Id = 2,
-						Name = "Easter Breads",
-						Description = ""
-
-
-
-					},
-					new Category
-					{
-
-
-						Id = 3,
-						Name = "Sandwiches",
-						Description = ""
-
-
-
-					},
-					new Category
-					{
-
-
-						Id = 4,
-						Name = "Cakes",
-						Description = ""
-
-
-
-					});
-
-		}
+		public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
-			
+
 
 			Assembly configAssembly = Assembly.GetAssembly(typeof(BakeryDbContext)) ??
 									  Assembly.GetExecutingAssembly();
@@ -91,8 +46,9 @@
 			builder.ApplyConfigurationsFromAssembly(configAssembly);
 
 
+
 			base.OnModelCreating(builder);
-			
+
 		}
 	}
 }

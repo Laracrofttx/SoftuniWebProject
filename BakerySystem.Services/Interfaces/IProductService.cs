@@ -10,6 +10,7 @@
 		Task<IEnumerable<HomeViewModel>> AllProductsAsync();
 
 		Task<IEnumerable<BreadViewModel>> AllBreads();
+
 		Task<IEnumerable<EasterBreadsViewModel>> AllEasterBreads();
 
 	}

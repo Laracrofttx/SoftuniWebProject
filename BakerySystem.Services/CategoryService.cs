@@ -30,44 +30,14 @@
                 
                 })
                 .ToArrayAsync();
-
+          
             return allCategories;
-
         }
 	
+        
+		
 
-		public async Task<bool> ExistsByIdAsync(int id)
-		{
-			bool result = await dbContext
-				.Categories
-				.AnyAsync(c => c.Id == id);
 
-			return result;
-		}
-
-		public async Task<IEnumerable<string>> AllCategoryNamesAsync()
-		{
-			IEnumerable<string> allNames = await dbContext
-				.Categories
-				.Select(c => c.Name)
-				.ToArrayAsync();
-
-			return allNames;
-		}
-
-		public async Task<CategoryDetailsViewModel> GetDetailsByIdAsync(int id)
-		{
-			Category category = await dbContext
-				.Categories
-				.FirstAsync(c => c.Id == id);
-
-			CategoryDetailsViewModel viewModel = new CategoryDetailsViewModel()
-			{
-				Id = category.Id,
-				Name = category.Name
-			};
-			return viewModel;
-		}
 	}
 
 }
