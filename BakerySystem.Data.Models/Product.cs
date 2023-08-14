@@ -11,6 +11,12 @@
 
 	public class Product
 	{
+		public Product()
+		{
+			this.ShoppingCart = new HashSet<ShoppingCart>();
+
+		}
+
 		[Key]
 		public int Id { get; set; }
 
@@ -34,6 +40,6 @@
 
 		public Category Category { get; set; } = null!;
 	    
-
+		public ICollection<ShoppingCart> ShoppingCart { get; set; } = null!;
 	}
 }

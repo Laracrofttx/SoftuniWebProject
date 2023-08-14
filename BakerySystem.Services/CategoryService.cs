@@ -34,50 +34,40 @@
             return allCategories;
 
         }
+	
 
-		//public async Task<IEnumerable<BreadViewModel>> AllBreads()
-		//{
+		public async Task<bool> ExistsByIdAsync(int id)
+		{
+			bool result = await dbContext
+				.Categories
+				.AnyAsync(c => c.Id == id);
 
-		//	IEnumerable<BreadViewModel> allBreads = await dbContext
-		//		.Products
-		//		.Select(c => new BreadViewModel
-		//		{
+			return result;
+		}
 
-		//			Id = c.Id,
-		//			Name = c.Name,
-		//			Price = c.Price,
-		//			Description = c.Description
+		public async Task<IEnumerable<string>> AllCategoryNamesAsync()
+		{
+			IEnumerable<string> allNames = await dbContext
+				.Categories
+				.Select(c => c.Name)
+				.ToArrayAsync();
 
+			return allNames;
+		}
 
-		//		})
-		//		.ToArrayAsync();
+		public async Task<CategoryDetailsViewModel> GetDetailsByIdAsync(int id)
+		{
+			Category category = await dbContext
+				.Categories
+				.FirstAsync(c => c.Id == id);
 
-		//	return allBreads;
-
-		//}
-
-
-		//public async Task<IEnumerable<EasterBreadsViewModel>> AllEasterBreads()
-		//{
-
-		//	IEnumerable<EasterBreadsViewModel> allEasterBreads = await dbContext
-		//		.Products
-		//		.Select(c => new EasterBreadsViewModel
-		//		{
-
-		//			Id = c.Id,
-		//			Name = c.Name,
-		//			Price = c.Price,
-		//			Description = c.Description
-
-
-		//		})
-		//		.ToArrayAsync();
-
-		//	return allEasterBreads;
-
-		//}
-
+			CategoryDetailsViewModel viewModel = new CategoryDetailsViewModel()
+			{
+				Id = category.Id,
+				Name = category.Name
+			};
+			return viewModel;
+		}
 	}
 
 }

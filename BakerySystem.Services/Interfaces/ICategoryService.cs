@@ -7,9 +7,10 @@ namespace BakerySystem.Services.Interfaces
     {
         Task<IEnumerable<CategoryViewModel>> AllCategoryAsync();
 
-		//Task<IEnumerable<BreadViewModel>> AllBreads();
+		Task<bool> ExistsByIdAsync(int id);
 
-        //Task<IEnumerable<EasterBreadsViewModel>> AllEasterBreads();
+		Task<IEnumerable<string>> AllCategoryNamesAsync();
 
+		Task<CategoryDetailsViewModel> GetDetailsByIdAsync(int id);
 	}
 }
