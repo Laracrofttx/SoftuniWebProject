@@ -4,11 +4,8 @@ namespace BakerySystem.Services
 {
 	public class ShoppingCartService
 	{
-		public object shoppingCardItems { get; set; }
+		public string shoppingCardItems { get; set; }
 
-		public object GetShoppingCardItems()
-		{
-			return null;
-		}
+		
 	}
 }

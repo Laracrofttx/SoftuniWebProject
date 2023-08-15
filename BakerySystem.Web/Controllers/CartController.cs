@@ -11,27 +11,6 @@ namespace BakerySystem.Web.Controllers
 		private readonly ShoppingCartService shoppingCartService;
 
 
-		public CartController(IProductService productService)
-		{
-			this.productService = productService;
-			this.shoppingCartService = shoppingCartService;
-		}
-
-		public IActionResult Index()
-		{
-			var items = shoppingCartService.GetShoppingCardItems();
-			shoppingCartService.shoppingCardItems = items;
-
-			var scViewModel = new ShoppingCartViewModel
-			{
-
-				ShoppingCart = this.shoppingCartService()
-				ShoppingCartTotal = 
-				
-			
-			}
-
-			return View();
-		}
+	
 	}
 }

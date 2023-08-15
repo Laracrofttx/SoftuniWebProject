@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    [Migration("20230814195110_ShoppingCart")]
-    partial class ShoppingCart
+    [Migration("20230815204336_upCart")]
+    partial class upCart
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -345,15 +345,7 @@ namespace BakerySystem.Data.Migrations
                     b.Property<string>("ShoppingCartId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("DueDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("ShoppingCartId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("ShoppingCarts");
                 });
@@ -369,7 +361,7 @@ namespace BakerySystem.Data.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int>("ProductsId")
                         .HasColumnType("int");
 
                     b.Property<string>("ShoppingCartId")
@@ -378,7 +370,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductsId");
 
                     b.HasIndex("ShoppingCartId");
 
@@ -587,22 +579,11 @@ namespace BakerySystem.Data.Migrations
                     b.Navigation("ProductReview");
                 });
 
-            modelBuilder.Entity("BakerySystem.Data.Models.ShoppingCart", b =>
-                {
-                    b.HasOne("BakerySystem.Data.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("BakerySystem.Data.Models.ShoppingCartItem", b =>
                 {
                     b.HasOne("BakerySystem.Data.Models.Product", "Products")
                         .WithMany("ShoppingCartItems")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

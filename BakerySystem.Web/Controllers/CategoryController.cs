@@ -1,10 +1,12 @@
 ﻿using BakerySystem.Services.Interfaces;
 using BakerySystem.Web.ViewModels.Category;
 using BakerySystem.Web.ViewModels.Product;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BakerySystem.Web.Controllers
 {
+	[Authorize]
     public class CategoryController : Controller
 	{
 		private readonly ICategoryService categoryService;
@@ -14,16 +16,18 @@ namespace BakerySystem.Web.Controllers
 			this.categoryService = categoryService;
 		}
 
-		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> All()
 		{
 			IEnumerable<CategoryViewModel> viewModel =
-				await categoryService.AllCategoryAsync();
+				await categoryService.AllCategoriesAsync();
 
 			return View(viewModel);
 		}
 
+
 		
+
 
 	}
 }

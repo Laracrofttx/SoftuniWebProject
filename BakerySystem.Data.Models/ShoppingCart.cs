@@ -2,15 +2,13 @@
 {
 	public class ShoppingCart
 	{
-		
-		public ApplicationUser User { get; set; }
+		public ShoppingCart()
+		{
+			this.ShoppingCartItems = new HashSet<ShoppingCartItem>();
+		}
 		public string ShoppingCartId { get; set; }
 
-		public DateTime DueDate { get; set; }
-
-		public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }	
-
-
+		public ICollection<ShoppingCartItem> ShoppingCartItems { get;set; }
 
 	}
 }

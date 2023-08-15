@@ -1,6 +1,7 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
 	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.AspNetCore.Mvc;
 	public class ProductController : Controller
@@ -32,6 +33,22 @@
 
 		}
 
+		[HttpGet]
+		public async Task<IActionResult> Add()
+		{
 
+
+			ProductViewModel viewModel = new ProductViewModel()
+			{
+
+				Categories = (IEnumerable<CategoryViewModel>)await this.productService.AllProductsAsync()
+			};
+
+		
+			return View(viewModel);	
+		}
+
+
+		
 	}
 }

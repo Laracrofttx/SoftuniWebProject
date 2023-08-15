@@ -1,6 +1,7 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
     using BakerySystem.Services.Interfaces;
+    using BakerySystem.Web.ViewModels.Product;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
     using System.Threading.Tasks;

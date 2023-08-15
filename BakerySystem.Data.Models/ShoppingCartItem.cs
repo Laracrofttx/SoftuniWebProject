@@ -4,12 +4,10 @@
 	{
 		public int Id { get; set; }
 
-		public Product Products { get; set; }
-
-		public int ProductId { get; set; }
+		public Product Products { get; set; } = null!;
 
 		public int Amount { get; set; }
 
-		public string ShoppingCartId { get; set; } 
+		public string ShoppingCartId { get; set; } = null!;
 	}
 }
