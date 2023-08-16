@@ -1,6 +1,4 @@
-﻿using BakerySystem.Data.Models;
-
-namespace BakerySystem.Web.ViewModels.Home
+﻿namespace BakerySystem.Web.ViewModels.Home
 {
 	public class HomeViewModel
 	{
