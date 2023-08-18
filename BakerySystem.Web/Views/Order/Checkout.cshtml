@@ -1,18 +1,11 @@
-﻿@using BakerySystem.Web.ViewModels.Order;
+﻿@*@using BakerySystem.Web.ViewModels.Order;
 @model OrderViewModel;
 
-
-
-@{
-
-	ViewData["Title"] = "Orders";
-
-}
 
 <div class="row orderForm ">
 	<h3 class="text-center">You are just one step away from ordering your drinks.</h3>
 
-	<form asp-action="Make" method="post" class="form-horizontal" role="form">
+	<form asp-action="Checkout" method="post" class="form-horizontal" role="form">
 		<div class="form-group">
 			<label asp-for="FirstName" class="col-md-2 control-label"></label>
 			<div class="col-md-5">
@@ -46,9 +39,11 @@
 		<div class="form-group">
 			<div class="btn-group col-md-offset-2 col-md-8">
 				<input class="btn btn-success" type="submit" value="Complete order" />
-				@*<input class="btn btn-default" type="submit" value="Return " />*@
+				<input class="btn btn-default" type="submit" value="Return " />
 			</div>
 		</div>
 
 	</form>
 </div>
+
+*@

@@ -1,4 +1,5 @@
-﻿using BakerySystem.Web.ViewModels.Order;
+﻿using BakerySystem.Data.Models;
+using BakerySystem.Web.ViewModels.Order;
 
 namespace BakerySystem.Services.Interfaces
 {
@@ -9,5 +10,14 @@ namespace BakerySystem.Services.Interfaces
 		Task<IEnumerable<OrderViewModel>> Order();
 
 
+		public interface Orders
+		{
+
+			public Task<IEnumerable<OrderViewModel>> GetOrders();
+		
+		}
+
 	}
+
+	
 }

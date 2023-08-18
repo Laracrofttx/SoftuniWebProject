@@ -1,7 +1,9 @@
-﻿using BakerySystem.Services.Interfaces;
+﻿using BakerySystem.Data.Models;
+using BakerySystem.Services.Interfaces;
 using BakerySystem.Web.Data;
 using BakerySystem.Web.ViewModels.Order;
 using Microsoft.EntityFrameworkCore;
+using static BakerySystem.Services.Interfaces.IOrderService;
 
 namespace BakerySystem.Services
 {
@@ -63,8 +65,20 @@ namespace BakerySystem.Services
 			return order;
 
 
-
-
 		}
+
+		public Task<IEnumerable<Orders>> Orders()
+		{ 
+		
+		 
+			var newOrder = new Order();
+
+			return Orders();
+		
+		}
+
+		
+		
+	
 	}
 }
