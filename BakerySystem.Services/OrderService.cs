@@ -3,7 +3,8 @@ using BakerySystem.Services.Interfaces;
 using BakerySystem.Web.Data;
 using BakerySystem.Web.ViewModels.Order;
 using Microsoft.EntityFrameworkCore;
-using static BakerySystem.Services.Interfaces.IOrderService;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text.RegularExpressions;
 
 namespace BakerySystem.Services
 {
@@ -33,12 +34,12 @@ namespace BakerySystem.Services
 
 
 				}).ToArrayAsync();
-			
+
 
 			return orderHistory;
 
-		
-		
+
+
 		}
 
 
@@ -67,18 +68,9 @@ namespace BakerySystem.Services
 
 		}
 
-		public Task<IEnumerable<Orders>> Orders()
-		{ 
-		
-		 
-			var newOrder = new Order();
 
-			return Orders();
-		
-		}
-
-		
-		
 	
+
+
 	}
 }

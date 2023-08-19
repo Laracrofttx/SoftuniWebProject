@@ -1,52 +1,51 @@
-﻿@using BakerySystem.Web.ViewModels.Order;
-@model OrderViewModel;
-
+﻿@using BakerySystem.Data.Models;
+@model Order;
 
 
 @{
 
-	ViewData["Title"] = "Orders";
+	ViewData["Title"] = "Checkout";
 
 }
 
-<div class="row orderForm ">
-	<h3 class="text-center">You are just one step away from ordering your drinks.</h3>
+<div class="row orderform ">
+	<h3 class="text-center">you are just one step away from ordering your drinks.</h3>
 
 	<form asp-action="Make" method="post" class="form-horizontal" role="form">
 		<div class="form-group">
-			<label asp-for="FirstName" class="col-md-2 control-label"></label>
+			<label asp-for="@Model.FirstName" class="col-md-2 control-label"></label>
 			<div class="col-md-5">
-				<input asp-for="FirstName" class="form-control" />
-				<span asp-validation-for="FirstName" class="text-danger"></span>
+				<input asp-for="@Model.FirstName" class="form-control" />
+				<span asp-validation-for="@Model.FirstName" class="text-danger"></span>
 			</div>
 		</div>
 		<div class="form-group">
-			<label asp-for="LastName" class="col-md-2 control-label"></label>
+			<label asp-for="@Model.LastName" class="col-md-2 control-label"></label>
 			<div class="col-md-5">
-				<input asp-for="LastName" class="form-control" />
-				<span asp-validation-for="LastName" class="text-danger"></span>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
-			<div class="col-md-5">
-				<input asp-for="PhoneNumber" class="form-control" />
-				<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+				<input asp-for="@Model.LastName" class="form-control" />
+				<span asp-validation-for="@Model.LastName" class="text-danger"></span>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label asp-for="Address" class="col-md-2 control-label"></label>
+			<label asp-for="@Model.PhoneNumber" class="col-md-2 control-label"></label>
 			<div class="col-md-5">
-				<input asp-for="Address" class="form-control" />
-				<span asp-validation-for="Address" class="text-danger"></span>
+				<input asp-for="@Model.PhoneNumber" class="form-control" />
+				<span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="@Model.Address" class="col-md-2 control-label"></label>
+			<div class="col-md-5">
+				<input asp-for="@Model.Address" class="form-control" />
+				<span asp-validation-for="@Model.Address" class="text-danger"></span>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="btn-group col-md-offset-2 col-md-8">
-				<input class="btn btn-success" type="submit" value="Complete order" />
-				@*<input class="btn btn-default" type="submit" value="Return " />*@
+				<input class="btn btn-success" type="submit" value="complete order" />
+				<input class="btn btn-default" type="submit" value="return " />
 			</div>
 		</div>
 

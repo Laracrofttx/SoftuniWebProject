@@ -13,6 +13,6 @@
 
 		Task<IEnumerable<EasterBreadsViewModel>> AllEasterBreads();
 
-		
+		Product GetProductById(int productId); 
 	}
 }

@@ -10,14 +10,8 @@ namespace BakerySystem.Services.Interfaces
 		Task<IEnumerable<OrderViewModel>> Order();
 
 
-		public interface Orders
-		{
-
-			public Task<IEnumerable<OrderViewModel>> GetOrders();
-		
-		}
 
 	}
 
-	
+
 }

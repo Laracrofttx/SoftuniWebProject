@@ -96,5 +96,7 @@
 
 			return allProducts;
 		}
+
+		public Product GetProductById(int Id) => this.dbContext.Products.FirstOrDefault(p => p.Id == Id);
 	}
 }
