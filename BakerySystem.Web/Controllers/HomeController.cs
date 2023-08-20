@@ -20,7 +20,7 @@
             IEnumerable<HomeViewModel> productViewModel = 
                 await this.productService.AllProductsAsync();
 
-            return View(productViewModel);
+            return View(productViewModel);  
             
         }
 

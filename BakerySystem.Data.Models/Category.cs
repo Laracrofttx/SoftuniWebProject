@@ -7,6 +7,7 @@
 	{
 		public Category()
 		{
+			
 			this.Products = new HashSet<Product>();
 		}
 

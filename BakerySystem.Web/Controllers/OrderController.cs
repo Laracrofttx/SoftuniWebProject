@@ -13,9 +13,10 @@
 		public OrderController(IOrderService orderService)
 		{
 			this.orderService = orderService;
-			Order order = new Order();
+			
 		}
 
+	
 		public async Task<IActionResult> Make()
 		{
 			IEnumerable<OrderViewModel> orders =

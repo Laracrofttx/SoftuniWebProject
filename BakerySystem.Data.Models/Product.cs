@@ -13,12 +13,14 @@
 	{
 		public Product()
 		{
+			
 			this.ShoppingCartItems = new HashSet<ShoppingCartItem>();
-
+			
 		}
 
 		[Key]
 		public int Id { get; set; }
+
 
 		[Required]
 		[MaxLength(NameMaxLength)]

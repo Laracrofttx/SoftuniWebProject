@@ -7,10 +7,11 @@
 	public class ProductController : Controller
 	{
 		private readonly IProductService productService;
-
-		public ProductController(IProductService productService)
+		private readonly ICategoryService categoryService;
+		public ProductController(IProductService productService, ICategoryService categoryService)
 		{
 			this.productService = productService;
+			this.categoryService = categoryService;
 		}
 
 		public async Task<IActionResult> Breads()

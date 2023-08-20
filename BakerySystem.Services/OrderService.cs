@@ -17,30 +17,30 @@ namespace BakerySystem.Services
 			this.dbContext = dbContext;
 		}
 
-		public async Task<IEnumerable<OrderViewModel>> OrderHistory()
-		{
+		//public async Task<IEnumerable<OrderViewModel>> OrderHistory()
+		//{
 
-			IEnumerable<OrderViewModel> orderHistory = await this.dbContext
-				.Orders
-				.Select(o => new OrderViewModel()
-				{
+		//	IEnumerable<OrderViewModel> orderHistory = await this.dbContext
+		//		.Orders
+		//		.Select(o => new OrderViewModel()
+		//		{
 
-					OrderId = o.Id,
-					FirstName = o.FirstName,
-					LastName = o.LastName,
-					Address = o.Address,
-					PhoneNumber = o.PhoneNumber
-
-
-
-				}).ToArrayAsync();
-
-
-			return orderHistory;
+		//			OrderId = o.Id,
+		//			FirstName = o.FirstName,
+		//			LastName = o.LastName,
+		//			Address = o.Address,
+		//			PhoneNumber = o.PhoneNumber
 
 
 
-		}
+		//		}).ToArrayAsync();
+
+
+		//	return orderHistory;
+
+
+
+		//}
 
 
 

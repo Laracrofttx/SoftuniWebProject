@@ -13,6 +13,7 @@
 		public BakeryDbContext(DbContextOptions<BakeryDbContext> options)
 			: base(options)
 		{
+		
 
 		}
 
@@ -38,16 +39,16 @@
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
-
-
+			
 			Assembly configAssembly = Assembly.GetAssembly(typeof(BakeryDbContext)) ??
 									  Assembly.GetExecutingAssembly();
 
 			builder.ApplyConfigurationsFromAssembly(configAssembly);
 
-
-
 			base.OnModelCreating(builder);
+
+
+
 
 		}
 	}

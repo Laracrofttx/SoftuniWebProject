@@ -4,6 +4,7 @@ using BakerySystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    partial class BakeryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230820203403_SeedCategory")]
+    partial class SeedCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -289,7 +291,7 @@ namespace BakerySystem.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CategoryId = 1,
+                            CategoryId = 0,
                             Description = "A usually baked and leavened food made of a mixture whose basic constituent is flour or meal.",
                             ImageUrl = "classic white bread.jpg",
                             Name = "Classic White Bread",
@@ -298,7 +300,7 @@ namespace BakerySystem.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CategoryId = 1,
+                            CategoryId = 0,
                             Description = "The unique texture of soda bread is a result of the reaction between the acidic sour milk and baking soda",
                             ImageUrl = "soda bread.jpg",
                             Name = "Soda Bread",
@@ -307,7 +309,7 @@ namespace BakerySystem.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CategoryId = 1,
+                            CategoryId = 0,
                             Description = "A long, narrow French loaf.",
                             ImageUrl = "Baguette.jpg",
                             Name = "Baguettes",
@@ -316,7 +318,7 @@ namespace BakerySystem.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CategoryId = 1,
+                            CategoryId = 0,
                             Description = "Doughnut-shaped yeast-leavened roll that is characterized by a crisp, shiny crust and a dense interior.",
                             ImageUrl = "Bagel.jpg",
                             Name = "Bagels",
@@ -325,7 +327,7 @@ namespace BakerySystem.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CategoryId = 1,
+                            CategoryId = 0,
                             Description = "Small, often round loaf of bread served as a meal accompaniment ",
                             ImageUrl = "bread rolls.jpg",
                             Name = "Bread Rolls",
@@ -334,7 +336,7 @@ namespace BakerySystem.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CategoryId = 1,
+                            CategoryId = 0,
                             Description = "A special bread of Ashkenazi Jewish origin",
                             ImageUrl = "challah.jpg",
                             Name = "Challah",
@@ -586,7 +588,7 @@ namespace BakerySystem.Data.Migrations
                     b.HasOne("BakerySystem.Data.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");
