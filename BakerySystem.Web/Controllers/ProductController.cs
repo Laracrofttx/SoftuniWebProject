@@ -34,20 +34,20 @@
 
 		}
 
-		[HttpGet]
-		public async Task<IActionResult> Add()
-		{
+		//[HttpGet]
+		//public async Task<IActionResult> Add()
+		//{
 
 
-			ProductViewModel viewModel = new ProductViewModel()
-			{
+		//	ProductViewModel viewModel = new ProductViewModel()
+		//	{
 
-				Categories = (IEnumerable<CategoryViewModel>)await this.productService.AllProductsAsync()
-			};
+		//		Categories = (IEnumerable<CategoryViewModel>)await this.productService.AllProductsAsync()
+		//	};
 
 		
-			return View(viewModel);	
-		}
+		//	return View(viewModel);	
+		//}
 
 
 		

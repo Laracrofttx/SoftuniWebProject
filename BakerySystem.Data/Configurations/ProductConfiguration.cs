@@ -17,10 +17,10 @@ namespace BakerySystem.Data.Configurations
 		public void Configure(EntityTypeBuilder<Product> builder)
 		{
 
-			builder.HasData(this.productSeeder.GenerateProducts().ToArray());
+			builder.HasData(this.productSeeder.GenerateProducts());
 
-
-
+			
+			
 		}
 
 

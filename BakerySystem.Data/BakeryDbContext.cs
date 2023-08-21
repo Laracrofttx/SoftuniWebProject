@@ -40,6 +40,7 @@
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			
+			
 			Assembly configAssembly = Assembly.GetAssembly(typeof(BakeryDbContext)) ??
 									  Assembly.GetExecutingAssembly();
 
