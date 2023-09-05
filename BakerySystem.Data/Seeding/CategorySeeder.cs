@@ -1,9 +1,12 @@
-﻿using Category = BakerySystem.Data.Models.Category;
+﻿using BakerySystem.Web.Data;
+using Microsoft.EntityFrameworkCore;
+using Category = BakerySystem.Data.Models.Category;
 
 namespace BakerySystem.Data.Seeding
 {
-	class CategorySeeder
+	public class CategorySeeder
 	{
+		
 		internal Category[] GenerateCategories()
 		{
 
@@ -55,6 +58,7 @@ namespace BakerySystem.Data.Seeding
 			};
 			categories.Add(currentCategory);
 
+			
 			return categories.ToArray();
 		}
 	}

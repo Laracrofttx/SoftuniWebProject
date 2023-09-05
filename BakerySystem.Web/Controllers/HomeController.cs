@@ -1,10 +1,10 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
+    using System.Diagnostics;
+    using System.Threading.Tasks;
     using BakerySystem.Services.Interfaces;
     using BakerySystem.Web.ViewModels.Product;
     using Microsoft.AspNetCore.Mvc;
-    using System.Diagnostics;
-    using System.Threading.Tasks;
     using ViewModels.Home;
     public class HomeController : Controller
     {

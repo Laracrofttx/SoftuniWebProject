@@ -4,7 +4,8 @@
 	{
 		public int Id { get; set; }
 
-		public Product Products { get; set; } = null!;
+		public int ProductId { get; set; }
+		public  virtual Product Products { get; set; } = null!;
 
 		public int Amount { get; set; }
 

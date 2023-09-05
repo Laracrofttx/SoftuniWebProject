@@ -35,12 +35,12 @@
 		//	return allProducts;
 		//}
 
-		public async Task<IEnumerable<BreadViewModel>> AllBreads()
+		public async Task<IEnumerable<ProductListViewModel>> AllBreads()
 		{
 
-			IEnumerable<BreadViewModel> allBreads = await dbContext
+			IEnumerable<ProductListViewModel> allBreads = await dbContext
 				.Products
-				.Select(c => new BreadViewModel
+				.Select(c => new ProductListViewModel
 				{
 
 					Id = c.Id,
@@ -56,12 +56,12 @@
 
 		}
 
-		public async Task<IEnumerable<EasterBreadsViewModel>> AllEasterBreads()
+		public async Task<IEnumerable<ProductListViewModel>> AllEasterBreads()
 		{
 
-			IEnumerable<EasterBreadsViewModel> allEasterBreads = await dbContext
+			IEnumerable<ProductListViewModel> allEasterBreads = await dbContext
 				.Products
-				.Select(c => new EasterBreadsViewModel()
+				.Select(c => new ProductListViewModel()
 				{
 
 					Id = c.Id,

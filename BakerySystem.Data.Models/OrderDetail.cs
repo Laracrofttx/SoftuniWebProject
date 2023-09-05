@@ -1,12 +1,8 @@
-﻿namespace BakerySystem.Data.Models
-{
-	using System;
-	using System.Collections.Generic;
-	using System.ComponentModel.DataAnnotations;
-	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
+
+namespace BakerySystem.Data.Models
+{
 
 	public class OrderDetail
 	{
@@ -17,12 +13,12 @@
 
 		public int OrderId { get; set; }
 
-		public Order Orders { get; set; } = null!;
+		public virtual Order OrderDetails { get; set; } = null!;
 
 		public int ProductId { get; set; }
 
-		public Product Products { get; set; } = null!;
+		public virtual Product ProductDetails { get; set; } = null!;
 
-		
+
 	}
 }

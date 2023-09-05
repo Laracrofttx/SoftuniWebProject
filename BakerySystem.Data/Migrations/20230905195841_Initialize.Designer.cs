@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    [Migration("20230821200726_SeedBreadProduct")]
-    partial class SeedBreadProduct
+    [Migration("20230905195841_Initialize")]
+    partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -286,62 +286,6 @@ namespace BakerySystem.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            Description = "A usually baked and leavened food made of a mixture whose basic constituent is flour or meal.",
-                            ImageUrl = "",
-                            Name = "Classic White Bread",
-                            Price = 2.00m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 1,
-                            Description = "The unique texture of soda bread is a result of the reaction between the acidic sour milk and baking soda",
-                            ImageUrl = "",
-                            Name = "Soda Bread",
-                            Price = 3.00m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 1,
-                            Description = "A long, narrow French loaf.",
-                            ImageUrl = "",
-                            Name = "Baguettes",
-                            Price = 3.00m
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 1,
-                            Description = "Doughnut-shaped yeast-leavened roll that is characterized by a crisp, shiny crust and a dense interior.",
-                            ImageUrl = "",
-                            Name = "Bagels",
-                            Price = 4.00m
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 1,
-                            Description = "Small, often round loaf of bread served as a meal accompaniment ",
-                            ImageUrl = "",
-                            Name = "Bread Rolls",
-                            Price = 4.00m
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryId = 1,
-                            Description = "A special bread of Ashkenazi Jewish origin",
-                            ImageUrl = "",
-                            Name = "Challah",
-                            Price = 4.00m
-                        });
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Review", b =>
@@ -387,7 +331,7 @@ namespace BakerySystem.Data.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductsId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("ShoppingCartId")
@@ -396,7 +340,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductsId");
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("ShoppingCartId");
 
@@ -566,21 +510,21 @@ namespace BakerySystem.Data.Migrations
 
             modelBuilder.Entity("BakerySystem.Data.Models.OrderDetail", b =>
                 {
-                    b.HasOne("BakerySystem.Data.Models.Order", "Orders")
+                    b.HasOne("BakerySystem.Data.Models.Order", "OrderDetails")
                         .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BakerySystem.Data.Models.Product", "Products")
+                    b.HasOne("BakerySystem.Data.Models.Product", "ProductDetails")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Orders");
+                    b.Navigation("OrderDetails");
 
-                    b.Navigation("Products");
+                    b.Navigation("ProductDetails");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Product", b =>
@@ -588,7 +532,7 @@ namespace BakerySystem.Data.Migrations
                     b.HasOne("BakerySystem.Data.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -609,7 +553,7 @@ namespace BakerySystem.Data.Migrations
                 {
                     b.HasOne("BakerySystem.Data.Models.Product", "Products")
                         .WithMany("ShoppingCartItems")
-                        .HasForeignKey("ProductsId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

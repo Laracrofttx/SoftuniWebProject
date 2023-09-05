@@ -3,11 +3,12 @@ using BakerySystem.Web.ViewModels.Category;
 using BakerySystem.Web.ViewModels.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BakerySystem.Web.Controllers
 {
 	[Authorize]
-    public class CategoryController : Controller
+	public class CategoryController : Controller
 	{
 		private readonly ICategoryService categoryService;
 
@@ -25,9 +26,20 @@ namespace BakerySystem.Web.Controllers
 			return View(viewModel);
 		}
 
-
 		
+		//public async Task<IActionResult> Category(int id)
+		//{
+		//	//CategoryModel viewModel =
+		//	//	await categoryService.GetCategoryInfoById(id);
+
+		//	return View(viewModel);
+		//}
+
+
 
 
 	}
+
+
+	
 }

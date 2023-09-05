@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace BakerySystem.Web.Controllers
+﻿namespace BakerySystem.Web.Controllers
 {
+	using Microsoft.AspNetCore.Mvc;
 	public class HiringController1 : Controller
 	{
 		public IActionResult Index()

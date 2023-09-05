@@ -39,7 +39,13 @@
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
-			
+			builder
+				.Entity<Product>()
+				.HasOne(c => c.Category)
+				.WithMany(c => c.Products)
+				.HasForeignKey(c => c.CategoryId)
+				.OnDelete(DeleteBehavior.Restrict);
+
 			
 			Assembly configAssembly = Assembly.GetAssembly(typeof(BakeryDbContext)) ??
 									  Assembly.GetExecutingAssembly();
