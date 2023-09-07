@@ -11,7 +11,7 @@
         private readonly IProductService productService;
         public HomeController(IProductService productService)
         {
-            this.productService= productService;    
+            this.productService = productService;    
         }
 
        

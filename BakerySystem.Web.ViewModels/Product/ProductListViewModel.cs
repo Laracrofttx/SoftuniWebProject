@@ -7,6 +7,11 @@ namespace BakerySystem.Web.ViewModels.Product
 {
     public class ProductListViewModel
     {
+        public ProductListViewModel()
+        {
+            this.Categories = new HashSet<ProductCategoryViewModel>();
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -14,7 +19,8 @@ namespace BakerySystem.Web.ViewModels.Product
         public string Name { get; set; } = null!;
 
         [Required]
-        public decimal Price { get; set; }
+        [Range(typeof(decimal), PriceMinValue, PriceMaxValue)]
+		public decimal Price { get; set; }
 
         [Display(Name = "Image")]
         [Required]

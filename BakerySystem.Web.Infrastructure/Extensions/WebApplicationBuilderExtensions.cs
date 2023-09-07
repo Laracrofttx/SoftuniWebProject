@@ -1,10 +1,9 @@
-﻿
-namespace BakerySystem.Web.Infrastructure.Extensions
+﻿namespace BakerySystem.Web.Infrastructure.Extensions
 {
+    using System.Reflection;
     using Microsoft.Extensions.DependencyInjection;
     using BakerySystem.Services;
     using BakerySystem.Services.Interfaces;
-    using System.Reflection;
 
     public static class WebApplicationBuilderExtensions
     {

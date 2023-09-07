@@ -50,7 +50,7 @@
 				return View(product);
 			}
 
-			var  productData =  new Product
+			var productData = new Product
 			{
 
 				Name = product.Name,
@@ -103,21 +103,6 @@
 		}
 
 
-
-		//[HttpGet]
-		//public async Task<IActionResult> Add()
-		//{
-
-
-		//	ProductViewModel viewModel = new ProductViewModel()
-		//	{
-
-		//		Categories = (IEnumerable<CategoryViewModel>)await this.productService.AllProductsAsync()
-		//	};
-
-
-		//	return View(viewModel);	
-		//}
 
 
 

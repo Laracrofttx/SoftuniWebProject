@@ -40,6 +40,9 @@
 			public const int NameMinLength = 5;
 			public const int NameMaxLength = 20;
 
+			public const string PriceMinValue = "0";
+			public const string PriceMaxValue = "2000";
+
 			public const int DescriptionMinLength = 20;
 			public const int DescriptionMaxLength = 250;
 

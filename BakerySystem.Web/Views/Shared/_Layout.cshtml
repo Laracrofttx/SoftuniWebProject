@@ -30,7 +30,7 @@
 								</button>
 								<ul class=" dropdown-menu">
 									<li>
-										<a class="dropdown-item" asp-controller="Product" asp-action="Breads">Breads</a>
+										<a class="dropdown-item"  asp-controller="Product" asp-action="Breads">Breads</a>
 									</li>
 									<li>
 										<a class="dropdown-item" asp-controller="Product" asp-action="EasterBread">Easter Breads</a>
@@ -55,7 +55,7 @@
 						<li class="nav-item">
 							<a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Contact">Contact Us</a>
 						</li>
-						@if (this.User.Identity?.IsAuthenticated ?? false)
+						@if (this.User.Identity?.IsAuthenticated ?? true)
 						{
 							 
 						}
