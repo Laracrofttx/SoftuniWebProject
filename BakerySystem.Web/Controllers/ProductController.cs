@@ -7,24 +7,26 @@
 	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.AspNetCore.Mvc.ActionConstraints;
+	using Microsoft.AspNetCore.Mvc.Infrastructure;
 	using Microsoft.AspNetCore.Mvc.ModelBinding;
 	using Microsoft.EntityFrameworkCore;
 
 	public class ProductController : Controller
 	{
-		private readonly BakeryDbContext data;
+		private readonly BakeryDbContext dbContext;
 
 
 		private readonly IProductService productService;
 		private readonly ICategoryService categoryService;
-		public ProductController(BakeryDbContext data, IProductService productService, ICategoryService categoryService)
+		public ProductController(BakeryDbContext dbContext, IProductService productService, ICategoryService categoryService)
 		{
-			this.data = data;
+			this.dbContext = dbContext;
 			this.productService = productService;
 			this.categoryService = categoryService;
 		}
 
-		public async Task<IActionResult> Add() => View(new ProductListViewModel
+		public async Task<IActionResult> Add() => View(new ProductViewModel
 		{
 
 
@@ -33,10 +35,36 @@
 
 		});
 
-		[HttpPost]
-		public async Task<IActionResult> Add(ProductListViewModel product)
+
+		[HttpGet]
+		public async Task<IActionResult> All()
 		{
-			if (!this.data.Categories.Any(c => c.Id == product.CategoryId))
+
+			var products = await this.dbContext
+					.Products
+					.OrderByDescending(p => p.Id)
+					 .Select(p => new ProductListingVIewModel
+					 {
+
+						 Id = p.Id,
+						 Name = p.Name,
+						 Price = p.Price,
+						 ImageUrl = p.ImageUrl,
+						 Description = p.Description
+
+
+					 })
+					 .ToArrayAsync();
+
+
+			return View(products);
+
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Add(ProductViewModel product)
+		{
+			if (!this.dbContext.Categories.Any(c => c.Id == product.CategoryId))
 			{
 				this.ModelState.AddModelError(nameof(product.CategoryId), "Category does not exist");
 
@@ -62,15 +90,17 @@
 
 			};
 
-			this.data.Products.Add(productData);
-			this.data.SaveChanges();
+			this.dbContext.Products.Add(productData);
+			this.dbContext.SaveChanges();
+				
 
-
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction(nameof(All));
 		}
 
+		
+
 		private async Task<IEnumerable<ProductCategoryViewModel>> GetProductCategory()
-			=> await this.data
+			=> await this.dbContext
 			.Categories
 			.Select(c => new ProductCategoryViewModel
 			{
@@ -82,25 +112,25 @@
 
 
 
-		public async Task<IActionResult> Breads()
-		{
+		//public async Task<IActionResult> All()
+		//{
 
-			IEnumerable<ProductListViewModel> breadViewModel =
-				  await this.productService.AllBreads();
+		//	IEnumerable<ProductListingVIewModel> products =
+		//		  await this.productService.All();
 
-			return View(breadViewModel);
-		}
+		//	return View(products);
+		//}
 
 
-		public async Task<IActionResult> EasterBread()
-		{
+		//public async Task<IActionResult> EasterBread()
+		//{
 
-			IEnumerable<ProductListViewModel> easterBreadViewModel =
-				  await this.productService.AllEasterBreads();
+		//	IEnumerable<ProductViewModel> easterBreadViewModel =
+		//		  await this.productService.AllEasterBreads();
 
-			return View(easterBreadViewModel);
+		//	return View(easterBreadViewModel);
 
-		}
+		//}
 
 
 

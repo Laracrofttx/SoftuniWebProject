@@ -9,9 +9,9 @@
 	{
 		Task<IEnumerable<HomeViewModel>> AllProductsAsync();
 
-		Task<IEnumerable<ProductListViewModel>> AllBreads();
+		Task<IEnumerable<ProductListingVIewModel>> All();
 
-		Task<IEnumerable<ProductListViewModel>> AllEasterBreads();
+		Task<IEnumerable<ProductViewModel>> AllEasterBreads();
 
 		//Product GetProductById(int productId); 
 	}

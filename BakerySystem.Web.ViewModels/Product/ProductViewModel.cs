@@ -5,9 +5,9 @@ using static BakerySystem.Common.EntityValidationConstants.Products;
 
 namespace BakerySystem.Web.ViewModels.Product
 {
-    public class ProductListViewModel
+    public class ProductViewModel
     {
-        public ProductListViewModel()
+        public ProductViewModel()
         {
             this.Categories = new HashSet<ProductCategoryViewModel>();
         }

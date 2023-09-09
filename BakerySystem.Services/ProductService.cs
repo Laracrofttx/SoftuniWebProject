@@ -29,6 +29,7 @@
 					Title = c.Name,
 					ImageUrl = c.ImageUrl
 
+
 				})
 				.ToArrayAsync();
 
@@ -36,12 +37,36 @@
 			return allProducts;
 		}
 
-		public async Task<IEnumerable<ProductListViewModel>> AllBreads()
+		//public async Task<IEnumerable<ProductListingVIewModel>> AllProducts()
+		//{
+
+		//	var products = await this.dbContext
+		//               .Products
+		//               .OrderByDescending(p => p.Id)
+		//                .Select(p => new ProductListingVIewModel
+		//			 {
+
+		//				 Id = p.Id,
+		//				 Name = p.Name,
+		//				 Price = p.Price,
+		//				 ImageUrl = p.ImageUrl,
+		//				 Description = p.Description
+
+
+		//			 })
+		//                .ToArrayAsync();
+
+
+		//	return products;
+
+		//}
+
+		public async Task<IEnumerable<ProductListingVIewModel>> All()
 		{
 
-			IEnumerable<ProductListViewModel> allBreads = await dbContext
+			IEnumerable<ProductListingVIewModel> allEasterBreads = await dbContext
 				.Products
-				.Select(c => new ProductListViewModel
+				.Select(c => new ProductListingVIewModel()
 				{
 
 					Id = c.Id,
@@ -52,37 +77,38 @@
 
 				})
 				.ToArrayAsync();
-			
-			return allBreads;
 
-		}
 
-		public async Task<IEnumerable<ProductListViewModel>> AllEasterBreads()
-		{
-
-			IEnumerable<ProductListViewModel> allEasterBreads = await dbContext
-				.Products
-				.Select(c => new ProductListViewModel()
-				{
-
-					Id = c.Id,
-					Name = c.Name,
-					Price = c.Price,
-					Description = c.Description
-					
-
-				})
-				.ToArrayAsync();
-
-			
 
 			return allEasterBreads;
 		}
 
-		
+		public async Task<IEnumerable<ProductViewModel>> AllEasterBreads()
+		{
+
+			IEnumerable<ProductViewModel> allEasterBreads = await dbContext
+				.Products
+				.Select(c => new ProductViewModel()
+				{
+
+					Id = c.Id,
+					Name = c.Name,
+					Price = c.Price,
+					Description = c.Description
+
+
+				})
+				.ToArrayAsync();
+
+
+
+			return allEasterBreads;
+		}
+
+
 
 		public Product GetProductById(int Id) => this.dbContext.Products.FirstOrDefault(p => p.Id == Id);
 
-		
+
 	}
 }

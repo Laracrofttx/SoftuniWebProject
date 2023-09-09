@@ -1,0 +1,128 @@
+﻿@using BakerySystem.Web.ViewModels.Product
+@model IEnumerable<ProductListingVIewModel>
+
+@{
+
+	ViewData["Title"] = "Breads";
+
+
+}
+
+@* <div class="row">
+	@foreach (var product in Model)
+	{
+
+		<div class="card" style="width: 18rem;">
+			<img src="@product.ImageUrl" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">@product.Name (@product.Price)</h5>
+				<p class="card-text"></p>
+				<a asp-controller="Product" asp-action="All" asp-route-id="@product.Id" class="btn btn-primary">Add to cart</a>
+			</div>
+		</div>
+
+
+	}
+</div>
+ *@
+@* <div class="row">
+	@foreach (var product in Model)
+	{
+		<div class="container">
+			<div class="row gy-3">
+				<div class="col-md-3">
+					<div class="card">
+						<img src="@product.ImageUrl" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+							 alt="...">
+						<div class="card-body">
+							<h5 class="card-title">@product.Name</h5>
+							<p class="card-text"></p>
+							<a asp-controller="Product" asp-action="All" asp-route-id="@product.Id" class="btn btn-primary">Add to Card</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	}
+</div>
+ *@
+
+
+
+<div class="row gy-3">
+	@foreach (var product in Model)
+	{
+		<div class="col-sm-4 col-md-3">
+			<div class="card mb-3 h-100">
+				<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+					 src="@product.ImageUrl" alt="@product.Name @product.Price$">
+				<div class="card-body">
+					<h5 class="card-title">@product.Name @product.Price$</h5>
+					<p class="card-text">@product.Description</p>
+					<a asp-controller="Product" asp-action="All" asp-route-id="@product.Id" class="align-self-end btn btn-primary float-end">Add to Card</a>
+				</div>
+			</div>
+
+		</div>
+	}
+</div>
+
+
+@* <div class="col-md-3">
+	<div class="card">
+	<img class="d-block w-100" style="background-color: gray; height: 250px; width: 100%;"
+	src="~/Images/CategoryImages/soda bread.jpg" class="card-img-top" alt="...">
+	<div class="card-body">
+	<h5 class="card-title">Soda Bread</h5>
+	<p class="card-text"></p>
+	<a href="#" class="btn btn-primary">Add to Card</a>
+	</div>
+	</div>
+	</div>
+	<div class="col-md-3">
+	<div class="card">
+	<img class="d-block w-100" style="background-color: gray; height: 250px; width: 100%;"
+	src="~/Images/CategoryImages/Baguette.jpg" class="card-img-top" alt="...">
+	<div class="card-body">
+	<h5 class="card-title">Baguettes</h5>
+	<p class="card-text"></p>
+	<a href="#" class="btn btn-primary">Add  to Card</a>
+	</div>
+	</div>
+	</div>
+	<div class="col-md-3">
+	<div class="card">
+	<img class="d-block w-100" style="background-color: gray; height: 250px; width: 100%;"
+	src="~/Images/CategoryImages/Bagel.jpg" class="card-img-top" alt="...">
+	<div class="card-body">
+	<h5 class="card-title">Bagels</h5>
+	<p class="card-text"></p>
+	<a href="#" class="btn btn-primary">Add to Card</a>
+	</div>
+	</div>
+	</div>
+	<div class="col-md-3">
+	<div class="card">
+	<img class="d-block w-100" style="background-color: gray; height: 250px; width: 100%;"
+	src="~/Images/CategoryImages/bread rolls.jpg" class="card-img-top alt="...">
+	<div class="card-body">
+	<h5 class="card-title">Bread Rolls</h5>
+	<p class="card-text"></p>
+	<a href="#" class="btn btn-primary">Add to Card</a>
+	</div>
+	</div>
+	</div>
+	<div class="col-md-3">
+	<div class="card">
+	<img class="d-block w-100" style="background-color: gray; height: 250px; width: 100%;"
+	src="~/Images/CategoryImages/challah.jpg" class="card-img-top" alt="...">
+	<div class="card-body">
+	<h5 class="card-title">Challah</h5>
+	<p class="card-text"></p>
+	<a href="#" class="btn btn-primary">Add to Card</a>
+	</div>
+	</div>
+	</div> *@
+
+
