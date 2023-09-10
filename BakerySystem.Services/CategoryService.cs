@@ -6,6 +6,7 @@
 	using System.Collections.Generic;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.ViewModels.Category;
+	using BakerySystem.Data.Models;
 
 	public class CategoryService : ICategoryService
 	{
@@ -34,6 +35,7 @@
 			return allCategories;
 		}
 
+	
 	}
 
 }

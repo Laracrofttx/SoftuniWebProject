@@ -19,7 +19,7 @@ namespace BakerySystem.Data.Seeding
 
 				Id = 1,
 				Name = "Breads",
-				Description = "",
+				
 				
 
 			};
@@ -30,8 +30,7 @@ namespace BakerySystem.Data.Seeding
 
 				Id = 2,
 				Name = "Easter Breads",
-				Description = "",
-
+				
 
 			};
 			categories.Add(currentCategory);
@@ -41,8 +40,7 @@ namespace BakerySystem.Data.Seeding
 
 				Id = 3,
 				Name = "Sandwiches",
-				Description = "",
-
+				
 
 			};
 			categories.Add(currentCategory);
@@ -52,7 +50,7 @@ namespace BakerySystem.Data.Seeding
 
 				Id = 4,
 				Name = "Muffins",
-				Description = "",
+				
 
 
 			};

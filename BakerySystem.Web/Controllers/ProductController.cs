@@ -37,29 +37,30 @@
 
 
 		[HttpGet]
-		public async Task<IActionResult> All()
+		public async Task<IActionResult> All(int id)
 		{
 
 			var products = await this.dbContext
 					.Products
 					.OrderByDescending(p => p.Id)
+					.Where(p => p.CategoryId == id)
 					 .Select(p => new ProductListingVIewModel
 					 {
-
-						 Id = p.Id,
 						 Name = p.Name,
 						 Price = p.Price,
 						 ImageUrl = p.ImageUrl,
-						 Description = p.Description
-
+						 Description = p.Description,
 
 					 })
 					 .ToArrayAsync();
 
 
+
 			return View(products);
 
 		}
+
+
 
 		[HttpPost]
 		public async Task<IActionResult> Add(ProductViewModel product)
@@ -80,24 +81,24 @@
 
 			var productData = new Product
 			{
-
+				Id = product.Id,
 				Name = product.Name,
 				Price = product.Price,
 				ImageUrl = product.ImageUrl,
 				Description = product.Description,
-				CategoryId = product.CategoryId,
+				CategoryId = product.CategoryId
 
 
 			};
 
 			this.dbContext.Products.Add(productData);
 			this.dbContext.SaveChanges();
-				
 
-			return RedirectToAction(nameof(All));
+
+			return View(RedirectToAction(nameof(All)));
 		}
 
-		
+
 
 		private async Task<IEnumerable<ProductCategoryViewModel>> GetProductCategory()
 			=> await this.dbContext
@@ -106,31 +107,14 @@
 			{
 				Id = c.Id,
 				Name = c.Name,
+				
+
 
 			})
-			.ToListAsync();
+			.ToArrayAsync();
 
 
 
-		//public async Task<IActionResult> All()
-		//{
-
-		//	IEnumerable<ProductListingVIewModel> products =
-		//		  await this.productService.All();
-
-		//	return View(products);
-		//}
-
-
-		//public async Task<IActionResult> EasterBread()
-		//{
-
-		//	IEnumerable<ProductViewModel> easterBreadViewModel =
-		//		  await this.productService.AllEasterBreads();
-
-		//	return View(easterBreadViewModel);
-
-		//}
 
 
 

@@ -38,7 +38,7 @@
 		public static class Products
 		{
 			public const int NameMinLength = 5;
-			public const int NameMaxLength = 20;
+			public const int NameMaxLength = 50;
 
 			public const string PriceMinValue = "0";
 			public const string PriceMaxValue = "2000";

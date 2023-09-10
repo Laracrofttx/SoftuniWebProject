@@ -64,7 +64,7 @@
 		public async Task<IEnumerable<ProductListingVIewModel>> All()
 		{
 
-			IEnumerable<ProductListingVIewModel> allEasterBreads = await dbContext
+			IEnumerable<ProductListingVIewModel> allBreads = await dbContext
 				.Products
 				.Select(c => new ProductListingVIewModel()
 				{
@@ -72,7 +72,8 @@
 					Id = c.Id,
 					Name = c.Name,
 					Price = c.Price,
-					Description = c.Description
+					Description = c.Description,
+					CategoryId = c.CategoryId
 
 
 				})
@@ -80,15 +81,15 @@
 
 
 
-			return allEasterBreads;
+			return allBreads;
 		}
 
-		public async Task<IEnumerable<ProductViewModel>> AllEasterBreads()
+		public async Task<IEnumerable<ProductListingVIewModel>> AllEasterBreads()
 		{
 
-			IEnumerable<ProductViewModel> allEasterBreads = await dbContext
+			IEnumerable<ProductListingVIewModel> allEasterBreads = await dbContext
 				.Products
-				.Select(c => new ProductViewModel()
+				.Select(c => new ProductListingVIewModel()
 				{
 
 					Id = c.Id,

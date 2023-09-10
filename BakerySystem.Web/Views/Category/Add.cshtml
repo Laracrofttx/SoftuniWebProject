@@ -1,0 +1,17 @@
+﻿@using BakerySystem.Web.ViewModels.Category;
+
+@model CategoryViewModel;
+
+@{
+
+
+	ViewData["Title"] = "Add Category";
+
+}
+
+
+<div class="form-group">
+	<label asp-for="Name"></label>
+	<input asp-for="Name" class="form-control">
+	<span asp-validation-for="Name" class="small text-danger"></span>
+</div>

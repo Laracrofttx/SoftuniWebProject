@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    [Migration("20230905200017_SeedCategory")]
-    partial class SeedCategory
+    [Migration("20230910170215_ChangeValidationConstantLength")]
+    partial class ChangeValidationConstantLength
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -275,8 +275,8 @@ namespace BakerySystem.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");

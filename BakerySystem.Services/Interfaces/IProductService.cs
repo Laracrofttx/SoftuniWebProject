@@ -11,7 +11,7 @@
 
 		Task<IEnumerable<ProductListingVIewModel>> All();
 
-		Task<IEnumerable<ProductViewModel>> AllEasterBreads();
+		Task<IEnumerable<ProductListingVIewModel>> AllEasterBreads();
 
 		//Product GetProductById(int productId); 
 	}

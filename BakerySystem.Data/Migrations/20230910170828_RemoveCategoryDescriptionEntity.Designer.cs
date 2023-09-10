@@ -4,6 +4,7 @@ using BakerySystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    partial class BakeryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230910170828_RemoveCategoryDescriptionEntity")]
+    partial class RemoveCategoryDescriptionEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,7 +105,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -153,7 +155,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ContactUs", (string)null);
+                    b.ToTable("ContactUs");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.DailyOffert", b =>
@@ -179,7 +181,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DailyOfferts", (string)null);
+                    b.ToTable("DailyOfferts");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Order", b =>
@@ -212,7 +214,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.OrderDetail", b =>
@@ -238,7 +240,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails", (string)null);
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Product", b =>
@@ -274,7 +276,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Review", b =>
@@ -296,7 +298,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasIndex("ProductReviewId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.ShoppingCart", b =>
@@ -306,7 +308,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasKey("ShoppingCartId");
 
-                    b.ToTable("ShoppingCarts", (string)null);
+                    b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.ShoppingCartItem", b =>
@@ -333,7 +335,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasIndex("ShoppingCartId");
 
-                    b.ToTable("ShoppingCartItems", (string)null);
+                    b.ToTable("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.WeAreHiring", b =>
@@ -359,7 +361,7 @@ namespace BakerySystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WeAreHirings", (string)null);
+                    b.ToTable("WeAreHirings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
