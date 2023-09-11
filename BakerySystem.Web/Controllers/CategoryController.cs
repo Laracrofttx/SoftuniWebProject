@@ -19,24 +19,45 @@ namespace BakerySystem.Web.Controllers
 	{
 		private readonly BakeryDbContext dbContext;
 
-		private readonly ICategoryService categoryService;
+		//private readonly ICategoryService categoryService;
 
 		public CategoryController(BakeryDbContext dbContext, ICategoryService categoryService)
 		{
 			this.dbContext = dbContext;
-			this.categoryService = categoryService;
+			//this.categoryService = categoryService;
 		}
 
+		
+
+		public async Task<bool> CategoryExists(int categoryId)
+		{ 
+		
+		
+			return await dbContext.Categories.AnyAsync(c => c.Id == categoryId);
+
+		
+		}
+
+		//public async Task<IActionResult> Add() => View(new CategoryViewModel
+		//{
+
+
+		//	Name = await this.GetCategory()
+
+
+		//});
+
+
 		[HttpGet]
-		public async Task<IActionResult> AllCategoriesAsync()
+		public async Task<IActionResult> AllCategoriesAsync(int id)
 		{
 			var categories = await this.dbContext
 				.Categories
+				.Where(c => c.Id == id)
 				.Select(c => new CategoryViewModel
 				{
 					Id = c.Id,
 					Name = c.Name
-
 
 				})
 				.ToArrayAsync();
@@ -45,39 +66,51 @@ namespace BakerySystem.Web.Controllers
 		}
 
 
-		//public async Task<IActionResult> AllCategoriesAsync()
-		//{
-		//	IEnumerable<CategoryViewModel> categoryViewModel =
-		//		await this.categoryService.AllCategoriesAsync();
-
-		//	return View(categoryViewModel);
-
-		//}
 
 		[HttpPost]
 
-		public async Task<IActionResult> Add(CategoryViewModel category)
+		public async Task<IActionResult> AddCategory(CategoryViewModel category)
 		{
 
+			//if (!this.dbContext.Categories.Any(c => c.Id == category.Id))
+			//{
+			//	this.ModelState.AddModelError(nameof(category.Id), "Category does not exist");
+
+			//}
+
+			if (!ModelState.IsValid)
+			{
+				
+				return View(category);
+			}
 
 			var categories = new Category
 			{
 
 				Id = category.Id,
-				Name = category.Name,
+				Name = category.Name
 
 
 			};
 
-			 this.dbContext.Categories.Add(categories);
-			 this.dbContext.SaveChanges();
+			this.dbContext.Categories.Add(categories);
+			this.dbContext.SaveChanges();
 
 			return RedirectToAction("Index", "Home");
 
 		}
 
+		private async Task<IEnumerable<CategoryViewModel>> GetCategory()
+			=> await this.dbContext
+			.Categories
+			.Select(c => new CategoryViewModel
+			{
+				Id = c.Id,
+				Name = c.Name,
 
-		
+			})
+			.ToArrayAsync();
+
 
 	}
 

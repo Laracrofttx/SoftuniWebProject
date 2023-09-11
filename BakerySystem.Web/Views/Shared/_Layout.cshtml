@@ -1,4 +1,6 @@
 ﻿@using static BakerySystem.Common.GeneralApplicationConstants;
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,23 +30,23 @@
 										data-bs-toggle="dropdown">
 									Categories
 								</button>
-								<ul class=" dropdown-menu">
+								<ul class=" dropdown-menu ">
 									<li>
-										<a class="dropdown-item"  asp-controller="Product" asp-action="All">Breads</a>
+										<a class="dropdown-item"  asp-controller="Product" asp-action="All" asp-route-id="1">Breads</a>
 									</li>
 									<li>
-										<a class="dropdown-item" asp-controller="Product" asp-action="All">Easter Breads</a>
+										<a class="dropdown-item" asp-controller="Product" asp-action="All" asp-route-id="2">Easter Breads</a>
 									</li>
 									<li>
-										<a class="dropdown-item" asp-controller="Product" asp-action="Sandwiches">Sandwiches</a>
+										<a class="dropdown-item" asp-controller="Product" asp-action="All" asp-route-id="3">Sandwiches</a>
 									</li>
 									<li>
-										<a class="dropdown-item" asp-controller="Product" asp-action="Cakes">Cakes</a>
+										<a class="dropdown-item" asp-controller="Product" asp-action="All" asp-route-id="4">Cakes</a>
 									</li>
 									<li>
-										<a class="dropdown-item" asp-controller="Category" asp-action="Add">Add Category</a>
+										<a class="dropdown-item" asp-controller="Category" asp-action="AllCategoriesAsync">Add Category</a>
 									</li>
-									
+
 								</ul>
 							</div> 
 

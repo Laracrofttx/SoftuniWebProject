@@ -42,14 +42,16 @@
 
 			var products = await this.dbContext
 					.Products
-					.OrderByDescending(p => p.Id)
-					.Where(p => p.CategoryId == id)
+					.OrderByDescending(c => c.Id)
+					.Where(c => c.CategoryId == id)
 					 .Select(p => new ProductListingVIewModel
 					 {
+						 Id = id,
 						 Name = p.Name,
 						 Price = p.Price,
 						 ImageUrl = p.ImageUrl,
 						 Description = p.Description,
+						 CategoryId = p.CategoryId,
 
 					 })
 					 .ToArrayAsync();
@@ -108,8 +110,6 @@
 				Id = c.Id,
 				Name = c.Name,
 				
-
-
 			})
 			.ToArrayAsync();
 
