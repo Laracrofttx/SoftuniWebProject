@@ -1,6 +1,6 @@
 ﻿namespace BakerySystem.Web.ViewModels.Category
 {
-	public class CategoryDetailsViewModel
+	public class CategoryListingViewModel
 	{
 		public int Id { get; set; }
 

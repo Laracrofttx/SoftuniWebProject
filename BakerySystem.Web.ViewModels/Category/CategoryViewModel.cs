@@ -12,7 +12,9 @@
 
 		[Required]
 		[StringLength(NameMaxLength, MinimumLength = NameMinLength, ErrorMessage = "The field Name must be a string with a minimum length of {2}")]
+
+		[Display(Name ="Category Name")]
 		public string Name { get; set; } = null!;
-		public IEnumerable<CategoryViewModel> Categories { get; set; } = null!;
+	
 	}
 }

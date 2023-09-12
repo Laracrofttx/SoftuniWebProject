@@ -1,6 +1,6 @@
-﻿@using BakerySystem.Web.ViewModels.Category;
-
+﻿@using static BakerySystem.Data.Models.Category;
 @model CategoryViewModel;
+
 
 @{
 
@@ -9,7 +9,7 @@
 
 }
 
-<div class="container">
+@* <div class="container">
 	<div class="row">
 		<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
 			<h2 class="text-center">Add Category</h2>
@@ -25,3 +25,16 @@
 		</div>
 	</div>
 </div>
+ *@
+
+
+<form method="post">
+	<div class="form-group">
+		<label asp-for="Name"></label>
+		<input asp-for="Name" class="form-control">
+		<span asp-validation-for="Name" class="small text-danger"></span>
+	</div>
+
+	<input class="btn btn-primary float-end " type="submit" value="Save" />
+
+</form>
