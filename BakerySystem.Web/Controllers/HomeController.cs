@@ -3,25 +3,46 @@
     using System.Diagnostics;
     using System.Threading.Tasks;
     using BakerySystem.Services.Interfaces;
-    using BakerySystem.Web.ViewModels.Product;
+	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.Product;
     using Microsoft.AspNetCore.Mvc;
-    using ViewModels.Home;
+	using Microsoft.EntityFrameworkCore;
+	using ViewModels.Home;
     public class HomeController : Controller
     {
+        private readonly BakeryDbContext dbContext;
+
         private readonly IProductService productService;
-        public HomeController(IProductService productService)
+        public HomeController(BakeryDbContext dbContext,IProductService productService)
         {
+            this.dbContext = dbContext;
             this.productService = productService;    
         }
 
        
-        public async Task<IActionResult> IndexAsync()
-        { 
-            IEnumerable<HomeViewModel> productViewModel = 
-                await this.productService.AllProductsAsync();
-
-            return View(productViewModel);  
+        public async Task<IActionResult> Index()
+        {
             
+
+            //IEnumerable <ProductIndexViewModel> productViewModel =
+            //    await this.productService.AllProductsAsync();
+
+            var products = await this.dbContext
+                .Products
+                .Select(p => new ProductIndexViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ImageUrl = p.ImageUrl,
+
+                })
+                .ToListAsync();
+
+            return View(products);
+
+
+
         }
 
 

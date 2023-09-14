@@ -49,7 +49,7 @@ namespace BakerySystem.Web.Controllers
 
 
 		[HttpGet]
-		public async Task<IActionResult> Add()
+		public async Task<IActionResult> Create()
 		{
 			
 			return View();

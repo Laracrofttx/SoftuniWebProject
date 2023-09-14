@@ -2,7 +2,7 @@
 
 namespace BakerySystem.Web.ViewModels.Home
 {
-	public class HomeViewModel
+	public class ProductIndexViewModel
 	{
 		public int Id { get; set; }
 
@@ -10,8 +10,8 @@ namespace BakerySystem.Web.ViewModels.Home
 
 		public string ImageUrl { get; set; } = null!;
 
-		public decimal Price { get; set; }
+		public decimal  Price { get; set; }
 
-		
-    }
+		public List<ProductListingVIewModel> Products { get; set; } = null!;
+	}
 }

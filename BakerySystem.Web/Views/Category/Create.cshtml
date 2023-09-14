@@ -28,13 +28,30 @@
  *@
 
 
-<form method="post">
-	<div class="form-group">
-		<label asp-for="Name"></label>
-		<input asp-for="Name" class="form-control">
-		<span asp-validation-for="Name" class="small text-danger"></span>
+<div class="container">
+	<div class="row">
+		<div class="border p-3 mt-4 col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+			<form method="post">
+				<div class="col pb-2">
+					<h2 class="text-center">Create Category</h2>
+					<hr />
+				</div>
+				<div class="border p-3 mt-4 col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+					<label asp-for="Name"></label>
+					<input asp-for="Name" class="form-control">
+					<span asp-validation-for="Name" class="small text-danger"></span>
+				</div>
+				<input class="btn btn-outline-primary float-end" type="submit" value="Create" />
+
+			</form>
+		</div>
 	</div>
+</div>
 
-	<input class="btn btn-primary float-end " type="submit" value="Save" />
 
-</form>
+
+
+
+
+
+

@@ -7,7 +7,7 @@
 
 	public interface IProductService
 	{
-		Task<IEnumerable<HomeViewModel>> AllProductsAsync();
+		//Task<IEnumerable<HomeViewModel>> AllProductsAsync();
 
 		Task<IEnumerable<ProductListingVIewModel>> All();
 

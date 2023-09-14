@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HomeViewModel>
+﻿@model List<ProductIndexViewModel>;
 
 @{
 
@@ -6,6 +6,15 @@
 
 }
 
+@{
+
+	var firstOffer = Model[0];
+	var secondOffer = Model[3];
+	var thirdOffer = Model[8];
+	var forthOffer = Model[10];
+
+
+}
 
 
 <div class=container>
@@ -48,45 +57,47 @@
 
 <h3 class="text-xl-center"> Today's offer </h3>
 
+
+
 <div class="container">
 	<div class="row gy-3">
-		<div class="col-md-3">
-			<div class="card">
-				<img src="~/Images/chocolate-chip-muffins-featured.jpg" class="card-img-top" alt="...">
+		<div class="col-sm-4 col-md-3">
+			<div class="card mb-3 h-70">
+				<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+					 src="@firstOffer.ImageUrl">
 				<div class="card-body">
-					<h5 class="card-title">Chocolate muffin</h5>
-					<p class="card-text"></p>
-					<a href="#" class="btn btn-primary">Add</a>
+					<h5 class="card-title text-center">@firstOffer.Name - @firstOffer.Price$</h5>
+					<a href="#" class="btn btn-primary float-end">Add</a>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<img src="~/Images/20144-banana-banana-bread-mfs-60-bddcb8e0caac452386de52f6fecf33db.jpg" class="card-img-top" alt="...">
+		<div class="col-sm-4 col-md-3">
+			<div class="card mb-3 h-70">
+				<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+					 src="@secondOffer.ImageUrl">
 				<div class="card-body">
-					<h5 class="card-title">Banana bread</h5>
-					<p class="card-text"></p>
-					<a href="#" class="btn btn-primary">Add</a>
+					<h5 class="card-title text-center">@secondOffer.Name - @secondOffer.Price$</h5>
+					<a href="#" class="btn btn-primary float-end">Add</a>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<img src="~/Images/Sesame-Bagels-Feature.jpg" class="card-img-top" alt="...">
+		<div class="col-sm-4 col-md-3">
+			<div class="card mb-3 h-70">
+				<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+					 src="@thirdOffer.ImageUrl">
 				<div class="card-body">
-					<h5 class="card-title">Sesame bagel</h5>
-					<p class="card-text"></p>
-					<a href="#" class="btn btn-primary">Add</a>
+					<h5 class="card-title text-center">@thirdOffer.Name - @thirdOffer.Price$</h5>
+					<a href="#" class="btn btn-primary float-end">Add</a>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
-			<div class="card">
-				<img src="~/Images/cucumber-sandwich-eddcc95811f5426094ea5dbea6a6b026.jpg" class="card-img-top" alt="...">
+		<div class="col-sm-4 col-md-3">
+			<div class="card mb-3 h-70">
+				<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+					 src="@forthOffer.ImageUrl">
 				<div class="card-body">
-					<h5 class="card-title">Cucumber sandwich</h5>
-					<p class="card-text"></p>
-					<a href="#" class="btn btn-primary">Add</a>
+					<h5 class="card-title text-center">@forthOffer.Name - @forthOffer.Price$</h5>
+					<a href="#" class="btn btn-primary float-end">Add</a>
 				</div>
 			</div>
 		</div>
@@ -95,43 +106,3 @@
 
 
 
-
-
-
-
-
-@*@model IEnumerable<HomeViewModel>
-
-@{
-	ViewData["Title"] = "Home Page";
-	var product = Model.ToList();
-}
-
-<div class="mb-5"></div>
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-	<div class="carousel-inner">
-		@for (int i = 0; i < product.Count(); i++)
-		{
-			var products = product[i];
-			<div class="carousel-item @(i == 0 ? "active" : string.Empty)">
-				<img class="d-block w-100" style="height:500px"
-				 src="@products.ImageUrl" alt="@products.Title">
-				<div class="carousel-caption d-none d-md-block">
-					<h5>
-						<a class="btn btn-primary" asp-controller="House" aspaction="Details"
-					   asp-route-id="@products.Id"> @products.Title</a>
-					</h5>
-				</div>
-			</div>
-		}
-	</div>
-	<button class="carousel-control-prev" type="button" data-bstarget="#carouselExampleControls" data-bs-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="visually-hidden">Previous</span>
-	</button>
-	<button class="carousel-control-next" type="button" data-bstarget="#carouselExampleControls" data-bs-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="visually-hidden">Next</span>
-	</button>
-</div>
-*@

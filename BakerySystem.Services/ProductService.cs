@@ -17,25 +17,25 @@
 
 		}
 
-		public async Task<IEnumerable<HomeViewModel>> AllProductsAsync()
-		{
-			IEnumerable<HomeViewModel> allProducts = await this.dbContext
-				.Products
-				.AsNoTracking()
-				.Select(c => new HomeViewModel()
-				{
+		//public async Task<IEnumerable<HomeViewModel>> AllProductsAsync()
+		//{
+		//	IEnumerable<HomeViewModel> allProducts = await this.dbContext
+		//		.Products
+		//		.AsNoTracking()
+		//		.Select(c => new HomeViewModel()
+		//		{
 
-					Id = c.Id,
-					Title = c.Name,
-					ImageUrl = c.ImageUrl
-
-
-				})
-				.ToArrayAsync();
+		//			Id = c.Id,
+		//			Name = c.Name,
+		//			ImageUrl = c.ImageUrl
 
 
-			return allProducts;
-		}
+		//		})
+		//		.ToArrayAsync();
+
+
+		//	return allProducts;
+		//}
 
 		//public async Task<IEnumerable<ProductListingVIewModel>> AllProducts()
 		//{
