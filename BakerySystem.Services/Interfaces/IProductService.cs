@@ -7,6 +7,8 @@
 
 	public interface IProductService
 	{
+		//IEnumerable<ProductSearchQueryModel> Search(string searchTerm);
+
 		//Task<IEnumerable<HomeViewModel>> AllProductsAsync();
 
 		Task<IEnumerable<ProductListingVIewModel>> All();

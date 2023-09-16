@@ -6,6 +6,7 @@
 	using BakerySystem.Web.ViewModels.Home;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.EntityFrameworkCore;
+	using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 	public class ProductService : IProductService
 	{
@@ -110,6 +111,20 @@
 
 		public Product GetProductById(int Id) => this.dbContext.Products.FirstOrDefault(p => p.Id == Id);
 
+		//public IEnumerable<ProductSearchQueryModel> Search(string searchTerm)
+		//{
+		//	var productQuery = this.dbContext.Products.AsQueryable();
 
+		//	if (!string.IsNullOrWhiteSpace(searchTerm))
+		//	{
+
+				
+		//	}
+
+			
+		//	return (productQuery = productQuery.Where
+		//			(p => p.Name.ToLower().Contains(searchTerm.ToLower()));
+
+		//}
 	}
 }

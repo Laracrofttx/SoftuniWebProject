@@ -1,5 +1,5 @@
 ﻿@using BakerySystem.Web.ViewModels.Product
-@model IEnumerable<ProductListingVIewModel>;
+@model ProductSearchQueryModel;
 
 
 @{
@@ -7,17 +7,31 @@
 	ViewData["Title"] = "";
 }
 
-<div class="container">
+<form method="get">
+	<div class="row mb-5">
+		<div class="form-group col-md-3">
+			<label asp-for="SearchByName"></label>
+			<input asp-for="SearchByName" class="form-control" placeholder="Product name">
+		</div>
+		
+		<div class="form-group col-md-3">
+			<input type="submit" class="btn btn-primary d-none" value="Search">
+		</div>
+	</div>
+</form>
+
+
+
 	<div class="row gy-3">
-		@foreach (var product in Model)
+		@foreach (var product in Model.Products)
 		{
 			<div class="col-sm-4 col-md-3">
-				<div class="card mb-3 h-100">
+			<div class="card mb-3" @* h-100 *@>
 					<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-						 src="@product.ImageUrl" alt="">
+						 src="@product.ImageUrl" alt="@product.Name @product.Price$">
 					<div class="card-body">
 						<h5 class="card-title">@product.Name @product.Price$</h5>
-						<p class="card-text" style="min-height: 120px;">@product.Description</p>
+						@* <p class="card-text" style="min-height: 120px;">@product.Description</p> *@
 						<a asp-controller="Product" asp-action="All" asp-route-id="@product.Id" button class="btn btn-primary float-end">Add to Card</a>
 					</div>
 				</div>
@@ -25,7 +39,7 @@
 
 		}
 	</div>
-</div>
+
 
 <div class="container">
 	<ul class="pagination justify-content-center">

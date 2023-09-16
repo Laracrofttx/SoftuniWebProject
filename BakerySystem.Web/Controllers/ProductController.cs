@@ -1,6 +1,8 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
+	using System.Collections;
 	using System.Collections.Generic;
+	using System.Collections.Immutable;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
@@ -35,10 +37,21 @@
 
 		});
 
+		
 
 		[HttpGet]
-		public async Task<IActionResult> All(int id)
+		public async Task<IActionResult> All(int id, string searchByName)
 		{
+			var productQuery = this.dbContext.Products.AsQueryable();
+
+
+			if (!string.IsNullOrWhiteSpace(searchByName))
+			{
+				productQuery = productQuery.Where
+				   (p => p.Name.ToLower().Contains(searchByName.ToLower()));
+
+				
+			}
 
 			var products = await this.dbContext
 					.Products
@@ -52,13 +65,18 @@
 						 ImageUrl = p.ImageUrl,
 						 Description = p.Description,
 						 CategoryId = p.CategoryId,
-
 					 })
 					 .ToArrayAsync();
 
 
-
-			return View(products);
+			return View(new ProductSearchQueryModel
+			{ 
+			
+				Products = products,
+				SearchByName = searchByName
+				
+				
+			});
 
 		}
 
