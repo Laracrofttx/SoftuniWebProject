@@ -1,14 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BakerySystem.Web.ViewModels.Product
+﻿namespace BakerySystem.Web.ViewModels.Product
 {
+	using System.ComponentModel.DataAnnotations;
+
+	
 	public class ProductSearchQueryModel
 	{
-		
-		[Display(Name = "Name")] 
+		public const int ProductsPerPage = 4;
+
+		[Display(Name = "Name")]
 		public string SearchByName { get; set; } = null!;
 
-		public ProductSorting Sorting { get; set; }
+		public int CurrentPage { get; set; } = 1!;
+
+		public int TotalProducts { get; set; }
 
 		public IEnumerable<ProductListingVIewModel> Products { get; set; } = null!;
 	}

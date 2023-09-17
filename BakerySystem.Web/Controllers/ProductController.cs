@@ -1,17 +1,13 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
-	using System.Collections;
+
 	using System.Collections.Generic;
-	using System.Collections.Immutable;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.AspNetCore.Mvc;
-	using Microsoft.AspNetCore.Mvc.ActionConstraints;
-	using Microsoft.AspNetCore.Mvc.Infrastructure;
-	using Microsoft.AspNetCore.Mvc.ModelBinding;
 	using Microsoft.EntityFrameworkCore;
 
 	public class ProductController : Controller
@@ -37,26 +33,29 @@
 
 		});
 
-		
+
 
 		[HttpGet]
-		public async Task<IActionResult> All(int id, string searchByName)
+		public async Task<IActionResult> All(int id, [FromQuery] ProductSearchQueryModel model)
 		{
 			var productQuery = this.dbContext.Products.AsQueryable();
 
 
-			if (!string.IsNullOrWhiteSpace(searchByName))
+			if (!string.IsNullOrWhiteSpace(model.SearchByName))
 			{
-				productQuery = productQuery.Where
-				   (p => p.Name.ToLower().Contains(searchByName.ToLower()));
+				productQuery = productQuery.Where(p =>
+				  p.Name.ToLower().Contains(model.SearchByName.ToLower()));
 
 				
 			}
 
-			var products = await this.dbContext
-					.Products
+			
+
+			var products = await productQuery
 					.OrderByDescending(c => c.Id)
 					.Where(c => c.CategoryId == id)
+					.Skip((model.CurrentPage - 1) * ProductSearchQueryModel.ProductsPerPage)
+					.Take(ProductSearchQueryModel.ProductsPerPage)
 					 .Select(p => new ProductListingVIewModel
 					 {
 						 Id = id,
@@ -65,21 +64,20 @@
 						 ImageUrl = p.ImageUrl,
 						 Description = p.Description,
 						 CategoryId = p.CategoryId,
+						 
+						 
 					 })
 					 .ToArrayAsync();
 
+			var totalProducts = products.Count();
 
-			return View(new ProductSearchQueryModel
-			{ 
+			model.Products = products;
+			model.TotalProducts = totalProducts;
 			
-				Products = products,
-				SearchByName = searchByName
-				
-				
-			});
-
+			return View(model);
+			
 		}
-
+		
 
 
 		[HttpPost]
@@ -127,7 +125,7 @@
 			{
 				Id = c.Id,
 				Name = c.Name,
-				
+
 			})
 			.ToArrayAsync();
 

@@ -7,7 +7,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>@ViewData["Title"] - Petiny Bakery</title>
-	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> 
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/BakerySystem.Web.styles.css" asp-append-version="true" />
 </head>
@@ -30,9 +30,9 @@
 										data-bs-toggle="dropdown">
 									Categories
 								</button>
-								<ul class=" dropdown-menu ">
+								<ul class="dropdown-menu mt-3">
 									<li>
-										<a class="dropdown-item"  asp-controller="Product" asp-action="All" asp-route-id="1">Breads</a>
+										<a class="dropdown-item" asp-controller="Product" asp-action="All" asp-route-id="1">Breads</a>
 									</li>
 									<li>
 										<a class="dropdown-item" asp-controller="Product" asp-action="All" asp-route-id="2">Easter Breads</a>
@@ -51,7 +51,7 @@
 									</li>
 
 								</ul>
-							</div> 
+							</div>
 
 						</li>
 						<li class="nav-item">
@@ -65,7 +65,7 @@
 						</li>
 						@if (this.User.Identity?.IsAuthenticated ?? true)
 						{
-							 
+
 						}
 
 					</ul>

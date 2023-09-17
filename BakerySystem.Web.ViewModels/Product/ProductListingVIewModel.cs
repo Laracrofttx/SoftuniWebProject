@@ -1,4 +1,7 @@
-﻿namespace BakerySystem.Web.ViewModels.Product
+﻿using BakerySystem.Web.ViewModels.Category;
+using System.ComponentModel.DataAnnotations;
+
+namespace BakerySystem.Web.ViewModels.Product
 {
 	public class ProductListingVIewModel
 	{
@@ -13,8 +16,6 @@
 		public string Description { get; set; } = null!;
 
 		public int CategoryId { get; set; }
-
-	
 
 	}
 }
