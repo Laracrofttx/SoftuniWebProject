@@ -19,12 +19,12 @@ namespace BakerySystem.Web.Controllers
 	{
 		private readonly BakeryDbContext dbContext;
 
-		//private readonly ICategoryService categoryService;
+		private readonly ICategoryService categoryService;
 
 		public CategoryController(BakeryDbContext dbContext, ICategoryService categoryService)
 		{
 			this.dbContext = dbContext;
-			//this.categoryService = categoryService;
+			this.categoryService = categoryService;
 		}
 
 

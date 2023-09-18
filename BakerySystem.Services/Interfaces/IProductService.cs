@@ -7,14 +7,6 @@
 
 	public interface IProductService
 	{
-		//IEnumerable<ProductSearchQueryModel> Search(string searchTerm);
-
-		//Task<IEnumerable<HomeViewModel>> AllProductsAsync();
-
-		Task<IEnumerable<ProductListingVIewModel>> All();
-
-		Task<IEnumerable<ProductListingVIewModel>> AllEasterBreads();
-
-		//Product GetProductById(int productId); 
+		Task CreateProductAsync(ProductViewModel model);
 	}
 }

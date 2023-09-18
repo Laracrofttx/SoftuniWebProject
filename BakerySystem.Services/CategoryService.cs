@@ -8,6 +8,7 @@
 	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Data.Models;
 	using System.Threading.Tasks;
+	using BakerySystem.Web.ViewModels.Product;
 
 	public class CategoryService : ICategoryService
 	{
@@ -18,38 +19,12 @@
 			this.dbContext = dbContext;
 		}
 
-		public async Task<bool> CategoryExists(int categoryId)
+		public async Task<IEnumerable<ProductCategoryViewModel>> GetProductCategoryAsync()
 		{
-			return await dbContext.Categories.AnyAsync(c => c.Id == categoryId);
-		}
-
-		public async Task<int> Create(string categoryName, int categoryId)
-		{
-			var category = new Category()
-			{
-
-				Id = categoryId,
-				Name = categoryName
-
-
-			};
-
-			 await dbContext.Categories.AddAsync(category);
-			 await dbContext.SaveChangesAsync();
-
-
-			return category.Id;
-		}
-
-
-
-
-		public async Task<IEnumerable<CategoryViewModel>> AllCategoriesAsync()
-		{
-			IEnumerable<CategoryViewModel> allCategories = await dbContext
+			IEnumerable<ProductCategoryViewModel> allCategories = await dbContext
 				.Categories
 				.AsNoTracking()
-				 .Select(c => new CategoryViewModel
+				 .Select(c => new ProductCategoryViewModel
 				 {
 
 					 Id = c.Id,
@@ -60,6 +35,39 @@
 
 			return allCategories;
 		}
+
+
+
+		public async Task<bool> ExistByIdAsync(int categoryId)
+		{
+			bool result = await this.dbContext
+				.Categories
+				.AnyAsync(c => c.Id == categoryId);
+
+			return result;
+		}
+
+		//public async Task<int> Create(string categoryName, int categoryId)
+		//{
+		//	var category = new Category()
+		//	{
+
+		//		Id = categoryId,
+		//		Name = categoryName
+
+
+		//	};
+
+		//	 await dbContext.Categories.AddAsync(category);
+		//	 await dbContext.SaveChangesAsync();
+
+
+		//	return category.Id;
+		//}
+
+
+
+
 
 
 	}

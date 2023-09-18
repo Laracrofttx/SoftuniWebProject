@@ -9,6 +9,8 @@
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
+	using Microsoft.EntityFrameworkCore.Metadata.Internal;
+	using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 	public class ProductController : Controller
 	{
@@ -27,9 +29,7 @@
 		public async Task<IActionResult> Add() => View(new ProductViewModel
 		{
 
-
-			Categories = await this.GetProductCategory()
-
+			Categories = await this.categoryService.GetProductCategoryAsync()
 
 		});
 
@@ -46,10 +46,10 @@
 				productQuery = productQuery.Where(p =>
 				  p.Name.ToLower().Contains(model.SearchByName.ToLower()));
 
-				
+
 			}
 
-			
+
 
 			var products = await productQuery
 					.OrderByDescending(c => c.Id)
@@ -64,26 +64,26 @@
 						 ImageUrl = p.ImageUrl,
 						 Description = p.Description,
 						 CategoryId = p.CategoryId,
-						 
-						 
+
+
 					 })
 					 .ToArrayAsync();
 
-			var totalProducts = products.Count();
+			var totalProducts = productQuery.Count();
 
 			model.Products = products;
 			model.TotalProducts = totalProducts;
-			
+
 			return View(model);
-			
+
 		}
-		
+
 
 
 		[HttpPost]
 		public async Task<IActionResult> Add(ProductViewModel product)
 		{
-			if (!this.dbContext.Categories.Any(c => c.Id == product.CategoryId))
+			if (await categoryService.ExistByIdAsync(product.CategoryId) == false)
 			{
 				this.ModelState.AddModelError(nameof(product.CategoryId), "Category does not exist");
 
@@ -92,42 +92,32 @@
 
 			if (!ModelState.IsValid)
 			{
-				product.Categories = await this.GetProductCategory();
+				product.Categories = await this.categoryService.GetProductCategoryAsync();
 
 				return View(product);
 			}
 
-			var productData = new Product
+
+			try
 			{
-				Id = product.Id,
-				Name = product.Name,
-				Price = product.Price,
-				ImageUrl = product.ImageUrl,
-				Description = product.Description,
-				CategoryId = product.CategoryId
+
+			 	await this.productService.CreateProductAsync(product);
+
+			}
+			catch (Exception _)
+			{
+				this.ModelState.AddModelError(string.Empty, "Unexpected error occured");
+				product.Categories = await this.categoryService.GetProductCategoryAsync();
+
+				return View(product);
+			}
 
 
-			};
 
-			this.dbContext.Products.Add(productData);
-			this.dbContext.SaveChanges();
-
-
-			return View(RedirectToAction(nameof(All)));
+			return this.RedirectToAction(nameof(All));
 		}
 
 
-
-		private async Task<IEnumerable<ProductCategoryViewModel>> GetProductCategory()
-			=> await this.dbContext
-			.Categories
-			.Select(c => new ProductCategoryViewModel
-			{
-				Id = c.Id,
-				Name = c.Name,
-
-			})
-			.ToArrayAsync();
 
 
 

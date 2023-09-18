@@ -22,8 +22,8 @@ namespace BakerySystem.Web.ViewModels.Product
         [Range(typeof(decimal), PriceMinValue, PriceMaxValue)]
 		public decimal Price { get; set; }
 
-        [Display(Name = "Image")]
         [Required]
+        [Display(Name = "Image Link")]
         [Url]
         public string ImageUrl { get; set; } = null!;
 

@@ -7,6 +7,7 @@
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Internal;
+	using System.Threading.Tasks;
 
 	public class ProductService : IProductService
 	{
@@ -18,98 +19,30 @@
 
 		}
 
-		//public async Task<IEnumerable<HomeViewModel>> AllProductsAsync()
-		//{
-		//	IEnumerable<HomeViewModel> allProducts = await this.dbContext
-		//		.Products
-		//		.AsNoTracking()
-		//		.Select(c => new HomeViewModel()
-		//		{
-
-		//			Id = c.Id,
-		//			Name = c.Name,
-		//			ImageUrl = c.ImageUrl
-
-
-		//		})
-		//		.ToArrayAsync();
-
-
-		//	return allProducts;
-		//}
-
-		//public async Task<IEnumerable<ProductListingVIewModel>> AllProducts()
-		//{
-
-		//	var products = await this.dbContext
-		//               .Products
-		//               .OrderByDescending(p => p.Id)
-		//                .Select(p => new ProductListingVIewModel
-		//			 {
-
-		//				 Id = p.Id,
-		//				 Name = p.Name,
-		//				 Price = p.Price,
-		//				 ImageUrl = p.ImageUrl,
-		//				 Description = p.Description
-
-
-		//			 })
-		//                .ToArrayAsync();
-
-
-		//	return products;
-
-		//}
-
-		public async Task<IEnumerable<ProductListingVIewModel>> All()
+		public async Task CreateProductAsync(ProductViewModel model)
 		{
+			var product = new Product
+			{
+				Id = model.Id,
+				Name = model.Name,
+				Price = model.Price,
+				ImageUrl = model.ImageUrl,
+				Description = model.Description,
+				CategoryId = model.CategoryId
 
-			IEnumerable<ProductListingVIewModel> allBreads = await dbContext
-				.Products
-				.Select(c => new ProductListingVIewModel()
-				{
+				
+			};
 
-					Id = c.Id,
-					Name = c.Name,
-					Price = c.Price,
-					Description = c.Description,
-					CategoryId = c.CategoryId
-
-
-				})
-				.ToArrayAsync();
-
-
-
-			return allBreads;
-		}
-
-		public async Task<IEnumerable<ProductListingVIewModel>> AllEasterBreads()
-		{
-
-			IEnumerable<ProductListingVIewModel> allEasterBreads = await dbContext
-				.Products
-				.Select(c => new ProductListingVIewModel()
-				{
-
-					Id = c.Id,
-					Name = c.Name,
-					Price = c.Price,
-					Description = c.Description
-
-
-				})
-				.ToArrayAsync();
-
-
-
-			return allEasterBreads;
+			await this.dbContext.Products.AddAsync(product);
+			await this.dbContext.SaveChangesAsync();
 		}
 
 
 
-		public Product GetProductById(int Id) => this.dbContext.Products.FirstOrDefault(p => p.Id == Id);
+
+
+
+
 
 		//public IEnumerable<ProductSearchQueryModel> Search(string searchTerm)
 		//{
@@ -118,10 +51,10 @@
 		//	if (!string.IsNullOrWhiteSpace(searchTerm))
 		//	{
 
-				
+
 		//	}
 
-			
+
 		//	return (productQuery = productQuery.Where
 		//			(p => p.Name.ToLower().Contains(searchTerm.ToLower()));
 

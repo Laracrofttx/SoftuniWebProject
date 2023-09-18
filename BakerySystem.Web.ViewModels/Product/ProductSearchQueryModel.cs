@@ -10,7 +10,7 @@
 		[Display(Name = "Name")]
 		public string SearchByName { get; set; } = null!;
 
-		public int CurrentPage { get; set; } = 1!;
+		public int CurrentPage { get; set; } = 1;
 
 		public int TotalProducts { get; set; }
 

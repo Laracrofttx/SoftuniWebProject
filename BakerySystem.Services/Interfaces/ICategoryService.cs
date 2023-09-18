@@ -6,10 +6,10 @@ namespace BakerySystem.Services.Interfaces
 {
     public interface ICategoryService
     {
-		Task<IEnumerable<CategoryViewModel>> AllCategoriesAsync();
+		Task<IEnumerable<ProductCategoryViewModel>> GetProductCategoryAsync();
 
-		Task<bool> CategoryExists(int categoryId);
+		Task<bool> ExistByIdAsync(int categoryId);
 
-		Task<int> Create(string categoryName, int categoryId);
+		//Task<int> Create(string categoryName, int categoryId);
 	}
 }
