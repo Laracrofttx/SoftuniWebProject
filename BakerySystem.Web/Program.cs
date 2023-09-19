@@ -7,6 +7,7 @@ namespace BakerySystem.Web
 	using BakerySystem.Services;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
+	using BakerySystem.Web.Infrastructure.ModelBinders;
 	using Microsoft.AspNetCore.Identity;
 	using Microsoft.EntityFrameworkCore;
 	using System.Security.Cryptography.X509Certificates;
@@ -41,7 +42,14 @@ namespace BakerySystem.Web
 			builder.Services.AddScoped<ICategoryService, CategoryService>();
 			builder.Services.AddScoped<IOrderService, OrderService>();
 
-			builder.Services.AddControllersWithViews();
+			builder.Services
+				.AddControllersWithViews()
+				.AddMvcOptions(options => 
+				{
+
+					options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+				
+				});
 
 
 			WebApplication app = builder.Build();
