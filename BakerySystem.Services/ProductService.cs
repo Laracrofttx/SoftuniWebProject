@@ -1,5 +1,6 @@
 ﻿namespace BakerySystem.Services
 {
+	using System.Threading.Tasks;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
@@ -7,7 +8,6 @@
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Internal;
-	using System.Threading.Tasks;
 
 	public class ProductService : IProductService
 	{
@@ -19,7 +19,7 @@
 
 		}
 
-		public async Task CreateProductAsync(ProductViewModel model)
+		public async Task CreateProductAsync(ProductFormModel model)
 		{
 			var product = new Product
 			{
@@ -30,34 +30,92 @@
 				Description = model.Description,
 				CategoryId = model.CategoryId
 
-				
+
 			};
 
 			await this.dbContext.Products.AddAsync(product);
 			await this.dbContext.SaveChangesAsync();
 		}
 
+		public async Task Edit(int id, string name, string description, decimal price, string imageUrl, int categoryId)
+		{
+
+			var product = await this.dbContext
+				.Products
+				.FindAsync(id);
+
+			product.Name = name;
+			product.Description = description;
+			product.Price = price;
+			product.ImageUrl = imageUrl;
+			product.CategoryId = categoryId;
+
+			await this.dbContext.SaveChangesAsync();
+
+			
+		}
 
 
 
 
+		public async Task<ProductFormModel> EditProductByIdAndFormModel(int id, ProductFormModel model)
+		{
+			var product = await this.dbContext
+				.Products
+				.FirstAsync(x => x.Id == id);
 
 
 
-		//public IEnumerable<ProductSearchQueryModel> Search(string searchTerm)
-		//{
-		//	var productQuery = this.dbContext.Products.AsQueryable();
+			await this.dbContext.SaveChangesAsync();
 
-		//	if (!string.IsNullOrWhiteSpace(searchTerm))
-		//	{
+			return new ProductFormModel
+			{
 
+				Id = id,
+		      Name = model.Name,
+			  Price = model.Price,
+			  Description = model.Description,
+			  ImageUrl = model.ImageUrl,
+			  CategoryId = model.CategoryId
 
-		//	}
+			  
+		    };
 
-
-		//	return (productQuery = productQuery.Where
-		//			(p => p.Name.ToLower().Contains(searchTerm.ToLower()));
-
-		//}
 	}
+
+	public async Task<bool> ExistByIdAsynch(int id)
+	{
+		bool result = await this.dbContext
+			.Products
+			.AnyAsync(p => p.Id == id);
+
+		await this.dbContext.SaveChangesAsync();
+
+		return result;
+
+	}
+
+	public async Task<ProductFormModel> ProductForEditByIdAsync(int id)
+	{
+		var product = await this.dbContext
+			.Products
+			.FirstOrDefaultAsync(p => p.Id == id);
+
+		await this.dbContext.SaveChangesAsync();
+
+		return new ProductFormModel
+		{
+
+
+
+		};
+
+
+	}
+
+
+
+
+
+}
 }

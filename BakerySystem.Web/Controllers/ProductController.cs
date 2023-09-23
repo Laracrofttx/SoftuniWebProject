@@ -2,6 +2,7 @@
 {
 
 	using System.Collections.Generic;
+	using System.Xml.Linq;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
@@ -10,6 +11,7 @@
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Metadata.Internal;
+	using static BakerySystem.Common.EntityValidationConstants;
 	using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 	public class ProductController : Controller
@@ -26,7 +28,7 @@
 			this.categoryService = categoryService;
 		}
 
-		public async Task<IActionResult> Add() => View(new ProductViewModel
+		public async Task<IActionResult> Add() => View(new ProductFormModel
 		{
 
 			Categories = await this.categoryService.GetProductCategoryAsync()
@@ -34,6 +36,80 @@
 		});
 
 
+		[HttpGet]
+		public async Task<IActionResult> Edit(int id)
+		{
+
+			var product = await this.dbContext
+				.Products
+				.FindAsync(id);
+
+
+			if (await this.productService.ExistByIdAsynch(id) == false)
+			{
+				return RedirectToAction("All", "Product");
+
+			}
+
+			var productModel = await this.productService
+				.ProductForEditByIdAsync(id);
+
+			productModel.Categories = await this.categoryService.GetProductCategoryAsync();
+
+
+			return View(new ProductFormModel()
+			{
+				Id = productModel.Id,
+				Name = product.Name,
+				Description = product.Description,
+				Price = product.Price,
+				ImageUrl = product.ImageUrl,
+				CategoryId = product.CategoryId,
+				Categories = productModel.Categories
+
+
+			});
+
+
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Edit(int id, ProductFormModel model)
+		{
+
+			if (await this.productService.ExistByIdAsynch(id) == false)
+			{
+
+				return BadRequest();
+			}
+
+			if (!ModelState.IsValid)
+			{
+				model.Categories = await this.categoryService.GetProductCategoryAsync();
+
+				return this.View(model);
+			}
+
+			try
+			{
+				await this.productService.EditProductByIdAndFormModel(id, model);
+			}
+			catch (Exception)
+			{
+
+				this.ModelState.AddModelError(string.Empty, "Unexpected error occured!");
+
+				model.Categories = await this.categoryService.GetProductCategoryAsync();
+
+				
+
+
+				return this.View(model);
+			}
+
+			return RedirectToAction("All", "Product");
+		
+		}
 
 		[HttpGet]
 		public async Task<IActionResult> All(int id, [FromQuery] ProductSearchQueryModel model)
@@ -43,13 +119,13 @@
 
 			if (!string.IsNullOrWhiteSpace(model.SearchByName))
 			{
-				productQuery = productQuery.Where(p =>
-				  p.Name.ToLower().Contains(model.SearchByName.ToLower()));
+				string wildCard = $"{model.SearchByName.ToLower()}%";
 
+				productQuery = productQuery.Where(p =>
+				EF.Functions.Like(p.Name, wildCard));
+				  
 
 			}
-
-
 
 			var products = await productQuery
 					.OrderByDescending(c => c.Id)
@@ -81,7 +157,7 @@
 
 
 		[HttpPost]
-		public async Task<IActionResult> Add(ProductViewModel product)
+		public async Task<IActionResult> Add(ProductFormModel product)
 		{
 			if (await categoryService.ExistByIdAsync(product.CategoryId) == false)
 			{
@@ -104,7 +180,7 @@
 			 	await this.productService.CreateProductAsync(product);
 
 			}
-			catch (Exception _)
+			catch (Exception _ex)
 			{
 				this.ModelState.AddModelError(string.Empty, "Unexpected error occured");
 				product.Categories = await this.categoryService.GetProductCategoryAsync();
@@ -119,8 +195,7 @@
 
 
 
-
-
+	
 
 
 

@@ -47,6 +47,22 @@
 			return result;
 		}
 
+		public async Task<IEnumerable<CategoryViewModel>> AllCategoriesAsync()
+		{
+			IEnumerable<CategoryViewModel> categories = await this.dbContext
+				.Categories
+				.Select(c => new CategoryViewModel
+				{
+
+					Id = c.Id,
+					Name = c.Name
+
+				})
+				.ToArrayAsync();
+
+			return categories;
+		}
+
 		//public async Task<int> Create(string categoryName, int categoryId)
 		//{
 		//	var category = new Category()

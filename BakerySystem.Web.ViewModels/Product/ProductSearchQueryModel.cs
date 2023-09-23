@@ -5,10 +5,18 @@
 	
 	public class ProductSearchQueryModel
 	{
-		public const int ProductsPerPage = 4;
+        public ProductSearchQueryModel()
+        {
+			this.Products = new HashSet<ProductListingVIewModel>();
+        }
 
-		[Display(Name = "Name")]
+        public const int ProductsPerPage = 4;
+
+		[Display(Name = "Search by word")]
 		public string SearchByName { get; set; } = null!;
+
+		[Display(Name = "Search by price")]
+		public decimal Price { get; set; }
 
 		public int CurrentPage { get; set; } = 1;
 

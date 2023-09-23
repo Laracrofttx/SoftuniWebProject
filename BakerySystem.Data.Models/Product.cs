@@ -1,6 +1,6 @@
 ﻿namespace BakerySystem.Data.Models
 {
-	
+	using System;
 	using System.Collections.Generic;
 	using System.ComponentModel.DataAnnotations;
 	
@@ -41,5 +41,7 @@
 		public virtual Category Category { get; set; } = null!;
 	    
 		public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; } = null!;
+
+		
 	}
 }
