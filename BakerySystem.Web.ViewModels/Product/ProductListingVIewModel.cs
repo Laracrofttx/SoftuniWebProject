@@ -15,6 +15,8 @@ namespace BakerySystem.Web.ViewModels.Product
 
 		public string Description { get; set; } = null!;
 
+		public string Category { get; set; } = null!;
+
 		public int CategoryId { get; set; }
 
 	}

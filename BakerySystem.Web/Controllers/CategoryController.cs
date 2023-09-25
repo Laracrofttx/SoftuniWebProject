@@ -38,12 +38,16 @@ namespace BakerySystem.Web.Controllers
 
 		//}
 
-		public IActionResult Category()
+		public async Task<IActionResult> Category()
 		{
+			var categories = await this.dbContext
+				.Categories
+				.OrderBy(c => c.Id)
+				.ToListAsync();
+			
 
-
-			IEnumerable<Category> category = dbContext.Categories;
-			return View(category);
+			IEnumerable<Category> category = await this.dbContext.Categories.ToListAsync();
+			return View(categories);
 		
 		}
 

@@ -11,6 +11,8 @@ namespace BakerySystem.Web
 	using Microsoft.AspNetCore.Identity;
 	using Microsoft.EntityFrameworkCore;
 	using System.Security.Cryptography.X509Certificates;
+	using System.Security.Policy;
+	using System.Web.Mvc;
 	using ViewModels.Home;
 	public class Program
 	{
@@ -76,6 +78,7 @@ namespace BakerySystem.Web
 			app.UseAuthorization();
 
 			app.MapDefaultControllerRoute();
+
 			app.MapRazorPages();
 
 			app.Run();

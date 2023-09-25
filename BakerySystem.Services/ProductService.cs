@@ -4,6 +4,7 @@
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Home;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.EntityFrameworkCore;
@@ -62,7 +63,7 @@
 		{
 			var product = await this.dbContext
 				.Products
-				.FirstAsync(x => x.Id == id);
+				.FirstAsync(p => p.Id == id);
 
 
 
@@ -71,12 +72,14 @@
 			return new ProductFormModel
 			{
 
-				Id = id,
+			  Id = id,
 		      Name = model.Name,
 			  Price = model.Price,
 			  Description = model.Description,
 			  ImageUrl = model.ImageUrl,
-			  CategoryId = model.CategoryId
+			  CategoryId = model.CategoryId,
+			  Categories = model.Categories
+			  
 
 			  
 		    };
@@ -97,25 +100,30 @@
 
 	public async Task<ProductFormModel> ProductForEditByIdAsync(int id)
 	{
-		var product = await this.dbContext
-			.Products
-			.FirstOrDefaultAsync(p => p.Id == id);
+			var product = await this.dbContext
+				.Products
+				.FirstOrDefaultAsync(p => p.Id == id);
+			
 
 		await this.dbContext.SaveChangesAsync();
 
 		return new ProductFormModel
 		{
-
-
-
+			Id = product.Id,
+			Name = product.Name,
+			Price = product.Price,
+			Description = product.Description,
+			ImageUrl = product.ImageUrl,
+			CategoryId = product.CategoryId
+			
 		};
 
 
 	}
 
 
+		
 
 
-
-}
+	}
 }

@@ -23,6 +23,7 @@
         public async Task<IActionResult> Index()
         {
             
+            var categories = await this.dbContext.Categories.ToListAsync();
 
             //IEnumerable <ProductIndexViewModel> productViewModel =
             //    await this.productService.AllProductsAsync();

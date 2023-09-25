@@ -1,6 +1,7 @@
 ﻿@using static BakerySystem.Common.GeneralApplicationConstants;
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,11 +26,12 @@
 					<ul class="navbar-nav flex-grow-1">
 						<li class="nav-item dropdown">
 							<div class="dropdown">
-								<button class="btn dropdown-toggle" type="button"
+								<button class="btn dropdown-toggle" role="button"
 										data-bs-toggle="dropdown">
-									 Categories
+									Categories
 								</button>
 								<ul class="dropdown-menu mt-3">
+
 									<li>
 										<a class="dropdown-item" asp-controller="Product" asp-action="All" asp-route-id="1">Breads</a>
 									</li>
@@ -75,7 +77,6 @@
 	</header>
 	<div class="container">
 		<main role="main" class="pb-3">
-			@RenderSection("style", required: false)
 			@RenderBody()
 		</main>
 	</div>
@@ -85,8 +86,9 @@
 			&copy; Petiny Bakery @ReleaseYear
 			@if (DateTime.UtcNow.Year != ReleaseYear)
 			{
-				@Html.Raw($" - {DateTime.UtcNow.Year}");
-				
+				@Html.Raw($" - {DateTime.UtcNow.Year}")
+				;
+
 			}
 		</div>
 	</footer>

@@ -22,6 +22,9 @@
 
 		public int TotalProducts { get; set; }
 
+		public int CategoryId { get; set; }
+		public string CategoryName { get; set; } = null!;
+
 		public IEnumerable<ProductListingVIewModel> Products { get; set; } = null!;
 	}
 }

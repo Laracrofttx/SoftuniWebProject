@@ -2,17 +2,18 @@
 
 @{
 
-	ViewBag.Title = "Edit Product";
+	ViewData["Title"] = "Edit Product";
 
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
 
 
 <partial name="_ProductFormPartial" model="Model" />
 
 @section Scripts 
 {
-	<partial name="_ValidationScriptsPartial"  />
+	<partial name="_ValidationScriptsPartial"/>
 
 }

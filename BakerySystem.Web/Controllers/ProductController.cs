@@ -10,9 +10,6 @@
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
-	using Microsoft.EntityFrameworkCore.Metadata.Internal;
-	using static BakerySystem.Common.EntityValidationConstants;
-	using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 	public class ProductController : Controller
 	{
@@ -21,12 +18,25 @@
 
 		private readonly IProductService productService;
 		private readonly ICategoryService categoryService;
+		public MainLayoutViewModel MainLayoutViewModel { get; set; } = null!;
+
+
+
 		public ProductController(BakeryDbContext dbContext, IProductService productService, ICategoryService categoryService)
 		{
 			this.dbContext = dbContext;
 			this.productService = productService;
 			this.categoryService = categoryService;
+
+
+
+			this.MainLayoutViewModel = new MainLayoutViewModel();
+			this.MainLayoutViewModel.pageTitle = "Products";
+
+			this.ViewData["MainLayoutViewModel"] = this.MainLayoutViewModel;
 		}
+
+		
 
 		public async Task<IActionResult> Add() => View(new ProductFormModel
 		{
@@ -43,6 +53,9 @@
 			var product = await this.dbContext
 				.Products
 				.FindAsync(id);
+				
+
+
 
 
 			if (await this.productService.ExistByIdAsynch(id) == false)
@@ -60,11 +73,11 @@
 			return View(new ProductFormModel()
 			{
 				Id = productModel.Id,
-				Name = product.Name,
-				Description = product.Description,
-				Price = product.Price,
-				ImageUrl = product.ImageUrl,
-				CategoryId = product.CategoryId,
+				Name = productModel.Name,
+				Description = productModel.Description,
+				Price = productModel.Price,
+				ImageUrl = productModel.ImageUrl,
+				CategoryId = productModel.CategoryId,
 				Categories = productModel.Categories
 
 
@@ -101,15 +114,17 @@
 
 				model.Categories = await this.categoryService.GetProductCategoryAsync();
 
-				
+
 
 
 				return this.View(model);
 			}
 
 			return RedirectToAction("All", "Product");
-		
+
 		}
+
+
 
 		[HttpGet]
 		public async Task<IActionResult> All(int id, [FromQuery] ProductSearchQueryModel model)
@@ -123,9 +138,11 @@
 
 				productQuery = productQuery.Where(p =>
 				EF.Functions.Like(p.Name, wildCard));
-				  
+
 
 			}
+
+		
 
 			var products = await productQuery
 					.OrderByDescending(c => c.Id)
@@ -134,18 +151,20 @@
 					.Take(ProductSearchQueryModel.ProductsPerPage)
 					 .Select(p => new ProductListingVIewModel
 					 {
-						 Id = id,
+						 Id = p.Id,
 						 Name = p.Name,
 						 Price = p.Price,
 						 ImageUrl = p.ImageUrl,
 						 Description = p.Description,
-						 CategoryId = p.CategoryId,
+						 CategoryId = p.Id,
+						 Category = p.Category.Name
 
 
 					 })
 					 .ToArrayAsync();
 
 			var totalProducts = productQuery.Count();
+
 
 			model.Products = products;
 			model.TotalProducts = totalProducts;
@@ -177,7 +196,7 @@
 			try
 			{
 
-			 	await this.productService.CreateProductAsync(product);
+				await this.productService.CreateProductAsync(product);
 
 			}
 			catch (Exception _ex)
@@ -195,11 +214,9 @@
 
 
 
-	
-
-
-
 
 
 	}
+
+
 }
