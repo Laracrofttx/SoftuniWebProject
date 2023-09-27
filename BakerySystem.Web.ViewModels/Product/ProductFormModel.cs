@@ -18,9 +18,9 @@ namespace BakerySystem.Web.ViewModels.Product
         [StringLength(NameMaxLength, MinimumLength = NameMinLength, ErrorMessage = "The field Name must be a string with a minimum length of {2}")]
         public string Name { get; set; } = null!;
 
-        [Required]
+        
         [Range(typeof(decimal), PriceMinValue, PriceMaxValue)]
-		public decimal Price { get; set; }
+        public decimal Price { get; set; } 
 
         [Required]
         [Display(Name = "Image Link")]

@@ -38,91 +38,64 @@
 			await this.dbContext.SaveChangesAsync();
 		}
 
-		public async Task Edit(int id, string name, string description, decimal price, string imageUrl, int categoryId)
+		
+
+		public async Task EditProductByIdAndFormModel(int id, ProductFormModel model)
 		{
-
-			var product = await this.dbContext
-				.Products
-				.FindAsync(id);
-
-			product.Name = name;
-			product.Description = description;
-			product.Price = price;
-			product.ImageUrl = imageUrl;
-			product.CategoryId = categoryId;
-
-			await this.dbContext.SaveChangesAsync();
-
-			
-		}
-
-
-
-
-		public async Task<ProductFormModel> EditProductByIdAndFormModel(int id, ProductFormModel model)
-		{
-			var product = await this.dbContext
+			Product product = await this.dbContext
 				.Products
 				.FirstAsync(p => p.Id == id);
 
 
 
+			product.Id = model.Id;
+			product.Name = model.Name;
+			product.Price = model.Price;
+			product.Description = model.Description;
+			product.ImageUrl = model.ImageUrl;
+			product.CategoryId = model.CategoryId;
+
+				
 			await this.dbContext.SaveChangesAsync();
+
+		}
+
+		public async Task<bool> ExistByIdAsynch(int id)
+		{
+			bool result = await this.dbContext
+				.Products
+				.AnyAsync(p => p.Id == id);
+
+			await this.dbContext.SaveChangesAsync();
+
+			return result;
+
+		}
+
+		public async Task<ProductFormModel> ProductForEditByIdAsync(int id)
+		{
+			Product product = await this.dbContext
+				.Products
+				.Include(p => p.Category)
+				.FirstAsync(p => p.Id == id);
+
 
 			return new ProductFormModel
 			{
-
-			  Id = id,
-		      Name = model.Name,
-			  Price = model.Price,
-			  Description = model.Description,
-			  ImageUrl = model.ImageUrl,
-			  CategoryId = model.CategoryId,
-			  Categories = model.Categories
-			  
-
-			  
-		    };
-
-	}
-
-	public async Task<bool> ExistByIdAsynch(int id)
-	{
-		bool result = await this.dbContext
-			.Products
-			.AnyAsync(p => p.Id == id);
-
-		await this.dbContext.SaveChangesAsync();
-
-		return result;
-
-	}
-
-	public async Task<ProductFormModel> ProductForEditByIdAsync(int id)
-	{
-			var product = await this.dbContext
-				.Products
-				.FirstOrDefaultAsync(p => p.Id == id);
-			
-
-		await this.dbContext.SaveChangesAsync();
-
-		return new ProductFormModel
-		{
-			Id = product.Id,
-			Name = product.Name,
-			Price = product.Price,
-			Description = product.Description,
-			ImageUrl = product.ImageUrl,
-			CategoryId = product.CategoryId
-			
-		};
+				Id = id,
+				Name = product.Name,
+				Price = product.Price,
+				Description = product.Description,
+				ImageUrl = product.ImageUrl,
+				CategoryId = product.CategoryId,
+				
+			};
 
 
-	}
+		}
 
 
-		
+
 
 
 	}

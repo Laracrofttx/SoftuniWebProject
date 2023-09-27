@@ -26,7 +26,6 @@
 
 		[Required]
 		public decimal Price { get; set; }
-
 		[Required]
 		[MaxLength(DescriptionMaxLength)]
 		public string Description { get; set; } = null!;

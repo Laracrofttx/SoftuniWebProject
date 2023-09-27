@@ -8,6 +8,7 @@
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Product;
+	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
 
@@ -18,9 +19,7 @@
 
 		private readonly IProductService productService;
 		private readonly ICategoryService categoryService;
-		public MainLayoutViewModel MainLayoutViewModel { get; set; } = null!;
-
-
+		
 
 		public ProductController(BakeryDbContext dbContext, IProductService productService, ICategoryService categoryService)
 		{
@@ -28,15 +27,9 @@
 			this.productService = productService;
 			this.categoryService = categoryService;
 
-
-
-			this.MainLayoutViewModel = new MainLayoutViewModel();
-			this.MainLayoutViewModel.pageTitle = "Products";
-
-			this.ViewData["MainLayoutViewModel"] = this.MainLayoutViewModel;
 		}
 
-		
+
 
 		public async Task<IActionResult> Add() => View(new ProductFormModel
 		{
@@ -50,13 +43,6 @@
 		public async Task<IActionResult> Edit(int id)
 		{
 
-			var product = await this.dbContext
-				.Products
-				.FindAsync(id);
-				
-
-
-
 
 			if (await this.productService.ExistByIdAsynch(id) == false)
 			{
@@ -64,25 +50,22 @@
 
 			}
 
-			var productModel = await this.productService
+			try
+			{
+				ProductFormModel productModel = await this.productService
 				.ProductForEditByIdAsync(id);
 
-			productModel.Categories = await this.categoryService.GetProductCategoryAsync();
+				productModel.Categories = await this.categoryService.GetProductCategoryAsync();
 
-
-			return View(new ProductFormModel()
+				return View(productModel);
+			}
+			catch (Exception)
 			{
-				Id = productModel.Id,
-				Name = productModel.Name,
-				Description = productModel.Description,
-				Price = productModel.Price,
-				ImageUrl = productModel.ImageUrl,
-				CategoryId = productModel.CategoryId,
-				Categories = productModel.Categories
 
-
-			});
-
+				return BadRequest();
+				
+			}
+			
 
 		}
 
@@ -103,6 +86,13 @@
 				return this.View(model);
 			}
 
+			
+			if (await this.categoryService.ExistByIdAsync(model.CategoryId) == false)
+			{
+
+				this.ModelState.AddModelError(nameof(model.CategoryId), "Category does not exist!");
+			}
+
 			try
 			{
 				await this.productService.EditProductByIdAndFormModel(id, model);
@@ -114,19 +104,17 @@
 
 				model.Categories = await this.categoryService.GetProductCategoryAsync();
 
-
-
-
 				return this.View(model);
 			}
 
-			return RedirectToAction("All", "Product");
+			return RedirectToAction(nameof(All), new { id } ) ;
 
 		}
 
 
 
 		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> All(int id, [FromQuery] ProductSearchQueryModel model)
 		{
 			var productQuery = this.dbContext.Products.AsQueryable();
@@ -142,7 +130,6 @@
 
 			}
 
-		
 
 			var products = await productQuery
 					.OrderByDescending(c => c.Id)

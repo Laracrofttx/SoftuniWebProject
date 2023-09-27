@@ -51,6 +51,7 @@
 		{
 			IEnumerable<CategoryViewModel> categories = await this.dbContext
 				.Categories
+				.AsNoTracking()
 				.Select(c => new CategoryViewModel
 				{
 
@@ -63,25 +64,25 @@
 			return categories;
 		}
 
-		
-
-		//public async Task<int> Create(string categoryName, int categoryId)
-		//{
-		//	var category = new Category()
-		//	{
-
-		//		Id = categoryId,
-		//		Name = categoryName
 
 
-		//	};
+		public async Task<int> CreateAsynch(int categoryId, string categoryName)
+		{
+			var category = new Category()
+			{
 
-		//	 await dbContext.Categories.AddAsync(category);
-		//	 await dbContext.SaveChangesAsync();
+				Id = categoryId,
+				Name = categoryName
 
 
-		//	return category.Id;
-		//}
+			};
+
+			await dbContext.Categories.AddAsync(category);
+			await dbContext.SaveChangesAsync();
+
+
+			return category.Id;
+		}
 
 
 

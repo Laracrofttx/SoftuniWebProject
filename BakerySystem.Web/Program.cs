@@ -1,26 +1,20 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using BakerySystem.Web.Data;
 namespace BakerySystem.Web
 {
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
-	using BakerySystem.Web.Infrastructure.ModelBinders;
-	using Microsoft.AspNetCore.Identity;
+	//using BakerySystem.Web.Infrastructure.ModelBinders;
+	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
-	using System.Security.Cryptography.X509Certificates;
-	using System.Security.Policy;
-	using System.Web.Mvc;
-	using ViewModels.Home;
+	
 	public class Program
 	{
 		public static void Main(string[] args)
 		{
 			WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-			
+
 
 			string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 			builder.Services.AddDbContext<BakeryDbContext>(options =>
@@ -46,11 +40,12 @@ namespace BakerySystem.Web
 
 			builder.Services
 				.AddControllersWithViews()
-				.AddMvcOptions(options => 
+				.AddMvcOptions(options =>
 				{
 
-					options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
-				
+					//options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+					options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+
 				});
 
 

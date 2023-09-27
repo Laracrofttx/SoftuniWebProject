@@ -14,8 +14,8 @@
 
 		Task<ProductFormModel> ProductForEditByIdAsync(int id);
 
-		Task<ProductFormModel> EditProductByIdAndFormModel(int id, ProductFormModel model);
+		Task EditProductByIdAndFormModel(int id, ProductFormModel model);
 
-		Task Edit(int id, string name, string description, decimal price, string imageUrl, int categoryId);
+		
 	}
 }

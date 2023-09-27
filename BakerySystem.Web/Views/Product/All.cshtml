@@ -43,10 +43,10 @@
 					<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
 						 src="@product.ImageUrl">
 					<div class="card-body">
-						<h5 class="card-title">@product.Name @product.Price$</h5>
+						<h5 class="card-title">@product.Name @product.Price</h5>
 						<p class="card-text" style="min-height: 120px;">@product.Description</p>
-						<a asp-controller="Product" asp-action="All" asp-route-id="@product.Id" button class="btn btn-primary float-end">Add to Card</a>
-						<a asp-controller="Product" asp-action="Edit" asp-route-id="@product.CategoryId"
+						<a asp-controller="Product" asp-action="All" asp-route-id="@product.Id" class="btn btn-primary float-end">Add to Card</a>
+						<a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id"
 						   class="btn btn-warning">Edit</a>
 					</div>
 				</div>

@@ -43,10 +43,10 @@ namespace BakerySystem.Web.Controllers
 			var categories = await this.dbContext
 				.Categories
 				.OrderBy(c => c.Id)
-				.ToListAsync();
+				.ToArrayAsync();
 			
 
-			IEnumerable<Category> category = await this.dbContext.Categories.ToListAsync();
+			IEnumerable<Category> category = await this.dbContext.Categories.ToArrayAsync();
 			return View(categories);
 		
 		}
@@ -63,12 +63,16 @@ namespace BakerySystem.Web.Controllers
 
 
 		[HttpPost]
-
-		public async Task<IActionResult> Add(Category category)
+		public async Task<IActionResult> Create(Category category)
 		{
+			//if (await this.categoryService.ExistByIdAsync(category.Id) == false)
+			//{
+			//	return BadRequest();
 
-			this.dbContext.Categories.Add(category);
-			this.dbContext.SaveChanges();
+			//}
+
+			await this.dbContext.AddAsync(category);
+			await this.dbContext.SaveChangesAsync();
 
 			return RedirectToAction("Index", "Home");
 
