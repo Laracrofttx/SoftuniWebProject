@@ -111,6 +111,31 @@
 
 		}
 
+		[HttpGet]
+		[AllowAnonymous]
+
+		public async Task<IActionResult> Details(int id)
+		{
+			bool pr = await productService.ExistByIdAsynch(id);
+
+			if (!pr)
+			{
+				return RedirectToAction("All", "Product");
+			}
+
+			try
+			{
+				ProductDetailsServiceModel model = await productService.ProductDetailsByIdAsynch(id);
+
+				return View(model);
+			}
+			catch (Exception)
+			{
+
+				return BadRequest();
+			}
+		}
+
 
 
 		[HttpGet]
@@ -200,8 +225,63 @@
 		}
 
 
+		[HttpGet]
+		public async Task<IActionResult> Delete(int productId)
+		{
 
 
+			if (await this.productService.ExistByIdAsynch(productId) == false)
+			{
+
+				return BadRequest();
+
+			}
+
+			try
+			{
+				ProductForDeleteViewModel viewModel = await this.productService
+					.ProductForDeleteByIdAsynch(productId);
+
+				return View(viewModel);
+
+			}
+			catch (Exception)
+			{
+
+				return BadRequest();
+			}
+
+		}
+
+
+		[HttpPost]
+		public async Task<IActionResult> Deleted(int productId)
+		{ 
+		
+			bool productExists = await this.productService
+				.ExistByIdAsynch(productId);
+
+			if (!productExists) 
+			{
+
+				return BadRequest();
+			
+			}
+
+
+			try
+			{
+				await this.productService.DeleteProductByIdAndFormModel(productId);
+
+				return RedirectToAction("All", "Product");
+			}
+			catch (Exception)
+			{
+
+				return BadRequest();
+			}
+		
+		}
 
 	}
 

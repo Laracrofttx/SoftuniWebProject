@@ -1,7 +1,4 @@
-﻿using BakerySystem.Web.ViewModels.Category;
-using System.ComponentModel.DataAnnotations;
-
-namespace BakerySystem.Web.ViewModels.Product
+﻿namespace BakerySystem.Web.ViewModels.Product
 {
 	public class ProductListingVIewModel
 	{

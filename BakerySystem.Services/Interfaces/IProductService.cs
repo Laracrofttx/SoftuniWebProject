@@ -12,9 +12,16 @@
 
 		Task<bool> ExistByIdAsynch(int id);
 
+		Task<ProductDetailsServiceModel> ProductDetailsByIdAsynch(int id);
+
 		Task<ProductFormModel> ProductForEditByIdAsync(int id);
 
 		Task EditProductByIdAndFormModel(int id, ProductFormModel model);
+
+
+		Task<ProductForDeleteViewModel> ProductForDeleteByIdAsynch(int productId);
+
+		Task DeleteProductByIdAndFormModel(int productId);
 
 		
 	}

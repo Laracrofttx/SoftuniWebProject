@@ -4,11 +4,8 @@
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
-	using BakerySystem.Web.ViewModels.Category;
-	using BakerySystem.Web.ViewModels.Home;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.EntityFrameworkCore;
-	using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 	public class ProductService : IProductService
 	{
@@ -38,8 +35,7 @@
 			await this.dbContext.SaveChangesAsync();
 		}
 
-		
-
+	
 		public async Task EditProductByIdAndFormModel(int id, ProductFormModel model)
 		{
 			Product product = await this.dbContext
@@ -72,6 +68,7 @@
 
 		}
 
+	
 		public async Task<ProductFormModel> ProductForEditByIdAsync(int id)
 		{
 			Product product = await this.dbContext
@@ -94,9 +91,59 @@
 
 		}
 
+		public async Task<ProductForDeleteViewModel> ProductForDeleteByIdAsynch(int productId)
+		{
+			Product product = await this.dbContext
+				.Products
+				.FirstAsync(p => p.Id == productId);
+
+			return new ProductForDeleteViewModel()
+			{
+
+				Name = product.Name,
+				Price = product.Price,
+				ImageUrl = product.ImageUrl
 
 
+			};
+
+		}
+
+		public async Task DeleteProductByIdAndFormModel(int productId)
+		{
+			Product productToDelete = await this.dbContext
+				.Products
+				.FirstAsync(p => p.Id == productId);
 
 
-	}
+			await this.dbContext.SaveChangesAsync();
+			
+
+		}
+
+        public async Task<ProductDetailsServiceModel> ProductDetailsByIdAsynch(int id)
+        {
+			Product product = await this.dbContext
+				 .Products
+				 .Include(c => c.Category)
+				 .Where(p => p.Id == id)
+				 .FirstAsync();
+
+			return new ProductDetailsServiceModel()
+			{
+
+				Id = product.Id,
+				Name = product.Name,
+				Price = product.Price,
+				ImageUrl = product.ImageUrl,
+				Description = product.Description,
+				Category = product.Category.Name
+
+
+			};
+				
+			
+				
+        }
+    }
 }
