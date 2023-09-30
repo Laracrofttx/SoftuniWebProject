@@ -1,0 +1,23 @@
+﻿@using BakerySystem.Web.ViewModels.Review;
+@model ReviewFormModel;
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+			<h2 class="text-center"></h2>
+			<form method="post">
+				<div class="form-group">
+					<label asp-for="UserName"></label>
+					<input asp-for="UserName" class="form-control" placeholder="Product name">
+					<span asp-validation-for="UserName" class="small text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Review"></label>
+					<textarea asp-for="Review" rows="4" class="form-control" placeholder="Add some description"></textarea>
+					<span asp-validation-for="Review" class="small text-danger"></span>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

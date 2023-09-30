@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace BakerySystem.Web.Controllers
+﻿namespace BakerySystem.Web.Controllers
 {
+	using Microsoft.AspNetCore.Mvc;
 	public class ReviewController : Controller
 	{
-		public IActionResult Index()
+		public async Task<IActionResult> Add()
 		{
 			return View();
 		}
