@@ -226,23 +226,25 @@
 
 
 		[HttpGet]
-		public async Task<IActionResult> Delete(int productId)
+		public async Task<IActionResult> Delete(int id)
 		{
+			bool productExist = await this.productService
+				.ExistByIdAsynch(id);
 
 
-			if (await this.productService.ExistByIdAsynch(productId) == false)
+			if (!productExist)
 			{
 
-				return BadRequest();
+				return RedirectToAction("All", "Product");
 
 			}
 
 			try
 			{
-				ProductForDeleteViewModel viewModel = await this.productService
-					.ProductForDeleteByIdAsynch(productId);
+				ProductForDeleteViewModel productModel = await this.productService
+					.ProductForDeleteByIdAsynch(id);
 
-				return View(viewModel);
+				return View(productModel);
 
 			}
 			catch (Exception)
@@ -255,25 +257,25 @@
 
 
 		[HttpPost]
-		public async Task<IActionResult> Deleted(int productId)
-		{ 
-		
-			bool productExists = await this.productService
-				.ExistByIdAsynch(productId);
+		public async Task<IActionResult> Delete(int id, ProductForDeleteViewModel productId)
+		{
 
-			if (!productExists) 
+			bool productExists = await this.productService
+				.ExistByIdAsynch(id);
+
+			if (!productExists)
 			{
 
-				return BadRequest();
-			
-			}
+				return RedirectToAction("All", "Product");
 
+			}
 
 			try
 			{
-				await this.productService.DeleteProductByIdAndFormModel(productId);
+				await this.productService.DeleteProductByIdAsynch(id);
 
-				return RedirectToAction("All", "Product");
+
+				return RedirectToAction("Index", "Home");
 			}
 			catch (Exception)
 			{

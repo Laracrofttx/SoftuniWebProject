@@ -1,19 +1,13 @@
-﻿
-namespace BakerySystem.Web.Controllers
+﻿namespace BakerySystem.Web.Controllers
 {
-	using BakerySystem.Data.Models;
-	using BakerySystem.Services;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
-	using BakerySystem.Web.ViewModels.Category;
-	using BakerySystem.Web.ViewModels.Home;
-	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
-	using Microsoft.EntityFrameworkCore.Metadata.Internal;
-	using System.Collections;
 	using System.Collections.Generic;
+	using Category = BakerySystem.Data.Models.Category;
+
 	[Authorize]
 	public class CategoryController : Controller
 	{
@@ -29,14 +23,14 @@ namespace BakerySystem.Web.Controllers
 
 
 
-		//public async Task<bool> CategoryExists(int categoryId)
-		//{
+		public async Task<bool> CategoryExists(int categoryId)
+		{
 
 
-		//	return await dbContext.Categories.AnyAsync(c => c.Id == categoryId);
+			return await dbContext.Categories.AnyAsync(c => c.Id == categoryId);
 
 
-		//}
+		}
 
 		public async Task<IActionResult> Category()
 		{
@@ -65,11 +59,11 @@ namespace BakerySystem.Web.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Create(Category category)
 		{
-			//if (await this.categoryService.ExistByIdAsync(category.Id) == false)
-			//{
-			//	return BadRequest();
+			if (await this.categoryService.ExistByIdAsync(category.Id) == false)
+			{
+				return BadRequest();
 
-			//}
+			}
 
 			await this.dbContext.AddAsync(category);
 			await this.dbContext.SaveChangesAsync();
@@ -78,16 +72,7 @@ namespace BakerySystem.Web.Controllers
 
 		}
 
-		//private async Task<IEnumerable<CategoryListingViewModel>> GetCategory()
-		//	=> await this.dbContext
-		//	.Categories
-		//	.Select(c => new CategoryListingViewModel
-		//	{
-		//		Id = c.Id,
-		//		Name = c.Name,
-
-		//	})
-		//	.ToArrayAsync();
+		
 
 
 	}

@@ -1,6 +1,5 @@
 ﻿namespace BakerySystem.Web.ViewModels.Category
 {
-
 	using System.ComponentModel.DataAnnotations;
 	using static BakerySystem.Common.EntityValidationConstants.Category;
 
@@ -15,6 +14,6 @@
 
 		[Display(Name ="Category Name")]
 		public string Name { get; set; } = null!;
-	
+
 	}
 }

@@ -52,7 +52,7 @@
 			product.CategoryId = model.CategoryId;
 
 				
-			await this.dbContext.SaveChangesAsync();
+			await dbContext.SaveChangesAsync();
 
 		}
 
@@ -62,7 +62,7 @@
 				.Products
 				.AnyAsync(p => p.Id == id);
 
-			await this.dbContext.SaveChangesAsync();
+			await dbContext.SaveChangesAsync();
 
 			return result;
 
@@ -93,9 +93,11 @@
 
 		public async Task<ProductForDeleteViewModel> ProductForDeleteByIdAsynch(int productId)
 		{
-			Product product = await this.dbContext
+			var product = await this.dbContext
 				.Products
-				.FirstAsync(p => p.Id == productId);
+				.FindAsync(productId);
+
+
 
 			return new ProductForDeleteViewModel()
 			{
@@ -109,16 +111,19 @@
 
 		}
 
-		public async Task DeleteProductByIdAndFormModel(int productId)
+		public async Task DeleteProductByIdAsynch(int productId)
 		{
 			Product productToDelete = await this.dbContext
 				.Products
 				.FirstAsync(p => p.Id == productId);
 
+			productToDelete.isAvailable = false;
 
-			await this.dbContext.SaveChangesAsync();
+			dbContext.Remove(productToDelete);
+
+			await dbContext.SaveChangesAsync();
+
 			
-
 		}
 
         public async Task<ProductDetailsServiceModel> ProductDetailsByIdAsynch(int id)

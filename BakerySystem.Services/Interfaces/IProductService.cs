@@ -21,7 +21,7 @@
 
 		Task<ProductForDeleteViewModel> ProductForDeleteByIdAsynch(int productId);
 
-		Task DeleteProductByIdAndFormModel(int productId);
+		Task DeleteProductByIdAsynch(int productId);
 
 		
 	}
