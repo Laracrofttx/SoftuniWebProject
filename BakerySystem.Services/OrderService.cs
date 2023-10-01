@@ -11,66 +11,27 @@ namespace BakerySystem.Services
 	public class OrderService : IOrderService
 	{
 		private readonly BakeryDbContext dbContext;
+		private readonly IProductService productService;
 
-		public OrderService(BakeryDbContext dbContext)
+		public OrderService(BakeryDbContext dbContext, IProductService productService)
 		{
 			this.dbContext = dbContext;
+			this.productService = productService;
+			
 		}
 
-		//public async Task<IEnumerable<OrderViewModel>> OrderHistory()
-		//{
-
-		//	IEnumerable<OrderViewModel> orderHistory = await this.dbContext
-		//		.Orders
-		//		.Select(o => new OrderViewModel()
-		//		{
-
-		//			OrderId = o.Id,
-		//			FirstName = o.FirstName,
-		//			LastName = o.LastName,
-		//			Address = o.Address,
-		//			PhoneNumber = o.PhoneNumber
-
-
-
-		//		}).ToArrayAsync();
-
-
-		//	return orderHistory;
-
-
-
-		//}
-
-
-
-		public async Task<IEnumerable<OrderViewModel>> Order()
+		public async Task<OrderViewModel> AddToOrder(int productId)
 		{
+			var currentProduct = await dbContext.Products.FindAsync(productId);
 
-			IEnumerable<OrderViewModel> order = await this.dbContext
-				.Orders
-				.Select(o => new OrderViewModel()
-				{
+			return new OrderViewModel()
+			{
 
-					OrderId = o.Id,
-					FirstName = o.FirstName,
-					LastName = o.LastName,
-					Address = o.Address,
-					PhoneNumber = o.PhoneNumber
+				OrderId = currentProduct.Id,
+				ProductName = currentProduct.Name,
+				ProductPrice = currentProduct.Price
 
-
-
-				}).ToArrayAsync();
-
-
-			return order;
-
-
+			};
 		}
-
-
-	
-
-
 	}
 }

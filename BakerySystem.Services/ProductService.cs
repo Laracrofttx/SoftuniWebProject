@@ -6,6 +6,7 @@
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.EntityFrameworkCore;
+	using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 	public class ProductService : IProductService
 	{
@@ -150,5 +151,7 @@
 			
 				
         }
-    }
+
+		
+	}
 }

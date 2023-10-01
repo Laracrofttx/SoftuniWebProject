@@ -4,12 +4,14 @@
 	{
 		public int OrderId { get; set; }
 
-		public string FirstName { get; set; } = null!;
+		public string ProductName { get; set; } = null!;
 
-		public string LastName { get; set; } = null!;
+		public decimal ProductPrice { get; set; }
 
-	    public string Address { get; set; } = null!;
+		public int TotalAmount { get; set; }
 
-		public string PhoneNumber { get; set; } = null!;
+		public int Quantity { get; set; }
+
+
 	}
 }
