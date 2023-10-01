@@ -1,5 +1,6 @@
 ﻿namespace BakerySystem.Data.Models
 {
+	using Microsoft.AspNetCore.Identity;
 	using System.ComponentModel.DataAnnotations;
 
 	public class Review
@@ -8,9 +9,10 @@
 
 		public string UserName { get; set; } = null!;
 
-		public virtual Product ProductReview { get; set; } = null!;
+        public string FeedBack { get; set; } = null!;
 
-
-		public string FeedBack { get; set; } = null!;
 	}
+
+
+	
 }

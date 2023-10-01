@@ -1,23 +1,32 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 
 body {
-   
-  margin-bottom: 100px;
+    margin-top: 25px;
+    margin-bottom: 100px;
+    border-color: darkolivegreen
+    
 }
 
 
-
+body {
+    background-image: url(https://img.freepik.com/premium-photo/white-background-frames-isolated-exhibition-numerous-spa-cosmetic-items-spa-from-abo_410516-94878.jpg?size=626&ext=jpg&ga=GA1.2.1955849475.1696176372&semt=ais);
+    color: saddlebrown;
+    background-position: center;
+    background-size: cover;
+    background-position: fixed;
+    background-repeat: no-repeat;
+}

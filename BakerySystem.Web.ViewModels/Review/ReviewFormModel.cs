@@ -13,9 +13,9 @@
 		[Required]
 		[Display(Name = "Share your experience with us")]
 		[StringLength(FeedBackMaxLength, MinimumLength =FeedBackMinLength, ErrorMessage ="The field must contain at least {2} characters.")]
+		public string FeedBack { get; set; } = null!;
 
-		public string Review { get; set; } = null!;
-
+		public IEnumerable<ReviewListingViewModel> Reviews { get; set; } = null!;
 
 	}
 }
