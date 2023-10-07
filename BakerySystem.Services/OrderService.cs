@@ -4,7 +4,6 @@ using BakerySystem.Web.Data;
 using BakerySystem.Web.ViewModels.Order;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Text.RegularExpressions;
 
 namespace BakerySystem.Services
 {
@@ -13,25 +12,17 @@ namespace BakerySystem.Services
 		private readonly BakeryDbContext dbContext;
 		private readonly IProductService productService;
 
+		public int ShoppingCartItemId { get; set; }
 		public OrderService(BakeryDbContext dbContext, IProductService productService)
 		{
 			this.dbContext = dbContext;
 			this.productService = productService;
-			
+
 		}
 
-		public async Task<OrderViewModel> AddToOrder(int productId)
+		public async Task AddToOrder(int id)
 		{
-			var currentProduct = await dbContext.Products.FindAsync(productId);
-
-			return new OrderViewModel()
-			{
-
-				OrderId = currentProduct.Id,
-				ProductName = currentProduct.Name,
-				ProductPrice = currentProduct.Price
-
-			};
+			
 		}
 	}
 }

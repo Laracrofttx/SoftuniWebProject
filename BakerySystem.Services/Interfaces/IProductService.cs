@@ -7,17 +7,17 @@
 
 	public interface IProductService
 	{
-		
 		Task CreateProductAsync(ProductFormModel model);
 
 		Task<bool> ExistByIdAsynch(int id);
+
+		Task<Product> GetProductByIdAsynch(int id);
 
 		Task<ProductDetailsServiceModel> ProductDetailsByIdAsynch(int id);
 
 		Task<ProductFormModel> ProductForEditByIdAsync(int id);
 
 		Task EditProductByIdAndFormModel(int id, ProductFormModel model);
-
 
 		Task<ProductForDeleteViewModel> ProductForDeleteByIdAsynch(int productId);
 

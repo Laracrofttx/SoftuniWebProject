@@ -17,9 +17,9 @@
 			public const int DescriptionMaxLength = 150;
 		}
 
-
-		public static class Orders
+		public static class OrderDetails 
 		{
+		
 			public const int FirstNameMinLength = 5;
 			public const int FirstNameMaxLength = 20;
 
@@ -32,7 +32,8 @@
 
 			public const int PhoneNumberMinLength = 11;
 			public const int PhoneNumberMaxLength = 12;
-
+		
+		
 		}
 
 		public static class Products

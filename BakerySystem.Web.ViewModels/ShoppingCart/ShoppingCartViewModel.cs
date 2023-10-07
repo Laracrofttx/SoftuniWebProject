@@ -6,7 +6,7 @@ namespace BakerySystem.Web.ViewModels.ShoppingCart
 {
 	public class ShoppingCartViewModel
 	{
-		public ShoppingCartItem ShoppingCart { get; set; }
+		public CartItem ShoppingCart { get; set; } = null!;
 
 		public decimal ShoppingCartTotal { get; set; }
 	}

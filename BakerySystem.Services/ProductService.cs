@@ -1,5 +1,7 @@
 ﻿namespace BakerySystem.Services
 {
+	using System.Collections;
+	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
@@ -151,6 +153,16 @@
 			
 				
         }
+
+		public async Task<Product> GetProductByIdAsynch(int id)
+		{
+			var currentProduct = await this.dbContext
+				.Products
+				.Where(p => p.Id == id)
+				.FirstOrDefaultAsync();
+
+			return currentProduct;
+		}
 
 		
 	}

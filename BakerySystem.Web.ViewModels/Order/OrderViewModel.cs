@@ -8,10 +8,13 @@
 
 		public decimal ProductPrice { get; set; }
 
-		public int TotalAmount { get; set; }
+		public string ImageUrl { get; set; } = null!;
+
+		public decimal TotalAmount { get; set; }
 
 		public int Quantity { get; set; }
 
+		
 
 	}
 }
