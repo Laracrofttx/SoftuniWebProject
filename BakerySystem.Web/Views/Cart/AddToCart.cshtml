@@ -1,6 +1,6 @@
 ﻿@using BakerySystem.Data.Models;
 @using BakerySystem.Web.ViewModels.ShoppingCart;
-@model CartItemViewModel
+@model CartItem
 
 @{
 
@@ -10,9 +10,7 @@
 
 }
 
-
-
-<section class="vh-100" style="background-color: #fdccbc;">
+	<section class="vh-100" style="background-color: #fdccbc;">
 	<div class="container h-100">
 		<div class="row d-flex justify-content-center align-items-center h-100">
 			<div class="col">
@@ -29,7 +27,7 @@
 							<div class="col-md-2 d-flex justify-content-center">
 								<div>
 									<p class="small text-muted mb-4 pb-2">Product name</p>
-									<p class="lead fw-normal mb-0">@Model.Title</p>
+									<p class="lead fw-normal mb-0">@Model.ProductName</p>
 								</div>
 							</div>
 							<div class="col-md-2 d-flex justify-content-center">
@@ -44,18 +42,6 @@
 									<p class="lead fw-normal mb-0">@Model.Quantity</p>
 								</div>
 							</div>
-							<div class="col-md-2 d-flex justify-content-center">
-								<div>
-									<p class="small text-muted mb-4 pb-2"></p>
-									<p class="lead fw-normal mb-0"></p>
-								</div>
-							</div>
-							<div class="col-md-2 d-flex justify-content-center">
-								<div>
-									<p class="small text-muted mb-4 pb-2"></p>
-									<p class="lead fw-normal mb-0"></p>
-								</div>
-							</div>
 						</div>
 
 					</div>
@@ -66,7 +52,7 @@
 
 						<div class="float-end">
 							<p class="mb-0 me-5 d-flex align-items-center">
-								<span class="small text-muted me-2">Order total:</span>@Model.Price<span class="lead fw-normal"></span>
+								<span class="small text-muted me-2">Order total:</span>@Model.TotalAmount<span class="lead fw-normal"></span>
 							</p>
 						</div>
 
@@ -74,11 +60,15 @@
 				</div>
 
 				<div class="d-flex justify-content-end">
-					<button type="button" class="btn btn-light btn-lg me-2">Continue shopping</button>
-					<button type="button" class="btn btn-primary btn-lg">Checkout</button>
+					<a asp-controller="Product" asp-action="All" asp-route-id="@Model.ProductId"
+							   class="btn btn-light btn-lg me-2">Continue shopping</a>
+                    <a asp-controller="Order" asp-action="Checkout"
+							   class="btn btn-primary btn-lg">Checkout</a>
 				</div>
 
 			</div>
 		</div>
 	</div>
 </section>
+
+

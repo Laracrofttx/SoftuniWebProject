@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    [Migration("20231007193123_addingAListOfCartItemsPropertyIntoCartItemModel")]
-    partial class addingAListOfCartItemsPropertyIntoCartItemModel
+    [Migration("20231008122140_AddListOfItemsToCartModel")]
+    partial class AddListOfItemsToCartModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -22,7 +22,13 @@
 			this.dbContext = dbContext;
 		}
 
+
+		public async Task<IActionResult> Checkout()
+		{
+
+			return View();
 		
+		}
 
 	}
 }

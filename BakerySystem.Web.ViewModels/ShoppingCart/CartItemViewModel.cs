@@ -1,4 +1,6 @@
-﻿namespace BakerySystem.Web.ViewModels.ShoppingCart
+﻿using BakerySystem.Data.Models;
+
+namespace BakerySystem.Web.ViewModels.ShoppingCart
 {
 	public class CartItemViewModel
 	{
@@ -14,6 +16,8 @@
 
 		public int Quantity {  get; set; }
 
-		
+
+		public IEnumerable<CartItem> ShoppingCartItems { get; set; } = null!;
+
 	}
 }

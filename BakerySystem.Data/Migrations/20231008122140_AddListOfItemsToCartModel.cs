@@ -4,7 +4,7 @@
 
 namespace BakerySystem.Data.Migrations
 {
-    public partial class addingAListOfCartItemsPropertyIntoCartItemModel : Migration
+    public partial class AddListOfItemsToCartModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

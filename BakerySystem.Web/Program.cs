@@ -38,6 +38,8 @@ namespace BakerySystem.Web
 			builder.Services.AddScoped<ICategoryService, CategoryService>();
 			builder.Services.AddScoped<IOrderService, OrderService>();
 
+			builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 			builder.Services
 				.AddControllersWithViews()
 				.AddMvcOptions(options =>
@@ -59,7 +61,8 @@ namespace BakerySystem.Web
 			}
 			else
 			{
-				app.UseExceptionHandler("/Home/Error");
+				app.UseExceptionHandler("/Home/Error/500");
+				app.UseStatusCodePagesWithRedirects("/Home/Error?statusCode={0}");
 
 				app.UseHsts();
 			}

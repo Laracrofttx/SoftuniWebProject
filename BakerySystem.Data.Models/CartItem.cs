@@ -22,5 +22,6 @@ namespace BakerySystem.Data.Models
 		public int ProductId { get; set; }
 
 		public virtual Product Products { get; set; } = null!;
+
 	}
 }
