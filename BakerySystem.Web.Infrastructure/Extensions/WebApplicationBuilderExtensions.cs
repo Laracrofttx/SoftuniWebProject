@@ -13,7 +13,7 @@
         /// <param name="serviceType">Type of any service implementation</param>
         /// <exception cref="InvalidOperationException"></exception>
         /// 
-        public static void ApplicationsServices(this IServiceCollection services, Type serviceType)
+        public static void AddApplicationServices(this IServiceCollection services, Type serviceType)
         {
             Assembly? serviceAssembly = Assembly.GetAssembly(serviceType);
 
@@ -22,24 +22,24 @@
                 throw new InvalidOperationException("Invalid service type!");
             }
 
-            Type[] serviceTypes = serviceAssembly
+            Type[] implementationTypes = serviceAssembly
                 .GetTypes()
                 .Where(t => t.Name.EndsWith("Service") && !t.IsInterface)
                 .ToArray();
-            foreach (Type st in serviceTypes)
+            foreach (Type implementationType in implementationTypes)
             {
-                Type? interfaceType = st
-                    .GetInterface($"I{st.Name}");
+                Type? interfaceType = implementationType
+					.GetInterface($"I{implementationType.Name}");
 
                 if (interfaceType == null)
                 {
-                    throw new InvalidOperationException("No service provided");
+                    throw new InvalidOperationException($"No interface provided for the service name: {implementationType.Name}");
                 }
 
-                services.AddScoped(serviceType, st);
+                services.AddScoped(interfaceType, implementationType);
             }
 
-            services.AddScoped<IProductService, ProductService>();
+           
 
         }
 

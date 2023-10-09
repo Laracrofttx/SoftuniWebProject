@@ -1,6 +1,7 @@
 ﻿namespace BakerySystem.Services.Interfaces
 {
 	using BakerySystem.Data.Models;
+	using BakerySystem.Services.Statistics;
 	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Home;
 	using BakerySystem.Web.ViewModels.Product;
@@ -23,6 +24,6 @@
 
 		Task DeleteProductByIdAsynch(int productId);
 
-		
+		Task<StatisticServiceModel> GetStatisticsAsynch();
 	}
 }

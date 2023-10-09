@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>1dce0ae8-2b11-44e6-86e6-2d57b81ff9ca</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BakerySystem.Common\BakerySystem.Common.csproj" />
+    <ProjectReference Include="..\BakerySystem.Services\BakerySystem.Services.csproj" />
+    <ProjectReference Include="..\BakerySystem.Web.Infrastructure\BakerySystem.Web.Infrastructure.csproj" />
+    <ProjectReference Include="..\BakerySystem.Web\BakerySystem.Web.csproj" />
+  </ItemGroup>
+
+</Project>

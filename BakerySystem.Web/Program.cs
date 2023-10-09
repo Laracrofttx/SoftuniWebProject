@@ -4,6 +4,7 @@ namespace BakerySystem.Web
 	using BakerySystem.Services;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
+	using BakerySystem.Web.Infrastructure.Extensions;
 	//using BakerySystem.Web.Infrastructure.ModelBinders;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
@@ -34,11 +35,23 @@ namespace BakerySystem.Web
 			})
 				.AddEntityFrameworkStores<BakeryDbContext>();
 
-			builder.Services.AddScoped<IProductService, ProductService>();
-			builder.Services.AddScoped<ICategoryService, CategoryService>();
-			builder.Services.AddScoped<IOrderService, OrderService>();
+			builder.Services.AddApplicationServices(typeof(IProductService));
+
+			//builder.Services.AddScoped<IProductService, ProductService>();
+			//builder.Services.AddScoped<ICategoryService, CategoryService>();
+			//builder.Services.AddScoped<IOrderService, OrderService>();
 
 			builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+			
+			builder.Services.AddMemoryCache();
+			builder.Services.AddResponseCaching();
+
+			builder.Services.ConfigureApplicationCookie(cfg =>
+			{
+				cfg.LoginPath = "/User/Login";
+				cfg.AccessDeniedPath = "/Home/Error/401";
+			});
 
 			builder.Services
 				.AddControllersWithViews()
@@ -71,6 +84,8 @@ namespace BakerySystem.Web
 			app.UseStaticFiles();
 
 			app.UseRouting();
+
+			app.UseResponseCaching();
 
 			app.UseAuthentication();
 			app.UseAuthorization();

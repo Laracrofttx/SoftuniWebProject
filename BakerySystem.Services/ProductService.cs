@@ -5,6 +5,7 @@
 	using System.Threading.Tasks;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Services.Statistics;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.EntityFrameworkCore;
@@ -164,6 +165,15 @@
 			return currentProduct;
 		}
 
-		
+		public async Task<StatisticServiceModel> GetStatisticsAsynch()
+		{
+			return new StatisticServiceModel()
+			{
+
+				TotalProducts = await this.dbContext.Products.CountAsync(),
+				TotalCategories = await this.dbContext.Categories.CountAsync(),
+
+			};
+		}
 	}
 }
