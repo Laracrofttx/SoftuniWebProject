@@ -18,10 +18,13 @@
 			<p>@Model.Description</p>
 			<p>Category: <b>@Model.Category</b></p>
 
-			<a class="btn btn-warning" asp-controller="Product" asp-action="Edit"
-			   asp-route-id="@Model.Id">Edit</a>
-			<a asp-controller="Product" asp-action="Delete" asp-route-id="@Model.Id"
-			   class="btn btn-danger">Delete</a>
+			<form>
+				<a class="btn btn-warning" asp-controller="Product" asp-action="Edit"
+				   asp-route-id="@Model.Id">Edit</a>
+				<a class="ml-2 btn btn-danger" asp-controller="Product" asp-action="Delete"
+				   asp-route-id="@Model.Id">Delete</a>
+			</form>
 		</div>
 	</div>
 </div>
+

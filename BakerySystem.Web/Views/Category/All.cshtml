@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CategoryListingViewModel>;
+
+
+@{
+
+	ViewData["Title"] = "Current Categories";
+
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+
+<div class="list-group">
+	@foreach (CategoryListingViewModel category in Model)
+	{
+		<div class="row mt-3">
+			<div class="col-sm-4 col-md-3">
+				<a class="list-group-item list-group-item-action" asp-controller="Category" asp-action="All" asp-route-id="@category.Id">@category.Name</a>
+				<a asp-area="" asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id"
+				   class="btn btn-warning">Edit</a>
+				<a asp-area="" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id"
+				   class="btn btn-danger">Delete</a>
+			</div>
+		</div>
+	}
+
+</div>

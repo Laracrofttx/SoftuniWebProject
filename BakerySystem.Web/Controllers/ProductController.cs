@@ -14,14 +14,13 @@
 
 	public class ProductController : Controller
 	{
-		private readonly BakeryDbContext dbContext;
-
+		public readonly BakeryDbContext dbContext;
 
 		private readonly IProductService productService;
 		private readonly ICategoryService categoryService;
 		
 
-		public ProductController(BakeryDbContext dbContext, IProductService productService, ICategoryService categoryService)
+		public ProductController(BakeryDbContext dbContext,IProductService productService, ICategoryService categoryService)
 		{
 			this.dbContext = dbContext;
 			this.productService = productService;
@@ -211,7 +210,7 @@
 				await this.productService.CreateProductAsync(product);
 
 			}
-			catch (Exception _ex)
+			catch (Exception)
 			{
 				this.ModelState.AddModelError(string.Empty, "Unexpected error occured");
 				product.Categories = await this.categoryService.GetProductCategoryAsync();

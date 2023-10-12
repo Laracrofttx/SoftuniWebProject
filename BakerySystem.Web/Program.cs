@@ -5,6 +5,7 @@ namespace BakerySystem.Web
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.Infrastructure.Extensions;
+	using Microsoft.AspNetCore.Identity;
 	//using BakerySystem.Web.Infrastructure.ModelBinders;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;

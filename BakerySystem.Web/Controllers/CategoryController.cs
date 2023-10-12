@@ -2,6 +2,7 @@
 {
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.Category;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
@@ -32,18 +33,28 @@
 
 		}
 
-		public async Task<IActionResult> Category()
-		{
-			var categories = await this.dbContext
-				.Categories
-				.OrderBy(c => c.Id)
-				.ToArrayAsync();
+		public async Task<IActionResult> All()
+		{ 
+		
+			IEnumerable<CategoryListingViewModel> allCategories = await this.categoryService
+				.AllCategoriesAsync();
+		
+		
+			return View(allCategories);
+		}
+
+		//public async Task<IActionResult> Category()
+		//{
+		//	var categories = await this.dbContext
+		//		.Categories
+		//		.OrderBy(c => c.Id)
+		//		.ToArrayAsync();
 			
 
-			IEnumerable<Category> category = await this.dbContext.Categories.ToArrayAsync();
-			return View(categories);
+		//	IEnumerable<Category> category = await this.dbContext.Categories.ToArrayAsync();
+		//	return View(categories);
 		
-		}
+		//}
 
 
 		[HttpGet]
@@ -68,7 +79,7 @@
 			await this.dbContext.AddAsync(category);
 			await this.dbContext.SaveChangesAsync();
 
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("All", "Category");
 
 		}
 

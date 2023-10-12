@@ -42,6 +42,11 @@ namespace BakerySystem.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -135,6 +140,8 @@ namespace BakerySystem.Data.Migrations
                     b.HasKey("CartItemId");
 
                     b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("CartItems");
                 });
@@ -320,9 +327,6 @@ namespace BakerySystem.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("CartItemId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -348,8 +352,6 @@ namespace BakerySystem.Data.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CartItemId");
 
                     b.HasIndex("CategoryId");
 
@@ -545,6 +547,14 @@ namespace BakerySystem.Data.Migrations
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("BakerySystem.Data.Models.Product", "Products")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Order", b =>
@@ -560,10 +570,6 @@ namespace BakerySystem.Data.Migrations
 
             modelBuilder.Entity("BakerySystem.Data.Models.Product", b =>
                 {
-                    b.HasOne("BakerySystem.Data.Models.CartItem", null)
-                        .WithMany("Products")
-                        .HasForeignKey("CartItemId");
-
                     b.HasOne("BakerySystem.Data.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
@@ -627,11 +633,6 @@ namespace BakerySystem.Data.Migrations
             modelBuilder.Entity("BakerySystem.Data.Models.Cart", b =>
                 {
                     b.Navigation("ShoppingCartItems");
-                });
-
-            modelBuilder.Entity("BakerySystem.Data.Models.CartItem", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Category", b =>

@@ -8,6 +8,14 @@
 
 	public static class EntityValidationConstants
 	{
+		public static class IdentityUser
+		{
+
+			public const int FullNameMaxLength = 40;
+		
+		
+		}
+
 		public static class Category
 		{
 			public const int NameMinLength = 2;

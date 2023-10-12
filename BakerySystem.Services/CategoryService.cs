@@ -47,12 +47,12 @@
 			return result;
 		}
 
-		public async Task<IEnumerable<CategoryViewModel>> AllCategoriesAsync()
+		public async Task<IEnumerable<CategoryListingViewModel>> AllCategoriesAsync()
 		{
-			IEnumerable<CategoryViewModel> categories = await this.dbContext
+			IEnumerable<CategoryListingViewModel> categories = await this.dbContext
 				.Categories
 				.AsNoTracking()
-				.Select(c => new CategoryViewModel
+				.Select(c => new CategoryListingViewModel
 				{
 
 					Id = c.Id,

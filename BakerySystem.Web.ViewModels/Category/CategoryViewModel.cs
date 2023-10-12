@@ -15,7 +15,7 @@
 		[Display(Name ="Category Name")]
 		public string Name { get; set; } = null!;
 
-
+		public IEnumerable<CategoryViewModel> AllCategories { get; set; } = null!;
 		
 
 	}
