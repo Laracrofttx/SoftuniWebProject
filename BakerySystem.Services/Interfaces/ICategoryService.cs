@@ -14,6 +14,10 @@ namespace BakerySystem.Services.Interfaces
 
 		Task<bool> ExistByIdAsync(int categoryId);
 
-		//Task<int> Create(string categoryName, int categoryId);
+
+		Task<CategoryViewModel> EditByIdAsync(int id);
+
+		Task EditByIdAndFormModelAsync(int id, CategoryViewModel model);
+
 	}
 }

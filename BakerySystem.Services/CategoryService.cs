@@ -1,7 +1,7 @@
 ﻿namespace BakerySystem.Services
 {
 	using Microsoft.EntityFrameworkCore;
-	
+
 	using BakerySystem.Web.Data;
 	using System.Collections.Generic;
 	using BakerySystem.Services.Interfaces;
@@ -9,6 +9,7 @@
 	using BakerySystem.Data.Models;
 	using System.Threading.Tasks;
 	using BakerySystem.Web.ViewModels.Product;
+	using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 	public class CategoryService : ICategoryService
 	{
@@ -84,13 +85,39 @@
 			return category.Id;
 		}
 
+		public async Task<CategoryViewModel> EditByIdAsync(int id)
+		{
+
+			var categoryForEdit = await this.dbContext
+				.Categories
+				.FirstAsync(c => c.Id == id);
 
 
+			return new CategoryViewModel
+			{
+
+				Id = categoryForEdit.Id,
+				Name = categoryForEdit.Name,
 
 
+			};
 
+		}
+
+		public async Task EditByIdAndFormModelAsync(int id, CategoryViewModel model)
+		{
+			Category category = await this.dbContext
+				.Categories
+				.FirstAsync(c => c.Id == id);
+
+			category.Id = id;
+			category.Name = model.Name;
+
+
+			await dbContext.SaveChangesAsync();
+
+		}
 	}
-
 }
 
 

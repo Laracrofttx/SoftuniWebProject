@@ -34,33 +34,20 @@
 		}
 
 		public async Task<IActionResult> All()
-		{ 
-		
+		{
+
 			IEnumerable<CategoryListingViewModel> allCategories = await this.categoryService
 				.AllCategoriesAsync();
-		
-		
+
+
 			return View(allCategories);
 		}
-
-		//public async Task<IActionResult> Category()
-		//{
-		//	var categories = await this.dbContext
-		//		.Categories
-		//		.OrderBy(c => c.Id)
-		//		.ToArrayAsync();
-			
-
-		//	IEnumerable<Category> category = await this.dbContext.Categories.ToArrayAsync();
-		//	return View(categories);
-		
-		//}
 
 
 		[HttpGet]
 		public async Task<IActionResult> Create()
 		{
-			
+
 			return View();
 
 		}
@@ -83,11 +70,59 @@
 
 		}
 
-		
 
 
-	}
+		[HttpGet]
+		public async Task<IActionResult> Edit(int id)
+		{
+			if (await this.categoryService.ExistByIdAsync(id) == false)
+			{
 
+				return RedirectToAction("All", "Category");
 
+			}
+
+			try
+			{
+				CategoryViewModel categoryForEdit = await this.categoryService.EditByIdAsync(id);
+
+				return View(categoryForEdit);
+
+			}
+			catch (Exception)
+			{
+				return BadRequest();
+
+			}
+
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Edit(int id, CategoryViewModel model)
+		{
+
+			if (await this.categoryService.ExistByIdAsync(model.Id) == false)
+			{
+
+				this.ModelState.AddModelError(nameof(model.Id), "Category does not exist!");
+
+			}
+
+			try
+			{
+				await this.categoryService.EditByIdAndFormModelAsync(id, model);
+			}
+			catch (Exception)
+			{
+
+				this.ModelState.AddModelError(string.Empty, "Unexpected error occured!");
+
+				return this.View(model);
+			}
+
+			return RedirectToAction("All", "Category");
+		}
+
+	} 
 
 }

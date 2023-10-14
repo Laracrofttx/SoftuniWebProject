@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Product;
     using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
@@ -22,12 +23,6 @@
        
         public async Task<IActionResult> Index()
         {
-            
-            var categories = await this.dbContext.Categories.ToListAsync();
-
-            //IEnumerable <ProductIndexViewModel> productViewModel =
-            //    await this.productService.AllProductsAsync();
-
             var products = await this.dbContext
                 .Products
                 .Select(p => new ProductIndexViewModel

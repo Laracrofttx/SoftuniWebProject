@@ -23,7 +23,7 @@ namespace BakerySystem.Web.ViewModels.Product
         public decimal Price { get; set; } 
 
         [Required]
-        [Display(Name = "Image Link")]
+        [Display(Name = "Image")]
         [Url]
         public string ImageUrl { get; set; } = null!;
 
