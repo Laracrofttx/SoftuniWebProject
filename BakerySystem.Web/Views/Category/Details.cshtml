@@ -1,1 +1,26 @@
-﻿
+﻿@model CategoryDetailsViewModel
+
+
+@{
+
+	ViewData["Title"] = "Category Details";
+
+}
+
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<hr />
+<div class="container" style="display:inline">
+	<div class="row">
+		<div class="card col-8 border-0">
+			<p style="font-size:25px;"><u>@Model.Name</u></p>
+			<p>Total Products: <b></b></p>
+			<form>
+				<a class="btn btn-warning" asp-controller="Category" asp-action="Edit"
+				   asp-route-id="@Model.Id">Edit</a>
+				<a class="ml-2 btn btn-danger" asp-controller="Category" asp-action="Delete"
+				   asp-route-id="@Model.Id">Delete</a>
+			</form>
+		</div>
+	</div>
+</div>

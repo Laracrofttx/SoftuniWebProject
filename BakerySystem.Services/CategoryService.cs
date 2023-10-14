@@ -85,6 +85,24 @@
 			return category.Id;
 		}
 
+		public async Task<CategoryDetailsViewModel> CategoryDetailsByIdAsync(int id)
+		{
+			Category category = await this.dbContext
+				.Categories
+				.Include(c => c.Products)
+				.Where(c => c.Id == id)
+				.FirstAsync();
+
+			return new CategoryDetailsViewModel()
+			{
+
+				Id = category.Id,
+				Name = category.Name
+
+			};
+
+		}
+
 		public async Task<CategoryViewModel> EditByIdAsync(int id)
 		{
 
@@ -117,6 +135,39 @@
 			await dbContext.SaveChangesAsync();
 
 		}
+
+		public async Task<CategoryDeleteViewModel> DeleteByIdAsync(int categoryId)
+		{
+			var category = await this.dbContext
+				.Categories
+				.Select(c => new CategoryDeleteViewModel 
+				{
+				
+					Id = c.Id,
+					Name = c.Name
+					
+					
+				})
+				.FirstAsync();
+
+			return category;
+			
+			
+		}
+
+		public async Task DeleteAsync(int categoryId)
+		{
+			Category categoryToDelete = await this.dbContext
+				.Categories
+				.FirstAsync(c => c.Id == categoryId);
+
+			categoryToDelete.IsAvailable = false;
+			
+			dbContext.Remove(categoryToDelete);
+			await dbContext.SaveChangesAsync();
+		}
+
+		
 	}
 }
 

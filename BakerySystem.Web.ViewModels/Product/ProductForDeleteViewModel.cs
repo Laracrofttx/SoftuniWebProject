@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BakerySystem.Web.ViewModels.Product
+﻿namespace BakerySystem.Web.ViewModels.Product
 {
+	using System.ComponentModel.DataAnnotations;
 	public class ProductForDeleteViewModel
 	{
 
@@ -12,7 +11,7 @@ namespace BakerySystem.Web.ViewModels.Product
 		public decimal Price { get; set; }
 
 
-		[Display(Name="Image Link")]
+		[Display(Name = "Image Link")]
 		public string ImageUrl { get; set; } = null!;
 
 

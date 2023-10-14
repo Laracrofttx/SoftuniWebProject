@@ -39,6 +39,17 @@
 			await this.dbContext.SaveChangesAsync();
 		}
 
+		public async Task<bool> ExistByIdAsynch(int id)
+		{
+			bool result = await this.dbContext
+				.Products
+				.AnyAsync(p => p.Id == id);
+
+			await dbContext.SaveChangesAsync();
+
+			return result;
+
+		}
 	
 		public async Task EditProductByIdAndFormModel(int id, ProductFormModel model)
 		{
@@ -60,17 +71,6 @@
 
 		}
 
-		public async Task<bool> ExistByIdAsynch(int id)
-		{
-			bool result = await this.dbContext
-				.Products
-				.AnyAsync(p => p.Id == id);
-
-			await dbContext.SaveChangesAsync();
-
-			return result;
-
-		}
 
 	
 		public async Task<ProductFormModel> ProductForEditByIdAsync(int id)
@@ -100,8 +100,6 @@
 			var product = await this.dbContext
 				.Products
 				.FindAsync(productId);
-
-
 
 			return new ProductForDeleteViewModel()
 			{

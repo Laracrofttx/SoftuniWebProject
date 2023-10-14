@@ -15,11 +15,13 @@
 		private readonly BakeryDbContext dbContext;
 
 		private readonly ICategoryService categoryService;
+		private readonly IProductService productService;
 
-		public CategoryController(BakeryDbContext dbContext, ICategoryService categoryService)
+		public CategoryController(BakeryDbContext dbContext, ICategoryService categoryService, IProductService productService)
 		{
 			this.dbContext = dbContext;
 			this.categoryService = categoryService;
+			this.productService = productService;
 		}
 
 
@@ -70,6 +72,34 @@
 
 		}
 
+		[HttpGet]
+
+		public async Task<IActionResult> Details(int id)
+		{
+			bool category = await this.categoryService.ExistByIdAsync(id);
+
+			if (!category)
+			{
+				return RedirectToAction("All", "Category");
+			}
+
+			try
+			{
+
+				CategoryDetailsViewModel categoryModel = await this.categoryService.CategoryDetailsByIdAsync(id);
+
+				
+				return View(categoryModel);
+
+			}
+			catch (Exception)
+			{
+
+				return BadRequest();
+			}
+
+
+		}
 
 
 		[HttpGet]
@@ -123,6 +153,63 @@
 			return RedirectToAction("All", "Category");
 		}
 
-	} 
+
+
+		[HttpGet]
+		public async Task<IActionResult> Delete(int categoryId)
+		{
+
+			//bool categoryExist = await this.categoryService.ExistByIdAsync(categoryId);
+
+			//if (!categoryExist)
+			//{
+			//	return RedirectToAction("All", "Category");
+			//}
+
+			try
+			{
+				CategoryDeleteViewModel categoryModel = await this.categoryService.DeleteByIdAsync(categoryId);
+
+				return View(categoryModel);
+
+			}
+			catch (Exception)
+			{
+				return BadRequest();
+			}
+
+
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Delete(int categoryId, CategoryDeleteViewModel model)
+		{
+			//bool categoryExists = await this.categoryService
+			//	.ExistByIdAsync(categoryId);
+
+			//if (!categoryExists)
+			//{
+
+			//	return RedirectToAction("All", "Category");
+
+			//}
+
+			try
+			{
+				await this.categoryService.DeleteAsync(categoryId);
+
+				return RedirectToAction("All", "Category");
+			}
+			catch (Exception)
+			{
+
+				return BadRequest();
+			}
+
+
+
+		}
+
+	}
 
 }
