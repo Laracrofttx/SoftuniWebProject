@@ -73,7 +73,6 @@
 		}
 
 		[HttpGet]
-
 		public async Task<IActionResult> Details(int id)
 		{
 			bool category = await this.categoryService.ExistByIdAsync(id);
@@ -156,19 +155,19 @@
 
 
 		[HttpGet]
-		public async Task<IActionResult> Delete(int categoryId)
+		public async Task<IActionResult> Delete(int id)
 		{
 
-			//bool categoryExist = await this.categoryService.ExistByIdAsync(categoryId);
+			bool categoryExist = await this.categoryService.ExistByIdAsync(id);
 
-			//if (!categoryExist)
-			//{
-			//	return RedirectToAction("All", "Category");
-			//}
+			if (!categoryExist)
+			{
+				return RedirectToAction("All", "Category");
+			}
 
 			try
 			{
-				CategoryDeleteViewModel categoryModel = await this.categoryService.DeleteByIdAsync(categoryId);
+				CategoryDeleteViewModel categoryModel = await this.categoryService.DeleteByIdAsync(id);
 
 				return View(categoryModel);
 
@@ -182,21 +181,21 @@
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Delete(int categoryId, CategoryDeleteViewModel model)
+		public async Task<IActionResult> Delete(int id, CategoryDeleteViewModel model)
 		{
-			//bool categoryExists = await this.categoryService
-			//	.ExistByIdAsync(categoryId);
+			bool categoryExists = await this.categoryService
+				.ExistByIdAsync(id);
 
-			//if (!categoryExists)
-			//{
+			if (!categoryExists)
+			{
 
-			//	return RedirectToAction("All", "Category");
+				return RedirectToAction("All", "Category");
 
-			//}
+			}
 
 			try
 			{
-				await this.categoryService.DeleteAsync(categoryId);
+				await this.categoryService.DeleteAsync(id);
 
 				return RedirectToAction("All", "Category");
 			}

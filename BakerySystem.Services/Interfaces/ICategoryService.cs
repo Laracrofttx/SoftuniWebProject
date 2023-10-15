@@ -20,9 +20,9 @@ namespace BakerySystem.Services.Interfaces
 
 		Task EditByIdAndFormModelAsync(int id, CategoryViewModel model);
 
-		Task<CategoryDeleteViewModel> DeleteByIdAsync(int categoryId);
+		Task<CategoryDeleteViewModel> DeleteByIdAsync(int id);
 
-		Task DeleteAsync(int categoryId);
+		Task DeleteAsync(int id);
 
 	}
 }

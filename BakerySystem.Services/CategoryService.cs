@@ -89,7 +89,6 @@
 		{
 			Category category = await this.dbContext
 				.Categories
-				.Include(c => c.Products)
 				.Where(c => c.Id == id)
 				.FirstAsync();
 
@@ -111,7 +110,7 @@
 				.FirstAsync(c => c.Id == id);
 
 
-			return new CategoryViewModel
+			return new CategoryViewModel()
 			{
 
 				Id = categoryForEdit.Id,
@@ -136,32 +135,34 @@
 
 		}
 
-		public async Task<CategoryDeleteViewModel> DeleteByIdAsync(int categoryId)
+		public async Task<CategoryDeleteViewModel> DeleteByIdAsync(int id)
 		{
-			var category = await this.dbContext
+			var categoryForDelete = await this.dbContext
 				.Categories
-				.Select(c => new CategoryDeleteViewModel 
-				{
-				
-					Id = c.Id,
-					Name = c.Name
-					
-					
-				})
-				.FirstAsync();
+				.FirstAsync(c => c.Id == id);
 
-			return category;
-			
-			
+
+			return new CategoryDeleteViewModel()
+			{
+
+				Id = id,
+				Name = categoryForDelete.Name,
+
+
+			};
+
+
+
+
 		}
 
-		public async Task DeleteAsync(int categoryId)
+		public async Task DeleteAsync(int id)
 		{
 			Category categoryToDelete = await this.dbContext
 				.Categories
-				.FirstAsync(c => c.Id == categoryId);
+				.FirstAsync(c => c.Id == id);
 
-			categoryToDelete.IsAvailable = false;
+			//categoryToDelete.IsAvailable = false;
 			
 			dbContext.Remove(categoryToDelete);
 			await dbContext.SaveChangesAsync();

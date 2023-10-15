@@ -97,5 +97,16 @@
 			public const int FeedBackMinLength = 15;
 			public const int FeedBackMaxLength = 100;
 		}
+
+		public static class User
+		{
+
+			public const int FirstNameMinLength = 2;
+			public const int FirstNameMaxLength = 15;
+			
+			public const int LastNameMinLength = 2;
+			public const int LastNameMaxLength = 15;
+		
+		}
 	}
 }
