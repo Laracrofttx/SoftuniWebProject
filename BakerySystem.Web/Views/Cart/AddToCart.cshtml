@@ -1,6 +1,6 @@
 ﻿@using BakerySystem.Data.Models;
 @using BakerySystem.Web.ViewModels.ShoppingCart;
-@model CartItem
+
 
 @{
 
@@ -16,30 +16,33 @@
 			<div class="col">
 				<p><span class="h2">Shopping Cart </span><span class="h4"></span></p>
 
+				@foreach (var item in ViewBag.CartItem)
+				{
+					
 				<div class="card mb-4">
 					<div class="card-body p-4">
 
 						<div class="row align-items-center">
 							<div class="col-md-2">
-								<img src="@Model.Image"
+								<img src="@item?.Image"
 									 class="img-fluid" alt="">
 							</div>
 							<div class="col-md-2 d-flex justify-content-center">
 								<div>
 									<p class="small text-muted mb-4 pb-2">Product name</p>
-									<p class="lead fw-normal mb-0">@Model.ProductName</p>
+									<p class="lead fw-normal mb-0">@item?.ProductName</p>
 								</div>
 							</div>
 							<div class="col-md-2 d-flex justify-content-center">
 								<div>
 									<p class="small text-muted mb-4 pb-2">Price</p>
-									<p class="lead fw-normal mb-0">@Model.Price </P>
+									<p class="lead fw-normal mb-0">@item?.Price </P>
 								</div>
 							</div>
 							<div class="col-md-2 d-flex justify-content-center">
 								<div>
 									<p class="small text-muted mb-4 pb-2">Quantity</p>
-									<p class="lead fw-normal mb-0">@Model.Quantity</p>
+									<p class="lead fw-normal mb-0">@item?.Quantity</p>
 								</div>
 							</div>
 						</div>
@@ -52,19 +55,20 @@
 
 						<div class="float-end">
 							<p class="mb-0 me-5 d-flex align-items-center">
-								<span class="small text-muted me-2">Order total:</span>@Model.TotalAmount<span class="lead fw-normal"></span>
+								<span class="small text-muted me-2">Order total:</span>@item?.TotalAmount<span class="lead fw-normal"></span>
 							</p>
 						</div>
 
 					</div>
 				</div>
+				}
 
-				<div class="d-flex justify-content-end">
-					<a asp-controller="Product" asp-action="All" asp-route-id="@Model.ProductId"
+				@* <div class="d-flex justify-content-end">
+					<a asp-controller="Product" asp-action="All" asp-route-id="@ViewBag.CartItem?.ProductId"
 							   class="btn btn-light btn-lg me-2">Continue shopping</a>
                     <a asp-controller="Order" asp-action="Checkout"
 							   class="btn btn-primary btn-lg">Checkout</a>
-				</div>
+				</div> *@
 
 			</div>
 		</div>

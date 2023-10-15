@@ -42,7 +42,7 @@
 						<h5 class="card-title">@product.Name @product.Price</h5>
 						@* <p class="card-text" style="min-height: 120px;">@product.Description</p> *@
 						<a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@product.Id"
-						   class="btn btn-primary float-end">Add to Card</a>
+						   class="btn btn-primary float-end">Add to Cart</a>
 						<a asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"
 						   class="btn btn-success">Details</a>
 

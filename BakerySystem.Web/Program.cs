@@ -43,7 +43,16 @@ namespace BakerySystem.Web
 			//builder.Services.AddScoped<IOrderService, OrderService>();
 
 			builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+			
 
+			builder.Services.AddMemoryCache();
+			builder.Services.AddResponseCaching();
+
+			builder.Services.ConfigureApplicationCookie(config =>
+			{
+				config.LoginPath = "/User/Login";
+
+			});
 			
 			builder.Services.AddMemoryCache();
 			builder.Services.AddResponseCaching();
