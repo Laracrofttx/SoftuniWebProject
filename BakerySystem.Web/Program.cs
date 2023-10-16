@@ -1,14 +1,17 @@
 namespace BakerySystem.Web
 {
-	using BakerySystem.Data.Models;
-	using BakerySystem.Services;
-	using BakerySystem.Services.Interfaces;
-	using BakerySystem.Web.Data;
-	using BakerySystem.Web.Infrastructure.Extensions;
 	using Microsoft.AspNetCore.Identity;
-	//using BakerySystem.Web.Infrastructure.ModelBinders;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
+
+	using BakerySystem.Web.Data;
+	using BakerySystem.Data.Models;
+	using BakerySystem.Services;
+	using Infrastructure.Extensions;
+	//using BakerySystem.Web.Infrastructure.ModelBinders;
+	using BakerySystem.Services.Interfaces;
+
+	using static BakerySystem.Common.GeneralApplicationConstants;
 	
 	public class Program
 	{
@@ -39,16 +42,12 @@ namespace BakerySystem.Web
 
 			builder.Services.AddApplicationServices(typeof(IProductService));
 
-			//builder.Services.AddScoped<IProductService, ProductService>();
-			//builder.Services.AddScoped<ICategoryService, CategoryService>();
-			//builder.Services.AddScoped<IOrderService, OrderService>();
+			////builder.Services.AddScoped<IProductService, ProductService>();
+			////builder.Services.AddScoped<ICategoryService, CategoryService>();
+			////builder.Services.AddScoped<IOrderService, OrderService>();
 
-			builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+			//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			
-
-			builder.Services.AddMemoryCache();
-			builder.Services.AddResponseCaching();
-
 			builder.Services.ConfigureApplicationCookie(config =>
 			{
 				config.LoginPath = "/User/Login";
@@ -90,6 +89,7 @@ namespace BakerySystem.Web
 
 				app.UseHsts();
 			}
+			
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
@@ -100,6 +100,8 @@ namespace BakerySystem.Web
 
 			app.UseAuthentication();
 			app.UseAuthorization();
+
+			app.SeedAdministrator(AdminEmail);
 
 			app.MapDefaultControllerRoute();
 
