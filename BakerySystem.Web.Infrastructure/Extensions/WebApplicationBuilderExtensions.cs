@@ -4,8 +4,9 @@
     using Microsoft.Extensions.DependencyInjection;
     using BakerySystem.Services;
     using BakerySystem.Services.Interfaces;
+	using Microsoft.AspNetCore.Builder;
 
-    public static class WebApplicationBuilderExtensions
+	public static class WebApplicationBuilderExtensions
     {
         /// <summary>
         /// This method registers all services with their interfaces and implementation of given assembly
@@ -39,8 +40,15 @@
                 services.AddScoped(interfaceType, implementationType);
             }
 
-           
+        }
 
+        public static void SeedAdministrator(IApplicationBuilder app, string email)
+        {
+
+            using IServiceScope scopedServices = app.ApplicationServices.CreateScope();
+
+            IServiceProvider serviceProvider = scopedServices.ServiceProvider;
+        
         }
 
     }

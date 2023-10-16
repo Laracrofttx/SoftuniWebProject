@@ -34,6 +34,7 @@ namespace BakerySystem.Web
 				options.Password.RequireNonAlphanumeric = builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
 				options.Password.RequiredLength = builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
 			})
+				.AddRoles<IdentityRole<Guid>>()
 				.AddEntityFrameworkStores<BakeryDbContext>();
 
 			builder.Services.AddApplicationServices(typeof(IProductService));

@@ -21,6 +21,8 @@ namespace BakerySystem.Data.Models
 
 		public int ProductId { get; set; }
 
+		public DateTime AbsoluteExpiration { get; set; }
+
 		public virtual Product Products { get; set; } = null!;
 
 	}

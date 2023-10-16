@@ -4,7 +4,7 @@ namespace BakerySystem.Web.ViewModels.User
 {
 	public class LoginFormModel
 	{
-       
+        
         [Required]
         [EmailAddress]
         public string Email { get; set; } = null!;

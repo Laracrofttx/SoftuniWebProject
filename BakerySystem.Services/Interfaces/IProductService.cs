@@ -25,5 +25,6 @@
 		Task DeleteProductByIdAsynch(int productId);
 
 		Task<StatisticServiceModel> GetStatisticsAsynch();
+
 	}
 }

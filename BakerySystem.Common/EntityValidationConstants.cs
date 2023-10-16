@@ -103,7 +103,7 @@
 			public const int UserNameMinLength = 3;
 			public const int UserNameMaxLength = 15;
 
-			public const int PasswordMinLength = 6;
+			public const int PasswordMinLength = 3;
 			public const int PasswordMaxLength = 100;
 
 			public const int FirstNameMinLength = 2;

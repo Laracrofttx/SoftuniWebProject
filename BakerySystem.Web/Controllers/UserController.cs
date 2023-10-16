@@ -10,15 +10,15 @@
 
     public class UserController : Controller
 	{
-		private readonly SignInManager<ApplicationUser> _signInManager;
-		private readonly UserManager<ApplicationUser> _userManager;
+		private readonly SignInManager<ApplicationUser> signInManager;
+		private readonly UserManager<ApplicationUser> userManager;
         private readonly IMemoryCache memoryCache;
 
 
         public UserController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IMemoryCache memoryCache)
         {
-			this._signInManager = signInManager;
-			this._userManager = userManager;
+			this.signInManager = signInManager;
+			this.userManager = userManager;
 			this.memoryCache = memoryCache;
 				
         }
@@ -47,11 +47,11 @@
 
 			};
 
-			await this._userManager.SetEmailAsync(user, model.Email);
-			await this._userManager.SetUserNameAsync(user, model.UserName);
+			await userManager.SetEmailAsync(user, model.Email);
+			await userManager.SetUserNameAsync(user, model.Email);
 
 			IdentityResult result = 
-				await this._userManager.CreateAsync(user, model.Password);
+				await userManager.CreateAsync(user, model.Password);
 
 			if (!result.Succeeded)
 			{
@@ -62,7 +62,7 @@
 
 				return View(model);
 			}
-				await this._signInManager.SignInAsync(user, false);
+				await this.signInManager.SignInAsync(user, false);
 
 				return RedirectToAction("Index", "Home");
 		}
@@ -80,7 +80,7 @@
 
 			};
 
-			return this.View(model);
+			return View(model);
 		
 		}
 
@@ -89,20 +89,20 @@
 		{
 			if (!ModelState.IsValid)
 			{
-				return this.View(model);
+				return View(model);
 			}
 
-			var result = await this._signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+			var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 		     
 
 			if (!result.Succeeded)
 			{
-				this.TempData["ErrorMessage"] = "There was a error while loggin you in! Please try again later or contact an administrator.";
+				TempData["ErrorMessage"] = "There was a error while loggin you in! Please try again later or contact an administrator.";
 
-				return this.View(model);
+				return View(model);
 			}
 
-			return this.Redirect(model.ReturnUrl ?? "/Home/Index");
+			return Redirect(model.ReturnUrl ?? "/Home/Index");
 		}
 	}
 }
