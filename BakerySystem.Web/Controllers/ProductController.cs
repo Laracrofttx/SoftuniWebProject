@@ -6,12 +6,14 @@
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
+	using BakerySystem.Web.Infrastructure.Extensions;
 	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
 
+	using static Common.GeneralApplicationConstants;
 	public class ProductController : Controller
 	{
 		public readonly BakeryDbContext dbContext;
@@ -49,6 +51,11 @@
 
 			}
 
+			if (!User.isAdmin())
+			{
+				return Unauthorized();
+			}
+
 			try
 			{
 				ProductFormModel productModel = await this.productService
@@ -76,6 +83,11 @@
 			{
 
 				return BadRequest();
+			}
+
+			if (!User.isAdmin())
+			{
+				return Unauthorized();
 			}
 
 			if (!ModelState.IsValid)
@@ -120,6 +132,11 @@
 			if (!pr)
 			{
 				return RedirectToAction("All", "Product");
+			}
+
+			if (!User.isAdmin())
+			{
+				return Unauthorized();
 			}
 
 			try
@@ -195,6 +212,10 @@
 
 			}
 
+			if (!User.isAdmin())
+			{
+				return Unauthorized();
+			}
 
 			if (!ModelState.IsValid)
 			{
@@ -238,6 +259,11 @@
 
 			}
 
+			if (!User.isAdmin())
+			{
+				return Unauthorized();
+			}
+
 			try
 			{
 				ProductForDeleteViewModel productModel = await this.productService
@@ -267,6 +293,11 @@
 
 				return RedirectToAction("All", "Product");
 
+			}
+
+			if (!User.isAdmin())
+			{
+				return Unauthorized();
 			}
 
 			try

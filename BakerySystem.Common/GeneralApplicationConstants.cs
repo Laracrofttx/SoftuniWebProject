@@ -5,7 +5,7 @@
         public const int ReleaseYear = 2023;
 
         public const string AdminRoleName = "Administrator";
-        public const string AdminEmail = "Denis_Georgiev@gmail.com";
+        public const string AdminEmail = "DenisGeorgiev@gmail.net";
 
 	}
 }

@@ -1,4 +1,7 @@
 ﻿@model ProductDetailsServiceModel
+
+@using static BakerySystem.Common.GeneralApplicationConstants;
+
 @{
 	ViewBag.Title = "Details";
 }
@@ -18,12 +21,16 @@
 			<p>@Model.Description</p>
 			<p>Category: <b>@Model.Category</b></p>
 
-			<form>
-				<a class="btn btn-warning" asp-controller="Product" asp-action="Edit"
-				   asp-route-id="@Model.Id">Edit</a>
-				<a class="ml-2 btn btn-danger" asp-controller="Product" asp-action="Delete"
-				   asp-route-id="@Model.Id">Delete</a>
-			</form>
+			@if (this.User.IsInRole(AdminRoleName))
+			{
+				<form>
+					<a class="btn btn-warning" asp-controller="Product" asp-action="Edit"
+					   asp-route-id="@Model.Id">Edit</a>
+					<a class="ml-2 btn btn-danger" asp-controller="Product" asp-action="Delete"
+					   asp-route-id="@Model.Id">Delete</a>
+				</form>
+
+			}
 		</div>
 	</div>
 </div>
