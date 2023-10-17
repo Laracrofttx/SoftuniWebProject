@@ -5,31 +5,34 @@
 
 	using BakerySystem.Data.Models;
 	using BakerySystem.Web.ViewModels.User;
-    using Microsoft.AspNetCore.Authentication;
-    using Microsoft.Extensions.Caching.Memory;
+	using Microsoft.AspNetCore.Authentication;
+	using Microsoft.Extensions.Caching.Memory;
+	using Griesoft.AspNetCore.ReCaptcha;
 
-    public class UserController : Controller
+	public class UserController : Controller
 	{
 		private readonly SignInManager<ApplicationUser> signInManager;
 		private readonly UserManager<ApplicationUser> userManager;
-        private readonly IMemoryCache memoryCache;
+		private readonly IMemoryCache memoryCache;
 
 
-        public UserController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IMemoryCache memoryCache)
-        {
+		public UserController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IMemoryCache memoryCache)
+		{
 			this.signInManager = signInManager;
 			this.userManager = userManager;
 			this.memoryCache = memoryCache;
-				
-        }
 
-        [HttpGet]
+		}
+
+		[HttpGet]
 		public IActionResult Register()
 		{
 			return View();
 		}
 
 		[HttpPost]
+		[ValidateRecaptcha(Action = nameof(Register),
+			ValidationFailedAction = ValidationFailedAction.ContinueRequest)]
 		public async Task<IActionResult> Register(RegisterFormModel model)
 		{
 
@@ -50,7 +53,7 @@
 			await userManager.SetEmailAsync(user, model.Email);
 			await userManager.SetUserNameAsync(user, model.Email);
 
-			IdentityResult result = 
+			IdentityResult result =
 				await userManager.CreateAsync(user, model.Password);
 
 			if (!result.Succeeded)
@@ -62,9 +65,9 @@
 
 				return View(model);
 			}
-				await this.signInManager.SignInAsync(user, false);
+			await this.signInManager.SignInAsync(user, false);
 
-				return RedirectToAction("Index", "Home");
+			return RedirectToAction("Index", "Home");
 		}
 
 		[HttpGet]
@@ -81,7 +84,7 @@
 			};
 
 			return View(model);
-		
+
 		}
 
 		[HttpPost]
@@ -93,7 +96,7 @@
 			}
 
 			var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-		     
+
 
 			if (!result.Succeeded)
 			{

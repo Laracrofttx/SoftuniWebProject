@@ -58,7 +58,9 @@ namespace BakerySystem.Web
 				config.LoginPath = "/User/Login";
 
 			});
-			
+
+			builder.Services.AddRecaptchaService();
+
 			builder.Services.AddMemoryCache();
 			builder.Services.AddResponseCaching();
 
