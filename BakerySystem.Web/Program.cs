@@ -111,9 +111,22 @@ namespace BakerySystem.Web
 
 			app.SeedAdministrator(AdminEmail);
 
-			app.MapDefaultControllerRoute();
+			app.UseEndpoints(config =>
+			{
+				config.MapControllerRoute(
+					name: "areas",
+					pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}"
+				);
 
-			app.MapRazorPages();
+				config.MapControllerRoute(
+					name: "ProtectingUrlRoute",
+					pattern: "/{controller}/{action}/{id}/{information}",
+					defaults: new { Controller = "Product", Action = "Details" });
+
+				config.MapDefaultControllerRoute();
+
+				config.MapRazorPages();
+			});
 
 			app.Run();
 		}

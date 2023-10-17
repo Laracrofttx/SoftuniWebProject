@@ -6,6 +6,7 @@
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Product;
 	using BakerySystem.Web.ViewModels.Review;
+	using Microsoft.AspNetCore.Identity;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
 
@@ -33,7 +34,7 @@
 		public async Task<IActionResult> Add(ReviewFormModel model)
 		{
 
-			if (!ModelState.IsValid)
+			if (ModelState.IsValid)
 			{
 
 				return View(model);
@@ -42,17 +43,16 @@
 
 			try
 			{
-
-				var feedBack = new Review()
+				Review feedBack = new Review()
 				{
-
 					UserName = model.UserName,
 					FeedBack = model.FeedBack
 				};
 
 				await this.dbContext.Reviews.AddAsync(feedBack);
 				await this.dbContext.SaveChangesAsync();
-				return View(model);
+				return RedirectToAction("All", "Review");
+
 			}
 			catch (Exception)
 			{
@@ -64,7 +64,7 @@
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> All(int id,ReviewFormModel model)
+		public async Task<IActionResult> All(int id, ReviewFormModel model)
 		{
 
 			var allReviews = await this.dbContext

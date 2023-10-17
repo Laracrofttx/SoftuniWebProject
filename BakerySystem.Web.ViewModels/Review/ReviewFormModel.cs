@@ -1,10 +1,13 @@
 ﻿namespace BakerySystem.Web.ViewModels.Review
 {
+	using BakerySystem.Data.Models;
+	using Microsoft.AspNetCore.Identity;
 	using System.ComponentModel.DataAnnotations;
 	using static BakerySystem.Common.EntityValidationConstants.FeedBack;
 	public class ReviewFormModel
 	{
-		public int Id { get; set; }
+		
+        public int Id { get; set; }
 
 		[Required]
 		[Display(Name = "User name")]

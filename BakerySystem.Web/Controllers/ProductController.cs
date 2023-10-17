@@ -1,28 +1,25 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
-
-	using System.Collections.Generic;
-	using System.Xml.Linq;
-	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.Infrastructure.Extensions;
-	using BakerySystem.Web.ViewModels.Category;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
 
-	using static Common.GeneralApplicationConstants;
+	using static Common.NotificationMessagesConstants;
+
+	[Authorize]
 	public class ProductController : Controller
 	{
 		public readonly BakeryDbContext dbContext;
 
 		private readonly IProductService productService;
 		private readonly ICategoryService categoryService;
-		
 
-		public ProductController(BakeryDbContext dbContext,IProductService productService, ICategoryService categoryService)
+
+		public ProductController(BakeryDbContext dbContext, IProductService productService, ICategoryService categoryService)
 		{
 			this.dbContext = dbContext;
 			this.productService = productService;
@@ -31,13 +28,31 @@
 		}
 
 
-
-		public async Task<IActionResult> Add() => View(new ProductFormModel
+		public async Task<IActionResult> Add()
 		{
 
-			Categories = await this.categoryService.GetProductCategoryAsync()
+			if (!User.isAdmin())
+			{
 
-		});
+				return RedirectToAction("Index", "Home");
+			}
+
+			return View(new ProductFormModel
+			{
+
+				Categories = await this.categoryService.GetProductCategoryAsync()
+
+
+			});
+
+		}
+
+
+		//public async Task<IActionResult> Add() => View(new ProductFormModel
+		//{
+		//	Categories = await this.categoryService.GetProductCategoryAsync()
+
+		//});
 
 
 		[HttpGet]
@@ -53,7 +68,8 @@
 
 			if (!User.isAdmin())
 			{
-				return Unauthorized();
+
+				return RedirectToAction("Index", "Home");
 			}
 
 			try
@@ -69,9 +85,9 @@
 			{
 
 				return BadRequest();
-				
+
 			}
-			
+
 
 		}
 
@@ -87,7 +103,7 @@
 
 			if (!User.isAdmin())
 			{
-				return Unauthorized();
+				return RedirectToAction("Index", "Home");
 			}
 
 			if (!ModelState.IsValid)
@@ -97,7 +113,7 @@
 				return this.View(model);
 			}
 
-			
+
 			if (await this.categoryService.ExistByIdAsync(model.CategoryId) == false)
 			{
 
@@ -107,6 +123,10 @@
 			try
 			{
 				await this.productService.EditProductByIdAndFormModel(id, model);
+
+
+				TempData[SuccessMessage] = "Product was edited successfully!";
+
 			}
 			catch (Exception)
 			{
@@ -118,13 +138,12 @@
 				return this.View(model);
 			}
 
-			return RedirectToAction(nameof(All), new { id } ) ;
 
+			return RedirectToAction(nameof(All), new { id });
 		}
 
 		[HttpGet]
 		[AllowAnonymous]
-
 		public async Task<IActionResult> Details(int id)
 		{
 			bool pr = await productService.ExistByIdAsynch(id);
@@ -210,7 +229,7 @@
 
 			if (!User.isAdmin())
 			{
-				return Unauthorized();
+				return RedirectToAction("Index", "Home");
 			}
 
 			if (!ModelState.IsValid)
@@ -226,6 +245,7 @@
 
 				await this.productService.CreateProductAsync(product);
 
+				TempData[SuccessMessage] = "Product was added successfully!";
 			}
 			catch (Exception)
 			{
@@ -250,6 +270,7 @@
 
 			if (!productExist)
 			{
+				TempData[ErrorMessage] = "Selected product does not exist!";
 
 				return RedirectToAction("All", "Product");
 
@@ -257,7 +278,7 @@
 
 			if (!User.isAdmin())
 			{
-				return Unauthorized();
+				return RedirectToAction("Index", "Home");
 			}
 
 			try
@@ -293,7 +314,7 @@
 
 			if (!User.isAdmin())
 			{
-				return Unauthorized();
+				return RedirectToAction("Index", "Home");
 			}
 
 			try
@@ -308,7 +329,7 @@
 
 				return BadRequest();
 			}
-		
+
 		}
 
 	}
