@@ -5,6 +5,7 @@
 	using System.Threading.Tasks;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Services.Mapping;
 	using BakerySystem.Services.Statistics;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Product;
@@ -23,17 +24,24 @@
 
 		public async Task CreateProductAsync(ProductFormModel model)
 		{
-			var product = new Product
-			{
-				Id = model.Id,
-				Name = model.Name,
-				Price = model.Price,
-				ImageUrl = model.ImageUrl,
-				Description = model.Description,
-				CategoryId = model.CategoryId
+			// Without AutoMapper
+
+			//var product = new Product
+			//{
+			//	Id = model.Id,
+			//	Name = model.Name,
+			//	Price = model.Price,
+			//	ImageUrl = model.ImageUrl,
+			//	Description = model.Description,
+			//	CategoryId = model.CategoryId
 
 
-			};
+			//};
+
+			// With AutoMapper
+
+			Product product =
+				AutoMapperConfig.MapperInstance.Map<Product>(model);
 
 			await this.dbContext.Products.AddAsync(product);
 			await this.dbContext.SaveChangesAsync();
@@ -50,7 +58,7 @@
 			return result;
 
 		}
-	
+
 		public async Task EditProductByIdAndFormModel(int id, ProductFormModel model)
 		{
 			Product product = await this.dbContext
@@ -66,13 +74,13 @@
 			product.ImageUrl = model.ImageUrl;
 			product.CategoryId = model.CategoryId;
 
-				
+
 			await dbContext.SaveChangesAsync();
 
 		}
 
 
-	
+
 		public async Task<ProductFormModel> ProductForEditByIdAsync(int id)
 		{
 			Product product = await this.dbContext
@@ -89,7 +97,7 @@
 				Description = product.Description,
 				ImageUrl = product.ImageUrl,
 				CategoryId = product.CategoryId,
-				
+
 			};
 
 
@@ -125,11 +133,11 @@
 
 			await dbContext.SaveChangesAsync();
 
-			
+
 		}
 
-        public async Task<ProductDetailsServiceModel> ProductDetailsByIdAsynch(int id)
-        {
+		public async Task<ProductDetailsServiceModel> ProductDetailsByIdAsynch(int id)
+		{
 			Product product = await this.dbContext
 				 .Products
 				 .Include(c => c.Category)
@@ -148,10 +156,10 @@
 
 
 			};
-				
-			
-				
-        }
+
+
+
+		}
 
 		public async Task<Product> GetProductByIdAsynch(int id)
 		{
