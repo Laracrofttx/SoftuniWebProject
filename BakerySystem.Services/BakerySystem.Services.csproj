@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -10,6 +10,7 @@
     <ProjectReference Include="..\BakerySystem.Common\BakerySystem.Common.csproj" />
     <ProjectReference Include="..\BakerySystem.Data.Models\BakerySystem.Data.Models.csproj" />
     <ProjectReference Include="..\BakerySystem.Data\BakerySystem.Data.csproj" />
+    <ProjectReference Include="..\BakerySystem.Services.Mapping\BakerySystem.Services.Mapping.csproj" />
     <ProjectReference Include="..\BakerySystem.Web.ViewModels\BakerySystem.Web.ViewModels.csproj" />
   </ItemGroup>
 

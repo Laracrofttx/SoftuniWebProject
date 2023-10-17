@@ -10,6 +10,7 @@
 	using System.Threading.Tasks;
 	using BakerySystem.Web.ViewModels.Product;
 	using Microsoft.EntityFrameworkCore.Metadata.Internal;
+	using BakerySystem.Services.Mapping;
 
 	public class CategoryService : ICategoryService
 	{
@@ -53,13 +54,7 @@
 			IEnumerable<CategoryListingViewModel> categories = await this.dbContext
 				.Categories
 				.AsNoTracking()
-				.Select(c => new CategoryListingViewModel
-				{
-
-					Id = c.Id,
-					Name = c.Name
-
-				})
+				.To<CategoryListingViewModel>()
 				.ToArrayAsync();
 
 			return categories;

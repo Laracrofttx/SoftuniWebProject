@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BakerySystem.Web.Infrastruc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BakerySystem.WebApi", "BakerySystem.WebApi\BakerySystem.WebApi.csproj", "{B10233BE-DC4E-4422-A828-5C191ADFF4B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakerySystem.Services.Mapping", "BakerySystem.Services.Mapping\BakerySystem.Services.Mapping.csproj", "{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{B10233BE-DC4E-4422-A828-5C191ADFF4B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B10233BE-DC4E-4422-A828-5C191ADFF4B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B10233BE-DC4E-4422-A828-5C191ADFF4B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{0F2B317C-5ABC-4B75-BC0D-1D6F085FEDBE} = {877EB2FB-CDD6-4E1B-9329-DE46C72252FB}
 		{EF32AA24-6B89-435C-B36D-89D1DD39B4B0} = {7FCA85EB-D1D0-4624-859B-1CE6EEE25654}
 		{B10233BE-DC4E-4422-A828-5C191ADFF4B4} = {7FCA85EB-D1D0-4624-859B-1CE6EEE25654}
+		{61108FDE-1A95-4CC0-8AE2-683EBB6104B3} = {877EB2FB-CDD6-4E1B-9329-DE46C72252FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {89F1C467-59EE-4A45-A5F8-236C8D774E00}

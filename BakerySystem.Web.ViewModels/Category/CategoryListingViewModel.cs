@@ -1,6 +1,9 @@
 ﻿namespace BakerySystem.Web.ViewModels.Category
 {
-	public class CategoryListingViewModel
+	using BakerySystem.Services.Mapping;
+
+	using Data.Models;
+	public class CategoryListingViewModel : IMapFrom<Category>
 	{
 		public int Id { get; set; }
 

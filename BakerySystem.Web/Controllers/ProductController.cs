@@ -134,10 +134,6 @@
 				return RedirectToAction("All", "Product");
 			}
 
-			if (!User.isAdmin())
-			{
-				return Unauthorized();
-			}
 
 			try
 			{

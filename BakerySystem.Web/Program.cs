@@ -1,5 +1,7 @@
 namespace BakerySystem.Web
 {
+	using System.Reflection;
+
 	using Microsoft.AspNetCore.Identity;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
@@ -10,9 +12,12 @@ namespace BakerySystem.Web
 	using Infrastructure.Extensions;
 	//using BakerySystem.Web.Infrastructure.ModelBinders;
 	using BakerySystem.Services.Interfaces;
-
-	using static BakerySystem.Common.GeneralApplicationConstants;
+	using BakerySystem.Services.Mapping;
 	
+
+	using BakerySystem.Web.ViewModels.Home;
+	using static BakerySystem.Common.GeneralApplicationConstants;
+
 	public class Program
 	{
 		public static void Main(string[] args)
@@ -76,6 +81,7 @@ namespace BakerySystem.Web
 
 			WebApplication app = builder.Build();
 
+			AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
 			if (app.Environment.IsDevelopment())
 			{

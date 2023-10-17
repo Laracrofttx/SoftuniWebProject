@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BakerySystem.Data.Models\BakerySystem.Data.Models.csproj" />
+    <ProjectReference Include="..\BakerySystem.Services.Mapping\BakerySystem.Services.Mapping.csproj" />
   </ItemGroup>
 
 </Project>
