@@ -32,4 +32,8 @@
     <ProjectReference Include="..\BakerySystem.Web.ViewModels\BakerySystem.Web.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\ViewModels\" />
+  </ItemGroup>
+
 </Project>

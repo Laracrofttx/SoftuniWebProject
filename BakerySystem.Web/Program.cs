@@ -13,7 +13,7 @@ namespace BakerySystem.Web
 	//using BakerySystem.Web.Infrastructure.ModelBinders;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Services.Mapping;
-	
+
 
 	using BakerySystem.Web.ViewModels.Home;
 	using static BakerySystem.Common.GeneralApplicationConstants;
@@ -52,7 +52,7 @@ namespace BakerySystem.Web
 			////builder.Services.AddScoped<IOrderService, OrderService>();
 
 			//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-			
+
 			builder.Services.ConfigureApplicationCookie(config =>
 			{
 				config.LoginPath = "/User/Login";
@@ -97,7 +97,7 @@ namespace BakerySystem.Web
 
 				app.UseHsts();
 			}
-			
+
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
@@ -114,8 +114,8 @@ namespace BakerySystem.Web
 			app.UseEndpoints(config =>
 			{
 				config.MapControllerRoute(
-					name: "areas",
-					pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}"
+			       name: "areas",
+			    pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}"
 				);
 
 				config.MapControllerRoute(

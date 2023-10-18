@@ -1,15 +1,14 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
-    using System.Diagnostics;
-    using System.Threading.Tasks;
-    using BakerySystem.Services.Interfaces;
+	using System.Threading.Tasks;
+	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
-	using BakerySystem.Web.ViewModels.Category;
-	using BakerySystem.Web.ViewModels.Product;
-    using Microsoft.AspNetCore.Mvc;
+	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
 	using ViewModels.Home;
-    public class HomeController : Controller
+
+    using static Common.GeneralApplicationConstants;
+	public class HomeController : Controller
     {
         private readonly BakeryDbContext dbContext;
 
@@ -23,6 +22,11 @@
        
         public async Task<IActionResult> Index()
         {
+            if (User.IsInRole(AdminRoleName))
+            {
+                return this.RedirectToAction("Index", "Home", new { Area = AdminAreaName });
+            }
+
             var products = await this.dbContext
                 .Products
                 .Select(p => new ProductIndexViewModel
