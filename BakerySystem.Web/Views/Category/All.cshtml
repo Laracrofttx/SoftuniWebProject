@@ -6,6 +6,7 @@
 
 	ViewData["Title"] = "Current Categories";
 
+
 }
 
 <h2 class="text-center">@ViewData["Title"]</h2>
@@ -19,6 +20,7 @@
 				<div class="content-center">
 					<a class="list-group-item list-group-item-action" asp-controller="Category" asp-action="All"
 					   asp-route-id="@category.Id">@category.Name</a>
+					 
 
 					<a asp-controller="Category" asp-action="Details" asp-route-id="@category.Id" class="btn btn-primary">Details</a>
 					<a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id" class="btn btn-warning">Edit</a>

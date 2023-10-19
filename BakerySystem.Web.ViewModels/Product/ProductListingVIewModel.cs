@@ -1,6 +1,10 @@
 ﻿namespace BakerySystem.Web.ViewModels.Product
 {
-	public class ProductListingVIewModel
+	using BakerySystem.Services.Mapping;
+	using Data.Models;
+
+	using AutoMapper;
+	public class ProductListingVIewModel : IMapFrom<Product>, IHaveCustomMappings
 	{
 		public int Id { get; set; }
 
@@ -16,5 +20,11 @@
 
 		public int CategoryId { get; set; }
 
+		public IEnumerable<Product> Products { get; set; } = null!;
+
+		public void CreateMappings(IProfileExpression configuration)
+		{
+			configuration.CreateMap<ProductListingVIewModel, Product>();
+		}
 	}
 }

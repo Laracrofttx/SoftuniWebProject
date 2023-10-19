@@ -1,0 +1,46 @@
+﻿@model ProductListingViewModel
+
+@using BakerySystem.Web.Infrastructure.Extensions;
+
+@{
+	ViewBag.Title = "My Added Products";
+}
+<h2 class="text-center">@ViewBag.Title</h2>
+
+<hr />
+@if (!Model.AllProducts.Any())
+{
+	<h2 class="text-center">You have no added products yet!</h2>
+}
+<div class="row">
+	@foreach (var product in Model.AllProducts)
+	{
+		@* @await Html.PartialAsync("~/Views/Shared/_ProductPartial.cshtml", product) *@
+	;
+
+		<div class="col-sm-4 col-md-3">
+			<div class="card mb-3" @* h-100 *@>
+				<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+					 src="@product.ImageUrl">
+				<div class="card-body">
+					<h5 class="card-title">@product.Name @product.Price</h5>
+					@* <p class="card-text" style="min-height: 120px;">@product.Description</p> *@
+					<a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@product.Id"
+					   class="btn btn-primary float-end">Add to Cart</a>
+					<a asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"
+					   class="btn btn-success">Details</a>
+
+					@if (this.User.isAdmin())
+					{
+						<a asp-area="" asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id"
+						   class="btn btn-warning">Edit</a>
+						<a asp-area="" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id"
+						   class="btn btn-danger">Delete</a>
+
+					}
+
+				</div>
+			</div>
+		</div>
+	}
+</div>

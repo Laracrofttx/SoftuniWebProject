@@ -182,5 +182,16 @@
 			};
 		}
 
+		public async Task<IEnumerable<ProductListingVIewModel>> GetAllProductsAsync()
+		{
+			IEnumerable<ProductListingVIewModel> allProducts =
+				await this.dbContext
+				.Products
+				.AsNoTracking()
+				.To<ProductListingVIewModel>()
+				.ToArrayAsync();
+			
+			return allProducts;
+		}
 	}
 }

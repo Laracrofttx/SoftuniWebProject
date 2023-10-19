@@ -12,6 +12,8 @@
 
 		Task<bool> ExistByIdAsynch(int id);
 
+		Task<IEnumerable<ProductListingVIewModel>> GetAllProductsAsync();
+
 		Task<Product> GetProductByIdAsynch(int id);
 
 		Task<ProductDetailsServiceModel> ProductDetailsByIdAsynch(int id);

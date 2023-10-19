@@ -1,5 +1,6 @@
 ﻿namespace BakerySystem.Web.ViewModels.Product
 {
+	
 	using System.ComponentModel.DataAnnotations;
 
 	
@@ -27,5 +28,7 @@
 		public string CategoryName { get; set; } = null!;
 
 		public IEnumerable<ProductListingVIewModel> Products { get; set; } = null!;
+
+
 	}
 }
