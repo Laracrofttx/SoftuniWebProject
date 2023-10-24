@@ -193,5 +193,25 @@
 			
 			return allProducts;
 		}
+
+		public async Task<IEnumerable<ProductListingVIewModel>> GetAllProductsByIdAsync(int id)
+		{
+			IEnumerable<ProductListingVIewModel> allProducts =
+				await this.dbContext
+				.Products
+				.Select(p => new ProductListingVIewModel
+				{
+
+					Id = p.Id,
+					Name = p.Name,
+					Price = p.Price,
+					ImageUrl = p.ImageUrl,
+
+
+				})
+				.ToArrayAsync();
+
+			return allProducts;
+		}
 	}
 }

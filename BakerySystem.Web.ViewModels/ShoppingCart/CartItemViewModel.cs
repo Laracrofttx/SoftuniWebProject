@@ -14,7 +14,7 @@ namespace BakerySystem.Web.ViewModels.ShoppingCart
 
 		public decimal TotalPrice { get; set; }
 
-		public int Quantity {  get; set; }
+		public int Quantity { get; set; }
 
 
 		public IEnumerable<CartItem> ShoppingCartItems { get; set; } = null!;

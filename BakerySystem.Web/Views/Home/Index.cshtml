@@ -14,6 +14,10 @@
 	var secondOffer = Model[3];
 	var thirdOffer = Model[8];
 	var forthOffer = Model[10];
+	var fifthOffer = Model[2];
+	var sixthOffer = Model[6];
+	var seventhOffer = Model[1];
+	var eightOffer = Model[5];
 
 
 }
@@ -59,67 +63,206 @@
 
 <h3 class="text-xl-center"> Today's offer </h3>
 
-<div class="container">
-	<div class="visible">
-		<div class="row gy-3">
-			<div class="col-sm-4 col-md-3">
-				<div class="card mb-3 h-70">
-					<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-						 src="@firstOffer.ImageUrl">
-					<div class="card-body">
-						<h5 class="card-title text-center">@firstOffer.Name - @firstOffer.Price$</h5>
-						<a href="#" class="btn btn-primary float-end">Add</a>
+
+@* <div id="carousel" class="carousel slide" data-ride="carousel">
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+		<button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		<button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		<button type="button" data-bs-target="#carousel" data-bs-slide-to="" aria-label="Slide 4"></button>
+	</div>
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<div class="container">
+				<div class="row gy-3">
+					<div class="cards-wrapper">
+						<div class="col-sm-4 col-md-3">
+							<div class="card mb-3 h-70">
+								<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+									 src="@firstOffer.ImageUrl">
+								<div class="card-body">
+									<h5 class="card-title text-center">@firstOffer.Name - @firstOffer.Price$</h5>
+									<a href="#" class="btn btn-primary float-end">Add</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4 col-md-3">
+							<div class="card mb-3 h-70">
+								<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+									 src="@secondOffer.ImageUrl">
+								<div class="card-body">
+									<h5 class="card-title text-center">@secondOffer.Name - @secondOffer.Price$</h5>
+									<a href="#" class="btn btn-primary float-end">Add</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4 col-md-3">
+							<div class="card mb-3 h-70">
+								<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+									 src="@thirdOffer.ImageUrl">
+								<div class="card-body">
+									<h5 class="card-title text-center">@thirdOffer.Name - @thirdOffer.Price$</h5>
+									<a href="#" class="btn btn-primary float-end">Add</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4 col-md-3">
+							<div class="card mb-3 h-70">
+								<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+									 src="@forthOffer.ImageUrl">
+								<div class="card-body">
+									<h5 class="card-title text-center">@forthOffer.Name - @forthOffer.Price$</h5>
+									<a href="#" class="btn btn-primary float-end">Add</a>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-3">
-				<div class="card mb-3 h-70">
-					<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-						 src="@secondOffer.ImageUrl">
-					<div class="card-body">
-						<h5 class="card-title text-center">@secondOffer.Name - @secondOffer.Price$</h5>
-						<a href="#" class="btn btn-primary float-end">Add</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-3">
-				<div class="card mb-3 h-70">
-					<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-						 src="@thirdOffer.ImageUrl">
-					<div class="card-body">
-						<h5 class="card-title text-center">@thirdOffer.Name - @thirdOffer.Price$</h5>
-						<a href="#" class="btn btn-primary float-end">Add</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 col-md-3">
-				<div class="card mb-3 h-70">
-					<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-						 src="@forthOffer.ImageUrl">
-					<div class="card-body">
-						<h5 class="card-title text-center">@forthOffer.Name - @forthOffer.Price$</h5>
-						<a href="#" class="btn btn-primary float-end">Add</a>
-					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+ *@
 
-<div class="mb-5"></div>
-
-<div class="row">
-	<div class="col-12 text-center">
-		<button class="btn btn-primary" id="statistics_btn">Show Statistics</button>
+<div class="container text-center my-3">
+	<div class="row mx-auto my-auto justify-content-center">
+		<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner" role="listbox">
+				<div class="carousel-item active">
+					<div class="col-sm-4 col-md-3">
+						<div class="card mb-3 h-70">
+							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+								 src="@firstOffer.ImageUrl">
+							<div class="card-body">
+								<h5 class="card-title text-center">@firstOffer.Name - @firstOffer.Price$</h5>
+								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@firstOffer.Id">
+									<button type="submit" class="btn btn-primary float-end">
+										Add to cart
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-md-3">
+						<div class="card mb-3 h-70">
+							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+								 src="@secondOffer.ImageUrl">
+							<div class="card-body">
+								<h5 class="card-title text-center">@secondOffer.Name - @secondOffer.Price$</h5>
+								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@secondOffer.Id">
+									<button type="submit" class="btn btn-primary float-end">
+										Add to cart
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-md-3">
+						<div class="card mb-3 h-70">
+							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+								 src="@thirdOffer.ImageUrl">
+							<div class="card-body">
+								<h5 class="card-title text-center">@thirdOffer.Name - @thirdOffer.Price$</h5>
+								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@thirdOffer.Id">
+									<button type="submit" class="btn btn-primary float-end">
+										Add to cart
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-md-3">
+						<div class="card mb-3 h-70">
+							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+								 src="@forthOffer.ImageUrl">
+							<div class="card-body">
+								<h5 class="card-title text-center">@forthOffer.Name - @forthOffer.Price$</h5>
+								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@forthOffer.Id">
+									<button type="submit" class="btn btn-primary float-end">
+										Add to cart
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<div class="col-sm-4 col-md-3">
+						<div class="card mb-3 h-70">
+							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+								 src="@fifthOffer.ImageUrl">
+							<div class="card-body">
+								<h5 class="card-title text-center">@fifthOffer.Name - @fifthOffer.Price$</h5>
+								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@fifthOffer.Id">
+									<button type="submit" class="btn btn-primary float-end">
+										Add to cart
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-md-3">
+						<div class="card mb-3 h-70">
+							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+								 src="@sixthOffer.ImageUrl">
+							<div class="card-body">
+								<h5 class="card-title text-center">@sixthOffer.Name - @sixthOffer.Price$</h5>
+								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@sixthOffer.Id">
+									<button type="submit" class="btn btn-primary float-end">
+										Add to cart
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-md-3">
+						<div class="card mb-3 h-70">
+							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+								 src="@seventhOffer.ImageUrl">
+							<div class="card-body">
+								<h5 class="card-title text-center">@seventhOffer.Name - @seventhOffer.Price$</h5>
+								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@seventhOffer.Id">
+									<button type="submit" class="btn btn-primary float-end">
+										Add to cart
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-md-3">
+						<div class="card mb-3 h-70">
+							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+								 src="@eightOffer.ImageUrl">
+							<div class="card-body">
+								<h5 class="card-title text-center">@eightOffer.Name - @eightOffer.Price$</h5>
+								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@eightOffer.Id">
+									<button type="submit" class="btn btn-primary float-end">
+										Add to cart
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				</a>
+				<a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				</a>
+			</div>
+		</div>
 	</div>
 </div>
 
-<div class="mt-4 p-5 bg-light d-none" id="statistics_box">
-	<div class="row">
-		<h2 class="col-md-6 text-center" id="total_products"></h2>
-		<h2 class="col-md-6 text-center" id="total_categories"></h2>
-	</div>
-</div>
 
 
 @section Scripts
@@ -127,5 +270,5 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script>statistics();</script>
 
-						}
+	}
 

@@ -4,6 +4,8 @@
 	using Data.Models;
 
 	using AutoMapper;
+	using System;
+
 	public class ProductListingVIewModel : IMapFrom<Product>, IHaveCustomMappings
 	{
 		public int Id { get; set; }
@@ -26,5 +28,7 @@
 		{
 			configuration.CreateMap<ProductListingVIewModel, Product>();
 		}
+
+		
 	}
 }

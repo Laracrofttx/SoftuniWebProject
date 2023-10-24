@@ -46,3 +46,126 @@ footer {
     /*height: 2.5rem;*/
 }
 
+@media (max-width: 767px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+
+        .carousel-inner .carousel-item > div:first-child {
+            display: block;
+        }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(25%);
+    }
+
+    .carousel-inner .carousel-item-start.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-25%);
+    }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start {
+    transform: translateX(0);
+}
+
+
+
+/*---------------------------------------------------------- {
+
+  Css for the shopping cart template 
+
+}*/
+
+
+
+@media(max-width:767px) {
+    .card {
+        margin: 3vh auto;
+    }
+}
+
+.cart {
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+
+@media(max-width:767px) {
+    .cart {
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem;
+    }
+}
+
+.summary {
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(65, 65, 65);
+}
+
+@media(max-width:767px) {
+    .summary {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem;
+    }
+}
+
+.summary .col-2 {
+    padding: 0;
+}
+
+.summary .col-10 {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.title b {
+    font-size: 1.5rem;
+}
+
+.main {
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%;
+}
+
+.col-2, .col {
+    padding: 0 1vh;
+}
+
+a {
+    padding: 0 1vh;
+}
+
+.close {
+    margin-left: auto;
+    font-size: 0.7rem;
+}
+
+/*img {
+    width: 3.5rem;
+}*/
+
+.back-to-shop {
+    margin-top: 4.5rem;
+}

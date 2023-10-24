@@ -8,5 +8,7 @@
         public const string AdminRoleName = "Administrator";
         public const string AdminEmail = "DenisGeorgiev@gmail.net";
 
+        public const string CartCacheKey = "CartCacheKey";
+
 	}
 }

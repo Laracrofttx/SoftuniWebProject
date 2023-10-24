@@ -19,6 +19,9 @@
 		public string PositionName { get; set; } = null!;
 
 		[Required]
+		public string ImageUrl { get; set; } = null!;
+
+		[Required]
 		public decimal Salary { get; set; }
 
 		[Required]

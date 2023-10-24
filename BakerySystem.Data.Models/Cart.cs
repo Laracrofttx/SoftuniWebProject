@@ -1,14 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BakerySystem.Data.Models
+﻿namespace BakerySystem.Data.Models
 {
+	using System.ComponentModel.DataAnnotations;
 	public class Cart
 	{
 
 		[Key]
 		public int CartId { get; set; }
 
+		public List<CartItem> CartItems { get; set; } = null!;
+		
 
-		public List<CartItem> ShoppingCartItems { get; set; } = null!;
 	}
 }

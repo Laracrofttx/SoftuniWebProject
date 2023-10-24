@@ -4,6 +4,7 @@ using BakerySystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    partial class BakeryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231022171633_config")]
+    partial class config
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -407,10 +409,6 @@ namespace BakerySystem.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("JobDescription")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -567,7 +565,7 @@ namespace BakerySystem.Data.Migrations
             modelBuilder.Entity("BakerySystem.Data.Models.CartItem", b =>
                 {
                     b.HasOne("BakerySystem.Data.Models.Cart", null)
-                        .WithMany("CartItems")
+                        .WithMany("ShoppingCartItems")
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -656,7 +654,7 @@ namespace BakerySystem.Data.Migrations
 
             modelBuilder.Entity("BakerySystem.Data.Models.Cart", b =>
                 {
-                    b.Navigation("CartItems");
+                    b.Navigation("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Category", b =>

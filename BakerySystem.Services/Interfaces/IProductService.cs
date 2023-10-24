@@ -14,6 +14,8 @@
 
 		Task<IEnumerable<ProductListingVIewModel>> GetAllProductsAsync();
 
+		Task<IEnumerable<ProductListingVIewModel>> GetAllProductsByIdAsync(int id);
+
 		Task<Product> GetProductByIdAsynch(int id);
 
 		Task<ProductDetailsServiceModel> ProductDetailsByIdAsynch(int id);
