@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PossitionListingViewModel>;
+
+@using BakerySystem.Web.Infrastructure.Extensions;
+
+
+<div class="text-center"><h2>If you want to become one of us, feel free to apply</h2></div>
+
+<div class="row gy-3">
+
+	@foreach (var possition in Model)
+	{
+		<div class="col-sm-4 col-md-3 mt-5">
+			<div class="card mb-3" @* h-100 *@>
+				<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+					 src="@possition.ImageUrl">
+				<div class="card-body">
+					<h5 class="card-title">@possition.Title</h5>
+					<h5 class="card-title">Salary - @possition.Salary</h5>
+					<form method="post" asp-controller="Cart" asp-action="" asp-route-id="">
+						<button type="submit" class="btn btn-primary float-end">
+							Apply
+						</button>
+					</form>
+					<a asp-area="" asp-controller="Hiring" asp-action="Details" asp-route-id="@possition.Id"
+					   class="btn btn-success">Details</a>
+					
+						<a asp-area="" asp-controller="Hiring" asp-action="Edit" asp-route-id="@possition.Id"
+						   class="btn btn-warning">Edit</a>
+						<a asp-area="" asp-controller="Hiring" asp-action="Delete" asp-route-id="@possition.Id"
+						   class="btn btn-danger">Delete</a>
+					@if (this.User.isAdmin())
+					{
+
+					}
+
+				</div>
+			</div>
+		</div>
+	}
+</div>

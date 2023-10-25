@@ -1,0 +1,35 @@
+﻿@model PossitionDetailsServiceModel
+
+@using static BakerySystem.Common.GeneralApplicationConstants;
+
+@{
+	ViewBag.Title = "Details";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+<div class="container" style="display:inline">
+	<div class="row">
+		<div class="col-4">
+			<img class="card-img-top" style="width: 20rem;"
+				 src="@Model.ImageUrl" alt="House Image">
+		</div>
+		<div class="card col-8 border-0">
+			<p style="font-size:25px;"><u>@Model.Title</u></p>
+			<p>Salary: <b>@Model.Salary</b></p>
+			<p>Job Description: @Model.JobDescription</p>
+			
+			@if (this.User.IsInRole(AdminRoleName))
+			{
+				<form>
+					<a class="btn btn-warning" asp-controller="Product" asp-action="Edit"
+					   asp-route-id="@Model.Id">Edit</a>
+					<a class="ml-2 btn btn-danger" asp-controller="Product" asp-action="Delete"
+					   asp-route-id="@Model.Id">Delete</a>
+				</form>
+
+			}
+		</div>
+	</div>
+</div>
