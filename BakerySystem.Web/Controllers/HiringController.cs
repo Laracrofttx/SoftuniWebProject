@@ -4,6 +4,7 @@
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.JoinUs;
 	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.AspNetCore.Mvc.ModelBinding;
 	using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 
 	public class HiringController : Controller
@@ -118,5 +119,62 @@
 
 			return RedirectToAction(nameof(All));
 		}
+
+		[HttpGet]
+
+		public async Task<IActionResult> Delete(int id)
+		{
+			var possitionExist = await this.possitionService.ExistByIdAsync(id);
+
+			if (!possitionExist)
+			{
+				this.ModelState.AddModelError(string.Empty, "Selected possition does not exist!");
+
+				RedirectToAction("All", "Hiring");
+			}
+
+			try
+			{
+				PossitionDeleteViewModel possition = await this.possitionService.PossitionForDeleteByIdAsync(id);
+
+				return View(possition);
+
+			}
+			catch (Exception)
+			{
+				return BadRequest();
+			
+			}
+		
+		
+		}
+
+
+		[HttpPost]
+
+		public async Task<IActionResult> Delete(int id, PossitionDeleteViewModel possition)
+		{
+
+			bool possitionExists = await this.possitionService.ExistByIdAsync(id);
+
+			if (!possitionExists)
+			{
+				ModelState.AddModelError(string.Empty, "The item you want to delete does not exist!");
+			}
+
+			try
+			{
+				await this.possitionService.DeletePossitionByIdAsync(id);
+
+				return RedirectToAction("All", "Hiring");
+			}
+			catch (Exception)
+			{
+				return BadRequest();
+			}
+		
+		
+		}
+
 	}
 }

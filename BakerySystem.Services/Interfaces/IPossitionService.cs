@@ -16,5 +16,9 @@ namespace BakerySystem.Services.Interfaces
 		Task<PossitionFormModel> GetPossitionForEditByIdAsync(int id);
 
 		Task EditPossitionByIdAndFormModelAsync(int id, PossitionFormModel possition);
+
+		Task<PossitionDeleteViewModel> PossitionForDeleteByIdAsync(int id);
+
+		Task DeletePossitionByIdAsync(int id);
 	}
 }

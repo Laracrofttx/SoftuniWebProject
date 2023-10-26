@@ -120,6 +120,31 @@ namespace BakerySystem.Services
 			await dbContext.SaveChangesAsync();
 		}
 
-		
+		public async Task<PossitionDeleteViewModel> PossitionForDeleteByIdAsync(int id)
+		{
+			var possitionForDelete = await this.dbContext
+				.WeAreHirings
+				.FindAsync(id);
+
+			return new PossitionDeleteViewModel()
+			{
+				Id = id,
+				JobTitle = possitionForDelete.PositionName,
+				Salary = possitionForDelete.Salary,
+				ImageUrl = possitionForDelete.ImageUrl,
+				JobDescription = possitionForDelete.JobDescription,
+
+			};
+		}
+
+		public async Task DeletePossitionByIdAsync(int id)
+		{
+			WeAreHiring possition = await this.dbContext
+				.WeAreHirings
+				.FirstAsync(p => p.Id == id);
+
+			this.dbContext.Remove(possition);
+			this.dbContext.SaveChanges();
+		}
 	}
 }
