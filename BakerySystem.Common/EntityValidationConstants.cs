@@ -92,6 +92,20 @@
 
 		}
 
+		public static class JobApplication
+		{
+
+			public const int FullNameMinLength = 5;
+			public const int FullNameMaxLength = 25;
+
+			public const int EmailMinLength = 10;
+			public const int EmailMaxLength = 30;
+
+			public const int SelfDescriptionMinLength = 30;
+			public const int SelfDescriptionMaxLength = 150;
+
+		}
+
 		public static class FeedBack
 		{
 			public const int FeedBackMinLength = 15;

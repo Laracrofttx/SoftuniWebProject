@@ -1,8 +1,8 @@
-﻿using BakerySystem.Data.Models;
-using BakerySystem.Web.ViewModels.JoinUs;
-
-namespace BakerySystem.Services.Interfaces
+﻿namespace BakerySystem.Services.Interfaces
 {
+	using BakerySystem.Data.Models;
+	using BakerySystem.Web.ViewModels.JoinUs;
+	using Microsoft.AspNetCore.Http;
 	public interface IPossitionService
 	{
 		Task AddPossitionAsync(PossitionFormModel possition);
@@ -20,5 +20,9 @@ namespace BakerySystem.Services.Interfaces
 		Task<PossitionDeleteViewModel> PossitionForDeleteByIdAsync(int id);
 
 		Task DeletePossitionByIdAsync(int id);
+
+		Task<WeAreHiring> GetPossitionIdAsync(int id);
+
+		Task Apply(ApplyViewModel apply);
 	}
 }

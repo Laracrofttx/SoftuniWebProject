@@ -1,18 +1,20 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
+	using BakerySystem.Services;
 	using BakerySystem.Services.Interfaces;
-	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.JoinUs;
 	using Microsoft.AspNetCore.Mvc;
-	using Microsoft.AspNetCore.Mvc.ModelBinding;
-	using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 
 	public class HiringController : Controller
 	{
 		private readonly IPossitionService possitionService;
-		public HiringController(IPossitionService possitionService)
+		private readonly IBufferedFileUploadService bufferedFileUploadService;
+
+		public HiringController(IPossitionService possitionService, IBufferedFileUploadService bufferedFileUploadService)
 		{
 			this.possitionService = possitionService;
+			this.bufferedFileUploadService = bufferedFileUploadService;
+
 		}
 
 		[HttpGet]
@@ -143,10 +145,10 @@
 			catch (Exception)
 			{
 				return BadRequest();
-			
+
 			}
-		
-		
+
+
 		}
 
 
@@ -172,9 +174,38 @@
 			{
 				return BadRequest();
 			}
-		
-		
+
 		}
 
+		[HttpGet]
+		public async Task<IActionResult> Apply()
+		{
+
+			//var appliedFor = await this.possitionService.GetPossitionIdAsync(id);
+
+			return View();
+
+		}
+
+
+		[HttpPost]
+		public async Task<IActionResult> Apply(ApplyViewModel apply)
+		{
+
+			try
+			{
+				await this.possitionService.Apply(apply);
+
+			}
+			catch (Exception)
+			{
+				ModelState.AddModelError(string.Empty, "Unexpected error occured!");
+
+				return View(apply);
+			}
+
+			return RedirectToAction(nameof(All));
+
+		}
 	}
 }

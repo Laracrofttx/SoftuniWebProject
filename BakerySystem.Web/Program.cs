@@ -17,6 +17,7 @@ namespace BakerySystem.Web
 
 	using BakerySystem.Web.ViewModels.Home;
 	using static BakerySystem.Common.GeneralApplicationConstants;
+	using static BakerySystem.Services.BufferedFileUploadService;
 
 	public class Program
 	{
@@ -46,6 +47,7 @@ namespace BakerySystem.Web
 				.AddEntityFrameworkStores<BakeryDbContext>();
 
 			builder.Services.AddApplicationServices(typeof(IProductService));
+			builder.Services.AddTransient<IBufferedFileUploadService, BufferedFileUploadService>();
 
 			////builder.Services.AddScoped<IProductService, ProductService>();
 			////builder.Services.AddScoped<ICategoryService, CategoryService>();

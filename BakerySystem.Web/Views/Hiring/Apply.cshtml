@@ -1,0 +1,77 @@
+﻿@model ApplyViewModel
+
+@{
+
+	ViewData["Title"] = "Feel the form below";
+
+	
+
+}
+
+
+<div class="text-center mt-3"><h3>@ViewData["Title"]</h3></div>
+
+<div class="container">
+	<div class="row mx-0 justify-content-center">
+		<div class="col-md-7 col-lg-5 px-lg-2 col-xl-4 px-xl-0 px-xxl-3">
+			<form method="post" class="w-100 rounded-1 p-4"
+				  action=""
+				  enctype="multipart/form-data">
+				<label class="d-block mb-4">
+					<div class="form-group">
+						<label asp-for="FullName"></label>
+						<input asp-for="FullName" class="form-control" placeholder="James Williams">
+						<span asp-validation-for="FullName" class="small text-danger"></span>
+					</div>
+				</label>
+
+				@* <div class="form-group">
+				<label asp-for="Description"></label>
+				<textarea asp-for="Description" rows="4" class="form-control" placeholder="Add some description"></textarea>
+				<span asp-validation-for="Description" class="small text-danger"></span>
+				</div> *@
+
+				<label class="d-block mb-4">
+					<div class="form-group">
+						<label asp-for="EmailAddress"></label>
+						<input asp-for="EmailAddress" class="form-control" placeholder="james.williams@gmail.com">
+						<span asp-validation-for="EmailAddress" class="small text-danger"></span>
+					</div>
+				</label>
+
+				<label class="d-block mb-4">
+					<span class="form-label d-block"></span>
+					<label asp-for="Experience"></label>
+					<span asp-validation-for="Experience" class="small text-danger"></span>
+					<select required name="experience" class="form-select">
+						<option>Less than a year</option>
+						<option>1 - 2 years</option>
+						<option>2 - 4 years</option>
+						<option>4 - 7 years</option>
+						<option>7 - 10 years</option>
+						<option>10+ years</option>
+					</select>
+				</label>
+
+				<label class="d-block mb-4">
+					<div class="form-group">
+						<label asp-for="SelfDescription"></label>
+						<textarea asp-for="SelfDescription" rows="3" class="form-control" placeholder="What motivates you"></textarea>
+						<span asp-validation-for="SelfDescription" class="small text-danger"></span>
+					</div>
+				</label>
+
+				@* <label class="d-block mb-4">
+				<span class="form-label d-block">Your CV</span>
+				<input required name="cv" type="file" class="form-control" />
+				</label> *@
+
+				<div class="mb-3">
+						<button type="submit" class="btn btn-primary float-end">
+							Apply
+						</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

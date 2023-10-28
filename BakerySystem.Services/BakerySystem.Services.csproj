@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BakerySystem.Common\BakerySystem.Common.csproj" />
     <ProjectReference Include="..\BakerySystem.Data.Models\BakerySystem.Data.Models.csproj" />
     <ProjectReference Include="..\BakerySystem.Data\BakerySystem.Data.csproj" />

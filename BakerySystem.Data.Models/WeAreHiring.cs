@@ -11,7 +11,8 @@
 
 	public class WeAreHiring
 	{
-		[Key]
+      
+        [Key]
 		public int Id { get; set; }
 
 		[Required]
@@ -28,7 +29,6 @@
 		[MaxLength(JobDescriptionMaxLength)]
 		public string JobDescription { get; set; } = null!;
 
-
-
+		
 	}
 }

@@ -1,12 +1,12 @@
-﻿using BakerySystem.Data.Models;
-using BakerySystem.Services.Interfaces;
-using BakerySystem.Web.Data;
-using BakerySystem.Web.ViewModels.JoinUs;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
-namespace BakerySystem.Services
+﻿namespace BakerySystem.Services
 {
+	using BakerySystem.Data.Models;
+	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.JoinUs;
+	using Microsoft.EntityFrameworkCore;
+	using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 	public class PossitionService : IPossitionService
 	{
 
@@ -98,7 +98,7 @@ namespace BakerySystem.Services
 				Id = id,
 				PossitionName = possitionForEdit.PositionName,
 				Salary = possitionForEdit.Salary,
-				ImageUrl= possitionForEdit.ImageUrl,
+				ImageUrl = possitionForEdit.ImageUrl,
 				PossitionDescription = possitionForEdit.JobDescription,
 
 			};
@@ -145,6 +145,33 @@ namespace BakerySystem.Services
 
 			this.dbContext.Remove(possition);
 			this.dbContext.SaveChanges();
+		}
+
+		public async Task Apply(ApplyViewModel apply)
+		{
+			var app = new JobApplication
+			{
+
+				Id = apply.Id,
+				FullName = apply.FullName,
+				EmailAddress = apply.EmailAddress,
+				Experience = apply.Experience,
+				SelfDescription = apply.SelfDescription,
+
+			};
+
+			await this.dbContext.JobApplications.AddAsync(app);
+			await this.dbContext.SaveChangesAsync();
+		}
+
+		public async Task<WeAreHiring> GetPossitionIdAsync(int id)
+		{
+			var possition = await this.dbContext
+				.WeAreHirings
+				.Where(p => p.Id == id)
+				.FirstOrDefaultAsync();
+
+			return possition;
 		}
 	}
 }

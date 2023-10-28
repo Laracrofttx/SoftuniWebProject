@@ -4,6 +4,7 @@ using BakerySystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    partial class BakeryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231028202313_addingRelationBetweenJobAppAndHire")]
+    partial class addingRelationBetweenJobAppAndHire
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -287,7 +289,7 @@ namespace BakerySystem.Data.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<int>("PossitionIdId")
+                    b.Property<int>("PossitionId")
                         .HasColumnType("int");
 
                     b.Property<string>("SelfDescription")
@@ -295,9 +297,12 @@ namespace BakerySystem.Data.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<int>("WeAreHiringId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("PossitionIdId");
+                    b.HasIndex("WeAreHiringId");
 
                     b.ToTable("JobApplications");
                 });
@@ -620,13 +625,13 @@ namespace BakerySystem.Data.Migrations
 
             modelBuilder.Entity("BakerySystem.Data.Models.JobApplication", b =>
                 {
-                    b.HasOne("BakerySystem.Data.Models.WeAreHiring", "PossitionId")
+                    b.HasOne("BakerySystem.Data.Models.WeAreHiring", "WeAreHiring")
                         .WithMany()
-                        .HasForeignKey("PossitionIdId")
+                        .HasForeignKey("WeAreHiringId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("PossitionId");
+                    b.Navigation("WeAreHiring");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Order", b =>

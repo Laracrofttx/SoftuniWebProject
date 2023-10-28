@@ -4,6 +4,7 @@ using BakerySystem.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    partial class BakeryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231028194338_addingRelationBetweenHiringAndJobApplication")]
+    partial class addingRelationBetweenHiringAndJobApplication
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -287,17 +289,17 @@ namespace BakerySystem.Data.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<int>("PossitionIdId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SelfDescription")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<int?>("WeAreHiringId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("PossitionIdId");
+                    b.HasIndex("WeAreHiringId");
 
                     b.ToTable("JobApplications");
                 });
@@ -620,13 +622,9 @@ namespace BakerySystem.Data.Migrations
 
             modelBuilder.Entity("BakerySystem.Data.Models.JobApplication", b =>
                 {
-                    b.HasOne("BakerySystem.Data.Models.WeAreHiring", "PossitionId")
-                        .WithMany()
-                        .HasForeignKey("PossitionIdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PossitionId");
+                    b.HasOne("BakerySystem.Data.Models.WeAreHiring", null)
+                        .WithMany("AppliedFor")
+                        .HasForeignKey("WeAreHiringId");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Order", b =>
@@ -710,6 +708,11 @@ namespace BakerySystem.Data.Migrations
             modelBuilder.Entity("BakerySystem.Data.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("BakerySystem.Data.Models.WeAreHiring", b =>
+                {
+                    b.Navigation("AppliedFor");
                 });
 #pragma warning restore 612, 618
         }
