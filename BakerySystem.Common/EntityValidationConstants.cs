@@ -81,15 +81,17 @@
 
 		public static class ContactUs
 		{
+			public const int FullNameMinLength = 10;
+			public const int FullNameMaxLength = 30;
+
 			public const int PhoneNumberMinLength = 10;
 			public const int PhoneNumberMaxLength = 13;
 
 			public const int EmailMinLength = 10;
 			public const int EmailMaxLength = 30;
 
-			public const int AddressMinLength = 10;
-			public const int AddressMaxLength = 30;
-
+			public const int MessageMinLength = 10;
+			public const int MessageMaxLength = 100;
 		}
 
 		public static class JobApplication

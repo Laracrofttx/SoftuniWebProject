@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BakerySystem.Data.Migrations
 {
     [DbContext(typeof(BakeryDbContext))]
-    [Migration("20231028205427_addingPropertyToApplication")]
-    partial class addingPropertyToApplication
+    [Migration("20231029191524_UpdatingContactModel")]
+    partial class UpdatingContactModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -221,15 +221,20 @@ namespace BakerySystem.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -289,17 +294,12 @@ namespace BakerySystem.Data.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<int>("PossitionIdId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SelfDescription")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PossitionIdId");
 
                     b.ToTable("JobApplications");
                 });
@@ -618,17 +618,6 @@ namespace BakerySystem.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("BakerySystem.Data.Models.JobApplication", b =>
-                {
-                    b.HasOne("BakerySystem.Data.Models.WeAreHiring", "PossitionId")
-                        .WithMany()
-                        .HasForeignKey("PossitionIdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PossitionId");
                 });
 
             modelBuilder.Entity("BakerySystem.Data.Models.Order", b =>

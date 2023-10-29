@@ -7,8 +7,6 @@ namespace BakerySystem.Web.ViewModels.JoinUs
 	{
 		public int Id { get; set; }
 
-		public int PossitionId { get; set; }
-
 		[Display(Name = "Your Name")]
 		public string FullName { get; set; } = null!;
 

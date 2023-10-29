@@ -14,6 +14,10 @@
 		public int Id { get; set; }
 
 		[Required]
+		[MaxLength(FullNameMaxLength)]
+		public string FullName { get; set; } = null!;
+
+		[Required]
 		[MaxLength(PhoneNumberMaxLength)]
 		public string PhoneNumber { get; set; } = null!;
 
@@ -22,7 +26,7 @@
 		public string Email { get; set; } = null!;
 
 		[Required]
-		[MaxLength(AddressMaxLength)]
-		public string Address { get; set; } = null!;
+		[MaxLength(MessageMaxLength)]
+		public string Message { get; set; } = null!;
 	}
 }

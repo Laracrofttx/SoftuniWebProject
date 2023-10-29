@@ -181,8 +181,6 @@
 		public async Task<IActionResult> Apply()
 		{
 
-			//var appliedFor = await this.possitionService.GetPossitionIdAsync(id);
-
 			return View();
 
 		}

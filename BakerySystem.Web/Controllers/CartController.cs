@@ -1,6 +1,7 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
 	using System.Linq;
+	using System.Security.Cryptography.X509Certificates;
 	using AutoMapper.Internal;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services;
@@ -76,7 +77,7 @@
 					Price = p.Price,
 					Image = p.ImageUrl,
 					Quantity = 1,
-					TotalPrice = p.Price
+					TotalPrice = p.Price * 1
 
 
 				})
@@ -94,7 +95,11 @@
 
 			this.memoryCache.Set(CartCacheKey, cartItems, cache);
 
+			 void TotalSum()
+			{
+				var totalSum = product.Price * product.Quantity;
 
+			}
 
 			ViewBag.CartItems = cartItems;
 
@@ -124,7 +129,7 @@
 			}
 
 			return RedirectToAction("Index", "Home");
-			
+
 		}
 
 
@@ -137,6 +142,9 @@
 			return RedirectToAction("Index", "Home");
 
 		}
+
+
+		
 
 	}
 

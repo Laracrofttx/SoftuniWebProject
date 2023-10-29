@@ -1,1 +1,59 @@
-﻿
+﻿@using BakerySystem.Web.ViewModels.Contact;
+@model ContactViewModel
+
+@{
+
+	ViewData["Title"] = "Contact Us";
+
+}
+
+<div class="text-center"><h2>@ViewData["Title"]</h2></div>
+<div class="text-center"><h7>If you have any queries, please feel free to contact us.</h7></div>
+
+<div class="container mt-4">
+	<div class="row mx-0 justify-content-center">
+		<div class="col-md-7 col-lg-5 px-lg-2 col-xl-4 px-xl-0 px-xxl-3">
+			<form method="post" class="w-100 rounded-1 p-4"
+				  action=""
+				  enctype="multipart/form-data">
+				<label class="d-block mb-4">
+					<div class="form-group">
+						<label asp-for="FullName"></label>
+						<input asp-for="FullName" class="form-control" placeholder="Margaret Williams">
+						<span asp-validation-for="FullName" class="small text-danger"></span>
+					</div>
+				</label>
+
+				<label class="d-block mb-4">
+					<div class="form-group">
+						<label asp-for="Phonenumber"></label>
+						<input asp-for="Phonenumber" class="form-control" placeholder="+359992****">
+						<span asp-validation-for="Phonenumber" class="small text-danger"></span>
+					</div>
+				</label>
+
+				<label class="d-block mb-4">
+					<div class="form-group">
+						<label asp-for="EmailAddress"></label>
+						<input asp-for="EmailAddress" class="form-control" placeholder="margaret.williams@gmail.com">
+						<span asp-validation-for="EmailAddress" class="small text-danger"></span>
+					</div>
+				</label>
+
+				<label class="d-block mb-4">
+					<div class="form-group">
+						<label asp-for="Message"></label>
+						<textarea asp-for="Message" rows="3" class="form-control" placeholder="What would you like to ask"></textarea>
+						<span asp-validation-for="Message" class="small text-danger"></span>
+					</div>
+				</label>
+				
+				<div class="mb-3">
+					<button type="submit" value="Send" class="btn btn-primary float-end">
+						Send message
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
