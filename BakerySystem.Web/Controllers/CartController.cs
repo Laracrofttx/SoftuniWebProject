@@ -8,6 +8,7 @@
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Product;
 	using BakerySystem.Web.ViewModels.ShoppingCart;
+	using Humanizer.DateTimeHumanizeStrategy;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,7 @@
 			this.memoryCache = memoryCache;
 
 		}
-		
+
 		public List<CartItemViewModel> cartItems;
 
 
@@ -64,7 +65,7 @@
 			{
 				cartItems = new List<CartItemViewModel>();
 			}
-			
+
 			var product = await this.dbContext
 				.Products
 				.Where(p => p.Id == id)
@@ -86,18 +87,13 @@
 			{
 				cartItems.Add(product);
 			}
-			else if(cartItems.Contains(product!))
-			{
-				product!.Quantity += 1;
-			}
-			
 
 
 			MemoryCacheEntryOptions cache = new MemoryCacheEntryOptions()
 				.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
-			/*IEnumerable<ProductListingVIewModel>*/
+
 			this.memoryCache.Set(CartCacheKey, cartItems, cache);
-			//this.memoryCache.Set(CartCacheKey, selectedProduct, cache);
+
 
 
 			ViewBag.CartItems = cartItems;
@@ -108,46 +104,39 @@
 
 		}
 
+		public async Task<IActionResult> RemoveFromCart()
+		{
+
+			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
+
+			var itemToRemove = cartItems.FirstOrDefault();
+
+			if (cartItems.Count > 0)
+			{
+
+				cartItems.Remove(itemToRemove);
+
+			}
+			if (cartItems.Count > 0)
+			{
+				return RedirectToAction(nameof(AddToCart));
+
+			}
+
+			return RedirectToAction("Index", "Home");
+			
+		}
 
 
-		//[HttpPost]
-		//public async Task<IActionResult> AddToShoppingCart(Product product, int quantity)
-		//{
 
-		//	var selectedItem = this.dbContext
-		//		.CartItems
-		//		.FirstOrDefault(p => p.ProductId == product.Id);
+		public async Task<IActionResult> ClearAll()
+		{
 
-		//	if (selectedItem == null)
-		//	{
-		//		selectedItem = new CartItem
-		//		{
+			this.memoryCache.Remove(CartCacheKey);
 
-		//			ProductId = product.Id,
-		//			ProductName = product.Name,
-		//			Price = product.Price,
-		//			CartItemId = product.Id,
-		//			Quantity = 1,
-		//			Image = product.ImageUrl,
-		//			TotalAmount = product.Price * quantity,
+			return RedirectToAction("Index", "Home");
 
-
-
-		//		};
-
-		//		await dbContext.CartItems.AddAsync(selectedItem);
-		//	}
-		//	else
-		//	{
-		//		selectedItem.Quantity++;
-		//	}
-
-		//	await dbContext.SaveChangesAsync();
-
-		//	return View(selectedItem);
-
-
-		//}
+		}
 
 	}
 
