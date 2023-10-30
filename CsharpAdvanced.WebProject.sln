@@ -25,7 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BakerySystem.Web.Infrastruc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BakerySystem.WebApi", "BakerySystem.WebApi\BakerySystem.WebApi.csproj", "{B10233BE-DC4E-4422-A828-5C191ADFF4B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakerySystem.Services.Mapping", "BakerySystem.Services.Mapping\BakerySystem.Services.Mapping.csproj", "{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BakerySystem.Services.Mapping", "BakerySystem.Services.Mapping\BakerySystem.Services.Mapping.csproj", "{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{413BB395-AB7D-48C0-AAB0-DDD50C526EB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakerySystem.Services.Tests", "BakerySystem.Services.Tests\BakerySystem.Services.Tests.csproj", "{A4C4B88D-E745-47D6-9D9D-518BD0AA284F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,10 @@ Global
 		{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61108FDE-1A95-4CC0-8AE2-683EBB6104B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4C4B88D-E745-47D6-9D9D-518BD0AA284F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4C4B88D-E745-47D6-9D9D-518BD0AA284F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4C4B88D-E745-47D6-9D9D-518BD0AA284F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4C4B88D-E745-47D6-9D9D-518BD0AA284F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +90,7 @@ Global
 		{EF32AA24-6B89-435C-B36D-89D1DD39B4B0} = {7FCA85EB-D1D0-4624-859B-1CE6EEE25654}
 		{B10233BE-DC4E-4422-A828-5C191ADFF4B4} = {7FCA85EB-D1D0-4624-859B-1CE6EEE25654}
 		{61108FDE-1A95-4CC0-8AE2-683EBB6104B3} = {877EB2FB-CDD6-4E1B-9329-DE46C72252FB}
+		{A4C4B88D-E745-47D6-9D9D-518BD0AA284F} = {413BB395-AB7D-48C0-AAB0-DDD50C526EB4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {89F1C467-59EE-4A45-A5F8-236C8D774E00}
