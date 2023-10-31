@@ -77,17 +77,21 @@
 					Price = p.Price,
 					Image = p.ImageUrl,
 					Quantity = 1,
-					TotalPrice = p.Price * 1
+					TotalPrice = p.Price * 2
 
 
 				})
 				.FirstOrDefaultAsync();
 
+			
 
 			if (product != null)
 			{
 				cartItems.Add(product);
+
 			}
+
+			
 
 
 			MemoryCacheEntryOptions cache = new MemoryCacheEntryOptions()
@@ -95,11 +99,6 @@
 
 			this.memoryCache.Set(CartCacheKey, cartItems, cache);
 
-			 void TotalSum()
-			{
-				var totalSum = product.Price * product.Quantity;
-
-			}
 
 			ViewBag.CartItems = cartItems;
 

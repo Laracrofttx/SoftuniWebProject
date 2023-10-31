@@ -23,12 +23,6 @@
 		[MaxLength(PhoneNumberMaxLength)]
 		public string PhoneNumber { get; set; } = null!;
 
-		public int TotalPrice { get; set; }
-
-		public int OrderId { get; set; }
-
-
-
 
 	}
 }

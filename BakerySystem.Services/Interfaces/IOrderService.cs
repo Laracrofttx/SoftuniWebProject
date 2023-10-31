@@ -5,7 +5,7 @@ namespace BakerySystem.Services.Interfaces
 {
 	public interface IOrderService
 	{
-		public Task AddToOrder(int id);
+		 Task CheckoutOrder(CheckoutViewModel order);
 
 
 	}

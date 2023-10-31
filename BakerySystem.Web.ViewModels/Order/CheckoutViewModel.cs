@@ -1,6 +1,6 @@
 ﻿namespace BakerySystem.Web.ViewModels.Order
 {
-	public class OrderDetailsViewModel
+	public class CheckoutViewModel
 	{
 		public int Id { get; set; }
 

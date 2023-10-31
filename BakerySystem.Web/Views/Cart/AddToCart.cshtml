@@ -8,7 +8,7 @@
 
 	var amountOfProducts = ViewBag.CartItems.Count;
 
-	
+
 	var product = ViewBag.CartItems;
 
 	
@@ -57,6 +57,7 @@
 								<form method="post">
 								<td data-th="Quantity">
 									<input type="number" class="form-control text-center" value="@item.Quantity">
+									
 								</td>
 								</form>
 								<td class="actions" data-th="">
@@ -91,7 +92,7 @@
 			<a class="btn btn-primary float-start" asp-controller="Product" asp-action="All" asp-route-id="@ViewBag.CartItem?.ProductId">Continue Shopping</a>
 		</div>
 		<div>
-			<a class="btn btn-primary float-end" asp-controller="Order" asp-action="Checkout">Checkout</a>
+			<a class="btn btn-primary float-end" asp-controller="OrderDetails" asp-action="Checkout">Checkout</a>
 		</div>
 	</div>
 
