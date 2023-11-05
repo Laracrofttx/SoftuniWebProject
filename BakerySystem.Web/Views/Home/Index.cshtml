@@ -19,7 +19,8 @@
 	var seventhOffer = Model[1];
 	var eightOffer = Model[5];
 
-
+    decimal fifthOfferPrice = fifthOffer.Price - fifthOffer.Price * 0.20m;
+	fifthOfferPrice = (decimal)Math.Round(fifthOfferPrice, 2);
 }
 
 
@@ -32,19 +33,19 @@
 		</div>
 		<div aria-label="carousel" class="carousel-inner">
 			<div class="carousel-item active carousel-item">
-				<img aria-label="carousel" class="d-block w-100" style="background-color: gray; height: 550px; width: 100%;" src="~/Images/Bread.jpg" alt="" />
+				<img aria-label="carousel" class="d-block w-100" style="background-color: gray; height: 550px; width: 100%;" src="~/Images/HomePageCarousel/Bread.jpg" alt="" />
 				<div class="carousel-caption d-none d-md-block">
 					<h3>Classic Breads</h3>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img aria-label="carousel" class="d-block w-100" style="background-color: gray; height: 550px; width: 100%;" src="~/Images/EasterBread.jpg" alt="" />
+				<img aria-label="carousel" class="d-block w-100" style="background-color: gray; height: 550px; width: 100%;" src="~/Images/HomePageCarousel/EasterBread.jpg" alt="" />
 				<div class="carousel-caption d-none d-md-block">
 					<h3>Easter breads</h3>
 				</div>
 			</div>
 			<div class="carousel-item">
-				<img aria-label="carousel" class="d-block w-100" style="background-color: gray; height: 550px; width: 100%;" src="~/Images/sandwich.jpg" alt="" />
+				<img aria-label="carousel" class="d-block w-100" style="background-color: gray; height: 550px; width: 100%;" src="~/Images/HomePageCarousel/sandwich.jpg" alt="" />
 				<div class="carousel-caption d-none d-md-block">
 					<h3>Our Sandwiches</h3>
 				</div>
@@ -62,6 +63,7 @@
 </div>
 
 <h3 class="text-xl-center mt-5"> Today's offer </h3>
+<h4 class="text-xl-center mt-3"> Get up to 20% Off </h4>
 
 
 
@@ -133,7 +135,7 @@
 							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
 								 src="@fifthOffer.ImageUrl">
 							<div class="card-body">
-								<h5 class="card-title text-center">@fifthOffer.Name - @fifthOffer.Price$</h5>
+								<h5 class="card-title text-center">@fifthOffer.Name - <del>@fifthOffer.Price$</del> @fifthOfferPrice$</h5>
 								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@fifthOffer.Id">
 									<button type="submit" class="btn btn-primary float-end">
 										Add to cart

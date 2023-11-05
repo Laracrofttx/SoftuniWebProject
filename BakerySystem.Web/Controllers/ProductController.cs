@@ -182,9 +182,8 @@
 
 				productQuery = productQuery.Where(p =>
 				EF.Functions.Like(p.Name, wildCard));
-
-
 			}
+
 
 
 			var products = await productQuery

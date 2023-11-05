@@ -6,7 +6,6 @@
 	{
 		Task<string> GetFullNameByEmailAsync(string email);
 
-
 		Task<string> GetFullNameByIdAsync(string userId);
 
 		Task<IEnumerable<UserViewModel>> AllAsync();

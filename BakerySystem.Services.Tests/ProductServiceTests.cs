@@ -14,12 +14,7 @@ namespace BakerySystem.Services.Tests
 		private  IProductService productService;
 		private  ICategoryService categoryService;
 
-		public ProductServiceTests()
-		{
-
-
-
-		}
+		
 
 		[OneTimeSetUp]
 		public void OneTimeSetUp()

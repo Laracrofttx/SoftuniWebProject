@@ -1,15 +1,10 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
 	using System.Linq;
-	using System.Security.Cryptography.X509Certificates;
-	using AutoMapper.Internal;
-	using BakerySystem.Data.Models;
-	using BakerySystem.Services;
+	using System.Security.Cryptography;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
-	using BakerySystem.Web.ViewModels.Product;
 	using BakerySystem.Web.ViewModels.ShoppingCart;
-	using Humanizer.DateTimeHumanizeStrategy;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
@@ -34,10 +29,10 @@
 
 		}
 
-		public List<CartItemViewModel> cartItems;
+		public List<CartItemViewModel> cartItems = null!;
 
 
-		public async Task<IActionResult> AddToCart()
+		public IActionResult AddToCart()
 		{
 
 			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
@@ -57,7 +52,7 @@
 
 
 		[HttpPost]
-		public async Task<IActionResult> AddToCart(int id)
+		public async Task<IActionResult> AddToCart(int id, int quantity)
 		{
 
 			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
@@ -76,8 +71,8 @@
 					Title = p.Name,
 					Price = p.Price,
 					Image = p.ImageUrl,
-					Quantity = 1,
-					TotalPrice = p.Price * 2
+					Quantity = quantity,
+					TotalPrice = p.Price
 
 
 				})
@@ -88,18 +83,14 @@
 			if (product != null)
 			{
 				cartItems.Add(product);
-
 			}
-
-			
-
 
 			MemoryCacheEntryOptions cache = new MemoryCacheEntryOptions()
 				.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
 
 			this.memoryCache.Set(CartCacheKey, cartItems, cache);
 
-
+			
 			ViewBag.CartItems = cartItems;
 
 			return RedirectToAction(nameof(AddToCart));
@@ -108,7 +99,7 @@
 
 		}
 
-		public async Task<IActionResult> RemoveFromCart()
+		public IActionResult RemoveFromCart()
 		{
 
 			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
@@ -118,7 +109,7 @@
 			if (cartItems.Count > 0)
 			{
 
-				cartItems.Remove(itemToRemove);
+				cartItems.Remove(itemToRemove!);
 
 			}
 			if (cartItems.Count > 0)
@@ -133,7 +124,7 @@
 
 
 
-		public async Task<IActionResult> ClearAll()
+		public IActionResult ClearAll()
 		{
 
 			this.memoryCache.Remove(CartCacheKey);

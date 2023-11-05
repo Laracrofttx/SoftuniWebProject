@@ -21,5 +21,11 @@ namespace BakerySystem.Web.ViewModels.Home
 		public IEnumerable<ProductListingVIewModel> Products { get; set; } = null!;
 
 		public IEnumerable<CategoryListingViewModel> Categories { get; set; } = null!;
+
+		public decimal DiscoutPrice { get; set; }
+
+		 
+		
+
 	}
 }
