@@ -17,17 +17,21 @@
 					<h5 class="card-title">@possition.Title</h5>
 					<h5 class="card-title">Salary - @possition.Salary</h5>
 					<a asp-controller="Hiring" asp-action="Apply" asp-route-id=""
-					  class="btn btn-primary float-end">
+					   class="btn btn-primary float-end">
 						Apply
 					</a>
 					<a asp-area="" asp-controller="Hiring" asp-action="Details" asp-route-id="@possition.Id"
 					   class="btn btn-success">Details</a>
 
-					<a asp-area="" asp-controller="Hiring" asp-action="Edit" asp-route-id="@possition.Id"
-					   class="btn btn-warning">Edit</a>
-					<a asp-area="" asp-controller="Hiring" asp-action="Delete" asp-route-id="@possition.Id"
-					   class="btn btn-danger">Delete</a>
-					
+					@if (User.isAdmin())
+					{
+						<a asp-area="" asp-controller="Hiring" asp-action="Edit" asp-route-id="@possition.Id"
+						   class="btn btn-warning">Edit</a>
+						<a asp-area="" asp-controller="Hiring" asp-action="Delete" asp-route-id="@possition.Id"
+						   class="btn btn-danger">Delete</a>
+
+					}
+
 				</div>
 			</div>
 		</div>
