@@ -24,7 +24,7 @@
 
 		public async Task CreateProductAsync(ProductFormModel model)
 		{
-			// Without AutoMapper
+			// --  Without AutoMapper
 
 			//var product = new Product
 			//{
@@ -38,7 +38,7 @@
 
 			//};
 
-			// With AutoMapper
+			//  -- With AutoMapper
 
 			Product product =
 				AutoMapperConfig.MapperInstance.Map<Product>(model);
@@ -64,7 +64,6 @@
 			Product product = await this.dbContext
 				.Products
 				.FirstAsync(p => p.Id == id);
-
 
 
 			product.Id = model.Id;

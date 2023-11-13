@@ -1,22 +1,21 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
 	using System.Threading.Tasks;
-	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
 	using ViewModels.Home;
 
     using static Common.GeneralApplicationConstants;
+
 	public class HomeController : Controller
     {
         private readonly BakeryDbContext dbContext;
 
-        private readonly IProductService productService;
-        public HomeController(BakeryDbContext dbContext,IProductService productService)
+        public HomeController(BakeryDbContext dbContext)
         {
             this.dbContext = dbContext;
-            this.productService = productService;    
+           
         }
 
        

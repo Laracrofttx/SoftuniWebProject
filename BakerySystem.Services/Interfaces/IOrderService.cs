@@ -1,5 +1,4 @@
-﻿using BakerySystem.Data.Models;
-using BakerySystem.Web.ViewModels.Order;
+﻿using BakerySystem.Web.ViewModels.Order;
 
 namespace BakerySystem.Services.Interfaces
 {

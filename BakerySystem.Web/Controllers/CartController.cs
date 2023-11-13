@@ -52,7 +52,7 @@
 
 
 		[HttpPost]
-		public async Task<IActionResult> AddToCart(int id, int quantity)
+		public async Task<IActionResult> AddToCart(int id)
 		{
 
 			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
@@ -71,7 +71,7 @@
 					Title = p.Name,
 					Price = p.Price,
 					Image = p.ImageUrl,
-					Quantity = quantity,
+					Quantity = 1,
 					TotalPrice = p.Price
 
 

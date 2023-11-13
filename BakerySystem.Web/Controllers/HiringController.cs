@@ -8,12 +8,10 @@
 	public class HiringController : Controller
 	{
 		private readonly IPossitionService possitionService;
-		private readonly IBufferedFileUploadService bufferedFileUploadService;
 
-		public HiringController(IPossitionService possitionService, IBufferedFileUploadService bufferedFileUploadService)
+		public HiringController(IPossitionService possitionService)
 		{
 			this.possitionService = possitionService;
-			this.bufferedFileUploadService = bufferedFileUploadService;
 
 		}
 
