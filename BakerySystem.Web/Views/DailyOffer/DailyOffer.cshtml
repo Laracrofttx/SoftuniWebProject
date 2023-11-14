@@ -20,7 +20,7 @@
 				<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
 					 src="@offer.ImageUrl">
 				<div class="card-body">
-					<h5 class="card-title">@offer.Name @offer.Price</h5>
+					<h5 class="card-title">@offer.Name - @offer.Price$</h5>
 					@* <p class="card-text" style="min-height: 120px;">@product.Description</p> *@
 					<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@offer.Id">
 						<button type="submit" class="btn btn-primary float-end">
