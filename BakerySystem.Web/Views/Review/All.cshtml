@@ -6,22 +6,35 @@
 { *@
 <a asp-controller="Review" asp-action="Add" class="btn btn-primary">Add Review</a>
 
-<div class="container">
-	<div class="row gy-3">
-		@foreach (var review in Model.Reviews)
-		{
+<section>
+	<div class="container">
+		<div class="row">
 
 
-			<div class="col-sm-4 offset-3 border-primary">
-				<div class="card-header mx-auto">
-					<div class="card-body">
-						<h5 class="card-title">@review.UserName</h5>
-						<p class="card-text"> - @review.FeedBack</p>
+
+		</div>
+	</div>
+</section>
+
+
+<section>
+	<div class="container">
+		<div class="row gy-3">
+			@foreach (var review in Model.Reviews)
+			{
+
+
+				<div class="col-sm-4 offset-3 border-primary">
+					<div class="card-header mx-auto">
+						<div class="card-body">
+							<h5 class="card-title">@review.UserName</h5>
+							<p class="card-text"> - @review.FeedBack</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		}
+			}
+		</div>
 	</div>
-</div>
+</section>
 @* } *@
 

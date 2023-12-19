@@ -12,20 +12,16 @@
 
 <form method="get">
 	<div class="row mb-5">
-		<div class="form-group col-md-3">
+		<div class="form-group col-md-3 mt-3">
 			<label asp-for="SearchByName"></label>
 			<input asp-for="SearchByName" class="form-control" placeholder="Product name">
 		</div>
-		<div class="form-group col-md-3">
-			<label asp-for="Price"></label>
-			<input asp-for="Price" class="form-control" placeholder="Product price">
-		</div>
-
 		<div class="form-group col-md-3">
 			<input type="submit" class="btn btn-primary d-none" value="Search">
 		</div>
 	</div>
 </form>
+
 
 @if (Model.Products != null)
 {
@@ -34,20 +30,17 @@
 
 		@foreach (var product in Model.Products)
 		{
-			<div class="col-sm-4 col-md-3">
-				<div class="card mb-3" @* h-100 *@>
+			<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+				<div class="card mb-3 h-100 bg-transparent">
 					<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
 						 src="@product.ImageUrl">
-					<div class="card-body">
+					<div class="card-body bg-opacity-10 border-0">
 						<h5 class="card-title">@product.Name @product.Price$</h5>
-						@* <p class="card-text" style="min-height: 120px;">@product.Description</p> *@
 						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@product.Id">
 							<button type="submit" class="btn btn-primary float-end">
 								AddToCart
 							</button>
 						</form>
-						@* <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@product.Id" *@
-@* 						   class="btn btn-primary float-end">Add to Cart</a> *@
 						<a asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@product.Id"
 						   class="btn btn-success">Details</a>
 
@@ -67,46 +60,49 @@
 	</div>
 }
 
-
 @{
 
-	var previousPage = Model.CurrentPage - 1;
+	int previousPage = Model.CurrentPage - 1;
 
 	if (previousPage < 1)
 	{
 		previousPage = 1;
 	}
 
-	var maxPage = (int)Math.Ceiling((double)Model.TotalProducts / ProductSearchQueryModel.ProductsPerPage);
+	int maxPage = (int)Math.Ceiling((double)Model.TotalProducts / ProductSearchQueryModel.ProductsPerPage);
 }
 
 
-<div class="row mb-5">
+<div class="row">
 
-	<div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
+	<div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start mt-5">
 		<a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
 		   asp-controller="Product"
 		   asp-action="All"
 		   asp-route-currentPage="@previousPage"
-		   asp-route-name="@Model.SearchByName"><<</a>
+		   asp-route-category="@Model.CategoryName"
+		   asp-route-searchTerm="@Model.SearchByName"><<</a>
 	</div>
 
 	@{
 		bool shouldNextPageBeDisabled = Model.CurrentPage == maxPage ||
-		!Model.Products!.Any();
+		!Model.Products.Any();
 	}
 
-	<div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
+	<div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end mt-5">
 		<a class="btn btn-primary @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
 		   asp-controller="Product"
 		   asp-action="All"
+		   asp-route-category="@Model.CategoryName"
+		   asp-route-searchTerm="@Model.SearchByName"
 		   asp-route-currentPage="@(Model.CurrentPage + 1)"
 		   asp-route-name="@Model.SearchByName">>></a>
 	</div>
 
 </div>
 
-@if (!Model.Products.Any())
+
+@if (Model.TotalProducts == maxPage)
 {
-	<h2 class="text-center">No products found by the given name!</h2>
+	<h2 class="text-center">No products by the given name!</h2>
 }
