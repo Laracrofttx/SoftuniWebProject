@@ -9,20 +9,6 @@
 
 }
 
-@{
-
-	var firstOffer = Model[0];
-	var secondOffer = Model[1];
-	var thirdOffer = Model[2];
-	var forthOffer = Model[3];
-	var fifthOffer = Model[4];
-	var sixthOffer = Model[5];
-	var seventhOffer = Model[6];
-	var eightOffer = Model[7];
-
-	decimal fifthOfferPrice = fifthOffer.Price - fifthOffer.Price * 0.20m;
-	fifthOfferPrice = (decimal)Math.Round(fifthOfferPrice, 2);
-}
 
 <section class="text-dark p-5 p-lg-0">
 	<div class="container mt-3">
@@ -56,7 +42,6 @@
 </section>
 
 
-
 <section class="p-5">
 	<div class="container">
 		<div class="h3 text-center">Today's offer</div>
@@ -67,7 +52,7 @@
 					<img src="https://handletheheat.com/wp-content/uploads/2022/03/bagels-recipe-SQUARE.jpg" class="card-img-top" alt="...">
 					<div class="card-body">
 						<h5 class="card-title">Bagel</h5>
-						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="">
+						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model[0]">
 							<button type="submit" class="btn btn-outline-primary float-end">
 								Add To Cart
 							</button>
@@ -123,144 +108,13 @@
    // form-control-color
 *@
  
-@* <div class="container text-center my-3">
-	<div class="row mx-auto my-auto justify-content-center">
-		<div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item active">
-					<div class="col-sm-4 col-md-3">
-						<div class="card mb-3 h-70">
-							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-								 src="@firstOffer.ImageUrl">
-							<div class="card-body">
-								<h5 class="card-title text-center">@firstOffer.Name - @firstOffer.Price$</h5>
-								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@firstOffer.Id">
-									<button type="submit" class="btn btn-primary float-end">
-										Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4 col-md-3">
-						<div class="card mb-3 h-70">
-							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-								 src="@secondOffer.ImageUrl">
-							<div class="card-body">
-								<h5 class="card-title text-center">@secondOffer.Name - @secondOffer.Price$</h5>
-								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@secondOffer.Id">
-									<button type="submit" class="btn btn-primary float-end">
-										Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4 col-md-3">
-						<div class="card mb-3 h-70">
-							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-								 src="@thirdOffer.ImageUrl">
-							<div class="card-body">
-								<h5 class="card-title text-center">@thirdOffer.Name - @thirdOffer.Price$</h5>
-								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@thirdOffer.Id">
-									<button type="submit" class="btn btn-primary float-end">
-										Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4 col-md-3">
-						<div class="card mb-3 h-70">
-							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-								 src="@forthOffer.ImageUrl">
-							<div class="card-body">
-								<h5 class="card-title text-center">@forthOffer.Name - @forthOffer.Price$</h5>
-								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@forthOffer.Id">
-									<button type="submit" class="btn btn-primary float-end">
-										Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="col-sm-4 col-md-3">
-						<div class="card mb-3 h-70">
-							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-								 src="@fifthOffer.ImageUrl">
-							<div class="card-body">
-								<h5 class="card-title text-center">@fifthOffer.Name - <del>@fifthOffer.Price$</del> @fifthOfferPrice$</h5>
-								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@fifthOffer.Id">
-									<button type="submit" class="btn btn-primary float-end">
-										Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4 col-md-3">
-						<div class="card mb-3 h-70">
-							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-								 src="@sixthOffer.ImageUrl">
-							<div class="card-body">
-								<h5 class="card-title text-center">@sixthOffer.Name - @sixthOffer.Price$</h5>
-								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@sixthOffer.Id">
-									<button type="submit" class="btn btn-primary float-end">
-										Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4 col-md-3">
-						<div class="card mb-3 h-70">
-							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-								 src="@seventhOffer.ImageUrl">
-							<div class="card-body">
-								<h5 class="card-title text-center">@seventhOffer.Name - @seventhOffer.Price$</h5>
-								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@seventhOffer.Id">
-									<button type="submit" class="btn btn-primary float-end">
-										Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4 col-md-3">
-						<div class="card mb-3 h-70">
-							<img aria-label="product" class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
-								 src="@eightOffer.ImageUrl">
-							<div class="card-body">
-								<h5 class="card-title text-center">@eightOffer.Name - @eightOffer.Price$</h5>
-								<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@eightOffer.Id">
-									<button type="submit" class="btn btn-primary float-end">
-										Add to cart
-									</button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				<a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				</a>
-				<a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				</a>
-			</div>
-		</div>
-	</div>
-</div> *@
-
 
 <section class="bg-transparent p-5">
 	<div class="container">
-		<div class="d-flex justify-content-evenly align-items-center">
+		<div class="d-md-flex justify-content-evenly my-3 align-items-center">
 
 			<h3 class="mb-3 mb-md-0"> Get Our Offers First </h3>
-			<div class="input-group-text">
+			<div class="input-group-text news-input">
 				<input type="text" class="form-control"
 					   placeholder="Enter Email" />
 				<button class="btn btn-outline-primary" type="button">Subscribe</button>

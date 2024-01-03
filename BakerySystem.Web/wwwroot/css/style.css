@@ -8,8 +8,12 @@
 
 @media(min-width: 768px) {
     .news-input {
-        width: 50%
+        width: 50%;
     }
+}
+
+header img {
+    height: 80px;
 }
 
 h4,

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<PossitionListingViewModel>;
 
 @using BakerySystem.Web.Infrastructure.Extensions;
+@using Microsoft.AspNetCore.Identity;
 
 
 <div class="text-center mt-3"><h2>If you want to become one of us, feel free to apply</h2></div>
@@ -15,13 +16,18 @@
 					 src="@possition.ImageUrl">
 				<div class="card-body">
 					<h5 class="card-title">@possition.Title</h5>
-					<h5 class="card-title">Salary - @possition.Salary</h5>
-					<a asp-controller="Hiring" asp-action="Apply" asp-route-id=""
-					   class="btn btn-primary float-end">
-						Apply
-					</a>
+					<h5 class="card-title">Salary - @possition.Salary$</h5>
+
 					<a asp-area="" asp-controller="Hiring" asp-action="Details" asp-route-id="@possition.Id"
 					   class="btn btn-success">Details</a>
+
+					@if (this.User.Identity!.IsAuthenticated)
+					{
+						<a asp-controller="Hiring" asp-action="Apply" asp-route-id="@possition.Id"
+						   class="btn btn-primary float-end">
+							Apply
+						</a>
+					}
 
 					@if (User.isAdmin())
 					{

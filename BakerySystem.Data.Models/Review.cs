@@ -9,6 +9,8 @@
 
 		public string UserName { get; set; } = null!;
 
+		public DateTime PostedOn { get; set; }
+
         public string FeedBack { get; set; } = null!;
 
 	}

@@ -121,7 +121,6 @@
 		}
 
 		[HttpGet]
-
 		public async Task<IActionResult> Delete(int id)
 		{
 			var possitionExist = await this.possitionService.ExistByIdAsync(id);
@@ -151,7 +150,6 @@
 
 
 		[HttpPost]
-
 		public async Task<IActionResult> Delete(int id, PossitionDeleteViewModel possition)
 		{
 
@@ -179,7 +177,7 @@
 		public async Task<IActionResult> Apply()
 		{
 
-			return View();
+			 return View();
 
 		}
 

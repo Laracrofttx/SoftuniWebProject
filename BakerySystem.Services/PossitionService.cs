@@ -5,7 +5,6 @@
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.JoinUs;
 	using Microsoft.EntityFrameworkCore;
-	using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 	public class PossitionService : IPossitionService
 	{

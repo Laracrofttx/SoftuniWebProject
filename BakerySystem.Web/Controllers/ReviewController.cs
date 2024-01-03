@@ -1,14 +1,11 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
 	using BakerySystem.Data.Models;
-	using BakerySystem.Services;
-	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
-	using BakerySystem.Web.ViewModels.Product;
 	using BakerySystem.Web.ViewModels.Review;
-	using Microsoft.AspNetCore.Identity;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
+	using System.Linq;
 
 	public class ReviewController : Controller
 	{
@@ -46,6 +43,7 @@
 				Review feedBack = new Review()
 				{
 					UserName = model.UserName,
+					PostedOn = model.PostedOn,
 					FeedBack = model.FeedBack
 				};
 
@@ -64,7 +62,7 @@
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> All(int id, ReviewFormModel model)
+		public async Task<IActionResult> All(ReviewFormModel model)
 		{
 
 			var allReviews = await this.dbContext

@@ -2,30 +2,36 @@
 @model ReviewFormModel;
 
 
-@* @if (Model.Reviews != null)
-{ *@
-<a asp-controller="Review" asp-action="Add" class="btn btn-primary">Add Review</a>
-
-<section>
+<section class="p-5 text-center text-sm-start">
 	<div class="container">
-		<div class="row">
-
-
-
+		<div class="d-sm-flex align-items-center justify-content-between">
+			<div>
+				<h1>
+					Rate our work by <span class="text-warning">
+						clicking here
+					</span>
+				</h1>
+				<a asp-controller="Review" asp-action="Add" class="btn btn-primary ">Add Review</a>
+			</div>
+			<img class="img-fluid w-50 d-none d-sm-block" src="https://www.bakersjournal.com/wp-content/uploads/2019/09/b5167bc71dffcb52d3db394b1ccfdba5.jpg" />
 		</div>
 	</div>
 </section>
 
 
-<section>
+<section class="p-5">
 	<div class="container">
-		<div class="row gy-3">
+		<div class="h1 text-center mb-5">Customer Reviews</div>
+		<div class="row">
+			<div>
+				<div class="media">
+				</div>
+			</div>
 			@foreach (var review in Model.Reviews)
 			{
 
-
-				<div class="col-sm-4 offset-3 border-primary">
-					<div class="card-header mx-auto">
+				<div class="col-md-4 mb-3">
+					<div class="card-header border border-dark h-100">
 						<div class="card-body">
 							<h5 class="card-title">@review.UserName</h5>
 							<p class="card-text"> - @review.FeedBack</p>
@@ -36,5 +42,5 @@
 		</div>
 	</div>
 </section>
-@* } *@
+
 
