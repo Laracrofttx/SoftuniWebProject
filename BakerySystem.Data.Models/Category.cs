@@ -1,8 +1,8 @@
 ﻿namespace BakerySystem.Data.Models
 {
 	using System.ComponentModel.DataAnnotations;
-	using System.Diagnostics;
 	using static Common.EntityValidationConstants.Category;
+
 	public class Category
 	{
 		public Category()

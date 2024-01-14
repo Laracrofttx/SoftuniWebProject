@@ -24,8 +24,8 @@
 				PasswordHash = "AQAAAAEAACcQAAAAEJW96DG2bC8COzd5Q6R8wuby/EQSfum+SCF7nMc4xmCsQCS25LQcErcKY573eSWjAQ",
 				SecurityStamp = "42V34ZUKMWVDS6S33BAFAQ2AGWXSJFAX",
 				ConcurrencyStamp = "38d8a2c8-3c94-43fa-8bb1-a1ac4696d19c",
-				FirstName = "Unknown",
-				LastName = "User",
+				FirstName = "Pesho",
+				LastName = "Petrov",
 
 			};
 

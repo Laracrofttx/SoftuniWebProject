@@ -1,6 +1,5 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
-	using BakerySystem.Services;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.ViewModels.JoinUs;
 	using Microsoft.AspNetCore.Mvc;

@@ -13,7 +13,6 @@ html {
     min-height: 100%;
 }
 
-
 body {
     margin-top: 25px;
     margin-bottom: 100px;
@@ -21,13 +20,15 @@ body {
 }
 
 
+
 body {
     background-image: url(https://img.freepik.com/premium-photo/white-background-frames-isolated-exhibition-numerous-spa-cosmetic-items-spa-from-abo_410516-94878.jpg?size=626&ext=jpg&ga=GA1.2.1955849475.1696176372&semt=ais);
     color: saddlebrown;
     background-position: center;
     background-size: cover;
-    background-position: fixed;
+    background-position: center;
     background-repeat: no-repeat;
+    font-family: sans-serif;
 }
 
 page-container {
@@ -35,15 +36,11 @@ page-container {
     min-height: 100vh;
 }
 
-/*content-wrap {
-    padding-bottom: 2.5rem; 
-}*/
 
 footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    /*height: 2.5rem;*/
 }
 
 @media (max-width: 767px) {
@@ -62,19 +59,6 @@ footer {
     display: flex;
 }
 
-/* medium and up screens */
-@media (min-width: 768px) {
-
-    .carousel-inner .carousel-item-end.active,
-    .carousel-inner .carousel-item-next {
-        transform: translateX(25%);
-    }
-
-    .carousel-inner .carousel-item-start.active,
-    .carousel-inner .carousel-item-prev {
-        transform: translateX(-25%);
-    }
-}
 
 .carousel-inner .carousel-item-end,
 .carousel-inner .carousel-item-start {
@@ -163,10 +147,6 @@ a {
     margin-left: auto;
     font-size: 0.7rem;
 }
-
-/*img {
-    width: 3.5rem;
-}*/
 
 .back-to-shop {
     margin-top: 4.5rem;
