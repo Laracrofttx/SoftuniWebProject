@@ -12,6 +12,12 @@ The products are ordered by categories so you can easly find what you need.
 
 Only Admin is allowed to do any changes on the website.
 
+# Built with
 
+EF CORE
 
+ASP.NET CORE
 
+MSSQL Server
+
+Bootstrap
