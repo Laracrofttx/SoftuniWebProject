@@ -3,14 +3,15 @@
 My project for ASP.NET Core course in SoftUni
 
 # Description
+If you are logged as a normal user you can order from the existing products, 
+apply for a job,
+and rate our work by leaving a feedback.
 
-A simple bakery website. 
-As a normal user you can order products, leave a feedback and even more 
-- you can become one of us appling for the possition you're interested in.
+You can also contant us by filling the contact form from the menu.
+The products are ordered by categories so you can easly find what you need.
 
-The products are ordered by category, so you can easily find what you are looking for.
+Only Admin is allowed to do any changes on the website.
 
-The Bakery is having a daily offers up to 20% off
 
 
 
