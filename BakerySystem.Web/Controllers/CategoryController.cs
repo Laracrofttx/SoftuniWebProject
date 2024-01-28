@@ -15,13 +15,11 @@
 		private readonly BakeryDbContext dbContext;
 
 		private readonly ICategoryService categoryService;
-		private readonly IProductService productService;
 
-		public CategoryController(BakeryDbContext dbContext, ICategoryService categoryService, IProductService productService)
+		public CategoryController(BakeryDbContext dbContext, ICategoryService categoryService)
 		{
 			this.dbContext = dbContext;
 			this.categoryService = categoryService;
-			this.productService = productService;
 		}
 
 

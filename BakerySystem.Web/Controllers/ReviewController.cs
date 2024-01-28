@@ -1,26 +1,24 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
+	using System.Linq;
+	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.EntityFrameworkCore;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Review;
-	using Microsoft.AspNetCore.Mvc;
-	using Microsoft.EntityFrameworkCore;
-	using System.Linq;
 
 	public class ReviewController : Controller
 	{
 		private readonly BakeryDbContext dbContext;
-		//private readonly IReviewService reviewService;
 
 
-		public ReviewController(BakeryDbContext dbContext) /*IReviewService reviewService*/
+		public ReviewController(BakeryDbContext dbContext)
 		{
 			this.dbContext = dbContext;
-			//this.reviewService = reviewService;
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Add()
+		public IActionResult Add()
 		{
 
 			return View();

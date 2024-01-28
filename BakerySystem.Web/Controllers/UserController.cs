@@ -8,6 +8,7 @@
 	using Microsoft.AspNetCore.Authentication;
 	using Microsoft.Extensions.Caching.Memory;
 	using Griesoft.AspNetCore.ReCaptcha;
+	using BakerySystem.Web.Data;
 
 	public class UserController : Controller
 	{
@@ -107,5 +108,7 @@
 
 			return Redirect(model.ReturnUrl ?? "/Home/Index");
 		}
+
+		
 	}
 }

@@ -23,6 +23,7 @@
 		[Required]
 		[MaxLength(LastNameMaxLength)]
 		public string LastName { get; set; } = null!;
+
 	}
 
 

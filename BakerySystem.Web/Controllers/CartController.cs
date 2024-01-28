@@ -1,14 +1,13 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
 	using System.Linq;
-	using System.Security.Cryptography;
-	using BakerySystem.Services.Interfaces;
-	using BakerySystem.Web.Data;
-	using BakerySystem.Web.ViewModels.ShoppingCart;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.Extensions.Caching.Memory;
+	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.ShoppingCart;
 
 	using static Common.GeneralApplicationConstants;
 
