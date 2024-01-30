@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Net;
 
 namespace BakerySystem.Web.ViewModels.JoinUs
 {

@@ -26,7 +26,7 @@
 		}
 
 		[HttpGet]
-		public IActionResult Register()
+		public async Task<IActionResult> Register()
 		{
 			return View();
 		}

@@ -128,7 +128,7 @@
 			return new PossitionDeleteViewModel()
 			{
 				Id = id,
-				JobTitle = possitionForDelete.PositionName,
+				JobTitle = possitionForDelete!.PositionName,
 				Salary = possitionForDelete.Salary,
 				ImageUrl = possitionForDelete.ImageUrl,
 				JobDescription = possitionForDelete.JobDescription,
@@ -151,7 +151,6 @@
 			var app = new JobApplication
 			{
 
-				Id = apply.Id,
 				FullName = apply.FullName,
 				EmailAddress = apply.EmailAddress,
 				Experience = apply.Experience,

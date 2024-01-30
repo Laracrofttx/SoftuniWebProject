@@ -2,6 +2,7 @@
 {
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.ViewModels.JoinUs;
+	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 
 	public class HiringController : Controller
@@ -176,7 +177,7 @@
 		public async Task<IActionResult> Apply()
 		{
 
-			 return View();
+			return View();
 
 		}
 
@@ -198,6 +199,7 @@
 			}
 
 			return RedirectToAction(nameof(All));
+
 
 		}
 	}
