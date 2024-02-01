@@ -47,12 +47,6 @@ namespace BakerySystem.Web
 
 			builder.Services.AddApplicationServices(typeof(IProductService));
 
-			////builder.Services.AddScoped<IProductService, ProductService>();
-			////builder.Services.AddScoped<ICategoryService, CategoryService>();
-			////builder.Services.AddScoped<IOrderService, OrderService>();
-
-			//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
 			builder.Services.ConfigureApplicationCookie(config =>
 			{
 				config.LoginPath = "/User/Login";
