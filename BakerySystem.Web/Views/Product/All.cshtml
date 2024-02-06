@@ -93,16 +93,24 @@
 		<a class="btn btn-primary @(shouldNextPageBeDisabled ? "disabled" : string.Empty)"
 		   asp-controller="Product"
 		   asp-action="All"
-		   asp-route-category="@Model.CategoryName"
-		   asp-route-searchTerm="@Model.SearchByName"
 		   asp-route-currentPage="@(Model.CurrentPage + 1)"
-		   asp-route-name="@Model.SearchByName">>></a>
+		   asp-route-category="@Model.CategoryName"
+		   asp-route-searchTerm="@Model.SearchByName">>></a>
 	</div>
+
+	@if (Model.CurrentPage + 1 == maxPage)
+	{
+		<h1 class="justify-content-center">
+			We are currently working on adding more products!
+		</h1>
+	}
 
 </div>
 
 
+
+
 @if (Model.TotalProducts == maxPage)
 {
-	<h2 class="text-center">No products by the given name!</h2>
+<h2 class="text-center">No products by the given name!</h2>
 }
