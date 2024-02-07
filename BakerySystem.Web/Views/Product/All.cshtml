@@ -32,10 +32,10 @@
 		{
 			<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 				<div class="card mb-3 h-100 bg-transparent">
-					<img class="card-img-top" style="background-color: gray; height: 250px; width: 100%;"
+					<img class="card-img-top" style="height: 250px; width: 100%;"
 						 src="@product.ImageUrl">
 					<div class="card-body bg-opacity-10 border-0">
-						<h5 class="card-title">@product.Name @product.Price$</h5>
+						<h5 class="card-title">@product.Name - @product.Price$</h5>
 						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@product.Id">
 							<button type="submit" class="btn btn-primary float-end">
 								Add To Cart
@@ -74,7 +74,6 @@
 
 
 <div class="row">
-
 	<div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start mt-5">
 		<a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
 		   asp-controller="Product"
@@ -98,13 +97,17 @@
 		   asp-route-searchTerm="@Model.SearchByName">>></a>
 	</div>
 
-	@if (Model.CurrentPage + 1 == maxPage)
+	@if (!Model.Products.Any())
 	{
-		<h1 class="justify-content-center">
-			We are currently working on adding more products!
-		</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<h1>We are currently working on</h1>
+					<h1 class="text-warning">adding more products!</h1>
+				</div>
+			</div>
+		</div>
 	}
-
 </div>
 
 
@@ -112,5 +115,5 @@
 
 @if (Model.TotalProducts == maxPage)
 {
-<h2 class="text-center">No products by the given name!</h2>
+	<h2 class="text-center">No products by the given name!</h2>
 }

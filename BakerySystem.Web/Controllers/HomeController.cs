@@ -38,6 +38,7 @@
                 })
                 .ToListAsync();
 
+
             return View(products);
 
 

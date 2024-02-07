@@ -7,7 +7,7 @@ namespace BakerySystem.Web.ViewModels.Home
 	{
 		public ProductIndexViewModel()
 		{
-			this.Products = new HashSet<ProductListingVIewModel>();
+			this.Products = new HashSet<ProductSearchQueryModel>();
 			this.Categories = new HashSet<CategoryListingViewModel>();
 		}
 		public int Id { get; set; }
@@ -18,7 +18,7 @@ namespace BakerySystem.Web.ViewModels.Home
 
 		public decimal Price { get; set; }
 
-		public IEnumerable<ProductListingVIewModel> Products { get; set; } = null!;
+		public IEnumerable<ProductSearchQueryModel> Products { get; set; } = null!;
 
 		public IEnumerable<CategoryListingViewModel> Categories { get; set; } = null!;
 
