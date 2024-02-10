@@ -5,18 +5,21 @@
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.AspNetCore.Mvc;
 
-	using BakerySystem.Data.Models;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Review;
+	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Data.Models;
 
 	public class ReviewController : Controller
 	{
 		private readonly BakeryDbContext dbContext;
+		private readonly IReviewService reviewService;
 
 
-		public ReviewController(BakeryDbContext dbContext)
+		public ReviewController(BakeryDbContext dbContext, IReviewService reviewService)
 		{
 			this.dbContext = dbContext;
+			this.reviewService = reviewService;
 		}
 
 		[HttpGet]
@@ -31,23 +34,15 @@
 		public async Task<IActionResult> Add(ReviewFormModel model)
 		{
 
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid)
 			{
-
 				return View(model);
-
 			}
-
+			
 			try
 			{
-				Review feedBack = new Review()
-				{
-					UserName = model.UserName,
-					PostedOn = model.PostedOn,
-					FeedBack = model.FeedBack
-				};
+				await this.reviewService.AddReview(model);
 
-				await this.dbContext.Reviews.AddAsync(feedBack);
 				await this.dbContext.SaveChangesAsync();
 				return RedirectToAction("All", "Review");
 
@@ -62,24 +57,13 @@
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> All(ReviewFormModel model)
+		public async Task<IActionResult> All()
 		{
 
-			var allReviews = await this.dbContext
-				.Reviews
-				.Select(r => new ReviewListingViewModel()
-				{
-					Id = r.Id,
-					UserName = r.UserName,
-					FeedBack = r.FeedBack,
+			IEnumerable<ReviewFormModel> reviews = await this.reviewService.AllReviewsAsync();
 
 
-				})
-				.ToArrayAsync();
-
-			model.Reviews = allReviews;
-
-			return View(model);
+			return View(reviews);
 		}
 	}
 }

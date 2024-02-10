@@ -82,7 +82,6 @@
 				ImageUrl = possition.ImageUrl,
 				JobDescription = possition.JobDescription,
 
-
 			};
 		}
 

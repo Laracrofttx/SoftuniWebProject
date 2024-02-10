@@ -1,5 +1,5 @@
 ﻿@using BakerySystem.Web.ViewModels.Review
-@model ReviewFormModel;
+@model IEnumerable<ReviewFormModel>
 
 
 <section class="p-5 text-center text-sm-start">
@@ -27,7 +27,7 @@
 				<div class="media">
 				</div>
 			</div>
-			@foreach (var review in Model.Reviews)
+			@foreach (var review in Model)
 			{
 
 				<div class="col-md-4 mb-3">

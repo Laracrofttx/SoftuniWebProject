@@ -96,6 +96,13 @@
 		public async Task<IActionResult> Edit(int id, ProductFormModel model)
 		{
 
+			if (!ModelState.IsValid)
+			{
+				model.Categories = await this.categoryService.GetProductCategoryAsync();
+
+				return this.View(model);
+			}
+
 			if (await this.productService.ExistByIdAsynch(id) == false)
 			{
 
@@ -105,13 +112,6 @@
 			if (!User.isAdmin())
 			{
 				return RedirectToAction("Index", "Home");
-			}
-
-			if (!ModelState.IsValid)
-			{
-				model.Categories = await this.categoryService.GetProductCategoryAsync();
-
-				return this.View(model);
 			}
 
 
