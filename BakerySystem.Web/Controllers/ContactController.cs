@@ -1,19 +1,20 @@
-﻿using BakerySystem.Services.Interfaces;
-using BakerySystem.Web.ViewModels.Contact;
-using Microsoft.AspNetCore.Mvc;
-
-namespace BakerySystem.Web.Controllers
+﻿namespace BakerySystem.Web.Controllers
 {
+	using Microsoft.AspNetCore.Mvc;
+
+	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Web.ViewModels.Contact;
+
 	public class ContactController : Controller
 	{
 		private readonly IContactService contactService;
 
-        public ContactController(IContactService contactService)
-        {
+		public ContactController(IContactService contactService)
+		{
 			this.contactService = contactService;
-        }
+		}
 
-        public async Task<IActionResult> Contact()
+		public IActionResult Contact()
 		{
 			return View();
 		}

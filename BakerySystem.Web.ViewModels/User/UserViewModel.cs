@@ -1,6 +1,4 @@
-﻿using BakerySystem.Data.Models;
-
-namespace BakerySystem.Web.ViewModels.User
+﻿namespace BakerySystem.Web.ViewModels.User
 {
 	public class UserViewModel
 	{

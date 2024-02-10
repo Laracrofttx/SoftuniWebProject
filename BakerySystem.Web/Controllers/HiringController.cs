@@ -1,9 +1,9 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
+	using Microsoft.AspNetCore.Mvc;
+
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.ViewModels.JoinUs;
-	using Microsoft.AspNetCore.Authorization;
-	using Microsoft.AspNetCore.Mvc;
 
 	public class HiringController : Controller
 	{
@@ -16,7 +16,7 @@
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Add()
+		public IActionResult Add()
 		{
 
 			return View();
@@ -150,7 +150,7 @@
 
 
 		[HttpPost]
-		public async Task<IActionResult> Delete(int id, PossitionDeleteViewModel possition)
+		public async Task<IActionResult> Remove(int id)
 		{
 
 			bool possitionExists = await this.possitionService.ExistByIdAsync(id);
@@ -174,7 +174,7 @@
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Apply()
+		public IActionResult Apply()
 		{
 
 			return View();

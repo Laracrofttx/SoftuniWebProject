@@ -1,10 +1,9 @@
 ﻿namespace BakerySystem.Web.ViewModels.Product
 {
-	using BakerySystem.Services.Mapping;
 	using Data.Models;
 
+	using BakerySystem.Services.Mapping;
 	using AutoMapper;
-	using System;
 
 	public class ProductListingVIewModel : IMapFrom<Product>, IHaveCustomMappings
 	{

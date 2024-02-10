@@ -1,12 +1,13 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
+	using Microsoft.EntityFrameworkCore;
+	using Microsoft.AspNetCore.Authorization;
+	using Microsoft.AspNetCore.Mvc;
+
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.Infrastructure.Extensions;
 	using BakerySystem.Web.ViewModels.Product;
-	using Microsoft.AspNetCore.Authorization;
-	using Microsoft.AspNetCore.Mvc;
-	using Microsoft.EntityFrameworkCore;
 
 	using static Common.NotificationMessagesConstants;
 

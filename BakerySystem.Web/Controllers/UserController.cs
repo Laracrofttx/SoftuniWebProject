@@ -2,13 +2,12 @@
 {
 	using Microsoft.AspNetCore.Identity;
 	using Microsoft.AspNetCore.Mvc;
-
-	using BakerySystem.Data.Models;
-	using BakerySystem.Web.ViewModels.User;
 	using Microsoft.AspNetCore.Authentication;
 	using Microsoft.Extensions.Caching.Memory;
 	using Griesoft.AspNetCore.ReCaptcha;
-	using BakerySystem.Web.Data;
+
+	using BakerySystem.Data.Models;
+	using BakerySystem.Web.ViewModels.User;
 
 	public class UserController : Controller
 	{
@@ -26,7 +25,7 @@
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Register()
+		public IActionResult Register()
 		{
 			return View();
 		}

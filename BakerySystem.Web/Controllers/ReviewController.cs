@@ -1,8 +1,10 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
 	using System.Linq;
-	using Microsoft.AspNetCore.Mvc;
+
 	using Microsoft.EntityFrameworkCore;
+	using Microsoft.AspNetCore.Mvc;
+
 	using BakerySystem.Data.Models;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Review;
@@ -18,7 +20,7 @@
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Add()
+		public IActionResult Add()
 		{
 
 			return View();

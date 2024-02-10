@@ -2,7 +2,6 @@
 {
 	using Data.Models;
 	using BakerySystem.Services.Mapping;
-	using AutoMapper;
 
 	public class ProductCategoryViewModel : IMapFrom<Product>
 	{

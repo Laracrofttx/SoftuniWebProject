@@ -111,7 +111,7 @@
 			return new ProductForDeleteViewModel()
 			{
 
-				Name = product.Name,
+				Name = product!.Name,
 				Price = product.Price,
 				ImageUrl = product.ImageUrl
 
@@ -167,7 +167,7 @@
 				.Where(p => p.Id == id)
 				.FirstOrDefaultAsync();
 
-			return currentProduct;
+			return currentProduct!;
 		}
 
 		public async Task<StatisticServiceModel> GetStatisticsAsynch()

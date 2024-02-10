@@ -1,9 +1,11 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
 	using System.Threading.Tasks;
-	using BakerySystem.Web.Data;
+
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
+
+	using BakerySystem.Web.Data;
 	using ViewModels.Home;
 
     using static Common.GeneralApplicationConstants;

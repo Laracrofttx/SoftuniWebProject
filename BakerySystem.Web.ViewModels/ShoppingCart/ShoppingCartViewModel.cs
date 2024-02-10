@@ -1,9 +1,6 @@
-﻿using BakerySystem.Data.Models;
-using System.Threading.Tasks;
-using System.Linq;
-
-namespace BakerySystem.Web.ViewModels.ShoppingCart
+﻿namespace BakerySystem.Web.ViewModels.ShoppingCart
 {
+	using BakerySystem.Data.Models;
 	public class ShoppingCartViewModel
 	{
 		public CartItem ShoppingCart { get; set; } = null!;

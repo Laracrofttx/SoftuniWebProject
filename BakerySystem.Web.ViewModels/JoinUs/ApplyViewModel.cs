@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BakerySystem.Web.ViewModels.JoinUs
+﻿namespace BakerySystem.Web.ViewModels.JoinUs
 {
+	using System.ComponentModel.DataAnnotations;
 	public class ApplyViewModel
 	{
 		public int Id { get; set; }
@@ -18,6 +17,6 @@ namespace BakerySystem.Web.ViewModels.JoinUs
 		[Display(Name = "Tell us more about yourself")]
 		public string SelfDescription { get; set; } = null!;
 
-		
+
 	}
 }

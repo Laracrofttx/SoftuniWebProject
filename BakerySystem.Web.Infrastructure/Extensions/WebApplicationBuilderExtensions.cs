@@ -5,6 +5,7 @@
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Identity;
+
 	using BakerySystem.Data.Models;
 
 	using static Common.GeneralApplicationConstants;

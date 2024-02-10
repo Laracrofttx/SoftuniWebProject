@@ -1,8 +1,8 @@
 ﻿namespace BakerySystem.Web.ViewModels.Product
 {
+	using System.ComponentModel.DataAnnotations;
 	using Data.Models;
 	using BakerySystem.Services.Mapping;
-	using System.ComponentModel.DataAnnotations;
 
 	using static BakerySystem.Common.EntityValidationConstants.Products;
 	using AutoMapper;

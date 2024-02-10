@@ -1,12 +1,15 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
-	using BakerySystem.Services.Interfaces;
-	using BakerySystem.Web.Data;
-	using BakerySystem.Web.ViewModels.Category;
+	using System.Collections.Generic;
+
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
-	using System.Collections.Generic;
+
+	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.Category;
+
 	using Category = BakerySystem.Data.Models.Category;
 
 	[Authorize]
@@ -45,14 +48,10 @@
 
 
 		[HttpGet]
-		public async Task<IActionResult> Create()
+		public IActionResult Create()
 		{
-
-			return View();
-
+			return this.View();
 		}
-
-
 
 		[HttpPost]
 		public async Task<IActionResult> Create(Category category)

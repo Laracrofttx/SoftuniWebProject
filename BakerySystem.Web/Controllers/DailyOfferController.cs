@@ -1,8 +1,8 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
-	using BakerySystem.Services;
-	using BakerySystem.Services.Interfaces;
 	using Microsoft.AspNetCore.Mvc;
+
+	using BakerySystem.Services.Interfaces;
 
 	public class DailyOfferController : Controller
 	{
@@ -19,7 +19,6 @@
 		{
 			var dailyOffer = await this.dailyOfferService.DailyOffer();
 
-			
 			return View(dailyOffer);
 		}
 	}

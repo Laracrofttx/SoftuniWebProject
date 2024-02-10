@@ -1,7 +1,6 @@
-﻿using BakerySystem.Data.Models;
-
-namespace BakerySystem.Web.ViewModels.ShoppingCart
+﻿namespace BakerySystem.Web.ViewModels.ShoppingCart
 {
+	using BakerySystem.Data.Models;
 	public class CartItemViewModel
 	{
 		public int Id { get; set; }

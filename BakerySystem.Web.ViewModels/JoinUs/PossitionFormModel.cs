@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BakerySystem.Web.ViewModels.JoinUs
+﻿namespace BakerySystem.Web.ViewModels.JoinUs
 {
+	using System.ComponentModel.DataAnnotations;
 	public class PossitionFormModel
 	{
 		public int Id { get; set; }
@@ -17,6 +16,6 @@ namespace BakerySystem.Web.ViewModels.JoinUs
 		[Display(Name = "Description")]
 		public string PossitionDescription { get; set; } = null!;
 
-		
+
 	}
 }

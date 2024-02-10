@@ -1,7 +1,6 @@
-﻿using BakerySystem.Data.Models;
-
-namespace BakerySystem.Web.ViewModels.JoinUs
+﻿namespace BakerySystem.Web.ViewModels.JoinUs
 {
+	using BakerySystem.Data.Models;
 	public class PossitionListingViewModel
 	{
 		public int Id { get; set; }

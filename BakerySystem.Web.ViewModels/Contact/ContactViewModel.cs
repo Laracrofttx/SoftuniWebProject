@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BakerySystem.Web.ViewModels.Contact
+﻿namespace BakerySystem.Web.ViewModels.Contact
 {
+	using System.ComponentModel.DataAnnotations;
 	public class ContactViewModel
 	{
 		public int Id { get; set; }

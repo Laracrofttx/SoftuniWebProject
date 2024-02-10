@@ -85,7 +85,7 @@
 
 	@{
 		bool shouldNextPageBeDisabled = Model.CurrentPage == maxPage ||
-		!Model.Products.Any();
+		!Model.Products!.Any();
 	}
 
 	<div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end mt-5">
@@ -97,7 +97,7 @@
 		   asp-route-searchTerm="@Model.SearchByName">>></a>
 	</div>
 
-	@if (!Model.Products.Any())
+	@if (!Model.Products!.Any())
 	{
 		<div class="container">
 			<div class="row">

@@ -1,46 +1,46 @@
-﻿using BakerySystem.Services.Interfaces;
-using BakerySystem.Web.ViewModels.Order;
-using Microsoft.AspNetCore.Mvc;
-
-namespace BakerySystem.Web.Controllers
+﻿namespace BakerySystem.Web.Controllers
 {
-    public class OrderDetailsController : Controller
-    {
-        private readonly IOrderService orderService;
+	using Microsoft.AspNetCore.Mvc;
 
-        public OrderDetailsController(IOrderService orderService)
-        {
-            this.orderService = orderService;
-        }
-        public IActionResult Checkout()
-        {
-            return View();
-        }
+	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Web.ViewModels.Order;
+	public class OrderDetailsController : Controller
+	{
+		private readonly IOrderService orderService;
 
-        [HttpPost]
-        public async Task<IActionResult> Checkout(CheckoutViewModel order)
-        {
+		public OrderDetailsController(IOrderService orderService)
+		{
+			this.orderService = orderService;
+		}
+		public IActionResult Checkout()
+		{
+			return View();
+		}
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
+		[HttpPost]
+		public async Task<IActionResult> Checkout(CheckoutViewModel order)
+		{
 
-            try
-            {
-                await this.orderService.CheckoutOrder(order);
+			if (!ModelState.IsValid)
+			{
+				return BadRequest();
+			}
+
+			try
+			{
+				await this.orderService.CheckoutOrder(order);
 
 			}
-            catch (Exception)
-            {
-                ModelState.AddModelError(string.Empty, "Something's wrong..");
-                
-                return View(order);
-            }
+			catch (Exception)
+			{
+				ModelState.AddModelError(string.Empty, "Something's wrong..");
 
-            return RedirectToAction("Index", "Home");
+				return View(order);
+			}
+
+			return RedirectToAction("Index", "Home");
 
 
-        }
-    }
+		}
+	}
 }

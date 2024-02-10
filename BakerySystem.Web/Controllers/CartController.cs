@@ -36,10 +36,7 @@
 
 			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
 
-			if (cartItems == null)
-			{
-				cartItems = new List<CartItemViewModel>();
-			}
+			cartItems ??= new List<CartItemViewModel>();
 
 			ViewBag.CartItems = cartItems;
 
@@ -56,10 +53,7 @@
 
 			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
 
-			if (cartItems == null)
-			{
-				cartItems = new List<CartItemViewModel>();
-			}
+			cartItems ??= new List<CartItemViewModel>();
 
 			var product = await this.dbContext
 				.Products
@@ -83,6 +77,7 @@
 			{
 				cartItems.Add(product);
 			}
+			
 
 			MemoryCacheEntryOptions cache = new MemoryCacheEntryOptions()
 				.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));

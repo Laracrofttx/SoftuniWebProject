@@ -1,8 +1,7 @@
-﻿using BakerySystem.Web.ViewModels.Category;
-using BakerySystem.Web.ViewModels.Product;
-
-namespace BakerySystem.Web.ViewModels.Home
+﻿namespace BakerySystem.Web.ViewModels.Home
 {
+	using BakerySystem.Web.ViewModels.Category;
+	using BakerySystem.Web.ViewModels.Product;
 	public class ProductIndexViewModel
 	{
 		public ProductIndexViewModel()
@@ -24,8 +23,8 @@ namespace BakerySystem.Web.ViewModels.Home
 
 		public decimal DiscoutPrice { get; set; }
 
-		 
-		
+
+
 
 	}
 }
