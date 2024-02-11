@@ -292,7 +292,7 @@
 			catch (Exception)
 			{
 
-				return BadRequest();
+				return this.GeneralError();
 			}
 
 		}
@@ -329,6 +329,14 @@
 				return BadRequest();
 			}
 
+		}
+
+		private IActionResult GeneralError()
+		{
+			TempData[ErrorMessage] =
+				"Unexpected error occurred! Please try again later or contact administrator";
+
+			return RedirectToAction("Index", "Home");
 		}
 
 	}

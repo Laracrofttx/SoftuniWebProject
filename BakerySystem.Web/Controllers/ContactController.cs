@@ -34,8 +34,6 @@
 				return View(mesage);
 			}
 
-
-
 			return RedirectToAction("Index", "Home");
 		}
 	}

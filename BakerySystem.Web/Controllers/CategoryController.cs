@@ -9,9 +9,9 @@
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Category;
-
-	using Category = BakerySystem.Data.Models.Category;
 	using BakerySystem.Web.Infrastructure.Extensions;
+
+	using static Common.NotificationMessagesConstants;
 
 	[Authorize]
 	public class CategoryController : Controller
@@ -208,10 +208,17 @@
 			catch (Exception)
 			{
 
-				return BadRequest();
+				return GeneralError();
 			}
 
+		}
 
+		private IActionResult GeneralError()
+		{
+			TempData[ErrorMessage] =
+				"Unexpected error occurred! Please try again later or contact administrator";
+
+			return RedirectToAction("Index", "Home");
 		}
 
 	}
