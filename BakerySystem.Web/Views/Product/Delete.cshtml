@@ -12,7 +12,7 @@
 <h2 class="text-center">@ViewData["Title"]</h2>
 <hr />
 
-@if (this.User.isAdmin())
+@if (this.User.IsAdmin())
 {
 	<form method="post" asp-action="Delete">
 		<div class="row">

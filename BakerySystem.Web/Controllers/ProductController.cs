@@ -32,7 +32,7 @@
 		public async Task<IActionResult> Add()
 		{
 
-			if (!User.isAdmin())
+			if (!User.IsAdmin())
 			{
 
 				return RedirectToAction("Index", "Home");
@@ -67,7 +67,7 @@
 
 			}
 
-			if (!User.isAdmin())
+			if (!User.IsAdmin())
 			{
 
 				return RedirectToAction("Index", "Home");
@@ -109,7 +109,7 @@
 				return BadRequest();
 			}
 
-			if (!User.isAdmin())
+			if (!User.IsAdmin())
 			{
 				return RedirectToAction("Index", "Home");
 			}
@@ -227,7 +227,7 @@
 
 			}
 
-			if (!User.isAdmin())
+			if (!User.IsAdmin())
 			{
 				return RedirectToAction("Index", "Home");
 			}
@@ -276,7 +276,7 @@
 
 			}
 
-			if (!User.isAdmin())
+			if (!User.IsAdmin())
 			{
 				return RedirectToAction("Index", "Home");
 			}
@@ -312,7 +312,7 @@
 
 			}
 
-			if (!User.isAdmin())
+			if (!User.IsAdmin())
 			{
 				return RedirectToAction("Index", "Home");
 			}
@@ -320,7 +320,6 @@
 			try
 			{
 				await this.productService.DeleteProductByIdAsynch(id);
-
 
 				return RedirectToAction("Index", "Home");
 			}

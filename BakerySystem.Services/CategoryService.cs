@@ -61,25 +61,6 @@
 		}
 
 
-
-		public async Task<int> CreateAsynch(int categoryId, string categoryName)
-		{
-			var category = new Category()
-			{
-
-				Id = categoryId,
-				Name = categoryName
-
-
-			};
-
-			await dbContext.Categories.AddAsync(category);
-			await dbContext.SaveChangesAsync();
-
-
-			return category.Id;
-		}
-
 		public async Task<CategoryDetailsViewModel> CategoryDetailsByIdAsync(int id)
 		{
 			Category category = await this.dbContext
@@ -163,10 +144,41 @@
 			await dbContext.SaveChangesAsync();
 		}
 
-		
+		public async Task<int> CreateAsynch(int categoryId, string categoryName)
+		{
+			var category = new Category()
+			{
 
-		
-		
+				Id = categoryId,
+				Name = categoryName
+
+
+			};
+
+			await dbContext.Categories.AddAsync(category);
+			await dbContext.SaveChangesAsync();
+
+
+			return category.Id;
+		}
+
+
+
+		public async Task<int> CreateAsynch(CategoryViewModel model)
+		{
+			var category = new Category()
+			{
+
+				Id = model.Id,
+				Name = model.Name,
+
+			};
+
+			await dbContext.Categories.AddAsync(category);
+			await dbContext.SaveChangesAsync();
+
+			return category.Id;
+		}
 	}
 }
 

@@ -27,7 +27,7 @@
 
 		public string ImageUrl { get; set; } = null!;
 
-		public bool isAvailable { get; set; }
+		public bool IsAvailable { get; set; }
 
 		public int CategoryId { get; set; }
 

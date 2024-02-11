@@ -20,12 +20,7 @@
 		/// 
 		public static void AddApplicationServices(this IServiceCollection services, Type serviceType)
 		{
-			Assembly? serviceAssembly = Assembly.GetAssembly(serviceType);
-
-			if (serviceAssembly == null)
-			{
-				throw new InvalidOperationException("Invalid service type!");
-			}
+			Assembly? serviceAssembly = Assembly.GetAssembly(serviceType) ?? throw new InvalidOperationException("Invalid service type!");
 
 			Type[] implementationTypes = serviceAssembly
 				.GetTypes()
@@ -34,12 +29,7 @@
 			foreach (Type implementationType in implementationTypes)
 			{
 				Type? interfaceType = implementationType
-					.GetInterface($"I{implementationType.Name}");
-
-				if (interfaceType == null)
-				{
-					throw new InvalidOperationException($"No interface provided for the service name: {implementationType.Name}");
-				}
+					.GetInterface($"I{implementationType.Name}") ?? throw new InvalidOperationException($"No interface provided for the service name: {implementationType.Name}");
 
 				services.AddScoped(interfaceType, implementationType);
 			}
@@ -68,7 +58,7 @@
 					return;
 				}
 
-				IdentityRole<Guid> role = new IdentityRole<Guid>(AdminRoleName);
+				IdentityRole<Guid> role = new(AdminRoleName);
 
 				await roleManager.CreateAsync(role);
 

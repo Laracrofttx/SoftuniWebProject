@@ -29,7 +29,7 @@
 						</a>
 					}
 
-					@if (User.isAdmin())
+					@if (User.IsAdmin())
 					{
 						<a asp-area="" asp-controller="Hiring" asp-action="Edit" asp-route-id="@possition.Id"
 						   class="btn btn-warning">Edit</a>

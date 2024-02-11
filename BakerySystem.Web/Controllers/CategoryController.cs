@@ -11,6 +11,7 @@
 	using BakerySystem.Web.ViewModels.Category;
 
 	using Category = BakerySystem.Data.Models.Category;
+	using BakerySystem.Web.Infrastructure.Extensions;
 
 	[Authorize]
 	public class CategoryController : Controller
@@ -54,18 +55,26 @@
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Create(Category category)
+		public async Task<IActionResult> Create(CategoryViewModel category)
 		{
-			if (await this.categoryService.ExistByIdAsync(category.Id) == false)
+			if (!User.IsAdmin())
 			{
+				return RedirectToAction("Index", "Home");
+			}
+
+			try
+			{
+				 await this.categoryService.CreateAsynch(category);
+				
+			}
+			catch (Exception)
+			{
+				
 				return BadRequest();
 
 			}
 
-			await this.dbContext.AddAsync(category);
-			await this.dbContext.SaveChangesAsync();
-
-			return RedirectToAction("All", "Category");
+			return RedirectToAction("Index", "Home");
 
 		}
 
@@ -186,7 +195,7 @@
 			if (!categoryExists)
 			{
 
-				return RedirectToAction("All", "Category");
+				return RedirectToAction("Index", "Home");
 
 			}
 
@@ -194,14 +203,13 @@
 			{
 				await this.categoryService.DeleteAsync(id);
 
-				return RedirectToAction("All", "Category");
+				return RedirectToAction("Index", "Home");
 			}
 			catch (Exception)
 			{
 
 				return BadRequest();
 			}
-
 
 
 		}

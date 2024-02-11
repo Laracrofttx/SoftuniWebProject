@@ -5,7 +5,7 @@ namespace BakerySystem.Services.Interfaces
 {
 	public interface ICategoryService
     {
-		Task<int> CreateAsynch(int categoryId, string categoryName);
+		Task<int> CreateAsynch(CategoryViewModel model);
 
 		Task<IEnumerable<CategoryListingViewModel>> AllCategoriesAsync();
 

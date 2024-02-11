@@ -43,8 +43,8 @@
 
 			}
 
-			ApplicationUser user = new ApplicationUser()
-			{
+			ApplicationUser user = new()
+			{ 
 				FirstName = model.FirstName,
 				LastName = model.LastName,
 
@@ -75,7 +75,7 @@
 		{
 			await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-			LoginFormModel model = new LoginFormModel()
+			LoginFormModel model = new()
 			{
 
 				ReturnUrl = returnUrl

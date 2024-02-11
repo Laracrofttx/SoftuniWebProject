@@ -5,7 +5,7 @@
 
 	public static class ClaimsPrincipalExtension
 	{
-		public static bool isAdmin(this ClaimsPrincipal user)
+		public static bool IsAdmin(this ClaimsPrincipal user)
 		{
 
 			return user.IsInRole(AdminRoleName);

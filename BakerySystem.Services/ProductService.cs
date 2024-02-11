@@ -126,7 +126,7 @@
 				.Products
 				.FirstAsync(p => p.Id == productId);
 
-			productToDelete.isAvailable = false;
+			productToDelete.IsAvailable = false;
 
 			dbContext.Remove(productToDelete);
 
