@@ -38,7 +38,7 @@
                     ImageUrl = p.ImageUrl,
 
                 })
-                .ToListAsync();
+                .FirstOrDefaultAsync();
 
 
             return View(products);

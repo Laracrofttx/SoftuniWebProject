@@ -1,11 +1,10 @@
-﻿using BakerySystem.Services.Interfaces;
-using BakerySystem.Services.Statistics;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-
-namespace BakerySystem.WebApi.Controllers
+﻿namespace BakerySystem.WebApi.Controllers
 {
+
+	using Microsoft.AspNetCore.Mvc;
+	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Services.Statistics;
+
 	[Route("api/statistics")]
 	[ApiController]
 	public class StatisticsApiController : ControllerBase
@@ -33,7 +32,7 @@ namespace BakerySystem.WebApi.Controllers
 			catch (Exception)
 			{
 				return this.BadRequest();
-				
+
 			}
 
 		}

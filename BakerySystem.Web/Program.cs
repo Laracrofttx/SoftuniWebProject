@@ -9,8 +9,8 @@ namespace BakerySystem.Web
 	using BakerySystem.Web.Data;
 	using BakerySystem.Data.Models;
 	using BakerySystem.Services;
+	using BakerySystem.Web.Infrastructure.ModelBinders;
 	using Infrastructure.Extensions;
-	//using BakerySystem.Web.Infrastructure.ModelBinders;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Services.Mapping;
 
@@ -25,8 +25,8 @@ namespace BakerySystem.Web
 			WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 
-
 			string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
 			builder.Services.AddDbContext<BakeryDbContext>(options =>
 				options.UseSqlServer(connectionString));
 
@@ -34,7 +34,6 @@ namespace BakerySystem.Web
 
 			builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 			{
-
 				options.SignIn.RequireConfirmedAccount = builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
 
 				options.Password.RequireLowercase = builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");
@@ -69,7 +68,7 @@ namespace BakerySystem.Web
 				.AddMvcOptions(options =>
 				{
 
-					//options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+					options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
 					options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
 
 				});

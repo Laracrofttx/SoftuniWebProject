@@ -23,7 +23,6 @@ namespace BakerySystem.WebApi
 			builder.Services.AddSwaggerGen();
 
 			
-
 			builder.Services.AddCors(setup =>
 			{
 
