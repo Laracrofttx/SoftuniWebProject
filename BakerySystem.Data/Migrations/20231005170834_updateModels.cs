@@ -4,7 +4,7 @@
 
 namespace BakerySystem.Data.Migrations
 {
-    public partial class updateModels : Migration
+    public partial class UpdateModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

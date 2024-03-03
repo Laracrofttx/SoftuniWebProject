@@ -4,7 +4,7 @@
 
 namespace BakerySystem.Data.Migrations
 {
-    public partial class cartAndCartItemDataModels : Migration
+    public partial class CartAndCartItemDataModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

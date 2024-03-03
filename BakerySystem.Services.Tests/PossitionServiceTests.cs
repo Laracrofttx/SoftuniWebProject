@@ -47,7 +47,7 @@
 
 			bool result = await this.possitionService.ExistByIdAsync(possitionId);
 
-			Assert.True(result);
+			Assert.That(result, Is.True);
 		
 		}
 	}

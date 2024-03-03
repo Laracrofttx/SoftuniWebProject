@@ -47,7 +47,7 @@ namespace BakerySystem.Services.Tests
 
 			bool result = await this.productService.ExistByIdAsynch(productId);
 
-			Assert.True(result);
+			Assert.That(result, Is.True);
 		
 		}
 
@@ -58,7 +58,9 @@ namespace BakerySystem.Services.Tests
 
 			bool result = await this.categoryService.ExistByIdAsync(categoryId);
 
-			Assert.True(result);
+			Assert.That(result, Is.True);
 		}
+
+		
 	}
 }

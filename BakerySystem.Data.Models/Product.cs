@@ -2,7 +2,6 @@
 {
 	using System.ComponentModel.DataAnnotations;
 
-
 	using static BakerySystem.Common.EntityValidationConstants.Products;
 
 	public class Product
@@ -24,7 +23,6 @@
 
 		[Required]
 		[MaxLength(ImageUrlMaxLength)]
-
 		public string ImageUrl { get; set; } = null!;
 
 		public bool IsAvailable { get; set; }
