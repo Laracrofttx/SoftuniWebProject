@@ -1,21 +1,15 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
-	using System.Linq;
-
-	using Microsoft.EntityFrameworkCore;
 	using Microsoft.AspNetCore.Mvc;
 
 	using BakerySystem.Web.Data;
 	using BakerySystem.Web.ViewModels.Review;
 	using BakerySystem.Services.Interfaces;
-	using BakerySystem.Data.Models;
 
 	public class ReviewController : Controller
 	{
 		private readonly BakeryDbContext dbContext;
 		private readonly IReviewService reviewService;
-
-
 		public ReviewController(BakeryDbContext dbContext, IReviewService reviewService)
 		{
 			this.dbContext = dbContext;
@@ -25,9 +19,7 @@
 		[HttpGet]
 		public IActionResult Add()
 		{
-
 			return View();
-
 		}
 
 		[HttpPost]
@@ -50,7 +42,6 @@
 			catch (Exception)
 			{
 				ModelState.AddModelError(string.Empty, "Unexpected error occured!");
-
 			}
 
 			return View(model);
@@ -59,9 +50,7 @@
 		[HttpGet]
 		public async Task<IActionResult> All()
 		{
-
 			IEnumerable<ReviewFormModel> reviews = await this.reviewService.AllReviewsAsync();
-
 
 			return View(reviews);
 		}

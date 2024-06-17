@@ -47,23 +47,19 @@
 
 		}
 
-
 		[HttpGet]
 		public async Task<IActionResult> All()
 		{
-
 			var allPossitions = await this.possitionService
 				.GetAllPossitionsAsync();
 
 			return View(allPossitions);
-
 		}
 
 
 		[HttpGet]
 		public async Task<IActionResult> Details(int id)
 		{
-
 			var jobDetails = await this.possitionService
 				.PossitionDetailsAsync(id);
 
@@ -90,14 +86,12 @@
 			{
 				return BadRequest();
 			}
-
 		}
 
 
 		[HttpPost]
 		public async Task<IActionResult> Edit(int id, PossitionFormModel possition)
 		{
-
 			if (await this.possitionService.ExistByIdAsync(id) == false)
 			{
 				return RedirectToAction(nameof(All));
@@ -115,8 +109,6 @@
 
 				return View(possition);
 			}
-
-
 			return RedirectToAction(nameof(All));
 		}
 
@@ -139,20 +131,17 @@
 				return View(possition);
 
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				return BadRequest();
+				return BadRequest(ex.Message);
 
 			}
-
-
 		}
 
 
 		[HttpPost]
 		public async Task<IActionResult> Remove(int id)
 		{
-
 			bool possitionExists = await this.possitionService.ExistByIdAsync(id);
 
 			if (!possitionExists)
@@ -166,30 +155,25 @@
 
 				return RedirectToAction("All", "Hiring");
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				return BadRequest();
+				return BadRequest(ex.Message);
 			}
-
 		}
 
 		[HttpGet]
 		public IActionResult Apply()
 		{
-
 			return View();
-
 		}
 
 
 		[HttpPost]
 		public async Task<IActionResult> Apply(ApplyViewModel apply)
 		{
-
 			try
 			{
 				await this.possitionService.Apply(apply);
-
 			}
 			catch (Exception)
 			{
@@ -199,8 +183,6 @@
 			}
 
 			return RedirectToAction(nameof(All));
-
-
 		}
 	}
 }

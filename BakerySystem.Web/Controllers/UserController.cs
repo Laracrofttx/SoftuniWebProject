@@ -24,13 +24,6 @@
 
 		}
 
-		[HttpGet]
-		public IActionResult Register()
-		{
-			return View();
-		}
-
-		[HttpPost]
 		[ValidateRecaptcha(Action = nameof(Register),
 			ValidationFailedAction = ValidationFailedAction.ContinueRequest)]
 		public async Task<IActionResult> Register(RegisterFormModel model)
@@ -38,16 +31,13 @@
 
 			if (!ModelState.IsValid)
 			{
-
 				return View(model);
-
 			}
 
 			ApplicationUser user = new()
 			{ 
 				FirstName = model.FirstName,
 				LastName = model.LastName,
-
 			};
 
 			await userManager.SetEmailAsync(user, model.Email);
@@ -77,10 +67,7 @@
 
 			LoginFormModel model = new()
 			{
-
 				ReturnUrl = returnUrl
-
-
 			};
 
 			return View(model);
@@ -88,7 +75,7 @@
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Login(LoginFormModel model)
+		public async Task<IActionResult> Login([FromBody] LoginFormModel model)
 		{
 			if (!ModelState.IsValid)
 			{

@@ -128,7 +128,7 @@
 
 			productToDelete.IsAvailable = false;
 
-			dbContext.Remove(productToDelete);
+			this.dbContext.Remove(productToDelete);
 
 			await dbContext.SaveChangesAsync();
 

@@ -307,9 +307,7 @@
 
 			if (!productExists)
 			{
-
 				return RedirectToAction("All", "Product");
-
 			}
 
 			if (!User.IsAdmin())
@@ -325,7 +323,6 @@
 			}
 			catch (Exception)
 			{
-
 				return BadRequest();
 			}
 

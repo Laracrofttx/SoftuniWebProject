@@ -45,8 +45,6 @@
 		}
 
 
-
-
 		[HttpPost]
 		public async Task<IActionResult> AddToCart(int id)
 		{
@@ -84,8 +82,6 @@
 
 			this.memoryCache.Set(CartCacheKey, cartItems, cache);
 
-			
-			
 			ViewBag.CartItems = cartItems;
 
 			return RedirectToAction(nameof(AddToCart));

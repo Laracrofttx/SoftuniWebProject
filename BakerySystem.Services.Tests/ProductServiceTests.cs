@@ -13,6 +13,7 @@ namespace BakerySystem.Services.Tests
 
 		private  IProductService productService;
 		private  ICategoryService categoryService;
+		private readonly IUserService userService;
 
 		
 
@@ -59,6 +60,17 @@ namespace BakerySystem.Services.Tests
 			bool result = await this.categoryService.ExistByIdAsync(categoryId);
 
 			Assert.That(result, Is.True);
+		}
+
+		[Test]
+		public async Task UserExistByIdAsync()
+		{
+
+			Guid userExist = ApplicationUsers.Id;
+
+			//bool result = await this.userService.GetFullNameByIdAsync(userId: );
+
+		
 		}
 
 		

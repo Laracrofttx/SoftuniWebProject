@@ -8,6 +8,7 @@
 		[EmailAddress]
 		public string Email { get; set; } = null!;
 
+		
 
 		[Required]
 		[DataType(DataType.Password)]

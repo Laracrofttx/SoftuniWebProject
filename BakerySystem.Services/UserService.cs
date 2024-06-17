@@ -4,8 +4,6 @@ using BakerySystem.Web.Data;
 using BakerySystem.Web.ViewModels.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
-using static BakerySystem.Common.GeneralApplicationConstants;
 namespace BakerySystem.Services
 {
 	public class UserService : IUserService
@@ -66,5 +64,6 @@ namespace BakerySystem.Services
 			return users;	
 		}
 
+		
 	}
 }

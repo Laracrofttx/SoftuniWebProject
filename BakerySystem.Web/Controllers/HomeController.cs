@@ -1,14 +1,11 @@
 ﻿namespace BakerySystem.Web.Controllers
 {
 	using System.Threading.Tasks;
-
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
-
 	using BakerySystem.Web.Data;
-	using ViewModels.Home;
-
     using static Common.GeneralApplicationConstants;
+	using BakerySystem.Web.ViewModels.Product;
 
 	public class HomeController : Controller
     {
@@ -19,8 +16,6 @@
             this.dbContext = dbContext;
            
         }
-
-       
         public async Task<IActionResult> Index()
         {
             if (User.IsInRole(AdminRoleName))
@@ -36,18 +31,14 @@
                     Name = p.Name,
                     Price = p.Price,
                     ImageUrl = p.ImageUrl,
+                    CategoryId = p.CategoryId
+                    
 
                 })
                 .FirstOrDefaultAsync();
 
-
             return View(products);
-
-
-
         }
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error(int statusCode)

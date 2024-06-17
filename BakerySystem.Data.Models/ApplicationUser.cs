@@ -24,6 +24,8 @@
 		[MaxLength(LastNameMaxLength)]
 		public string LastName { get; set; } = null!;
 
+		public string UserName { get; set; } = null!;
+
 	}
 
 

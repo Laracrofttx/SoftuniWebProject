@@ -18,6 +18,9 @@
 		[Display(Name = "Email")]
 		public string Email { get; set; } = null!;
 
+		//[Required]
+		//[Display(Name = "Username")]
+		//public string UserName { get; set; } = null!;
 
 		[Required]
 		[StringLength(PasswordMaxLength, MinimumLength = PasswordMinLength,
