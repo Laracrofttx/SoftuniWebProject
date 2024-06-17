@@ -325,9 +325,7 @@
 			{
 				return BadRequest();
 			}
-
 		}
-
 		private IActionResult GeneralError()
 		{
 			TempData[ErrorMessage] =
@@ -335,8 +333,5 @@
 
 			return RedirectToAction("Index", "Home");
 		}
-
 	}
-
-
 }

@@ -19,7 +19,6 @@
 			return View();
 		}
 
-
 		[HttpPost]
 		public async Task<IActionResult> Contact(ContactViewModel mesage)
 		{

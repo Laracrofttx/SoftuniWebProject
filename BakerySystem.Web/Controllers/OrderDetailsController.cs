@@ -20,7 +20,6 @@
 		[HttpPost]
 		public async Task<IActionResult> Checkout(CheckoutViewModel order)
 		{
-
 			if (!ModelState.IsValid)
 			{
 				return BadRequest();
@@ -39,8 +38,6 @@
 			}
 
 			return RedirectToAction("Index", "Home");
-
-
 		}
 	}
 }

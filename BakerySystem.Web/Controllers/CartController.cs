@@ -15,17 +15,13 @@
 	public class CartController : Controller
 	{
 		private readonly BakeryDbContext dbContext;
-
 		private readonly IMemoryCache memoryCache;
 		private readonly IProductService productService;
-
-
 		public CartController(BakeryDbContext dbContext, IProductService productService, IMemoryCache memoryCache)
 		{
 			this.dbContext = dbContext;
 			this.productService = productService;
 			this.memoryCache = memoryCache;
-
 		}
 
 		public List<CartItemViewModel> cartItems = null!;
@@ -33,24 +29,18 @@
 
 		public IActionResult AddToCart()
 		{
-
 			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
-
 			cartItems ??= new List<CartItemViewModel>();
 
 			ViewBag.CartItems = cartItems;
 
 			return View();
-
 		}
-
 
 		[HttpPost]
 		public async Task<IActionResult> AddToCart(int id)
 		{
-
 			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
-
 			cartItems ??= new List<CartItemViewModel>();
 
 			var product = await this.dbContext
@@ -64,18 +54,13 @@
 					Image = p.ImageUrl,
 					Quantity = 1,
 					TotalPrice = p.Price
-
-
 				})
 				.FirstOrDefaultAsync();
-
-			
 
 			if (product != null)
 			{
 				cartItems.Add(product);
 			}
-			
 
 			MemoryCacheEntryOptions cache = new MemoryCacheEntryOptions()
 				.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
@@ -85,50 +70,30 @@
 			ViewBag.CartItems = cartItems;
 
 			return RedirectToAction(nameof(AddToCart));
-
-
-
 		}
-
 		public IActionResult RemoveFromCart()
 		{
-
 			cartItems = this.memoryCache.Get<List<CartItemViewModel>>(CartCacheKey);
 
 			var itemToRemove = cartItems.FirstOrDefault();
 
 			if (cartItems.Count > 0)
 			{
-
 				cartItems.Remove(itemToRemove!);
-
 			}
 			if (cartItems.Count > 0)
 			{
 				return RedirectToAction(nameof(AddToCart));
-
 			}
 
 			return RedirectToAction("Index", "Home");
-
 		}
-
-
-
 		public IActionResult ClearAll()
 		{
-
 			this.memoryCache.Remove(CartCacheKey);
 
 			return RedirectToAction("Index", "Home");
-
 		}
-
-
-		
-
 	}
-
-
 }
 

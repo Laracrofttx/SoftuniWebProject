@@ -26,27 +26,18 @@
 			this.categoryService = categoryService;
 		}
 
-
-
 		public async Task<bool> CategoryExists(int categoryId)
 		{
-
-
 			return await dbContext.Categories.AnyAsync(c => c.Id == categoryId);
-
-
 		}
 
 		public async Task<IActionResult> All()
 		{
-
 			IEnumerable<CategoryListingViewModel> allCategories = await this.categoryService
 				.AllCategoriesAsync();
 
-
 			return View(allCategories);
 		}
-
 
 		[HttpGet]
 		public IActionResult Create()
@@ -65,17 +56,13 @@
 			try
 			{
 				 await this.categoryService.CreateAsynch(category);
-				
 			}
 			catch (Exception)
 			{
-				
 				return BadRequest();
-
 			}
 
 			return RedirectToAction("Index", "Home");
-
 		}
 
 		[HttpGet]
@@ -90,31 +77,22 @@
 
 			try
 			{
-
 				CategoryDetailsViewModel categoryModel = await this.categoryService.CategoryDetailsByIdAsync(id);
 
-				
 				return View(categoryModel);
-
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-
-				return BadRequest();
+				return BadRequest(ex.Message);
 			}
-
-
 		}
-
 
 		[HttpGet]
 		public async Task<IActionResult> Edit(int id)
 		{
 			if (await this.categoryService.ExistByIdAsync(id) == false)
 			{
-
 				return RedirectToAction("All", "Category");
-
 			}
 
 			try
@@ -122,25 +100,19 @@
 				CategoryViewModel categoryForEdit = await this.categoryService.EditByIdAsync(id);
 
 				return View(categoryForEdit);
-
 			}
 			catch (Exception)
 			{
 				return BadRequest();
-
 			}
-
 		}
 
 		[HttpPost]
 		public async Task<IActionResult> Edit(int id, CategoryViewModel model)
 		{
-
 			if (await this.categoryService.ExistByIdAsync(model.Id) == false)
 			{
-
 				this.ModelState.AddModelError(nameof(model.Id), "Category does not exist!");
-
 			}
 
 			try
@@ -149,7 +121,6 @@
 			}
 			catch (Exception)
 			{
-
 				this.ModelState.AddModelError(string.Empty, "Unexpected error occured!");
 
 				return this.View(model);
@@ -158,12 +129,9 @@
 			return RedirectToAction("All", "Category");
 		}
 
-
-
 		[HttpGet]
 		public async Task<IActionResult> Delete(int id)
 		{
-
 			bool categoryExist = await this.categoryService.ExistByIdAsync(id);
 
 			if (!categoryExist)
@@ -176,14 +144,11 @@
 				CategoryDeleteViewModel categoryModel = await this.categoryService.DeleteByIdAsync(id);
 
 				return View(categoryModel);
-
 			}
 			catch (Exception)
 			{
 				return BadRequest();
 			}
-
-
 		}
 
 		[HttpPost]
@@ -194,9 +159,7 @@
 
 			if (!categoryExists)
 			{
-
 				return RedirectToAction("Index", "Home");
-
 			}
 
 			try
@@ -207,10 +170,8 @@
 			}
 			catch (Exception)
 			{
-
 				return GeneralError();
 			}
-
 		}
 
 		private IActionResult GeneralError()

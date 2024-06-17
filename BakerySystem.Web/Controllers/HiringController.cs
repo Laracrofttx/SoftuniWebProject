@@ -8,19 +8,15 @@
 	public class HiringController : Controller
 	{
 		private readonly IPossitionService possitionService;
-
 		public HiringController(IPossitionService possitionService)
 		{
 			this.possitionService = possitionService;
-
 		}
 
 		[HttpGet]
 		public IActionResult Add()
 		{
-
 			return View();
-
 		}
 
 		[HttpPost]
@@ -35,7 +31,6 @@
 			try
 			{
 				await this.possitionService.AddPossitionAsync(possition);
-
 			}
 			catch (Exception)
 			{
@@ -44,7 +39,6 @@
 			}
 
 			return RedirectToAction("Index", "Home");
-
 		}
 
 		[HttpGet]
@@ -65,7 +59,6 @@
 
 			return View(jobDetails);
 		}
-
 
 		[HttpGet]
 		public async Task<IActionResult> Edit(int id)
@@ -88,7 +81,6 @@
 			}
 		}
 
-
 		[HttpPost]
 		public async Task<IActionResult> Edit(int id, PossitionFormModel possition)
 		{
@@ -99,9 +91,7 @@
 
 			try
 			{
-
 				await this.possitionService.EditPossitionByIdAndFormModelAsync(id, possition);
-
 			}
 			catch (Exception)
 			{
@@ -129,15 +119,12 @@
 				PossitionDeleteViewModel possition = await this.possitionService.PossitionForDeleteByIdAsync(id);
 
 				return View(possition);
-
 			}
 			catch (Exception ex)
 			{
 				return BadRequest(ex.Message);
-
 			}
 		}
-
 
 		[HttpPost]
 		public async Task<IActionResult> Remove(int id)

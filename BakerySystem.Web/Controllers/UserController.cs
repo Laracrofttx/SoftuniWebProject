@@ -94,7 +94,5 @@
 
 			return Redirect(model.ReturnUrl ?? "/Home/Index");
 		}
-
-		
 	}
 }
