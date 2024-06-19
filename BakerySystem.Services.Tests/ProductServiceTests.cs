@@ -1,6 +1,5 @@
 namespace BakerySystem.Services.Tests
 {
-	using BakerySystem.Data.Models;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using Microsoft.EntityFrameworkCore;
@@ -14,8 +13,6 @@ namespace BakerySystem.Services.Tests
 		private  IProductService productService;
 		private  ICategoryService categoryService;
 		private readonly IUserService userService;
-
-		
 
 		[OneTimeSetUp]
 		public void OneTimeSetUp()
@@ -33,12 +30,12 @@ namespace BakerySystem.Services.Tests
 
 			this.productService = new ProductService(this.dbContext);
 			this.categoryService = new CategoryService(this.dbContext);
-
 		}
 
 		[SetUp]
 		public void Setup()
 		{
+
 		}
 
 		[Test]
@@ -49,7 +46,6 @@ namespace BakerySystem.Services.Tests
 			bool result = await this.productService.ExistByIdAsynch(productId);
 
 			Assert.That(result, Is.True);
-		
 		}
 
 		[Test]
@@ -61,18 +57,5 @@ namespace BakerySystem.Services.Tests
 
 			Assert.That(result, Is.True);
 		}
-
-		[Test]
-		public async Task UserExistByIdAsync()
-		{
-
-			Guid userExist = ApplicationUsers.Id;
-
-			//bool result = await this.userService.GetFullNameByIdAsync(userId: );
-
-		
-		}
-
-		
 	}
 }
