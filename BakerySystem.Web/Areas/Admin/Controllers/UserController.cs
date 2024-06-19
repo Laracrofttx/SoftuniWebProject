@@ -1,7 +1,6 @@
 ﻿namespace BakerySystem.Web.Areas.Admin.Controllers
 {
 	using BakerySystem.Services.Interfaces;
-	using BakerySystem.Web.ViewModels.User;
 	using Microsoft.AspNetCore.Mvc;
 	public class UserController : BaseAdminController
 	{
@@ -15,9 +14,7 @@
 		[Route("User/All")]
         public async Task<IActionResult> All()
 		{
-
 			var users = await this.userService.AllAsync();
-
 
 			return View(users);
 		}

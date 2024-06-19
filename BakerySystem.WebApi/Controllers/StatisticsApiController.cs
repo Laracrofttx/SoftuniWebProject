@@ -1,6 +1,5 @@
 ﻿namespace BakerySystem.WebApi.Controllers
 {
-
 	using Microsoft.AspNetCore.Mvc;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Services.Statistics;
@@ -22,7 +21,6 @@
 		[ProducesResponseType(400)]
 		public async Task<IActionResult> GetStatistics()
 		{
-
 			try
 			{
 				StatisticServiceModel serviceModel = await this.productService.GetStatisticsAsynch();
@@ -32,9 +30,7 @@
 			catch (Exception)
 			{
 				return this.BadRequest();
-
 			}
-
 		}
 	}
 }

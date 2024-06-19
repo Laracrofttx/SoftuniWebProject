@@ -1,6 +1,5 @@
 namespace BakerySystem.WebApi
 {
-	using BakerySystem.Services;
 	using BakerySystem.Services.Interfaces;
 	using BakerySystem.Web.Data;
 	using Microsoft.EntityFrameworkCore;
@@ -21,24 +20,18 @@ namespace BakerySystem.WebApi
 
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
-
 			
 			builder.Services.AddCors(setup =>
 			{
-
 				setup.AddPolicy("BakerySystem", policyBuilder =>
 				{
-
 					policyBuilder
 					.WithOrigins("https://localhost:7158")
 					.AllowAnyHeader()
 					.AllowAnyMethod();
-					
 				});
-
 			});
 				
-
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.

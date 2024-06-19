@@ -14,15 +14,10 @@
 		}
 		public async Task<IActionResult> All()
 		{
-
-
 			ProductListingViewModel models = new ProductListingViewModel()
 			{
-
 				AllProducts = await this.productService.GetAllProductsAsync()
-
 			};
-
 
 			return View(models);
 		}

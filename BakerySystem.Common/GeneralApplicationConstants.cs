@@ -9,6 +9,5 @@
         public const string AdminEmail = "DenisGeorgiev@gmail.net";
 
         public const string CartCacheKey = "CartCacheKey";
-
 	}
 }

@@ -1,19 +1,10 @@
 ﻿namespace BakerySystem.Common
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
-
 	public static class EntityValidationConstants
 	{
 		public static class IdentityUser
 		{
-
 			public const int FullNameMaxLength = 40;
-		
-		
 		}
 
 		public static class Category
@@ -27,10 +18,8 @@
 
 		public static class OrderDetails 
 		{
-		
 			public const int FirstNameMinLength = 5;
 			public const int FirstNameMaxLength = 20;
-
 
 			public const int LastNameMinLength = 5;
 			public const int LastNameMaxLength = 20;
@@ -40,10 +29,7 @@
 
 			public const int PhoneNumberMinLength = 11;
 			public const int PhoneNumberMaxLength = 12;
-		
-		
 		}
-
 		public static class Products
 		{
 			public const int NameMinLength = 5;
@@ -63,12 +49,9 @@
 			public const int NameMinLength = 5;
 			public const int NameMaxLength = 20;
 
-
 			public const int DescriptionMinLength = 20;
 			public const int DescriptionMaxLength = 100;
-
 		}
-
 		public static class WeAreHiring
 		{
 			public const int PositionNameMinLength = 10;
@@ -76,9 +59,7 @@
 
 			public const int JobDescriptionMinLength = 30;
 			public const int JobDescriptionMaxLength = 150;
-
 		}
-
 		public static class ContactUs
 		{
 			public const int FullNameMinLength = 10;
@@ -93,7 +74,6 @@
 			public const int MessageMinLength = 10;
 			public const int MessageMaxLength = 100;
 		}
-
 		public static class JobApplication
 		{
 
@@ -105,7 +85,6 @@
 
 			public const int SelfDescriptionMinLength = 30;
 			public const int SelfDescriptionMaxLength = 150;
-
 		}
 
 		public static class FeedBack
@@ -113,7 +92,6 @@
 			public const int FeedBackMinLength = 15;
 			public const int FeedBackMaxLength = 100;
 		}
-
 		public static class User
 		{
 			public const int UserNameMinLength = 3;
@@ -127,7 +105,6 @@
 			
 			public const int LastNameMinLength = 2;
 			public const int LastNameMaxLength = 15;
-		
 		}
 	}
 }
