@@ -1,5 +1,4 @@
-﻿using BakerySystem.Data.Models;
-using BakerySystem.Web.ViewModels.DailyOffer;
+﻿using BakerySystem.Web.ViewModels.DailyOffer;
 
 namespace BakerySystem.Services.Interfaces
 {

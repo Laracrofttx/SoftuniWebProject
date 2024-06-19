@@ -12,13 +12,9 @@
         public OrderService(BakeryDbContext dbContext)
         {
             this.dbContext = dbContext;
-
         }
-
-
         public async Task CheckoutOrder(CheckoutViewModel order)
         {
-
             var submitOrder = new OrderDetail()
             {
                 Id = order.Id,
@@ -26,9 +22,6 @@
                 LastName = order.LastName,
                 PhoneNumber = order.PhoneNumber,
                 Address = order.Address,
-                
-
-
             };
 
             await this.dbContext.OrderDetails.AddAsync(submitOrder);

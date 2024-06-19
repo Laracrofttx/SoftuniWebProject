@@ -8,17 +8,13 @@
 
 	public class PossitionService : IPossitionService
 	{
-
 		private readonly BakeryDbContext dbContext;
-
 		public PossitionService(BakeryDbContext dbContext)
 		{
 			this.dbContext = dbContext;
 		}
-
 		public async Task AddPossitionAsync(PossitionFormModel possition)
 		{
-
 			var possitionType = new WeAreHiring
 			{
 				Id = possition.Id,
@@ -26,14 +22,11 @@
 				ImageUrl = possition.ImageUrl,
 				JobDescription = possition.PossitionDescription,
 				Salary = possition.Salary,
-
 			};
 
 			await this.dbContext.WeAreHirings.AddAsync(possitionType);
 			await this.dbContext.SaveChangesAsync();
-
 		}
-
 		public async Task<bool> ExistByIdAsync(int id)
 		{
 			bool result = await this.dbContext
@@ -52,20 +45,16 @@
 				.OrderBy(x => x.Id)
 				.Select(p => new PossitionListingViewModel
 				{
-
 					Id = p.Id,
 					Title = p.PositionName,
 					Salary = p.Salary,
 					ImageUrl = p.ImageUrl,
 					JobDescription = p.JobDescription,
-
-
 				})
 				.ToArrayAsync();
 
 			return allPossitions;
 		}
-
 		public async Task<PossitionDetailsServiceModel> PossitionDetailsAsync(int id)
 		{
 			WeAreHiring possition = await this.dbContext
@@ -75,13 +64,11 @@
 
 			return new PossitionDetailsServiceModel()
 			{
-
 				Id = possition.Id,
 				Title = possition.PositionName,
 				Salary = possition.Salary,
 				ImageUrl = possition.ImageUrl,
 				JobDescription = possition.JobDescription,
-
 			};
 		}
 
@@ -98,16 +85,12 @@
 				Salary = possitionForEdit.Salary,
 				ImageUrl = possitionForEdit.ImageUrl,
 				PossitionDescription = possitionForEdit.JobDescription,
-
 			};
-
-
 		}
 		public async Task EditPossitionByIdAndFormModelAsync(int id, PossitionFormModel possition)
 		{
 			WeAreHiring possitionForEdit = await dbContext.WeAreHirings
 				.FirstAsync(p => p.Id == id);
-
 
 			possitionForEdit.Id = possition.Id;
 			possitionForEdit.PositionName = possition.PossitionName;
@@ -117,7 +100,6 @@
 
 			await dbContext.SaveChangesAsync();
 		}
-
 		public async Task<PossitionDeleteViewModel> PossitionForDeleteByIdAsync(int id)
 		{
 			var possitionForDelete = await this.dbContext
@@ -131,10 +113,8 @@
 				Salary = possitionForDelete.Salary,
 				ImageUrl = possitionForDelete.ImageUrl,
 				JobDescription = possitionForDelete.JobDescription,
-
 			};
 		}
-
 		public async Task DeletePossitionByIdAsync(int id)
 		{
 			WeAreHiring possition = await this.dbContext
@@ -144,23 +124,18 @@
 			this.dbContext.Remove(possition);
 			this.dbContext.SaveChanges();
 		}
-
 		public async Task Apply(ApplyViewModel apply)
 		{
 			var app = new JobApplication
 			{
-
 				FullName = apply.FullName,
 				EmailAddress = apply.EmailAddress,
 				Experience = apply.Experience,
 				SelfDescription = apply.SelfDescription,
-
 			};
-
 			await this.dbContext.JobApplications.AddAsync(app);
 			await this.dbContext.SaveChangesAsync();
 		}
-
 		public async Task<WeAreHiring> GetPossitionIdAsync(int id)
 		{
 			var possition = await this.dbContext

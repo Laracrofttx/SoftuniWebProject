@@ -14,23 +14,19 @@
         {
             this.dbContext = dbContext;
         }
-
         public async Task Contact(ContactViewModel contact)
 		{
 			var message = new ContactUs
 			{
-
 				Id = contact.Id,
 				FullName = contact.FullName,
 				PhoneNumber = contact.Phonenumber,
 				Email = contact.EmailAddress,
 				Message = contact.Message,
-
 			};
 
 			await this.dbContext.ContactUs.AddAsync(message);
 			await this.dbContext.SaveChangesAsync();
 		}
-		
 	}
 }

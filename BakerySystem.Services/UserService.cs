@@ -1,21 +1,17 @@
-﻿using BakerySystem.Data.Models;
-using BakerySystem.Services.Interfaces;
-using BakerySystem.Web.Data;
-using BakerySystem.Web.ViewModels.User;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-namespace BakerySystem.Services
+﻿namespace BakerySystem.Services
 {
+	using BakerySystem.Data.Models;
+	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.User;
+	using Microsoft.EntityFrameworkCore;
 	public class UserService : IUserService
 	{
 		private readonly BakeryDbContext dbContext;
-
-        public UserService(BakeryDbContext dbContext)
-        {
-            this.dbContext = dbContext;
-        }
-
-
+		public UserService(BakeryDbContext dbContext)
+		{
+			this.dbContext = dbContext;
+		}
 		public async Task<string> GetFullNameByEmailAsync(string email)
 		{
 			ApplicationUser? user = await dbContext
@@ -29,8 +25,6 @@ namespace BakerySystem.Services
 
 			return $"{user.FirstName} {user.LastName}";
 		}
-
-
 		public async Task<string> GetFullNameByIdAsync(string userId)
 		{
 			ApplicationUser? user = await this.dbContext
@@ -38,16 +32,12 @@ namespace BakerySystem.Services
 				.FirstOrDefaultAsync(u => u.Id.ToString() == userId!);
 
 			if (user == null)
-			{ 
-			
+			{
 				return string.Empty;
-			
 			}
 
 			return $"{user.FirstName} {user.LastName}";
 		}
-
-
 		public async Task<IEnumerable<UserViewModel>> AllAsync()
 		{
 			List<UserViewModel> users = await this.dbContext
@@ -56,14 +46,10 @@ namespace BakerySystem.Services
 				{
 					Email = u.Email,
 					FullName = u.FirstName + " " + u.LastName,
-
 				})
 				.ToListAsync();
 
-
-			return users;	
+			return users;
 		}
-
-		
 	}
 }

@@ -1,11 +1,10 @@
-﻿using BakerySystem.Data.Models;
-using BakerySystem.Services.Interfaces;
-using BakerySystem.Web.Data;
-using BakerySystem.Web.ViewModels.Review;
-using Microsoft.EntityFrameworkCore;
-
-namespace BakerySystem.Services
+﻿namespace BakerySystem.Services
 {
+	using BakerySystem.Data.Models;
+	using BakerySystem.Services.Interfaces;
+	using BakerySystem.Web.Data;
+	using BakerySystem.Web.ViewModels.Review;
+	using Microsoft.EntityFrameworkCore;
 	public class ReviewService : IReviewService
 	{
 		private readonly BakeryDbContext dbContext;
@@ -14,10 +13,8 @@ namespace BakerySystem.Services
 		{
 			this.dbContext = dbContext;
 		}
-
 		public async Task AddReview(ReviewFormModel review)
 		{
-
 			var feedBack = new Review()
 			{
 
@@ -28,9 +25,7 @@ namespace BakerySystem.Services
 
 			await this.dbContext.Reviews.AddAsync(feedBack);
 			await this.dbContext.SaveChangesAsync();
-
 		}
-
 		public async Task<IEnumerable<ReviewFormModel>> AllReviewsAsync()
 		{
 			IEnumerable<ReviewFormModel> reviews =
@@ -41,11 +36,10 @@ namespace BakerySystem.Services
 					Id = r.Id,
 					UserName = r.UserName,
 					FeedBack = r.FeedBack
-					
 				})
 				.ToArrayAsync();
-				
-				return reviews;
+
+			return reviews;
 		}
 	}
 }

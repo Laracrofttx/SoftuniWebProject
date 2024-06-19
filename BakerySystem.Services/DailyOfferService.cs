@@ -22,16 +22,13 @@
 				.Take(8)
 				.Select(c => new DailyOfferViewModel
 				{
-
 					Id = c.Id,
 					Name = c.Name,
 					Price = (decimal)Math.Round(c.Price - c.Price * 0.2m, 2),
 					ImageUrl = c.ImageUrl,
 					Description = c.Description
-
 				})
 				.ToArrayAsync();
-
 			
 			return dailyOffer;
 		}
