@@ -3,7 +3,6 @@
 @using BakerySystem.Web.Infrastructure.Extensions;
 @using Microsoft.AspNetCore.Identity;
 
-
 <div class="text-center mt-3"><h2>If you want to become one of us, feel free to apply</h2></div>
 
 <div class="row gy-3 justify-content-center mt-5">
@@ -17,10 +16,8 @@
 				<div class="card-body">
 					<h5 class="card-title">@possition.Title</h5>
 					<h5 class="card-title">Salary - @possition.Salary$</h5>
-
 					<a asp-area="" asp-controller="Hiring" asp-action="Details" asp-route-id="@possition.Id"
 					   class="btn btn-success">Details</a>
-
 					@if (this.User.Identity!.IsAuthenticated)
 					{
 						<a asp-controller="Hiring" asp-action="Apply" asp-route-id="@possition.Id"
@@ -35,9 +32,7 @@
 						   class="btn btn-warning">Edit</a>
 						<a asp-area="" asp-controller="Hiring" asp-action="Delete" asp-route-id="@possition.Id"
 						   class="btn btn-danger">Delete</a>
-
 					}
-
 				</div>
 			</div>
 		</div>

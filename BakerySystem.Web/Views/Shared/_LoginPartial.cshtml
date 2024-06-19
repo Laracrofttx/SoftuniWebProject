@@ -11,12 +11,8 @@
 @using static BakerySystem.Web.Infrastructure.Extensions.ClaimsPrincipalExtension;
 
 @{
-
-
 	string userFullName = await UserService.GetFullNameByEmailAsync(User.Identity?.Name!);
-
 }
-
 
 <ul class="navbar-nav">
 	<li class="nav-item dropdown">

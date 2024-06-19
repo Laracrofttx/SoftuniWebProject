@@ -2,9 +2,7 @@
 @model ContactViewModel
 
 @{
-
 	ViewData["Title"] = "Contact Us";
-
 }
 
 <div class="text-center"><h2>@ViewData["Title"]</h2></div>
@@ -22,7 +20,6 @@
 						<span asp-validation-for="FullName" class="small text-danger"></span>
 					</div>
 				</label>
-
 				<label class="d-block mb-4">
 					<div class="form-group">
 						<label asp-for="Phonenumber"></label>
@@ -30,7 +27,6 @@
 						<span asp-validation-for="Phonenumber" class="small text-danger"></span>
 					</div>
 				</label>
-
 				<label class="d-block mb-4">
 					<div class="form-group">
 						<label asp-for="EmailAddress"></label>
@@ -38,7 +34,6 @@
 						<span asp-validation-for="EmailAddress" class="small text-danger"></span>
 					</div>
 				</label>
-
 				<label class="d-block mb-4">
 					<div class="form-group">
 						<label asp-for="Message"></label>
@@ -46,7 +41,6 @@
 						<span asp-validation-for="Message" class="small text-danger"></span>
 					</div>
 				</label>
-				
 				<div class="mb-3">
 					<button type="submit" value="Send" class="btn btn-primary float-end">
 						Send message
