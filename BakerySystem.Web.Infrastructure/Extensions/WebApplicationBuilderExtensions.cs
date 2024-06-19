@@ -1,15 +1,11 @@
 ﻿namespace BakerySystem.Web.Infrastructure.Extensions
 {
 	using System.Reflection;
-
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.AspNetCore.Builder;
 	using Microsoft.AspNetCore.Identity;
-
 	using BakerySystem.Data.Models;
-
 	using static Common.GeneralApplicationConstants;
-
 	public static class WebApplicationBuilderExtensions
 	{
 		/// <summary>
@@ -33,12 +29,9 @@
 
 				services.AddScoped(interfaceType, implementationType);
 			}
-
 		}
-
 		public static IApplicationBuilder SeedAdministrator(this IApplicationBuilder app, string email)
 		{
-
 			using IServiceScope scopedServices =
 				app.ApplicationServices.CreateScope();
 

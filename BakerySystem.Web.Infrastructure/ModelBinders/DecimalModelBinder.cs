@@ -39,7 +39,6 @@
 					bindingContext.Result = ModelBindingResult.Success(parsedValue);
 				}
 			}
-
 			return Task.CompletedTask;
 		}
 	}
