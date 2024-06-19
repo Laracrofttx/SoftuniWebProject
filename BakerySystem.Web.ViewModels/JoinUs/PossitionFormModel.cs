@@ -10,12 +10,9 @@
 
 		[Display(Name = "Image")]
 		public string ImageUrl { get; set; } = null!;
-
 		public decimal Salary { get; set; }
 
 		[Display(Name = "Description")]
 		public string PossitionDescription { get; set; } = null!;
-
-
 	}
 }

@@ -16,7 +16,5 @@
 
 		[Display(Name = "Tell us more about yourself")]
 		public string SelfDescription { get; set; } = null!;
-
-
 	}
 }

@@ -5,7 +5,5 @@
 		DateCreated = 0,
 		Price = 1,
 		Name = 2,
-
-
 	}
 }

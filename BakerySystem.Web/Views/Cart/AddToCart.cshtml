@@ -1,22 +1,18 @@
 ﻿@using BakerySystem.Data.Models;
 @model BakerySystem.Web.ViewModels.ShoppingCart.CartItemViewModel;
 
-
 @{
-
 	ViewData["Title"] = "Selected products";
 
 	var amountOfProducts = ViewBag.CartItems.Count;
 
 	var product = ViewBag.CartItems;
-
 }
 
 @if (ViewBag.CartItems.Count == null)
 {
 	<div class="text-center">@amountOfProducts items in your cart</div>
 }
-
 
 <h3 class="display-5 mb-2 text-center">Selected Products</h3>
 <p class="mb-5 text-center">
@@ -92,5 +88,4 @@
 			<a class="btn btn-primary float-end" asp-controller="OrderDetails" asp-action="Checkout">Checkout</a>
 		</div>
 	</div>
-
 }

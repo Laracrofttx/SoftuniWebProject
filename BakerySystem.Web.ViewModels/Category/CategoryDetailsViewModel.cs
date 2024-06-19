@@ -4,7 +4,5 @@
 	public class CategoryDetailsViewModel : CategoryListingViewModel
 	{
 		public IEnumerable<ProductListingVIewModel> ProductsByCategory { get; set; } = null!;
-
-
 	}
 }
