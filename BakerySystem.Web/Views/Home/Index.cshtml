@@ -3,6 +3,8 @@
 
 @{
 	ViewData["Title"] = "Home Page";
+
+	var products = Model.Products;
 }
 
 <section>
@@ -43,10 +45,10 @@
 		<div class="row justify-content-center gy-3">
 			<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 				<div class="card bg-transparent">
-					<img src="https://handletheheat.com/wp-content/uploads/2022/03/bagels-recipe-SQUARE.jpg" class="card-img-top" alt="...">
+					<img src="@Model.ImageUrl" class="card-img-top" alt="...">
 					<div class="card-body">
-						<h5 class="card-title">Bagel</h5>
-						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="">
+						<h5 class="card-title">@Model.Name</h5>
+						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Id">
 							<button type="submit" class="btn btn-outline-primary float-end">
 								Add To Cart
 							</button>
@@ -56,10 +58,10 @@
 			</div>
 			<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 				<div class="card bg-transparent">
-					<img src="https://thisitaliankitchen.com/wp-content/uploads/2022/03/13189BD8-F5FC-4CFE-BE99-A6AAEEAB7691.jpeg" class="card-img-top" alt="...">
+					<img src="@Model.ImageUrl" class="card-img-top" alt="...">
 					<div class="card-body">
-						<h5 class="card-title">Italian Easter Bread</h5>
-						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="">
+						<h5 class="card-title">@Model.Name</h5>
+						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Id">
 							<button type="submit" class="btn btn-outline-primary float-end">
 								Add To Cart
 							</button>
@@ -69,10 +71,10 @@
 			</div>
 			<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 				<div class="card bg-transparent">
-					<img src="https://scientificallysweet.com/wp-content/uploads/2020/09/IMG_4087-feature-2.jpg" class="card-img-top" alt="...">
+					<img src="@Model.ImageUrl" class="card-img-top" alt="...">
 					<div class="card-body">
-						<h5 class="card-title">Chocolate Cake</h5>
-						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="">
+						<h5 class="card-title">@Model.Name</h5>
+						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Id">
 							<button type="submit" class="btn btn-outline-primary float-end">
 								Add To Cart
 							</button>
@@ -82,10 +84,10 @@
 			</div>
 			<div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 				<div class="card bg-transparent">
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXB6qq2r4eg1VUdW-xyfqHodq4Jm9CkoNHFA&usqp=CAU" class="card-img-top" alt="...">
+					<img src="@Model.ImageUrl" class="card-img-top" alt="...">
 					<div class="card-body">
-						<h5 class="card-title">Chicken Sandwich</h5>
-						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="">
+						<h5 class="card-title">@Model.Name</h5>
+						<form method="post" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.Id">
 							<button type="submit" class="btn btn-outline-primary float-end">
 								Add To Cart
 							</button>
@@ -98,8 +100,8 @@
 </section>
 
 @section Scripts
-	{
+{
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script>statistics();</script>
 
-	}
+}
